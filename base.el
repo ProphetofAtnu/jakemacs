@@ -2,6 +2,10 @@
 (require 'use-package)
 (require 'auto-minor-mode)
 
+(use-package recentf
+  :init (setq recentf-save-file (concat-path user-cache-dir "recentf"))
+  :config (recentf-mode))
+
 (use-package evil
   :defer .1
   :init
@@ -74,8 +78,7 @@
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil))
 
 (use-package rainbow-delimiters
-  :init
-  (rainbow-delimiters-mode 1))
+  :hook (prog-mode . rainbow-delimiters-mode))
    
 
 (use-package company
@@ -106,5 +109,3 @@
    [remap find-file] #'helm-find-files
    [remap execute-extended-command] #'helm-M-x
    [remap switch-to-buffer] #'helm-buffers-list))
-
-

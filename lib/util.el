@@ -27,15 +27,13 @@
 (defun load-cust (name)
   "Load a custom config from the cust directory
 Uses the directory \"user-emacs-directory/conf/\""
-  (let ((cust-dir (concat-path user-emacs-directory "cust")))
-    (let ((conf-dir (concat-path cust-dir name))
-	  (loaded))
-      (dolist (file load-cust-order loaded)
-	(let ((file-path (expand-file-name (symbol-name file) conf-dir)))
-	  (condition-case nil 
-	      (progn
-		(load file-path)
-		(push file-path loaded)))))
-      (reverse loaded))))
+  (let ((cust-dir (concat-path user-emacs-directory "conf")))
+    (let* ((conf-dir (concat-path cust-dir (symbol-name name)))
+	   (loaded '()))
+	   (dolist (file load-cust-order (reverse loaded))
+	     (let ((file-path (expand-file-name (symbol-name file) conf-dir)))
+	       (load file-path t)
+	       (push file-path loaded))))))
+
 
 ;;(load-cust "utility")
