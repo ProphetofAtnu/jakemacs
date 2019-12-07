@@ -21,20 +21,21 @@
 ;; (defmacro function-exclusion (func pred)
 ;;   "")
 
-(defvar load-cust-order '(package conf function binding))
+(defvar load-cust-order '(packages conf function binding))
 (defvar load-cust-use-misc-files t)
 
-(defun loadif (path)
-  "Load file if it is available"
-  (when (file-exists-p path) (load path)))
+(defun load-cust (name)
+  "Load a custom config from the cust directory
+Uses the directory \"user-emacs-directory/conf/\""
+  (let ((cust-dir (concat-path user-emacs-directory "cust")))
+    (let ((conf-dir (concat-path cust-dir name))
+	  (loaded))
+      (dolist (file load-cust-order loaded)
+	(let ((file-path (expand-file-name (symbol-name file) conf-dir)))
+	  (condition-case nil 
+	      (progn
+		(load file-path)
+		(push file-path loaded)))))
+      (reverse loaded))))
 
-;; (defun load-cust (name)
-;;   "Load a custom config from the cust directory
-;; Uses the directory \"user-emacs-directory/conf/\""
-;;   (let ((cust-dir (concat-path user-emacs-directory "cust")))
-;;     (let* ((conf-dir (concat-path cust-dir name))
-;; 	   (files (directory-files
-;; 		    t directory-files-no-dot-files-regexp)))
-;;       (unless (zerop (length files))
-;; 	(dolist (f load-cust-order)
-;; 	  (loadif (
+;;(load-cust "utility")
