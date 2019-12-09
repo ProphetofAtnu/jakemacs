@@ -1,9 +1,9 @@
 ;;; init.el ---                                      -*- lexical-binding: t; -*-
-
 (load (expand-file-name "lib/util.el" user-emacs-directory))
 ;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
 (setq backup-directory-alist `(("." . ,(ensure-dir user-cache-dir "bak"))))
+(setq custom-file (concat-path user-cache-dir "custom.el"))
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)
@@ -19,13 +19,16 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-
-
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
-
+;; Install everything at the beginning
 (load "~/.emacs.d/install")
+
+;; After packages have been installed...
+(require 'better-defaults)
+(require 'delight)
+(require 'use-package)
+(require 'auto-minor-mode)
+
+;; Configure everything
 (load "~/.emacs.d/base")
 
 (load (concat-path user-emacs-directory "rootconf"))
@@ -36,3 +39,9 @@
 
 ;; Finally, the aesthetic changes
 (load "~/.emacs.d/aesthetic")
+
+;; I doubt I'll ever use custom, but what the heck?
+(load custom-file)
+
+(put 'downcase-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)

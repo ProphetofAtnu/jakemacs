@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; -*- lexical-binding: t; -*-
 (require 'cl-lib)
 
 (defun ensure-dir (&rest paths)
@@ -21,8 +21,8 @@
 ;; (defmacro function-exclusion (func pred)
 ;;   "")
 
-(defvar load-cust-order '(packages conf function binding))
-(defvar load-cust-use-misc-files t)
+(defvar load-cust-order '(package conf function binding))
+;; (defvar load-cust-use-misc-files t)
 
 (defun load-cust (name)
   "Load a custom config from the cust directory
@@ -34,6 +34,3 @@ Uses the directory \"user-emacs-directory/conf/\""
 	     (let ((file-path (expand-file-name (symbol-name file) conf-dir)))
 	       (load file-path t)
 	       (push file-path loaded))))))
-
-
-;;(load-cust "utility")

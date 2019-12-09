@@ -1,7 +1,10 @@
 .cache/*
+backups
 bak
 straight
 auto-save-list
 elpa
 recentf
 url
+bookmarks
+projectile-bookmarks.eld
