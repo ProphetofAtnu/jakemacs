@@ -5,6 +5,11 @@
 (use-package eldoc
   :delight)
 
+(use-package ielm
+  :commands (ielm)
+  :config
+  (setq ielm-dynamic-return nil))
+
 (use-package evil
   :config
   (setq-mode-local emacs-lisp-mode evil-lookup-func #'describe-symbol-at-point))

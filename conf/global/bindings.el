@@ -46,8 +46,10 @@
   "h f" 'describe-function
   "h s" 'helpful-symbol
   "h k" 'general-describe-keybindings
-  "h b" 'discover-my-major
-  "h B" 'discover-my-mode
+  "h d" 'discover-my-major
+  "h D" 'discover-my-mode
+  "h k" 'helm-descbinds
+  "h m" 'helm-describe-modes
   "f" '(:ignore t :wk "Files")
   "f f" 'find-file
   "f d" 'dired
@@ -64,6 +66,7 @@
   "w" '(:ignore t :wk "Windows")
   "w w" 'other-window
   "w d" 'delete-window
+  "w =" 'balance-windows
   "w l" 'evil-window-right
   "w h" 'evil-window-left
   "w j" 'evil-window-down
@@ -82,7 +85,9 @@
   "t" 'term
   "w" 'eww
   "b" 'bookmark-bmenu-search
-  "w" 'ace-window
+  "a" 'ace-window
+  "o" 'ace-link
+  "m" 'helm-mode-manager
   "l" 'avy-goto-line
   "\\" 'eval-expression)
 

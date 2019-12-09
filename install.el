@@ -26,8 +26,11 @@
 (straight-use-package 'smart-tab)
 (straight-use-package 'avy)
 (straight-use-package 'ace-window)
+(straight-use-package 'ace-link)
 (straight-use-package 'helpful)
 (straight-use-package 'discover-my-major)
+(straight-use-package 'exec-path-from-shell)
+(straight-use-package 'yasnippet)
 
 ;; Helm...
 (straight-use-package 'helm)

@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t; -*-
-(setq active-configs '(utility emacs-lisp sexp))
+(setq active-configs '(utility emacs-lisp sexp lsp go))
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)

@@ -8,3 +8,5 @@
 (use-package interleave
   :when (featurep 'org)
   :commands (interleave-mode))
+
+(use-package csv-mode)

@@ -1,0 +1,12 @@
+;;; -*- lexical-binding: t; -*-
+(straight-use-package 'go-mode)
+(straight-use-package 'company-go)
+(straight-use-package 'go-guru)
+(straight-use-package 'go-rename)
+(straight-use-package 'go-impl)
+(straight-use-package 'go-eldoc)
+(straight-use-package 'go-tag)
+(straight-use-package 'godoctor)
+(straight-use-package 'go-fill-struct)
+(straight-use-package 'go-gen-test)
+(straight-use-package 'flycheck-golangci-lint)

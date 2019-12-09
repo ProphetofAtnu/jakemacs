@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 ;; Base packages/global packages
+(use-package exec-path-from-shell
+  :init (exec-path-from-shell-initialize))
+
 (use-package recentf
   :init (progn
           (setq recentf-save-file (concat-path user-cache-dir "recentf"))
@@ -127,6 +130,11 @@
      :keymap 'company-mode-map
      "TAB" #'company-indent-or-complete-common)))
 
+(use-package yasnippet
+  :defer t
+  :config
+  (yas-global-mode))
+
 (use-package helm
   :defer t
   :init
@@ -187,6 +195,7 @@
     ))
 
 (use-package projectile
+  :delight
   :config
   (projectile-mode))
 
