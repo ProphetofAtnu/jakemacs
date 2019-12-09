@@ -145,6 +145,18 @@
    [remap recentf-open-files] #'helm-recentf
    [remap switch-to-buffer] #'helm-buffers-list))
 
+(use-package helm-company
+  :after (helm company))
+
+(use-package helm-descbinds
+  :after (helm))
+
+(use-package helm-describe-modes
+  :after (helm))
+
+(use-package helm-mode-manager
+  :after (helm))
+
 (use-package helm-swoop
   :commands helm-swoop)
 
@@ -152,13 +164,13 @@
   :commands helm-rg)
 
 (use-package eyebrowse
-  :init
   :config
   (eyebrowse-mode t)
   (setq eyebrowse-new-workspace t)
   (general-defs '(normal visual motion)
     "g n" nil
     "g n" 'eyebrowse-create-window-config
+    "g z" 'eyebrowse-close-window-config
     "g t" 'eyebrowse-next-window-config
     "g T" 'eyebrowse-prev-window-config
     "M-1" 'eyebrowse-switch-to-window-config-1
@@ -173,6 +185,10 @@
     "M-0" 'eyebrowse-switch-to-window-config-0
     "g TAB" 'eyebrowse-last-window-config
     ))
+
+(use-package projectile
+  :config
+  (projectile-mode))
 
 (use-package dashboard
   :config

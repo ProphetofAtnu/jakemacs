@@ -22,15 +22,23 @@
 (straight-use-package 'company)
 (straight-use-package 'company-quickhelp)
 (straight-use-package 'dired-plus)
-(straight-use-package 'helm)
-(straight-use-package 'helm-swoop)
-(straight-use-package 'helm-rg)
 (straight-use-package 'hydra)
 (straight-use-package 'smart-tab)
 (straight-use-package 'avy)
 (straight-use-package 'ace-window)
 (straight-use-package 'helpful)
 (straight-use-package 'discover-my-major)
+
+;; Helm...
+(straight-use-package 'helm)
+(straight-use-package 'helm-swoop)
+(straight-use-package 'helm-rg)
+(straight-use-package 'helm-company)
+(straight-use-package 'helm-descbinds)
+(straight-use-package 'helm-describe-modes)
+(straight-use-package 'helm-mode-manager)
+;; Not yet semapi, I don't have time to configure that shit...
+;(straight-use-package 'helm-ext)
 
 ;; Asthetic Changes
 (straight-use-package 'powerline)
