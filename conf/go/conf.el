@@ -1,12 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
+(use-package mode-local
+  :commands (setq-mode-local))
 
-(use-package go-mode)
+(use-package go-mode
+  :config
+  (setq-mode-local go-mode evil-lookup-func 'godoc-at-point))
 
 ;; (use-package company-go)
 
 (use-package lsp-mode
-  :hook (go-mode . lsp-deferred))
+  :hook (go-mode . lsp))
 
 (use-package go-guru
   :hook
@@ -35,6 +39,13 @@
 (use-package go-gen-test
   :commands (go-gen-test-all go-gen-test-dwim go-gen-test-exported go-gen-test-functions))
 
+(use-package flycheck
+  :hook
+  (go-mode . flycheck-mode))
+
 (use-package flycheck-golangci-lint
-  :after (flycheck))
+  :after (go-mode flycheck)
+  :hook (go-mode . flycheck-golangci-lint-setup)
+  :config 
+  (flycheck-disable-checker 'go-errcheck))
 

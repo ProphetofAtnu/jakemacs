@@ -1,8 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
-
-(leader-minor-def '(normal visual insert emacs override)
-  'emacs-lisp-mode-map
+(leader-minor-def
+  :states '(normal visual insert emacs override)
+  :keymaps '(emacs-lisp-mode-map local)
+  :major-modes t
   "m" 'macrostep-mode
   "e" '(:ignore t :wk "Eval")
   "e e" 'eval-last-sexp

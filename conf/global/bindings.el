@@ -91,7 +91,7 @@
   "l" 'avy-goto-line
   "\\" 'eval-expression)
 
-(leader-minor-def
+(leader-tert-def
   "x" '(:ignore t :wk "Text")
   "x x" 'indent-region
   "x X" 'indent-rigidly

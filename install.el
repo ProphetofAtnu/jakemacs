@@ -44,11 +44,14 @@
 ;(straight-use-package 'helm-ext)
 
 ;; Asthetic Changes
-(straight-use-package 'powerline)
-(straight-use-package 'moe-theme)
+
+;;; Depricated on 12/10/19
+;; (straight-use-package 'powerline)
+;; (straight-use-package 'moe-theme)
+(straight-use-package 'cyberpunk-theme)
 (straight-use-package 'delight)
 (straight-use-package 'dashboard)
-;; (straight-use-package 'doom-modeline)
+(straight-use-package 'doom-modeline)
 (straight-use-package 'projectile)
 (straight-use-package 'eyebrowse)
 (straight-use-package 'smart-mode-line)
