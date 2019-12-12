@@ -197,6 +197,7 @@
 (use-package projectile
   :delight
   :config
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
   (projectile-mode))
 
 (use-package dashboard

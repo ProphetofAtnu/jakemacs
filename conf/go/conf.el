@@ -5,6 +5,7 @@
 
 (use-package go-mode
   :config
+  (load (expand-file-name "function" (file-name-directory load-file-name)))
   (setq-mode-local go-mode evil-lookup-func 'godoc-at-point))
 
 ;; (use-package company-go)

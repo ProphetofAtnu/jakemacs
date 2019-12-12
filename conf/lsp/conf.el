@@ -1,7 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package lsp-mode
-  :defer t)
+  :defer t
+  :config
+  (setq lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))

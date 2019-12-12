@@ -5,6 +5,8 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
-(setq visible-bell nil)
+(setq visible-bell nil
+      bookmark-default-file (expand-file-name "bookmarks" user-cache-dir)
+      comint-prompt-read-only t)
 
 

@@ -41,6 +41,10 @@
   "r d t" 'godoctor-toggle-dry-run
   "r d r" 'godoctor-rename-dry-run
   "r d e" 'godoctor-extract-dry-run
+  "x" '(:ignore t :wk "Execute")
+  "x r" 'gorepl-run
+  "x l" 'gorepl-run-load-current-file
+  "x x" 'js/gorun
   "b" '(:ignore t :wk "Build/Run")
   "=" 'gofmt)
 
