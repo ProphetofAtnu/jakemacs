@@ -45,8 +45,10 @@
   (go-mode . flycheck-mode))
 
 (use-package flycheck-golangci-lint
-  :after (go-mode flycheck)
   :hook (go-mode . flycheck-golangci-lint-setup)
+  :after (flycheck-mode)
   :config 
-  (flycheck-disable-checker 'go-errcheck))
+  (flycheck-disable-checker 'go-errcheck)
+  (flycheck-disable-checker 'go-staticcheck)
+  (flycheck-disable-checker 'go-test))
 

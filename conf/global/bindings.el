@@ -27,9 +27,11 @@
 
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
-  "." 'switch-to-buffer
+  "." 'helm-mini
   "," 'find-file
   "/" 'helm-swoop
+  "\'" 'eshell
+  "TAB" 'previous-buffer
   "b" '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
   "b l" 'ibuffer
@@ -64,7 +66,7 @@
   "q Q" 'kill-emacs
   ;; Window
   "w" '(:ignore t :wk "Windows")
-  "w w" 'other-window
+  "w w" 'evil-window-next
   "w d" 'delete-window
   "w =" 'balance-windows
   "w l" 'evil-window-right
@@ -79,6 +81,22 @@
   "w R" 'evil-window-rotate-upwards
   "w s" 'evil-window-split
   "w v" 'evil-window-vsplit
+  ;; Projectile
+  "p r" 'helm-projectile-recentf
+  "p d" 'helm-projectile-find-dir
+  ;; "p f" 'helm-projectile-find-file
+  "p !" 'projectile-run-shell-command-in-root
+  "p f" 'helm-projectile-find-file-dwim
+  "p p" 'helm-projectile-switch-project
+  "p b" 'helm-projectile-switch-to-buffer
+  "p d" 'helm-projectile-browse-dirty-projects
+  "p l" 'helm-projectile-find-file-in-known-projects
+  ;; Search
+  "p g" '(:ignore t :wk "Search Project")
+  "p g a" 'helm-projectile-ag
+  "p g r" 'helm-projectile-rg
+  "p g k" 'helm-projectile-ack
+  "p g g" 'helm-projectile-grep
   )
 
 (leader-tert-def

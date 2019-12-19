@@ -3,6 +3,8 @@
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 
+(use-package load-relative)
+
 (use-package recentf
   :init (progn
           (setq recentf-save-file (concat-path user-cache-dir "recentf"))
@@ -125,10 +127,13 @@
   (prog-mode . company-mode)
   (comint-mode . company-mode)
   :config
-  (progn
-    (general-define-key
-     :keymap 'company-mode-map
-     "TAB" #'company-indent-or-complete-common)))
+  (setq company-backends
+        '((company-files          ; files & directory
+           company-keywords       ; keywords
+           company-capf
+           company-yasnippet
+           )
+        (company-abbrev company-dabbrev))))
 
 (use-package yasnippet
   :defer t
@@ -194,6 +199,11 @@
     "g TAB" 'eyebrowse-last-window-config
     ))
 
+(use-package helm-projectile
+  :after (projectile)
+  :config
+  (helm-projectile-on))
+
 (use-package projectile
   :delight
   :config
@@ -211,3 +221,13 @@
                           (agenda . 5)
                           (registers . 5)))
   (dashboard-setup-startup-hook))
+
+(use-package eshell-prompt-extras
+  :after (eshell)
+  :commands (epe-theme-lambda)
+  :init
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
+
+(use-package eshell-z
+  :after (eshell))

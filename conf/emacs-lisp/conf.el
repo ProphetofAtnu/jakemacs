@@ -17,7 +17,6 @@
 (use-package macrostep
   :commands (macrostep-mode))
 
-
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (let  ((auto-insert-query nil)

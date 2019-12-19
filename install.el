@@ -2,6 +2,7 @@
 (straight-use-package 'use-package)
 (straight-use-package 'auto-minor-mode)
 (straight-use-package 'better-defaults)
+(straight-use-package 'async)
 
 ;; Evil Setup / Keybinding
 (straight-use-package 'evil)
@@ -20,7 +21,6 @@
 (straight-use-package 'smartparens)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'company)
-(straight-use-package 'company-quickhelp)
 (straight-use-package 'dired-plus)
 (straight-use-package 'hydra)
 (straight-use-package 'smart-tab)
@@ -31,6 +31,7 @@
 (straight-use-package 'discover-my-major)
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'yasnippet)
+(straight-use-package 'load-relative)
 
 ;; Helm...
 (straight-use-package 'helm)
@@ -53,5 +54,12 @@
 (straight-use-package 'dashboard)
 (straight-use-package 'doom-modeline)
 (straight-use-package 'projectile)
+(straight-use-package 'helm-projectile)
 (straight-use-package 'eyebrowse)
-(straight-use-package 'smart-mode-line)
+
+;; Shell
+(straight-use-package 'eshell-z)
+(straight-use-package 'eshell-prompt-extras)
+(straight-use-package 'eshell-fixed-prompt)
+
+;; Weird libraries

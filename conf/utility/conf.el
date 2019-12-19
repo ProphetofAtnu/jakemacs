@@ -9,4 +9,8 @@
   :when (featurep 'org)
   :commands (interleave-mode))
 
-(use-package csv-mode)
+(use-package csv-mode
+  :mode (("\\.csv\\'" . csv-mode)))
+
+(use-package muse
+  :mode (("\\.muse\\'" . muse-mode)))
