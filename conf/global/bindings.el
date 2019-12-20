@@ -25,10 +25,11 @@
   :prefix leader-tertiary
   :non-normal-prefix alt-tertiary)
 
+(le)
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
   "." 'helm-mini
-  "," 'find-file
+  "," 'helm-for-files
   "/" 'helm-swoop
   "\'" 'eshell
   "TAB" 'previous-buffer
@@ -137,6 +138,8 @@
   ;; Dired stuff
   "-" #'dired-jump)
 
+(general-defs '(normal emacs insert)
+	[C-tab] 'helm-company)
 
 (general-defs '(normal visual motion insert)
   "C-(" 'evil-previous-open-paren

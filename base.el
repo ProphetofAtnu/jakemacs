@@ -131,8 +131,7 @@
         '((company-files          ; files & directory
            company-keywords       ; keywords
            company-capf
-           company-yasnippet
-           )
+           company-yasnippet)
         (company-abbrev company-dabbrev))))
 
 (use-package yasnippet
@@ -149,7 +148,9 @@
   :config
   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
   (setq helm-M-x-fuzzy-match t)
+  (setq helm-display-function 'helm-display-buffer-in-own-frame)
   (setq helm-autoresize-mode t)
+  (setq helm-display-buffer-reuse-frame t)
   (setq helm-window-prefer-horizontal-split t)
   (general-define-key
    [remap find-file] #'helm-find-files
