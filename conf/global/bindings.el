@@ -25,7 +25,6 @@
   :prefix leader-tertiary
   :non-normal-prefix alt-tertiary)
 
-(le)
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
   "." 'helm-mini
