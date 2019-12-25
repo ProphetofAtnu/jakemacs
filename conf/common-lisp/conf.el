@@ -8,4 +8,3 @@
   (setq sly-net-coding-system 'utf-8-unix
         sly-mrepl-history-file-name (ensure-dir user-cache-dir "sly-mrepl-history")
         sly-complete-symbol-function 'sly-simple-completions))
-        
