@@ -2,7 +2,7 @@
 
 (leader-minor-def
   :states '(normal visual insert emacs override)
-  :keymaps '(go-mode-map local)
+  :keymaps 'go-mode-map
   :major-modes t
   "g" '(:ignore t :wk "Go-To...")
   "g f" 'go-goto-function-name

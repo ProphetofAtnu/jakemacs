@@ -3,6 +3,9 @@
 (require 'general)
 (load (concat-path user-emacs-directory "lib/interact"))
 
+;; Insert mode redefs
+(load-relative "./bind-extra/insert-rebind.el")
+
 (setq leader-primary "SPC")
 (setq alt-primary "C-SPC")
 (setq leader-minor ",")
@@ -69,6 +72,7 @@
   "w w" 'evil-window-next
   "w d" 'delete-window
   "w =" 'balance-windows
+  "w t" 'ace-swap-window
   "w l" 'evil-window-right
   "w h" 'evil-window-left
   "w j" 'evil-window-down
@@ -81,6 +85,12 @@
   "w R" 'evil-window-rotate-upwards
   "w s" 'evil-window-split
   "w v" 'evil-window-vsplit
+  "e" '(:ignore t :wk "Eyebrowse")
+  "e n" 'eyebrowse-create-window-config
+  "e z" 'eyebrowse-close-window-config
+  "e t" 'eyebrowse-next-window-config
+  "e T" 'eyebrowse-prev-window-config
+  "e TAB" 'eyebrowse-last-window-config
   ;; Projectile
   "p r" 'helm-projectile-recentf
   "p d" 'helm-projectile-find-dir

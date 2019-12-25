@@ -1,8 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(use-package mode-local
-  :commands (setq-mode-local))
-
 (use-package go-mode
   :config
   (load (expand-file-name "function" (file-name-directory load-file-name)))

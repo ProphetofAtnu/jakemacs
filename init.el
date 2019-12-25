@@ -27,6 +27,9 @@
 (require 'delight)
 (require 'use-package)
 (require 'auto-minor-mode)
+(use-package load-relative)
+(use-package mode-local)
+
 
 ;; Configure everything
 (load "~/.emacs.d/base")

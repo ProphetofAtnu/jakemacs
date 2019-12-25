@@ -12,7 +12,12 @@
 
 (use-package evil
   :config
-  (setq-mode-local emacs-lisp-mode evil-lookup-func #'describe-symbol-at-point))
+  (setq-mode-local emacs-lisp-mode evil-lookup-func #'describe-symbol-at-point)
+  (setq-mode-local inferior-lisp evil-lookup-func #'describe-symbol-at-point))
+
+(use-package elisp-def
+  :hook ((emacs-lisp-mode . elisp-def-mode)
+         (ielm-mode . elisp-def-mode)))
 
 (use-package macrostep
   :commands (macrostep-mode))
