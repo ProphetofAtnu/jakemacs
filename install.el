@@ -3,6 +3,7 @@
 (straight-use-package 'auto-minor-mode)
 (straight-use-package 'better-defaults)
 (straight-use-package 'async)
+(straight-use-package 'save-sexp)
 
 ;; Evil Setup / Keybinding
 (straight-use-package 'evil)
@@ -32,6 +33,9 @@
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'yasnippet)
 (straight-use-package 'load-relative)
+(straight-use-package 'eval-sexp-fu)
+(straight-use-package 'posframe)
+(straight-use-package 'which-key-posframe)
 
 ;; Helm...
 (straight-use-package 'helm)
@@ -43,6 +47,9 @@
 (straight-use-package 'helm-mode-manager)
 ;; Not yet semapi, I don't have time to configure that shit...
 ;(straight-use-package 'helm-ext)
+
+;; I'm putting Ivy stuff in, screw it
+(straight-use-package 'swiper)
 
 ;; Asthetic Changes
 

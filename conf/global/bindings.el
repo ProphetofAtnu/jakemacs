@@ -29,7 +29,7 @@
   "s" nil
   "S" nil
   "s" 'avy-goto-char-2
-  "S" 'avy-goto-word-or-subword-1
+  "S" 'swiper
   ;; Dired stuff
   "-" 'dired-jump)
 

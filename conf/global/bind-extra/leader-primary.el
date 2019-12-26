@@ -5,6 +5,34 @@
   :prefix leader-primary
   :non-normal-prefix alt-primary)
 
+(defhydra hydra-window-manage (:color amaranth)
+  "Edit window layout:"
+  ("j" evil-window-down "Up" :column "Switch")
+  ("k" evil-window-up "Down")
+  ("h" evil-window-left "Left")
+  ("l" evil-window-right "Right")
+  ("o" other-window "Other")
+  ("K" evil-window-move-very-top "To Top" :column "Move")
+  ("J" evil-window-move-very-bottom "To Bottom")
+  ("L" evil-window-move-far-right "To Right")
+  ("H" evil-window-move-far-left "To Left")
+  ("r" evil-window-rotate-downwards "Rot. Down")
+  ("R" evil-window-rotate-upwards "Rot. Up")
+  ("s" split-window-below "Split" :column "Manage")
+  ("v" split-window-right "VSplit")
+  ("t" ace-swap-window "Swap")
+  ("d" evil-window-delete "Delete")
+  ("{" shrink-window "Shrink" :column "Resize")
+  ("}" enlarge-window "Enlarge")
+  ("[" shrink-window-horizontally "H. Shrink")
+  ("]" enlarge-window-horizontally "H. Enlarge")
+  ("M" maximize-window "Max")
+  ("m" minimize-window "Min")
+  ("=" balance-windows "Balance")
+  ("q" nil "Exit" :color blue :column "")
+  ("z" nil "Exit" :color blue :column "")
+  ("<escape>" nil "Exit" :color blue :column ""))
+
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
   "." 'helm-mini
@@ -22,6 +50,7 @@
   "s g" 'helm-rg
   "s o" 'occur
   "s r" 'query-replace
+  "s c" 'evil-ex-nohighlight
   "h" '(:ignore t :wk "Help")
   "h a" 'helm-apropos
   "h v" 'describe-variable
@@ -35,6 +64,7 @@
   "f" '(:ignore t :wk "Files")
   "f f" 'find-file
   "f d" 'dired
+  "f D" 'dired-other-window
   "f r" 'recentf-open-files
   "f l" 'helm-locate
   "f s" 'save-buffer
@@ -46,6 +76,7 @@
   "q Q" 'kill-emacs
   ;; Window
   "w" '(:ignore t :wk "Windows")
+  "w ." 'hydra-window-manage/body 
   "w w" 'evil-window-next
   "w d" 'delete-window
   "w =" 'balance-windows

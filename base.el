@@ -3,17 +3,23 @@
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 
+;; For internal libs
+(use-package save-sexp)
+
+;; Used in a ton of packages
+(use-package posframe)
+
 (use-package recentf
   :init (progn
           (setq recentf-save-file (concat-path user-cache-dir "recentf"))
           (recentf-mode)))
 
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
+
 (use-package evil
-  :defer 1
   :init
   (setq evil-search-module 'evil-search)
-  (setq evil-want-integration nil)
-  (setq evil-want-keybinding nil)
   (setq evil-want-C-d-scroll t)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump t)
@@ -59,6 +65,10 @@
 (use-package discover-my-major
   :commands (discover-my-major discover-my-mode))
 
+(use-package hydra
+  :config
+  (setq hydra-hint-display-type 'posframe))
+
 (use-package general
   :init
   (load (concat-path user-emacs-directory "conf/global/bindings")))
@@ -71,7 +81,7 @@
       [remap describe-variable] 'helpful-variable
       [remap apropos] 'helpful-symbol
       [remap describe-symbol-at-point] 'helpful-at-point
-      [remap help-key-description] 'helpful-key)))
+      [remap describe-key] 'helpful-key)))
 
 (use-package which-key
   :defer t
@@ -80,8 +90,18 @@
   :init
   (which-key-mode 1))
 
+(use-package which-key-posframe
+  :after which-key
+  :config (setq which-key-posframe-poshandler
+                'posframe-poshandler-frame-bottom-center)
+  (which-key-posframe-mode))
+
 (use-package restart-emacs
   :commands (restart-emacs))
+
+(use-package eval-sexp-fu
+  :config
+  (turn-on-eval-sexp-fu-flash-mode))
 
 (use-package dired
   :hook (dired-mode . auto-revert-mode)
@@ -137,6 +157,9 @@
   :config
   (yas-global-mode))
 
+(use-package swiper
+  :commands (swiper))
+
 (use-package helm
   :defer t
   :init
@@ -170,7 +193,9 @@
   :after (helm))
 
 (use-package helm-swoop
-  :commands helm-swoop)
+  :commands helm-swoop
+  :config
+  (setq helm-swoop-fontify-buffer-size-limit 'always))
 
 (use-package helm-rg
   :commands helm-rg)
