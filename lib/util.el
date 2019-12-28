@@ -87,3 +87,12 @@ body are forms to be evaluated."
   `(unless
        (featurep ',feature)
      ,@body))
+
+(defmacro js/buffer-list-filter (func)
+  (pcase func
+    (`(lambda ((and functionp) ,test) . ,body) (print `(lambda nil ,test ,body)))
+    (`(lambda ,((and listp) args) ,test . ,body) (print `(lambda args ,test ,body)))))
+
+;; (js/buffer-list-filter (lambda '(buf win) 'functionp (print "Hello")))
+;; (defmacro js/with-buffers-filtered (filter body)
+;;   "Execute body with filtered buffers as current")

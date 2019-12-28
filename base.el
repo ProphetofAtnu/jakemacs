@@ -107,6 +107,9 @@
       :keymaps 'dired-mode-map
       "-" 'dired-up-directory)))
 
+(use-package diredfl
+  :hook (dired-mode . diredfl-global-mode))
+
 (use-package dired+
   :init
   (setq diredp-hide-details-initially-flag nil)

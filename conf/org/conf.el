@@ -6,6 +6,7 @@
   (setq org-directory (expand-file-name "~/org")
         org-hide-emphasis-markers t
         org-clock-persist-file (expand-file-name "org-clock-save.el" user-cache-dir)
+        org-id-link-to-org-use-id 'use-existing
         org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir)
         org-publish-timestamp-directory (ensure-dir user-cache-dir ".org-timestamps/")
         org-default-notes-file (expand-file-name "catchall.org" org-directory)

@@ -23,6 +23,7 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'company)
 (straight-use-package 'dired-plus)
+(straight-use-package 'diredfl)
 (straight-use-package 'hydra)
 (straight-use-package 'smart-tab)
 (straight-use-package 'avy)
