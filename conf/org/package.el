@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (straight-use-package 'org-bullets)
+(straight-use-package 'deft)
 (straight-use-package 'evil-org)
 (straight-use-package 'helm-org)
 (straight-use-package 'helm-org-rifle)

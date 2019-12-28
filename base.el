@@ -33,12 +33,6 @@
   :config
   (evil-collection-init))
 
-(use-package evil-org
-  :hook (org-mode . evil-org-mode)
-  :after org
-  :config
-  (evil-org-set-key-theme '(navigation insert textobjects additional calendar)))
-
 (use-package evil-goggles
   :delight
   :config
@@ -88,13 +82,15 @@
   :after general
   :delight
   :init
-  (which-key-mode 1))
+  (which-key-mode 1)
+  (which-key-setup-minibuffer)
+  )
 
-(use-package which-key-posframe
-  :after which-key
-  :config (setq which-key-posframe-poshandler
-                'posframe-poshandler-frame-bottom-center)
-  (which-key-posframe-mode))
+;; ##QUARENTINED##
+;; (use-package which-key-posframe
+;;   :config (setq which-key-posframe-poshandler
+;;                 'posframe-poshandler-frame-bottom-center)
+;;   (which-key-posframe-mode))
 
 (use-package restart-emacs
   :commands (restart-emacs))
@@ -161,18 +157,18 @@
   :commands (swiper))
 
 (use-package helm
-  :defer t
   :init
-  (helm-mode 1)
-  (helm-adaptive-mode 1)
-  :delight
-  :config
   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
   (setq helm-M-x-fuzzy-match t)
   (setq helm-display-function 'helm-display-buffer-in-own-frame)
   (setq helm-autoresize-mode t)
   (setq helm-display-buffer-reuse-frame t)
   (setq helm-window-prefer-horizontal-split t)
+  (setq helm-mode-handle-completion-in-region nil)
+  (helm-mode 1)
+  (helm-adaptive-mode 1)
+  :delight
+  :config
   (general-define-key
    [remap find-file] #'helm-find-files
    [remap execute-extended-command] #'helm-M-x

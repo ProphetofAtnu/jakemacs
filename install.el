@@ -69,4 +69,8 @@
 (straight-use-package 'eshell-prompt-extras)
 (straight-use-package 'eshell-fixed-prompt)
 
+;; (straight-use-package '(aweshell
+;;                         :type git :host github
+;;                         :repo "manateelazycat/aweshell"))
+
 ;; Weird libraries

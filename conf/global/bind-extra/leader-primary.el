@@ -38,7 +38,7 @@
   "." 'helm-mini
   "," 'helm-for-files
   "/" 'helm-swoop
-  "\'" 'eshell
+  "\'" 'term
   "TAB" 'previous-buffer
   "b" '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer

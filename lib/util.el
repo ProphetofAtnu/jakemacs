@@ -45,6 +45,22 @@ Uses the directory \"user-emacs-directory/conf/\""
           (load file-path t)
           (push file-path loaded))))))
 
+(defvar js/conf-dir (expand-file-name "conf" user-emacs-directory))
+
+;; TODO: Fix new loader function so it actually does something.
+(cl-defun js/new-loader-fix (name)
+  "Create a new loader in the config directory"
+  (let ((nstring (cond ((stringp name) name)
+                       ((symbolp name) (symbol-name name))
+                       (t (cl-return-from js/conf-dir))))
+        (confs
+         (directory-files js/conf-dir
+                          nil
+                          directory-files-no-dot-files-regexp)))
+    (if (memq name confs)
+        (print "Config Exists")
+      (print "Config does not exist"))))
+
 (defmacro with-eval-after-multi (files &rest body)
   "with-eval-after-load for multiple features. 
 
