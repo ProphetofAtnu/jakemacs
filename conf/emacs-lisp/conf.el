@@ -5,6 +5,13 @@
 (use-package eldoc
   :delight)
 
+(use-package company-elisp
+  :config
+  (add-hook 'emacs-lisp-mode-hook 
+            (lambda () 
+              (add-to-list
+               (make-local-variable 'company-backends) 'company-elisp))))
+
 (use-package ielm
   :commands (ielm)
   :config

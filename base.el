@@ -1,9 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 ;; Base packages/global packages
+;; For internal libs
+
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 
-;; For internal libs
 (use-package save-sexp)
 
 ;; Used in a ton of packages
@@ -151,6 +152,34 @@
            company-yasnippet)
         (company-abbrev company-dabbrev))))
 
+;; (use-package semantic
+;;   :commands (semantic-mode)
+;;   :init
+;;   (setq semantic-default-submodes
+;;     '(;; Default
+;;       global-semantic-idle-scheduler-mode
+;;       global-semanticdb-minor-mode
+;;       ;; Aux
+;;       global-semantic-idle-summary-mode
+;;       ;; global-semantic-idle-completions-mode
+;;       global-semantic-decoration-mode
+;;       global-semantic-highlight-func-mode
+;;       global-semantic-stickyfunc-mode
+;;       global-semantic-mru-bookmark-mode))
+;;   (semantic-mode)
+;;   :config
+;;   (add-to-list 'semantic-new-buffer-setup-functions '(emacs-lisp-mode . semantic-default-elisp-setup))
+;;   (semantic-idle-scheduler-add 'semanticdb-save-all-db-idle)
+;;   ;; (setq semantic-default-submodes enabled-semantic-submodes)
+;;   (setq-default semanticdb-find-default-throttle '(local project))
+;;   (setq-mode-local emacs-lisp-mode 
+;;    semanticdb-find-default-throttle '(local project))
+;;   (use-package cedet-global
+;;     :commands (cedet-gnu-global-version-check))
+;;   (when (cedet-gnu-global-version-check t)
+;;     (semanticdb-enable-gnu-global-databases 'c-mode)
+;;     (semanticdb-enable-gnu-global-databases 'c++-mode)))
+
 (use-package yasnippet
   :defer t
   :config
@@ -200,9 +229,18 @@
   :commands helm-rg)
 
 (use-package eyebrowse
+  :init
+  (setq eyebrowse-new-workspace t)
   :config
+  (eyebrowse-init)
   (eyebrowse-mode t)
-  (setq eyebrowse-new-workspace t))
+  (require 'general)
+  (general-defs '(normal visual motion)
+    "g t" 'eyebrowse-next-window-config
+    "g T" 'eyebrowse-prev-window-config
+    "g z" 'eyebrowse-close-window-config
+    "z x" 'eyebrowse-last-window-config
+    "z w" 'eyebrowse-create-window-config))
 
 (use-package helm-projectile
   :after (projectile)

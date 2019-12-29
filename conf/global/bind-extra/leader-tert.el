@@ -7,13 +7,13 @@
 
 (leader-tert-def
   "t" 'term
-  "w" 'eww
+  "e" 'eww
   "b" 'bookmark-bmenu-search
   "a" 'ace-window
-  "o" 'ace-link
+  "RET" 'ace-link
   "m" 'helm-mode-manager
   "l" 'avy-goto-line
-  "\\" 'eval-expression)
+  "\\" 'helm-mini)
 
 (leader-tert-def
   "x" '(:ignore t :wk "Text")

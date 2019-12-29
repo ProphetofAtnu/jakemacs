@@ -13,6 +13,8 @@
         org-log-done-with-time t
         org-startup-with-inline-images t
         org-latex-prefer-user-labels t
+        org-blank-before-new-entry '((heading . t)
+                                     (plain-list-item . nil))
         org-image-actual-width nil
         org-src-fontify-natively t
         org-src-tab-acts-natively t
@@ -27,6 +29,9 @@
 
 (use-package org-indent
   :hook (org-mode . org-indent-mode))
+
+(use-package org-src
+  :after (org))
 
 (use-package deft
   :init

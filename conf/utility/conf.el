@@ -14,3 +14,9 @@
 
 (use-package muse
   :mode (("\\.muse\\'" . muse-mode)))
+
+(use-package ggtags
+  :commands (ggtags-mode))
+
+(use-package helm-gtags
+  :hook (ggtags-mode . helm-gtags-mode))

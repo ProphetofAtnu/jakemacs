@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
 (leader-tert-def
-  org-mode-map)
+  org-mode-map
+  "deabb")

@@ -8,7 +8,9 @@
 (straight-use-package 'web-server)
 (straight-use-package 'muse)
 
-
+;; GGTags
+(straight-use-package 'ggtags)
+(straight-use-package 'helm-gtags)
 ;; (straight-use-package
 ;;  '(hyperbole
 ;;    :files ("*.el" ("kotl" "kotl/*.el") "man/*.info" "man/*.texi")
