@@ -1,16 +1,24 @@
 ;;; -*- lexical-binding: t; -*-
 
+
+(general-define-key :states '(insert emacs)
+                    :keymaps 'go-mode-map
+                    "}" 'go-mode-insert-and-indent
+                    ")" 'go-mode-insert-and-indent
+                    (kbd "<C-return>") 'go-fill-struct)
+
 (leader-minor-def
   :states '(normal visual insert emacs override)
   :keymaps 'go-mode-map
   :major-modes t
   "g" '(:ignore t :wk "Go-To...")
   "g f" 'go-goto-function-name
+  "g F" 'go-goto-function
+  "g a" 'go-goto-arguments
+  "g d" 'go-goto-docstring
   "g i" 'go-goto-imports
   "g m" 'go-goto-method-receiver
   "g r" 'go-goto-return-values
-  "g i" 'go-mode-insert-and-indent
-  "g m" 'go-mode-menu
   "q" '(:ignore t :wk "QA (Test)")
   "q a" 'go-gen-test-all
   "q d" 'go-gen-test-dwim
@@ -42,10 +50,18 @@
   "r d r" 'godoctor-rename-dry-run
   "r d e" 'godoctor-extract-dry-run
   "x" '(:ignore t :wk "Execute")
-  "x r" 'gorepl-run
-  "x l" 'gorepl-run-load-current-file
-  "x x" 'js/gorun
-  "b" '(:ignore t :wk "Build/Run")
-  "=" 'gofmt)
+  "x x" 'js/gorun-file
+  "x p" 'js/gorun-package
+  "e" '(:ignore t :wk "Repl")
+  "e t" 'gorepl-run
+  "e l" 'gorepl-run-load-current-file
+  "e e" 'gorepl-eval
+  "e r" 'gorepl-eval-region
+  "e l" 'gorepl-eval-line
+  "e j" 'gorepl-eval-line-goto-next-line
+  "=" 'gofmt
+  "," 'gofmt
+  "p" 'go-playground
+  "P" 'go-playground-rm)
 
 

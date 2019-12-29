@@ -17,6 +17,9 @@
   :config
   (setq ielm-dynamic-return nil))
 
+(use-package eros
+  :hook (emacs-lisp-mode . eros-mode))
+
 (use-package evil
   :config
   (setq-mode-local emacs-lisp-mode evil-lookup-func #'describe-symbol-at-point)
@@ -37,3 +40,4 @@
 			""
 			";;; -*- lexical-binding: t; -*-\n\n" '(setq lexical-binding t)))))
 	       (auto-insert))))
+

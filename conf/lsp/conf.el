@@ -3,13 +3,13 @@
 (use-package lsp-mode
   :defer t
   :config
-  (setq lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
+  (setq lsp-prefer-flymake :none
+        lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (memq 'lsp-ui flycheck-checkers)
-  (flycheck-disable-checker 'lsp-ui))
+;; (use-package lsp-ui
+;;   :hook (lsp-mode . lsp-ui-mode)
+;;   :config
+;;   (setq lsp-ui-flycheck-live-reporting nil))
 
 (use-package company-lsp
   :config

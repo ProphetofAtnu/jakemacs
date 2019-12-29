@@ -11,3 +11,4 @@
 (straight-use-package 'go-tag)
 (straight-use-package 'godoctor)
 (straight-use-package 'gorepl-mode)
+(straight-use-package 'go-playground)

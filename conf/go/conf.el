@@ -1,8 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+(require 'use-package)
+
 (use-package go-mode
   :config
-  (load (expand-file-name "function" (file-name-directory load-file-name)))
+  (add-hook 'before-save-hook 'gofmt-before-save nil t)
   (setq-mode-local go-mode evil-lookup-func 'godoc-at-point))
 
 ;; (use-package company-go)
@@ -37,15 +39,15 @@
 (use-package go-gen-test
   :commands (go-gen-test-all go-gen-test-dwim go-gen-test-exported go-gen-test-functions))
 
-(use-package flycheck
-  :hook
-  (go-mode . flycheck-mode))
-
 (use-package flycheck-golangci-lint
-  :hook (go-mode . flycheck-golangci-lint-setup)
-  :after (flycheck-mode)
+  :commands (flycheck-golangci-lint-setup)
   :config 
   (flycheck-disable-checker 'go-errcheck)
   (flycheck-disable-checker 'go-staticcheck)
   (flycheck-disable-checker 'go-test))
 
+(use-package flycheck
+  :hook
+  (go-mode . flycheck-mode)
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-golangci-lint-setup nil t))

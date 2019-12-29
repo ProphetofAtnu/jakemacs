@@ -6,4 +6,4 @@
 (straight-use-package 'flycheck-cask)
 (straight-use-package 'highlight-quoted)
 (straight-use-package 'buttercup)
-
+(straight-use-package 'eros)

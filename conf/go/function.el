@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun js/gorun ()
+(defun js/gorun-file ()
   "Invokes go run on the target buffer file."
   (interactive)
   (let ((file (buffer-file-name (current-buffer)))

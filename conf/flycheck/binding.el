@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 (leader-primary-def '(normal visual insert emacs override)
-  "e" '(:ignore t :wk "Errors")
+  "e" '(:ignore t :wk "Errors"))
+
 ;; flycheck-clear
 ;; flycheck-buffer
 ;; flycheck-compile
