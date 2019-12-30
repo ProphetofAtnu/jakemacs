@@ -23,7 +23,15 @@
        (expand-file-name part dir)))
     dir))
 
-(defvar load-cust-order '(package conf function binding))
+(defun ensure-file (&rest paths)
+  (let* ((file (apply #'concat-path paths))
+         (dir (file-name-directory file)))
+    (make-directory dir t)
+    (unless (file-exists-p file)
+      (write-region "" nil file))
+    file))
+
+(defvar load-cust-order '(package function conf binding))
 ;; (defvar load-cust-use-misc-files t)
 
 (defun load-cust (name)

@@ -17,6 +17,7 @@
 
 (setq evil-want-integration t)
 (setq evil-want-keybinding nil)
+(defvar evil-disable-insert-state-bindings t)
 
 (use-package evil
   :init
@@ -84,13 +85,15 @@
   :delight
   :init
   (which-key-mode 1)
-  (which-key-setup-minibuffer)
+  (which-key-setup-side-window-bottom)
   )
 
-;; ##QUARENTINED##
 ;; (use-package which-key-posframe
-;;   :config (setq which-key-posframe-poshandler
-;;                 'posframe-poshandler-frame-bottom-center)
+;;   :init
+;;   (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center
+;;         which-key-posframe-border-width 1)
+;;   :config 
+;;   (set-face-attribute 'which-key-posframe-border nil :background "LightSlateBlue")
 ;;   (which-key-posframe-mode))
 
 (use-package restart-emacs
@@ -150,7 +153,11 @@
            company-keywords       ; keywords
            company-capf
            company-yasnippet)
-        (company-abbrev company-dabbrev))))
+          (company-abbrev company-dabbrev)))
+  (general-defs 'company-active-map
+    "C-n" 'company-select-next
+    "C-p" 'company-select-previous
+    "C-f" 'helm-company))
 
 ;; (use-package semantic
 ;;   :commands (semantic-mode)
@@ -209,7 +216,8 @@
    [remap switch-to-buffer] #'helm-buffers-list))
 
 (use-package helm-company
-  :after (helm company))
+  :after (helm company)
+  :commands (helm-company))
 
 (use-package helm-descbinds
   :after (helm))
@@ -261,7 +269,6 @@
         dashboard-items '((recents  . 5)
                           (bookmarks . 5)
                           (projects . 5)
-                          (agenda . 5)
                           (registers . 5)))
   (dashboard-setup-startup-hook))
 

@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
+(require 'which-key)
+
 (general-create-definer leader-primary-def
   :states '(normal visual insert emacs override)
   :prefix leader-primary
@@ -127,3 +129,7 @@
   "p g k" 'helm-projectile-ack
   "p g g" 'helm-projectile-grep
   )
+
+
+(push '(("\\`SPC M-.\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
+(push '(("\\`SPC M-0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC M-[0-9]". "Tab [0-9]")) which-key-replacement-alist)

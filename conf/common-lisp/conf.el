@@ -30,8 +30,7 @@
   (sp-with-modes '(sly-mrepl-mode)
     (sp-local-pair "'" "'" :actions nil)
     (sp-local-pair "`" "`" :actions nil))
-  (add-hook 'sly-mrepl-mode-hook (lambda ()  (js/sly-add-contribs)))
-  (sly))
+  (add-hook 'sly-mrepl-mode-hook (lambda ()  (js/sly-add-contribs))))
 
 (use-package sly-company
   :hook (sly-mode . sly-company-mode)

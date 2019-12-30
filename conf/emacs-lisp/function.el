@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
+(use-package ielm
+  :commands (ielm))
 
 (defun ielm-other-window ()
   "Open ielm in other window, splitting if it doesn't exist"

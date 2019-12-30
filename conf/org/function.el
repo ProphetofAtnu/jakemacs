@@ -1,10 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
-  
 (use-package org
   :commands (org-map-entries))
 
 (use-package org-id
-  :commands (org-id-get-create))
+  :commands (org-id-update-id-locations
+             org-id-get-create))
 
 (defun js/all-org-files ()
   "Returns a list of all org files except for temp files"
@@ -20,29 +20,31 @@
     not-temp))
 
 (defun js/org-index-buffer ()
-    "Generates IDs for any heading that is currently missing one in
+  "Generates IDs for any heading that is currently missing one in
 the current buffer"
-    (interactive)
-    (org-map-entries #'(lambda () (org-id-get-create)) t 'file))
+  (interactive)
+  (org-map-entries #'(lambda () (org-id-get-create)) t 'file))
 
 (defun js/org-index-directory ()
-    "Generates IDs for any heading that is currently missing one in
+  "Generates IDs for any heading that is currently missing one in
 the org dir."
-    (interactive)
-    (let ((org-mode-hook nil))
-      (cl-flet ((get-org-bufs 
-                 () 
-                 (-filter #'(lambda (buf) 
-                              (with-current-buffer buf 
-                                (eq major-mode 'org-mode)))
-                          (buffer-list))))
-        (let ((old-bufs (get-org-bufs)))
-          (org-map-entries #'(lambda () (org-id-get-create)) t (js/all-org-files) 'archive)
-          (dolist (buf (get-org-bufs))
-            (with-current-buffer buf
-              (save-buffer)
-              (unless (memq buf old-bufs)
-                (kill-current-buffer)))))))) 
+  (interactive)
+  (let ((org-mode-hook nil))
+    (cl-flet ((get-org-bufs 
+               () 
+               (-filter #'(lambda (buf) 
+                            (with-current-buffer buf 
+                              (eq major-mode 'org-mode)))
+                        (buffer-list))))
+      (let ((old-bufs (get-org-bufs)))
+        (org-map-entries #'(lambda () (org-id-get-create)) t (js/all-org-files) 'archive)
+        (dolist (buf (get-org-bufs))
+          (with-current-buffer buf
+            (save-buffer)
+            (unless (memq buf old-bufs)
+              (kill-current-buffer)))))))) 
+ 
+;; (debug-on-entry 'js/org-index-directory)
 
 (defun js/org-refresh-id-on-init ()
   (message "Generating/Updating Org IDs from `%s'" org-directory)
@@ -61,3 +63,75 @@ the org dir."
             nil t))
 
 (add-hook 'org-mode-hook 'js/org-mode-init)
+
+(defhydra hydra-org-headline (:color teal)
+  "Manage Headlines (Exit with q/c/ESC)"
+  ("<return>" org-cycle "Visibility")
+  ("p" org-previous-visible-heading "Prevous Visible" :color red :column "Nav")
+  ("k" org-backward-heading-same-level "Prevous Heading" :color red)
+  ("n" org-next-visible-heading "Next Visible" :color red)
+  ("j" org-forward-heading-same-level "Next Heading" :color red)
+  ("l" show-subtree "Next Heading" :color red)
+  ("h" hide-subtree "Prevous Heading" :color red)
+  ("<tab>" org-cycle "Cycle Visibility" :color red) 
+  ("d" org-todo "Todo Cycle" :color red :column "Set")
+  ("t" org-set-tags-command "Set Tags")
+  ("," org-priority "Set Priority")
+  ("a" org-attach "Attach")
+  ("z" org-add-note "New Note")
+  ("P" org-set-property "Set Property")
+  ("r" org-refile "Refile" :column "Move")
+  ("H" org-promote-subtree "Promote" :color red) 
+  ("L" org-demote-subtree "Demote" :color red) 
+  ("J" org-move-subtree-down "Subtree Down" :color red) 
+  ("K" org-move-subtree-up "Subtree Up" :color red) 
+  ("x" org-archive-subtree "Archive")
+  ("X" org-archive-subtree "Archive (no quit)" :color red)
+  ("q" nil nil)
+  ("<escape>" nil nil)
+  ("c" nil nil))
+
+
+(defun js/org-context-ret ()
+  "Context specifiic return in org mode, kiefed from DOOM emacs"
+  (interactive)
+  (let* ((context (org-element-context))
+         (type (org-element-type context)))
+    (while (and context (memq type '(verbatim code bold italic underline strike-through subscript superscript)))
+      (setq context (org-element-property :parent context)
+            type (org-element-type context)))
+    (pcase type
+      (`headline (hydra-org-headline/body))
+
+      (`footnote-reference
+       (org-footnote-goto-definition (org-element-property :label context)))
+
+      (`footnote-definition
+       (org-footnote-goto-previous-reference (org-element-property :label context)))
+
+      ((or `table `table-row)
+       (if (org-at-TBLFM-p)
+           (org-table-calc-current-TBLFM)
+         (ignore-errors
+           (save-excursion
+             (goto-char (org-element-property :contents-begin context))
+             (org-call-with-arg 'org-table-recalculate (or arg t))))))
+
+      (`table-cell
+       (org-table-blank-field)
+       (org-table-recalculate)
+       (when (and (string-empty-p (string-trim (org-table-get-field)))
+                  (bound-and-true-p evil-local-mode))
+         (evil-change-state 'insert)))
+
+      (`link
+       (let* ((lineage (org-element-lineage context '(link) t))
+              (path (org-element-property :path lineage)))
+         (org-open-at-point)))
+
+      ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
+       (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
+         (org-toggle-checkbox (if (equal match "[ ]") '(16)))))
+
+      (_ (evil-ret))))
+  )

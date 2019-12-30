@@ -44,7 +44,7 @@
 (load "~/.emacs.d/aesthetic")
 
 ;; I doubt I'll ever use custom, but what the heck?
-(load custom-file)
+;; (load custom-file)
 
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
