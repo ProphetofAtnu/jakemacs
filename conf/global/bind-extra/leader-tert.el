@@ -19,6 +19,8 @@
   "x" '(:ignore t :wk "Text")
   "x x" 'indent-region
   "x X" 'indent-rigidly
+  "x q" 'fill-paragraph
+  "x Q" 'auto-fill-mode
   "x u" 'downcase-region
   "x U" 'upcase-region
   "x t" 'transpose-words

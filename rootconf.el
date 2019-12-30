@@ -10,5 +10,6 @@
 
 (setq visible-bell nil
       bookmark-default-file (expand-file-name "bookmarks" user-cache-dir)
-      comint-prompt-read-only t)
+      comint-prompt-read-only t
+      sentence-end-double-space nil)
 

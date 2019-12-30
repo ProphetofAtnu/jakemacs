@@ -4,6 +4,9 @@
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
 (setq backup-directory-alist `(("." . ,(ensure-dir user-cache-dir "bak"))))
 (setq custom-file (concat-path user-cache-dir "custom.el"))
+;; Fonts need to be set asap
+(set-face-attribute 'default t :font "DejaVu Sans Mono-12")
+(set-frame-font "DejaVu Sans Mono-12" nil t)
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)

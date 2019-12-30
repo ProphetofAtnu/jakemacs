@@ -2,6 +2,7 @@
 ;;   :init
 ;;   (powerline-default-theme))
 
+
 (use-package moe-theme
   :straight t
   :init
@@ -15,6 +16,7 @@
 (use-package doom-modeline
   :commands (doom-modeline-mode)
   :init (doom-modeline-mode))
+
 
 ;; (use-package cyberpunk-theme
 ;;   :init
