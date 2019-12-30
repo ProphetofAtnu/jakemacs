@@ -7,6 +7,7 @@
 (require 'auto-minor-mode)
 (require 'load-relative)
 (require 'mode-local)
+(require 'async)
 
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
@@ -113,6 +114,7 @@
   :hook (dired-mode . auto-revert-mode)
   :config
   (progn
+    (dired-async-mode)
     (general-defs
       :keymaps 'dired-mode-map
       "-" 'dired-up-directory)))
@@ -293,5 +295,13 @@
 
 (use-package eshell-z
   :after (eshell))
+
+(use-package transient
+  :defer t
+  :init
+  (setq
+   transient-levels-file (expand-file-name "transient/levels.el" user-cache-dir)
+   transient-values-file (expand-file-name "transient/values.el" user-cache-dir)
+   transient-history-file (expand-file-name "transient/history.el" user-cache-dir)))
 
 (provide 'base)

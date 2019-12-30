@@ -27,7 +27,6 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; Install everything at the beginning
-;; (load "~/.emacs.d/install")
 (require 'install)
 
 ;; After packages have been installed...
@@ -51,8 +50,6 @@
   (load-cust act))
 
 ;; Finally, the aesthetic changes
-;;(load "~/.emacs.d/aesthetic")
-
 (require 'aesthetic)
 
 ;; I doubt I'll ever use custom, but what the heck?
