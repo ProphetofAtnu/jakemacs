@@ -21,3 +21,5 @@
 ;; (use-package cyberpunk-theme
 ;;   :init
 ;;   (load-theme 'cyberpunk t))
+
+(provide 'aesthetic)

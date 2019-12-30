@@ -1,6 +1,12 @@
 ;;; -*- lexical-binding: t; -*-
 ;; Base packages/global packages
 ;; For internal libs
+(require 'better-defaults)
+(require 'delight)
+(require 'use-package)
+(require 'auto-minor-mode)
+(require 'load-relative)
+(require 'mode-local)
 
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
@@ -261,6 +267,12 @@
   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
   (projectile-mode))
 
+(use-package magit
+  :commands (magit))
+
+(use-package evil-magit
+  :hook (magit-mode . evil-magit-init))
+
 (use-package dashboard
   :config
   (setq dashboard-banner-logo-title "Ahoy!"
@@ -281,3 +293,5 @@
 
 (use-package eshell-z
   :after (eshell))
+
+(provide 'base)

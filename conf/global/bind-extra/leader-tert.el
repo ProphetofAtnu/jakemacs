@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
+(use-package magit
+  :commands (magit))
+
 (general-create-definer leader-tert-def
   :states '(normal visual insert emacs override)
   :prefix leader-tertiary
@@ -10,6 +13,7 @@
   "e" 'eww
   "b" 'bookmark-bmenu-search
   "a" 'ace-window
+  "g" 'magit
   "RET" 'ace-link
   "m" 'helm-mode-manager
   "l" 'avy-goto-line

@@ -13,3 +13,4 @@
       comint-prompt-read-only t
       sentence-end-double-space nil)
 
+(provide 'rootconf)

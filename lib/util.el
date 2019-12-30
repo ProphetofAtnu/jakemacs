@@ -104,3 +104,5 @@ body are forms to be evaluated."
 ;; (js/buffer-list-filter (lambda '(buf win) 'functionp (print "Hello")))
 ;; (defmacro js/with-buffers-filtered (filter body)
 ;;   "Execute body with filtered buffers as current")
+
+(provide 'util)

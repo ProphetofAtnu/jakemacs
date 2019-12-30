@@ -1,5 +1,9 @@
 ;;; init.el ---                                      -*- lexical-binding: t; -*-
-(load (expand-file-name "lib/util.el" user-emacs-directory))
+;;(load (expand-file-name "lib/util.el" user-emacs-directory)) 
+(add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
+
+(require 'util)
+
 ;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
 (setq backup-directory-alist `(("." . ,(ensure-dir user-cache-dir "bak"))))
@@ -23,28 +27,33 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; Install everything at the beginning
-(load "~/.emacs.d/install")
+;; (load "~/.emacs.d/install")
+(require 'install)
 
 ;; After packages have been installed...
 (require 'better-defaults)
 (require 'delight)
 (require 'use-package)
 (require 'auto-minor-mode)
-(use-package load-relative)
-(use-package mode-local)
+(require 'load-relative)
+(require 'mode-local)
 
+;;(add-to-list 'load-path user-emacs-directory)
 
 ;; Configure everything
-(load "~/.emacs.d/base")
+(require 'base)
 
-(load (concat-path user-emacs-directory "rootconf"))
+;;(load (concat-path user-emacs-directory "rootconf"))
+(require 'rootconf)
 
 ;; Load active configs
 (dolist (act active-configs)
   (load-cust act))
 
 ;; Finally, the aesthetic changes
-(load "~/.emacs.d/aesthetic")
+;;(load "~/.emacs.d/aesthetic")
+
+(require 'aesthetic)
 
 ;; I doubt I'll ever use custom, but what the heck?
 ;; (load custom-file)

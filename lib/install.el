@@ -37,6 +37,8 @@
 (straight-use-package 'eval-sexp-fu)
 (straight-use-package 'posframe)
 (straight-use-package 'which-key-posframe)
+(straight-use-package 'magit)
+(straight-use-package 'evil-magit)
 
 ;; Helm...
 (straight-use-package 'helm)
@@ -75,3 +77,5 @@
 ;;                         :repo "manateelazycat/aweshell"))
 
 ;; Weird libraries
+
+(provide 'install)

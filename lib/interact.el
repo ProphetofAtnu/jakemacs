@@ -16,3 +16,5 @@
   "Sort lines in reverse..."
   (interactive "r")
   (sort-lines t beg end))
+
+(provide 'interact)
