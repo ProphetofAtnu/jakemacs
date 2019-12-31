@@ -10,7 +10,7 @@
   "Returns a list of all org files except for temp files"
   (let* ((orgfile (directory-files-recursively
                    org-directory
-                   ".org"))
+                   ".org$"))
          (not-temp (-filter
                     #'(lambda (fn)
                         (not (string-match-p
@@ -46,11 +46,36 @@ the org dir."
  
 ;; (debug-on-entry 'js/org-index-directory)
 
+(require 'async)
+
+(defun js/org-index-async ()
+  (message "Updating org ID Index in Subprocess")
+  (let ((org-files (js/all-org-files)))
+    (async-start
+     `(lambda ()
+        (require 'org-id)
+        (require 'org)
+        (let ((org-mode-hook nil)
+              (after-save-hook nil))
+          (org-map-entries '(lambda () (org-id-get-create)) t (list ,@org-files))
+          (org-save-all-org-buffers)
+          nil))
+
+     (lambda (result)
+       (message "ID Database updated")
+       (org-id-update-id-locations org-files)))))
+
+
+(defvar js/async-org t
+  "Non nil to use custom asynchronous functions in org-mode.")
+
 (defun js/org-refresh-id-on-init ()
   (message "Generating/Updating Org IDs from `%s'" org-directory)
-  (js/org-index-directory)
-  (org-id-update-id-locations (js/all-org-files))
-  (message "Done Retrieving IDs from org files.")
+  (if js/async-org
+      (js/org-index-async) 
+    (progn (js/org-index-directory)
+           (org-id-update-id-locations (js/all-org-files))
+           (message "Done Retrieving IDs from org files.")))
   (remove-hook 'org-mode-hook 'js/org-refresh-id-on-init))
 
 (add-hook 'org-mode-hook 'js/org-refresh-id-on-init)
@@ -123,6 +148,8 @@ the org dir."
        (when (and (string-empty-p (string-trim (org-table-get-field)))
                   (bound-and-true-p evil-local-mode))
          (evil-change-state 'insert)))
+
+      (`src-block)
 
       (`link
        (let* ((lineage (org-element-lineage context '(link) t))

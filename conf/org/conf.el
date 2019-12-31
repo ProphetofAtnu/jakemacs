@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 (defvar org-directory (expand-file-name "~/org"))
 
+(defvar org-agenda-files (ensure-file user-cache-dir ".org_agenda"))
+
 (use-package org-id
   :defer t
   :config
@@ -49,8 +51,7 @@
 
 (use-package org-agenda
   :commands (org-agenda)
-  :config
-  (setq org-agenda-files (ensure-file user-cache-dir ".org_agenda")))
+  :config)
 
 (use-package org-indent
   :hook (org-mode . org-indent-mode))
@@ -63,9 +64,8 @@
   (add-to-list 'evil-emacs-state-modes 'deft-mode)
   (setq deft-directory org-directory)
   (setq deft-recursive t)
-  (setq deft-use-filename-as-title nil)
+  (setq deft-use-filename-as-title t)
   (setq deft-default-extension "org")
-  (setq deft-use-filter-string-for-filename t)
   (setq deft-file-naming-rules
         '((nospace . "-")
           (case-fn . downcase))))
@@ -109,7 +109,7 @@
     (push (org-projectile-project-todo-entry) org-capture-templates)))
 
 (use-package org-sticky-header
-  :hook (org-mode . org-sticky-header-mode))
+  :commands (org-sticky-header-mode))
 
 (use-package org-journal
   :commands (org-journal-search-forever org-journal-new-entry))

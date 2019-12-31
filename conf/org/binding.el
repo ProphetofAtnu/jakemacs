@@ -19,6 +19,7 @@
   "a" 'org-attach
   "s" 'org-sort
   "." 'org-agenda
+  "t" 'org-sticky-header-mode
   "o" 'helm-org-agenda-files-headings
   "l" '(:ignore t :wk "Link")
   "l y" 'org-store-link

@@ -164,8 +164,7 @@
           (company-abbrev company-dabbrev)))
   (general-defs 'company-active-map
     "C-n" 'company-select-next
-    "C-p" 'company-select-previous
-    "C-f" 'helm-company))
+    "C-p" 'company-select-previous))
 
 ;; (use-package semantic
 ;;   :commands (semantic-mode)
