@@ -20,3 +20,5 @@
 
 (use-package helm-gtags
   :hook (ggtags-mode . helm-gtags-mode))
+
+(use-package fzf)

@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t; -*-
-(setq active-configs '(utility emacs-lisp sexp lsp go common-lisp org flycheck))
+(setq active-configs '(helm utility emacs-lisp sexp lsp go common-lisp org flycheck))
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)

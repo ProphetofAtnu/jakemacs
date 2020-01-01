@@ -13,7 +13,6 @@
   :init (exec-path-from-shell-initialize))
 
 (use-package save-sexp)
-
 ;; Used in a ton of packages
 (use-package posframe)
 
@@ -164,7 +163,14 @@
           (company-abbrev company-dabbrev)))
   (general-defs 'company-active-map
     "C-n" 'company-select-next
-    "C-p" 'company-select-previous))
+    "C-p" 'company-select-previous
+    "<escape>" 'company-abort
+    "<return>" 'company-complete-selection
+    "SPC" '(lambda ()
+             (interactive)
+             (when (company-explicit-action-p)
+               (company-complete-selection))
+             (self-insert-command 1))))
 
 ;; (use-package semantic
 ;;   :commands (semantic-mode)
@@ -202,46 +208,53 @@
 (use-package swiper
   :commands (swiper))
 
-(use-package helm
-  :init
-  (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
-  (setq helm-M-x-fuzzy-match t)
-  (setq helm-display-function 'helm-display-buffer-in-own-frame)
-  (setq helm-autoresize-mode t)
-  (setq helm-display-buffer-reuse-frame t)
-  (setq helm-window-prefer-horizontal-split t)
-  (setq helm-mode-handle-completion-in-region nil)
-  (helm-mode 1)
-  (helm-adaptive-mode 1)
-  :delight
-  :config
-  (general-define-key
-   [remap find-file] #'helm-find-files
-   [remap execute-extended-command] #'helm-M-x
-   [remap bookmark-bmenu-search] #'helm-bookmarks
-   [remap recentf-open-files] #'helm-recentf
-   [remap switch-to-buffer] #'helm-buffers-list))
+;; (use-package helm
+;;   :init
+;;   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
+;;   (setq helm-M-x-fuzzy-match t)
+;;   (setq helm-display-function 'helm-display-buffer-in-own-frame)
+;;   (setq helm-autoresize-mode t)
+;;   (setq helm-display-buffer-reuse-frame t)
+;;   (setq helm-window-prefer-horizontal-split t)
+;;   (setq helm-mode-handle-completion-in-region nil)
+;;   (helm-mode 1)
+;;   (helm-adaptive-mode 1)
+;;   :delight
+;;   :config
+;;   (general-define-key
+;;    [remap find-file] #'helm-find-files
+;;    [remap execute-extended-command] #'helm-M-x
+;;    [remap bookmark-bmenu-search] #'helm-bookmarks
+;;    [remap recentf-open-files] #'helm-recentf
+;;    [remap switch-to-buffer] #'helm-buffers-list))
 
-(use-package helm-company
-  :after (helm company)
-  :commands (helm-company))
+;; (use-package helm-company
+;;   :after (helm company)
+;;   :commands (helm-company))
 
-(use-package helm-descbinds
-  :after (helm))
+;; (use-package helm-descbinds
+;;   :after (helm))
 
-(use-package helm-describe-modes
-  :after (helm))
+;; (use-package helm-describe-modes
+;;   :after (helm))
 
-(use-package helm-mode-manager
-  :after (helm))
+;; (use-package helm-mode-manager
+;;   :after (helm))
 
-(use-package helm-swoop
-  :commands helm-swoop
-  :config
-  (setq helm-swoop-fontify-buffer-size-limit 'always))
+;; (use-package helm-swoop
+;;   :commands helm-swoop
+;;   :config
+;;   (setq helm-swoop-fontify-buffer-size-limit 'always))
 
-(use-package helm-rg
-  :commands helm-rg)
+;; (use-package helm-rg
+;;   :commands helm-rg)
+
+;; (use-package helm-projectile
+;;   :after (projectile)
+;;   :config
+;;   (helm-projectile-on))
+
+
 
 (use-package eyebrowse
   :init
@@ -257,16 +270,24 @@
     "z x" 'eyebrowse-last-window-config
     "z w" 'eyebrowse-create-window-config))
 
-(use-package helm-projectile
-  :after (projectile)
+(use-package window-purpose
   :config
-  (helm-projectile-on))
+  (purpose-mode 1))
+
+(use-package popwin
+  :config
+  (popwin-mode 1)
+  (push '(p t :noselect t :position left) popwin:special-display-config)
+  (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
+  (leader-tert-def
+    "q" '(:keymap popwin:keymap :which-key "Popwin")))
 
 (use-package projectile
   :delight
   :config
   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
-  (projectile-mode))
+  (projectile-mode)
+  )
 
 (use-package magit
   :commands (magit))
@@ -291,6 +312,35 @@
   :init
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
+
+
+
+(use-package eshell
+  :defer t
+  :config
+   (setq pcomplete-cycle-completions nil)
+   (require 'pcomplete-extension)
+   (add-hook 'eshell-mode-hook
+             '(lambda ()
+                (setq-local company-frontends
+                            '(company-preview-frontend))))
+   ;;  Thanks to spacemacs for this one
+   (add-hook 'eshell-after-prompt-hook
+             '(lambda
+                ()
+                (let ((inhibit-field-text-motion t))
+                  (add-text-properties
+                   (point-at-bol)
+                   (point)
+                   '(rear-nonsticky t
+                                    inhibit-line-move-field-capture t
+                                    field output read-only t
+                                    front-sticky (field inhibit-line-move-field-capture))))))
+   (add-hook 'eshell-mode-hook
+             '(lambda ()
+                (add-to-list (make-local-variable 'company-backends) 'company-pcomplete)
+                (setq-local company-frontends '(company-preview-frontend))
+                (company-mode))))
 
 (use-package eshell-z
   :after (eshell))

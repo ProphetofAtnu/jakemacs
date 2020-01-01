@@ -23,3 +23,4 @@
 (with-eval-after-load 'company
   (general-def 'insert
     "TAB" 'company-indent-or-complete-common))
+

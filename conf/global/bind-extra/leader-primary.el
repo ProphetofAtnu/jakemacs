@@ -50,7 +50,7 @@
   "M-8" 'eyebrowse-switch-to-window-config-8
   "M-9" 'eyebrowse-switch-to-window-config-9
   "M-0" 'eyebrowse-switch-to-window-config-0
-  "\'" 'term
+  "\'" 'shell
   "TAB" 'previous-buffer
   "b" '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
@@ -75,6 +75,7 @@
   "h m" 'helm-describe-modes
   "f" '(:ignore t :wk "Files")
   "f f" 'find-file
+  "f o" 'find-file-other-window 
   "f d" 'dired
   "f D" 'dired-other-window
   "f r" 'recentf-open-files

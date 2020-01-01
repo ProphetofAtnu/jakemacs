@@ -29,6 +29,8 @@
 ;; Install everything at the beginning
 (require 'install)
 
+(require 'after/install-after)
+
 ;; After packages have been installed...
 (require 'better-defaults)
 (require 'delight)

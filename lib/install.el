@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
+(straight-use-package 'auto-install)
 (straight-use-package 'use-package)
 (straight-use-package 'auto-minor-mode)
 (straight-use-package 'better-defaults)
@@ -39,15 +40,17 @@
 (straight-use-package 'which-key-posframe)
 (straight-use-package 'magit)
 (straight-use-package 'evil-magit)
+(straight-use-package 'window-purpose)
+(straight-use-package 'popwin)
 
 ;; Helm...
-(straight-use-package 'helm)
-(straight-use-package 'helm-swoop)
-(straight-use-package 'helm-rg)
-(straight-use-package 'helm-company)
-(straight-use-package 'helm-descbinds)
-(straight-use-package 'helm-describe-modes)
-(straight-use-package 'helm-mode-manager)
+;; (straight-use-package 'helm)
+;; (straight-use-package 'helm-swoop)
+;; (straight-use-package 'helm-rg)
+;; (straight-use-package 'helm-company)
+;; (straight-use-package 'helm-descbinds)
+;; (straight-use-package 'helm-describe-modes)
+;; (straight-use-package 'helm-mode-manager)
 ;; Not yet semapi, I don't have time to configure that shit...
 ;(straight-use-package 'helm-ext)
 
@@ -64,13 +67,28 @@
 (straight-use-package 'dashboard)
 (straight-use-package 'doom-modeline)
 (straight-use-package 'projectile)
-(straight-use-package 'helm-projectile)
 (straight-use-package 'eyebrowse)
 
 ;; Shell
 (straight-use-package 'eshell-z)
 (straight-use-package 'eshell-prompt-extras)
 (straight-use-package 'eshell-fixed-prompt)
+(straight-use-package 'pcomplete-extension)
+
+(straight-use-package 'ivy)
+(straight-use-package 'ivy-rich)
+(straight-use-package 'ivy-hydra)
+(straight-use-package 'ivy-explorer)
+(straight-use-package 'swiper)
+
+(straight-use-package 'counsel)
+(straight-use-package 'counsel-projectile)
+(straight-use-package 'counsel-dash)
+(straight-use-package 'counsel-etags)
+(straight-use-package 'counsel-tramp)
+
+(straight-use-package 'flx)
+(straight-use-package 'ivy-posframe)
 
 ;; (straight-use-package '(aweshell
 ;;                         :type git :host github

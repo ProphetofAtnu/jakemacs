@@ -11,6 +11,11 @@
 ;; GGTags
 (straight-use-package 'ggtags)
 (straight-use-package 'helm-gtags)
+
+
+;; FZF
+(straight-use-package 'fzf)
+
 ;; (straight-use-package
 ;;  '(hyperbole
 ;;    :files ("*.el" ("kotl" "kotl/*.el") "man/*.info" "man/*.texi")
