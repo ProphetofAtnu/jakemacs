@@ -272,15 +272,16 @@
 
 (use-package window-purpose
   :config
+  (purpose-x-popwin-setup)
   (purpose-mode 1))
 
-(use-package popwin
-  :config
-  (popwin-mode 1)
-  (push '(p t :noselect t :position left) popwin:special-display-config)
-  (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
-  (leader-tert-def
-    "q" '(:keymap popwin:keymap :which-key "Popwin")))
+;; (use-package popwin
+;;   :config
+;;   (popwin-mode 1)
+;;   (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
+;;   (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
+;;   (leader-tert-def
+;;     "q" '(:keymap popwin:keymap :which-key "Popwin")))
 
 (use-package projectile
   :delight
