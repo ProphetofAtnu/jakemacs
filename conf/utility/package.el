@@ -11,7 +11,8 @@
 ;; GGTags
 (straight-use-package 'ggtags)
 (straight-use-package 'helm-gtags)
-
+(straight-use-package 'automargin)
+(straight-use-package 'evil-better-visual-line)
 
 ;; FZF
 (straight-use-package 'fzf)

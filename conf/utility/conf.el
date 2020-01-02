@@ -22,3 +22,11 @@
   :hook (ggtags-mode . helm-gtags-mode))
 
 (use-package fzf)
+
+(use-package automargin
+  :commands (automargin-mode))
+
+(use-package evil-better-visual-line
+  :commands (evil-better-visual-line-on)
+  :config
+  (add-hook 'visual-line-mode '(lambda () (evil-better-visual-line-on))))
