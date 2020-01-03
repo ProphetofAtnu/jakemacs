@@ -37,9 +37,9 @@
 
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
-  "." 'helm-mini
-  "," 'helm-for-files
-  "/" 'helm-swoop
+  ;; "." 'helm-mini
+  ;; "," 'helm-for-files
+  ;; "/" 'helm-swoop
   "M-1" 'eyebrowse-switch-to-window-config-1
   "M-2" 'eyebrowse-switch-to-window-config-2
   "M-3" 'eyebrowse-switch-to-window-config-3
@@ -58,21 +58,21 @@
   "b d" 'kill-current-buffer
   "b D" 'kill-other-buffers
   "s" '(:ignore t :wk "Search")
-  "s s" 'helm-swoop
-  "s g" 'helm-rg
+  ;; "s s" 'helm-swoop
+  ;; "s g" 'helm-rg
   "s o" 'occur
   "s r" 'query-replace
   "s c" 'evil-ex-nohighlight
   "h" '(:ignore t :wk "Help")
-  "h a" 'helm-apropos
+  ;; "h a" 'helm-apropos
   "h v" 'describe-variable
   "h f" 'describe-function
   "h s" 'helpful-symbol
   "h k" 'general-describe-keybindings
   "h d" 'discover-my-major
   "h D" 'discover-my-mode
-  "h k" 'helm-descbinds
-  "h m" 'helm-describe-modes
+  ;; "h k" 'helm-descbinds
+  ;; "h m" 'helm-describe-modes
   "f" '(:ignore t :wk "Files")
   "f f" 'find-file
   "f o" 'find-file-other-window 
@@ -114,21 +114,21 @@
   "e TAB" 'eyebrowse-last-window-config
   ;; Projectile
   "p" '(:ignore t :wk "Projectile")
-  "p r" 'helm-projectile-recentf
-  "p d" 'helm-projectile-find-dir
-  ;; "p f" 'helm-projectile-find-file
-  "p !" 'projectile-run-shell-command-in-root
-  "p f" 'helm-projectile-find-file-dwim
-  "p p" 'helm-projectile-switch-project
-  "p b" 'helm-projectile-switch-to-buffer
-  "p d" 'helm-projectile-browse-dirty-projects
-  "p l" 'helm-projectile-find-file-in-known-projects
-  ;; Search
+  ;; "p r" 'helm-projectile-recentf
+  ;; "p d" 'helm-projectile-find-dir
+  ;; ;; "p f" 'helm-projectile-find-file
+  ;; "p !" 'projectile-run-shell-command-in-root
+  ;; "p f" 'helm-projectile-find-file-dwim
+  ;; "p p" 'helm-projectile-switch-project
+  ;; "p b" 'helm-projectile-switch-to-buffer
+  ;; "p d" 'helm-projectile-browse-dirty-projects
+  ;; "p l" 'helm-projectile-find-file-in-known-projects
+  ;; ;; Search
   "p g" '(:ignore t :wk "Search Project")
-  "p g a" 'helm-projectile-ag
-  "p g r" 'helm-projectile-rg
-  "p g k" 'helm-projectile-ack
-  "p g g" 'helm-projectile-grep
+  ;; "p g a" 'helm-projectile-ag
+  ;; "p g r" 'helm-projectile-rg
+  ;; "p g k" 'helm-projectile-ack
+  ;; "p g g" 'helm-projectile-grep
   )
 
 

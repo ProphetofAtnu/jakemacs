@@ -272,23 +272,24 @@
 
 (use-package window-purpose
   :config
-  (purpose-x-popwin-setup)
+  ;; (purpose-x-popwin-setup)
+  (purpose-x-magit-multi-on)
   (purpose-mode 1))
 
-;; (use-package popwin
-;;   :config
-;;   (popwin-mode 1)
-;;   (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
-;;   (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
-;;   (leader-tert-def
-;;     "q" '(:keymap popwin:keymap :which-key "Popwin")))
-
-(use-package projectile
-  :delight
+(use-package popwin
   :config
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
-  (projectile-mode)
-  )
+  (popwin-mode 1)
+  (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
+  (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
+  (leader-tert-def
+    "q" '(:keymap popwin:keymap :which-key "Popwin")))
+
+;; (use-package projectile
+;;   :delight
+;;   :config
+;;   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
+;;   (projectile-mode)
+;;   )
 
 (use-package magit
   :commands (magit))

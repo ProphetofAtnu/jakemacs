@@ -43,10 +43,16 @@
   :commands (flycheck-golangci-lint-setup)
   :config
   (add-hook 'flycheck-mode-hook 'flycheck-golangci-lint-setup nil t)
-  (flycheck-disable-checker 'go-errcheck)
-  (flycheck-disable-checker 'go-staticcheck)
-  (flycheck-disable-checker 'go-test))
+  (dolist (checker '(go-errcheck
+                     go-staticcheck
+                     go-test))
+    (add-to-list 'flycheck-disabled-checkers checker)))
+
+(use-package gorepl-mode
+  :config
+  (setenv "GOROOT" "/usr/local/go")
+  (setenv "GOPATH" "/home/jacsc/go"))
+
 
 (use-package flycheck
-  :hook
-  (go-mode . flycheck-mode))
+  :hook (go-mode . flycheck-mode))

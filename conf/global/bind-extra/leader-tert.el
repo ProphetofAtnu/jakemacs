@@ -15,9 +15,9 @@
   "a" 'ace-window
   "g" 'magit
   "RET" 'ace-link
-  "m" 'helm-mode-manager
-  "l" 'avy-goto-line
-  "\\" 'helm-mini)
+  ;; "m" 'helm-mode-manager
+  ;; "\\" 'helm-mini
+  "l" 'avy-goto-line)
 
 (leader-tert-def
   "x" '(:ignore t :wk "Text")
