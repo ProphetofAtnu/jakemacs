@@ -75,15 +75,26 @@
   :init
   (load (concat-path user-emacs-directory "conf/global/bindings")))
 
+(use-package window-purpose
+  :config
+  (purpose-mode 1)
+  (purpose-x-popwin-setup)
+  (purpose-x-magit-multi-on))
+
 (use-package helpful
   :init
+  (purpose-add-user-purposes )
   (progn
     (general-defs
       [remap describe-function] 'helpful-callable
       [remap describe-variable] 'helpful-variable
       [remap apropos] 'helpful-symbol
       [remap describe-symbol-at-point] 'helpful-at-point
-      [remap describe-key] 'helpful-key)))
+      [remap describe-key] 'helpful-key))
+  :config
+  (with-eval-after-load 'window-purpose
+    (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
+    (purpose-x-popwin-update-conf)))
 
 (use-package which-key
   :defer t
@@ -202,59 +213,12 @@
 
 (use-package yasnippet
   :defer t
+  :delight
   :config
   (yas-global-mode))
 
 (use-package swiper
   :commands (swiper))
-
-;; (use-package helm
-;;   :init
-;;   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
-;;   (setq helm-M-x-fuzzy-match t)
-;;   (setq helm-display-function 'helm-display-buffer-in-own-frame)
-;;   (setq helm-autoresize-mode t)
-;;   (setq helm-display-buffer-reuse-frame t)
-;;   (setq helm-window-prefer-horizontal-split t)
-;;   (setq helm-mode-handle-completion-in-region nil)
-;;   (helm-mode 1)
-;;   (helm-adaptive-mode 1)
-;;   :delight
-;;   :config
-;;   (general-define-key
-;;    [remap find-file] #'helm-find-files
-;;    [remap execute-extended-command] #'helm-M-x
-;;    [remap bookmark-bmenu-search] #'helm-bookmarks
-;;    [remap recentf-open-files] #'helm-recentf
-;;    [remap switch-to-buffer] #'helm-buffers-list))
-
-;; (use-package helm-company
-;;   :after (helm company)
-;;   :commands (helm-company))
-
-;; (use-package helm-descbinds
-;;   :after (helm))
-
-;; (use-package helm-describe-modes
-;;   :after (helm))
-
-;; (use-package helm-mode-manager
-;;   :after (helm))
-
-;; (use-package helm-swoop
-;;   :commands helm-swoop
-;;   :config
-;;   (setq helm-swoop-fontify-buffer-size-limit 'always))
-
-;; (use-package helm-rg
-;;   :commands helm-rg)
-
-;; (use-package helm-projectile
-;;   :after (projectile)
-;;   :config
-;;   (helm-projectile-on))
-
-
 
 (use-package eyebrowse
   :init
@@ -272,24 +236,24 @@
 
 (use-package window-purpose
   :config
-  ;; (purpose-x-popwin-setup)
-  (purpose-x-magit-multi-on)
-  (purpose-mode 1))
+  (purpose-mode 1)
+  (purpose-x-popwin-setup)
+  (purpose-x-magit-multi-on))
 
-(use-package popwin
-  :config
-  (popwin-mode 1)
-  (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
-  (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
-  (leader-tert-def
-    "q" '(:keymap popwin:keymap :which-key "Popwin")))
-
-;; (use-package projectile
-;;   :delight
+;; (use-package popwin
 ;;   :config
-;;   (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
-;;   (projectile-mode)
-;;   )
+;;   (popwin-mode 1)
+;;   (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
+;;   (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
+;;   (leader-tert-def
+;;     "q" '(:keymap popwin:keymap :which-key "Popwin")))
+
+(use-package projectile
+  :delight
+  :config
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
+  (projectile-mode)
+  )
 
 (use-package magit
   :commands (magit))

@@ -63,6 +63,17 @@
   "s o" 'occur
   "s r" 'query-replace
   "s c" 'evil-ex-nohighlight
+  "d" '(:ignore t :wk "Dedicate")
+  "d d" 'purpose-toggle-window-purpose-dedicated
+  "d D" 'purpose-toggle-window-buffer-dedicated
+  "d s" 'purpose-switch-buffer-with-purpose
+  "d K" 'purpose-delete-non-dedicated-windows
+  "d f" 'purpose-friendly-find-file
+  "d o" 'purpose-friendly-find-file-other-window
+  "d b" 'purpose-friendly-switch-buffer
+  "d B" 'purpose-friendly-switch-buffer-other-window
+  "d W" 'purpose-save-window-layout
+  "d w" 'purpose-load-window-layout 
   "h" '(:ignore t :wk "Help")
   ;; "h a" 'helm-apropos
   "h v" 'describe-variable
@@ -106,29 +117,32 @@
   "w R" 'evil-window-rotate-upwards
   "w s" 'evil-window-split
   "w v" 'evil-window-vsplit
-  "e" '(:ignore t :wk "Eyebrowse")
-  "e n" 'eyebrowse-create-window-config
-  "e z" 'eyebrowse-close-window-config
-  "e t" 'eyebrowse-next-window-config
-  "e T" 'eyebrowse-prev-window-config
-  "e TAB" 'eyebrowse-last-window-config
+  "g" '(:ignore t :wk "Eyebrowse")
+  "g n" 'eyebrowse-create-window-config
+  "g z" 'eyebrowse-close-window-config
+  "g t" 'eyebrowse-next-window-config
+  "g T" 'eyebrowse-prev-window-config
+  "g TAB" 'eyebrowse-last-window-config
   ;; Projectile
   "p" '(:ignore t :wk "Projectile")
-  ;; "p r" 'helm-projectile-recentf
-  ;; "p d" 'helm-projectile-find-dir
-  ;; ;; "p f" 'helm-projectile-find-file
-  ;; "p !" 'projectile-run-shell-command-in-root
-  ;; "p f" 'helm-projectile-find-file-dwim
-  ;; "p p" 'helm-projectile-switch-project
-  ;; "p b" 'helm-projectile-switch-to-buffer
-  ;; "p d" 'helm-projectile-browse-dirty-projects
-  ;; "p l" 'helm-projectile-find-file-in-known-projects
-  ;; ;; Search
+  "p r" 'projectile-recentf
+  "p d" 'projectile-find-dir
+  "p !" 'projectile-run-shell-command-in-root
+  "p f" 'projectile-find-file-dwim
+  "p F" 'projectile-find-file
+  "p o" 'projectile-find-file-dwim-other-window
+  "p a" 'projectile-add-known-project
+  "p A" 'projecitle-remove-known-project
+  "p i" 'projectile-ibuffer
+  "p p" 'projectile-switch-project
+  "p d" 'projectile-browse-dirty-projects
+  "p l" 'projectile-find-file-in-known-projects
+  ;; Search
   "p g" '(:ignore t :wk "Search Project")
   ;; "p g a" 'helm-projectile-ag
-  ;; "p g r" 'helm-projectile-rg
+  "p g r" 'projectile-ripgrep
   ;; "p g k" 'helm-projectile-ack
-  ;; "p g g" 'helm-projectile-grep
+  "p g g" 'projectile-grep
   )
 
 

@@ -6,6 +6,7 @@
   ((emacs-lisp-mode lisp-mode) . highlight-quoted-mode))
 
 (use-package lispy
+  :delight
   :hook
   ((emacs-lisp-mode lisp-mode) . lispy-mode))
 

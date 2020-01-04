@@ -26,6 +26,7 @@
   (setq-mode-local inferior-lisp evil-lookup-func #'describe-symbol-at-point))
 
 (use-package elisp-def
+  :delight
   :hook ((emacs-lisp-mode . elisp-def-mode)
          (ielm-mode . elisp-def-mode)))
 

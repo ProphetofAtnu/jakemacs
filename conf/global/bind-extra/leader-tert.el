@@ -16,7 +16,8 @@
   "g" 'magit
   "RET" 'ace-link
   ;; "m" 'helm-mode-manager
-  ;; "\\" 'helm-mini
+emacs-android  ;; "\\" 'helm-mini
+  "\\" 'counsel-tmm
   "l" 'avy-goto-line)
 
 (leader-tert-def
@@ -36,3 +37,4 @@
   "x S" 'sort-lines-reverse
   "x k" 'keep-lines
   "x K" 'delete-matching-lines)
+
