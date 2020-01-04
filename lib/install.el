@@ -61,7 +61,7 @@
 
 ;;; Depricated on 12/10/19
 ;; (straight-use-package 'powerline)
-;; (straight-use-package 'moe-theme)
+(straight-use-package 'moe-theme)
 (straight-use-package 'cyberpunk-theme)
 (straight-use-package 'delight)
 (straight-use-package 'dashboard)

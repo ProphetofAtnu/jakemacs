@@ -27,9 +27,9 @@
   (setq sly-net-coding-system 'utf-8-unix
         sly-mrepl-history-file-name (concat-path user-cache-dir "sly-mrepl-history")
         sly-complete-symbol-function 'sly-simple-completions)
-  (sp-with-modes '(sly-mrepl-mode)
-    (sp-local-pair "'" "'" :actions nil)
-    (sp-local-pair "`" "`" :actions nil))
+  ;; (sp-with-modes '(sly-mrepl-mode)
+  ;;   (sp-local-pair "'" "'" :actions nil)
+  ;;   (sp-local-pair "`" "`" :actions nil))
   (add-hook 'sly-mrepl-mode-hook (lambda ()  (js/sly-add-contribs))))
 
 (use-package sly-company

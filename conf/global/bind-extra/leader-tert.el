@@ -16,7 +16,7 @@
   "g" 'magit
   "RET" 'ace-link
   ;; "m" 'helm-mode-manager
-emacs-android  ;; "\\" 'helm-mini
+  ;; "\\" 'helm-mini
   "\\" 'counsel-tmm
   "l" 'avy-goto-line)
 

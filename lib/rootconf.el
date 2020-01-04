@@ -11,6 +11,7 @@
 (setq visible-bell nil
       bookmark-default-file (expand-file-name "bookmarks" user-cache-dir)
       comint-prompt-read-only t
-      sentence-end-double-space nil)
+      sentence-end-double-space nil
+      save-place-file (expand-file-name "places" user-cache-dir))
 
 (provide 'rootconf)

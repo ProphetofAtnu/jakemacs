@@ -123,6 +123,10 @@
   "g t" 'eyebrowse-next-window-config
   "g T" 'eyebrowse-prev-window-config
   "g TAB" 'eyebrowse-last-window-config
+  ;; Inserts
+  "i" '(:ignore t :wk "Insert")
+  "i n" 'yas-new-snippet
+  "i i" 'yas-insert-snippet
   ;; Projectile
   "p" '(:ignore t :wk "Projectile")
   "p r" 'projectile-recentf

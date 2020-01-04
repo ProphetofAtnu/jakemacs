@@ -22,8 +22,7 @@
   :commands (doom-modeline-mode)
   :init (doom-modeline-mode)
   :config
-  (setq doom-modeline-minor-modes t
-        doom-modeline-current-window ))
+  (setq doom-modeline-minor-modes t))
 
 
 ;; (use-package cyberpunk-theme

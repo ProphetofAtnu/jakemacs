@@ -49,9 +49,7 @@
   :config
   (use-package ob))
 
-(use-package org-agenda
-  :commands (org-agenda)
-  :config)
+(use-package org-agenda)
 
 (use-package org-indent
   :hook (org-mode . org-indent-mode))
@@ -84,21 +82,24 @@
   :commands (evil-org-agenda-set-keys)
   :hook (org-agenda-mode . evil-org-agenda-set-keys))
 
-(use-package helm-org
-  :commands (helm-org-agenda-files-headings
-             helm-org-in-buffer-headings
-             helm-org-parent-headings
-             helm-org-capture-templates))
 
-(use-package helm-org-rifle
-  :commands (helm-org-rifle-occur-org-directory)
-  :config
-  (general-define-key
-   :states '(normal motion)
-   :keymaps 'helm-org-rifle-occur-map
-   "RET" 'helm-org-rifle-occur-goto-entry))
-;; https://github.com/alphapapa/org-rifle
-;; for when the bindings come around...
+(with-eval-after-load 'helm
+ (use-package helm-org
+   :commands (helm-org-agenda-files-headings
+              helm-org-in-buffer-headings
+              helm-org-parent-headings
+              helm-org-capture-templates))
+
+ (use-package helm-org-rifle
+   :commands (helm-org-rifle-occur-org-directory)
+   :config
+   (general-define-key
+    :states '(normal motion)
+    :keymaps 'helm-org-rifle-occur-map
+    "RET" 'helm-org-rifle-occur-goto-entry))
+ ;; https://github.com/alphapapa/org-rifle
+ ;; for when the bindings come around...
+ )
 
 (use-package org-projectile
   :bind (("C-c n p" . org-projectile-project-todo-completing-read)

@@ -79,11 +79,17 @@
   :config
   (purpose-mode 1)
   (purpose-x-popwin-setup)
-  (purpose-x-magit-multi-on))
+  (purpose-x-magit-multi-on)
+  ;; (purpose-x-popwin-update-conf)
+  ;;(purpose-x-popupify-purpose 'info 'purpose-display-at-right)
+  )
 
 (use-package helpful
   :init
-  (purpose-add-user-purposes )
+  ;;(purpose-add-user-purposes :modes '((helpful-mode . info)))
+  ;; (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
+  ;;(purpose-compile-user-configuration)
+  ;;(purpose-x-popwin-update-conf)
   (progn
     (general-defs
       [remap describe-function] 'helpful-callable
@@ -140,17 +146,21 @@
     (diredp-toggle-find-file-reuse-dir 1)))
 
 
-(use-package smartparens
-  :delight
-  :init
-  (progn
-    (use-package smartparens-config)
-    (use-package smartparens-html)
-    (smartparens-global-mode 1)
-    (show-smartparens-global-mode 1))
+;; (use-package smartparens
+;;   :delight
+;;   :init
+;;   (progn
+;;     (use-package smartparens-config)
+;;     (use-package smartparens-html)
+;;     (smartparens-global-mode 1)
+;;     (show-smartparens-global-mode 1))
+;;   :config
+;;   (progn
+;;     (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
+
+(use-package elec-pair
   :config
-  (progn
-    (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
+  (electric-pair-mode +1))
 
 (use-package undo-tree
   :delight)

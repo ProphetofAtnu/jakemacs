@@ -105,4 +105,21 @@ body are forms to be evaluated."
 ;; (defmacro js/with-buffers-filtered (filter body)
 ;;   "Execute body with filtered buffers as current")
 
+(defun js/complete-subdirectories (base &optional prompt)
+  (let* ((files (directory-files base t
+                 directory-files-no-dot-files-regexp))
+         (dirs (-filter 'file-directory-p files))
+         (names (mapcar 'file-name-base dirs))
+         (clean-dirs (-filter
+                      '(lambda (n) (string-match-p "^[^\\.].*" n))
+                      names)))
+    (expand-file-name
+     (completing-read
+      (if prompt
+          prompt
+        (format "%s: " base))
+      clean-dirs nil 'confirm)
+     base)))
+
+
 (provide 'util)
