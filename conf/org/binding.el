@@ -18,6 +18,8 @@
   "z" 'org-add-note
   "a" 'org-attach
   "s" 'org-sort
+  "r" 'org-refile
+  ";" 'js/org-refresh-id
   "." 'org-agenda
   "t" 'org-sticky-header-mode
   ;; "o" 'helm-org-agenda-files-headings

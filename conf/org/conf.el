@@ -1,21 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
-(defvar org-directory (expand-file-name "~/org"))
-
-(defvar org-agenda-files (ensure-file user-cache-dir ".org_agenda"))
-
-(use-package org-id
-  :defer t
-  :config
-  (org-link-set-parameters "id"
-                           :complete 'org-id-get-with-outline-path-completion))
-
 (use-package org
   :defer t
   :init
   (setq org-hide-emphasis-markers t
         org-clock-persist-file (expand-file-name "org-clock-save.el" user-cache-dir)
-        org-id-link-to-org-use-id 'use-existing
-        org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir)
         org-publish-timestamp-directory (ensure-dir user-cache-dir ".org-timestamps/")
         org-default-notes-file (expand-file-name "catchall.org" org-directory)
         org-log-done-with-time t
@@ -26,8 +14,6 @@
         org-image-actual-width nil
         org-goto-interface 'outline-path-completion
         org-outline-path-complete-in-steps nil
-        org-refile-targets
-        '((org-agenda-files . (:maxlevel . 4)))
         org-src-fontify-natively t
         org-src-tab-acts-natively t
         org-imenu-depth 8)
@@ -40,16 +26,34 @@
                                   "|"
                                   "CANNED(c)"
                                   "DONE(d)"))
-        org-todo-keyword-faces '(("TODO" . orange)
-                                 ("PROG" . blue)
-                                 ("HOLD" . yellow)
-                                 ("ND" . purple)
-                                 ("CANNED" . pink)
-                                 ("DONE" . green)))
+        org-todo-keyword-faces '(("TODO" . (:foreground "orange" :weight bold :underline t))
+                                 ("PROG" . (:foreground "blue" :weight bold :underline t))
+                                 ("HOLD" . (:foreground "yellow" :weight bold :underline t))
+                                 ("ND" . (:foreground "purple" :weight bold :underline t))
+                                 ("CANNED" . (:foreground "pink" :weight bold :underline t))
+                                 ("DONE" . (:foreground "green" :weight bold :underline t))))
   :config
   (use-package ob))
 
-(use-package org-agenda)
+(use-package org-id
+  :init
+  (setq 
+   org-id-link-to-org-use-id 'use-existing
+   org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir))
+  (add-to-list 'org-refile-targets '(org-id-files . (:maxlevel . 4)))
+  (org-link-set-parameters "id"
+                           :complete 'org-id-get-with-outline-path-completion))
+
+(use-package org-starter
+  :init
+  (setq org-starter-path '("~/org/")
+        org-starter-load-config-files t)
+  :config
+  (org-starter-mode))
+
+(use-package org-agenda
+  :init
+  (setq org-agenda-skip-unavailable-files t))
 
 (use-package org-indent
   :hook (org-mode . org-indent-mode))
@@ -82,6 +86,34 @@
   :commands (evil-org-agenda-set-keys)
   :hook (org-agenda-mode . evil-org-agenda-set-keys))
 
+(use-package org-projectile
+  :bind (("C-c n p" . org-projectile-project-todo-completing-read)
+         ("C-c c" . org-capture))
+  :config
+  (progn
+    (setq org-projectile-projects-file
+          (concat-path org-directory "project.org"))
+    (push (org-projectile-project-todo-entry) org-capture-templates)))
+
+(use-package org-sticky-header
+  :commands (org-sticky-header-mode))
+
+;; (use-package org-journal
+;;   :commands (org-journal-search-forever org-journal-new-entry))
+
+(use-package org-download
+  :hook ((org-mode . org-download-enable)
+         (dired-mode . org-download-enable))
+  :init
+  (setq org-download-method 'attach))
+
+(use-package org-mime
+  :defer t)
+
+(with-eval-after-load 'ivy
+  (use-package ivy-omni-org
+    :commands (ivy-omni-org))
+  )
 
 (with-eval-after-load 'helm
  (use-package helm-org
@@ -100,27 +132,3 @@
  ;; https://github.com/alphapapa/org-rifle
  ;; for when the bindings come around...
  )
-
-(use-package org-projectile
-  :bind (("C-c n p" . org-projectile-project-todo-completing-read)
-         ("C-c c" . org-capture))
-  :config
-  (progn
-    (setq org-projectile-projects-file
-          (concat-path org-directory "project.org"))
-    (push (org-projectile-project-todo-entry) org-capture-templates)))
-
-(use-package org-sticky-header
-  :commands (org-sticky-header-mode))
-
-(use-package org-journal
-  :commands (org-journal-search-forever org-journal-new-entry))
-
-(use-package org-download
-  :hook ((org-mode . org-download-enable)
-         (dired-mode . org-download-enable))
-  :init
-  (setq org-download-method 'attach))
-
-(use-package org-mime
-  :defer t)

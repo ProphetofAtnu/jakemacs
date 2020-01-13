@@ -5,7 +5,9 @@
 
 ;;   )
 (leader-minor-def
-  :keymaps 'lisp-mode-map
+  :states '(normal visual insert emacs override)
+  :keymaps '(lisp-mode-map local)
+  :major-modes t
   "," 'sly
   "m" 'macrostep-mode
   "c" '(:ignore t :wk "Compile")

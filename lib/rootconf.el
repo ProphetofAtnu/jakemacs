@@ -14,4 +14,10 @@
       sentence-end-double-space nil
       save-place-file (expand-file-name "places" user-cache-dir))
 
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+(setq auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
+
 (provide 'rootconf)

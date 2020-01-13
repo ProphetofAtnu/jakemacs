@@ -69,7 +69,8 @@
 
 (use-package hydra
   :config
-  (setq hydra-hint-display-type 'posframe))
+  (setq hydra-hint-display-type 'posframe)
+  (plist-put hydra-posframe-show-params :poshandler 'posframe-poshandler-frame-bottom-center))
 
 (use-package general
   :init

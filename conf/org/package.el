@@ -9,4 +9,7 @@
 (straight-use-package 'org-sticky-header)
 (straight-use-package 'org-mime)
 (straight-use-package 'org-journal)
+(straight-use-package 'ivy-omni-org)
 (straight-use-package 'org-download)
+(straight-use-package 'org-starter)
+(straight-use-package 'org-starter-swiper)

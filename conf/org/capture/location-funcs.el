@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun js/create-capture-reference (topic title)
+(defun js/create-capture-reference (&optional topic title)
   "Capture function that creates a generic file under the correct
   topic directory."
   (interactive
@@ -9,15 +9,17 @@
      `(,file-topic ,file-title)
      ))
 
-  (let ((file-base
-         (concat  (replace-regexp-in-string "\s+" "_" title)
-                  ".org"))
-        (buffer (get-buffer-create title)))
-    (message
-     (format "topic: %s title: %s file-base: %s"
-             topic title file-base))
-    (with-current-buffer buffer
+  (if (and topic title)
+      (let ((file-base
+           (concat (replace-regexp-in-string "\s+" "_" title)
+                   ".org"))
+          (buffer (get-buffer-create title)))
+      (message
+       (format "topic: %s title: %s file-base: %s"
+               topic title file-base))
       (setq buffer-file-name (expand-file-name file-base topic))
-      (insert "#+TITLE:")
-      (org-mode))
-    (display-buffer buffer)))
+      (insert (concat "#+TITLE:" title "\n"))
+      (org-mode)
+      (set-buffer buffer)
+      (goto-char (point-max)))
+    (call-interactively 'js/create-capture-reference)))

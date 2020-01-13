@@ -23,7 +23,24 @@
   "Generates IDs for any heading that is currently missing one in
 the current buffer"
   (interactive)
-  (org-map-entries #'(lambda () (org-id-get-create)) t 'file))
+  (save-excursion
+      (goto-char (point-max))
+      (while (outline-previous-heading)
+        (org-id-get-create))))
+
+  ;; (org-map-entries #'(lambda ()
+  ;;                      (let ((org-map-continue-from (point-min)))
+  ;;                        (org-id-get-create)))
+  ;;                  t nil))
+
+(defun js/all-org-buffers ()
+  "Return a list of all open org buffers"
+  (-filter '(lambda (buf)
+              (with-current-buffer buf
+                (if (and (buffer-live-p buf) (eq major-mode 'org-mode))
+                    (buffer-file-name)
+                  nil)))
+           (buffer-list)))
 
 (defun js/org-index-directory ()
   "Generates IDs for any heading that is currently missing one in
@@ -56,7 +73,8 @@ the org dir."
         (require 'org-id)
         (require 'org)
         (let ((org-mode-hook nil)
-              (after-save-hook nil))
+              (after-save-hook nil)
+              (org-id-locations-file ,org-id-locations-file))
           (org-map-entries '(lambda () (org-id-get-create)) t (list ,@org-files))
           (org-save-all-org-buffers)
           nil))
@@ -65,26 +83,27 @@ the org dir."
        (message "ID Database updated")
        (org-id-update-id-locations org-files)))))
 
-
 (defvar js/async-org t
   "Non nil to use custom asynchronous functions in org-mode.")
 
-(defun js/org-refresh-id-on-init ()
+(defun js/org-refresh-id ()
+  "Refresh the org ID index"
+  (interactive)
   (message "Generating/Updating Org IDs from `%s'" org-directory)
   (if js/async-org
       (js/org-index-async) 
     (progn (js/org-index-directory)
            (org-id-update-id-locations (js/all-org-files))
            (message "Done Retrieving IDs from org files.")))
-  (remove-hook 'org-mode-hook 'js/org-refresh-id-on-init))
+  (remove-hook 'org-mode-hook #'js/org-refresh-id))
 
-(add-hook 'org-mode-hook 'js/org-refresh-id-on-init)
+
+(add-hook 'org-mode-hook #'js/org-refresh-id)
 
 (defun js/org-mode-init ()
   (add-hook 'before-save-hook
             '(lambda ()
-               (js/org-index-buffer)
-               (org-id-update-id-locations `(,buffer-file-name)))
+               (js/org-index-buffer))
             nil t))
 
 (add-hook 'org-mode-hook 'js/org-mode-init)

@@ -28,6 +28,8 @@
           (setq projectile-completion-system 'ivy)
           (setq ivy-re-builders-alist
                 '((swiper . ivy--regex-plus)
+                  (counsel-describe-variable . ivy--regex-plus)
+                  (counsel-describe-function . ivy--regex-plus)
                   (t      . ivy--regex-fuzzy)))
           (ivy-mode 1)
           (counsel-mode +1)))
@@ -81,7 +83,8 @@
   (setq ivy-posframe-width 70)
   (ivy-posframe-mode +1))
 
-(use-package ivy-explorer)
+;; (use-package ivy-explorer)
+
 (use-package swiper)
 
 (use-package counsel-projectile

@@ -2,11 +2,12 @@
 ;;(load (expand-file-name "lib/util.el" user-emacs-directory)) 
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
 
+;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)
 
 ;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
-(setq backup-directory-alist `(("." . ,(ensure-dir user-cache-dir "bak"))))
+
 (setq custom-file (concat-path user-cache-dir "custom.el"))
 ;; Fonts need to be set asap
 (set-face-attribute 'default t :font "DejaVu Sans Mono-12")
@@ -55,7 +56,7 @@
 (require 'aesthetic)
 
 ;; I doubt I'll ever use custom, but what the heck?
-;; (load custom-file)
+(load custom-file)
 
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)

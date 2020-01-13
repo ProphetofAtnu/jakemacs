@@ -33,8 +33,9 @@
   ;; Dired stuff
   "-" 'dired-jump)
 
-(general-defs '(normal emacs insert)
-	[C-tab] 'helm-company)
+;; (general-defs '(normal emacs insert)
+
+;; 	[C-tab] 'helm-company)
 
 (general-defs '(normal visual motion insert)
   "C-(" 'evil-previous-open-paren
