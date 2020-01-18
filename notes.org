@@ -1,7 +1,6 @@
 #+TITLE: On My .emacs.d....
-* Current Setup
-** Test1
-** test2
-** test3
-* Current 2
+* Conf Files
+:PROPERTIES:
+:ID:       f9e3e6e8-a3e8-4510-9454-c3f40f0fa978
+:END:
 

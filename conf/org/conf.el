@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
+(defvar org-directory "~/org")
+
 (use-package org
   :defer t
   :init
@@ -37,6 +39,7 @@
 
 (use-package org-id
   :init
+  (defvar org-refile-targets nil)
   (setq 
    org-id-link-to-org-use-id 'use-existing
    org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir))
@@ -45,6 +48,7 @@
                            :complete 'org-id-get-with-outline-path-completion))
 
 (use-package org-starter
+  :delight
   :init
   (setq org-starter-path '("~/org/")
         org-starter-load-config-files t)
@@ -91,8 +95,7 @@
          ("C-c c" . org-capture))
   :config
   (progn
-    (setq org-projectile-projects-file
-          (concat-path org-directory "project.org"))
+    (org-projectile-per-project)
     (push (org-projectile-project-todo-entry) org-capture-templates)))
 
 (use-package org-sticky-header
