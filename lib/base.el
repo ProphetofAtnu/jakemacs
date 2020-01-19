@@ -192,7 +192,8 @@
              (interactive)
              (when (company-explicit-action-p)
                (company-complete-selection))
-             (self-insert-command 1))))
+             (unless (looking-back "[[:blank:]]")
+               (self-insert-command 1)))))
 
 ;; (use-package semantic
 ;;   :commands (semantic-mode)
@@ -297,11 +298,11 @@
   :config
    (setq pcomplete-cycle-completions nil)
    (require 'pcomplete-extension)
-   (add-hook 'eshell-mode-hook
-             '(lambda ()
-                (setq-local company-frontends
-                            '(company-preview-frontend))))
-   ;;  Thanks to spacemacs for this one
+   ;; (add-hook 'eshell-mode-hook
+   ;;           '(lambda ()
+   ;;              (setq-local company-frontends
+   ;;                          '(company-preview-frontend))))
+    ;; Thanks to spacemacs for this one
    (add-hook 'eshell-after-prompt-hook
              '(lambda
                 ()
@@ -316,8 +317,14 @@
    (add-hook 'eshell-mode-hook
              '(lambda ()
                 (add-to-list (make-local-variable 'company-backends) 'company-pcomplete)
+                (define-key eshell-mode-map [remap eshell-pcomplete] 'company-complete-common-or-cycle)
                 (setq-local company-frontends '(company-preview-frontend))
-                (company-mode))))
+                (company-mode)))
+   )
+
+;; (use-package esh-autosuggest
+;;   :hook (eshell-mode . esh-autosuggest-mode))
+
 
 (use-package eshell-z
   :after (eshell))
@@ -329,5 +336,15 @@
    transient-levels-file (expand-file-name "transient/levels.el" user-cache-dir)
    transient-values-file (expand-file-name "transient/values.el" user-cache-dir)
    transient-history-file (expand-file-name "transient/history.el" user-cache-dir)))
+
+;; Imenu
+(use-package imenu
+  :demand t)
+
+(with-eval-after-load 'imenu
+  (use-package find-where)
+  (use-package imenu+)
+  (use-package imenu-list)
+  (use-package imenu-anywhere))
 
 (provide 'base)

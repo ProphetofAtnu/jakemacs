@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t; -*-
-(setq active-configs '(ivy utility emacs-lisp sexp lsp go common-lisp org flycheck))
+(setq active-configs '(ivy utility emacs-lisp sexp lsp go common-lisp org js shell flycheck))
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)

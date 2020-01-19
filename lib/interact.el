@@ -17,4 +17,9 @@
   (interactive "r")
   (sort-lines t beg end))
 
+(defun jump-messages ()
+  "Jump to the messages buffer"
+  (interactive) 
+  (pop-to-buffer (get-buffer "*Messages*")))
+
 (provide 'interact)
