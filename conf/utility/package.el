@@ -5,8 +5,10 @@
 
 ;; (straight-use-package '(hyperbole)
 (straight-use-package 'multishell)
-(straight-use-package 'web-server)
+;; (straight-use-package 'web-server)
 (straight-use-package 'muse)
+
+(straight-use-package 'dired-imenu)
 
 ;; GGTags
 (straight-use-package 'ggtags)

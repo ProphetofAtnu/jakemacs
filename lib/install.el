@@ -5,6 +5,7 @@
 (straight-use-package 'better-defaults)
 (straight-use-package 'async)
 (straight-use-package 'save-sexp)
+(straight-use-package '(simple-httpd :type git :flavor melpa :host github :repo "skeeto/emacs-web-server"))
 
 ;; Evil Setup / Keybinding
 (straight-use-package 'evil)
@@ -42,17 +43,13 @@
 (straight-use-package 'evil-magit)
 (straight-use-package 'window-purpose)
 (straight-use-package 'popwin)
+(straight-use-package 'imenu-plus)
+(straight-use-package 'imenu-list)
+(straight-use-package 'imenu-anywhere)
 
-;; Helm...
-;; (straight-use-package 'helm)
-;; (straight-use-package 'helm-swoop)
-;; (straight-use-package 'helm-rg)
-;; (straight-use-package 'helm-company)
-;; (straight-use-package 'helm-descbinds)
-;; (straight-use-package 'helm-describe-modes)
-;; (straight-use-package 'helm-mode-manager)
-;; Not yet semapi, I don't have time to configure that shit...
-;(straight-use-package 'helm-ext)
+(straight-use-package 'thingatpt)
+(straight-use-package 'thingatpt-plus)
+(straight-use-package 'find-where)
 
 ;; I'm putting Ivy stuff in, screw it
 (straight-use-package 'swiper)
@@ -73,6 +70,7 @@
 (straight-use-package 'eshell-z)
 (straight-use-package 'eshell-prompt-extras)
 (straight-use-package 'eshell-fixed-prompt)
+;; (straight-use-package 'esh-autosuggest)
 (straight-use-package 'pcomplete-extension)
 
 (straight-use-package 'ivy)

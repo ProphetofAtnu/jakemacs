@@ -53,6 +53,8 @@
   (setenv "GOROOT" "/usr/local/go")
   (setenv "GOPATH" "/home/jacsc/go"))
 
+(use-package go-imenu
+  :hook (go-mode . go-imenu-setup))
 
 (use-package flycheck
   :hook (go-mode . flycheck-mode))

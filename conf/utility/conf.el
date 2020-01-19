@@ -30,3 +30,6 @@
   :commands (evil-better-visual-line-on)
   :config
   (add-hook 'visual-line-mode '(lambda () (evil-better-visual-line-on))))
+
+(use-package dired-imenu
+  :after (dired))

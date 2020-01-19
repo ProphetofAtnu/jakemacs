@@ -50,9 +50,9 @@
   "M-8" 'eyebrowse-switch-to-window-config-8
   "M-9" 'eyebrowse-switch-to-window-config-9
   "M-0" 'eyebrowse-switch-to-window-config-0
-  "\'" 'shell
+  "\'"  'shell
   "TAB" 'previous-buffer
-  "b" '(:ignore t :wk "Buffers")
+  "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
   "b l" 'ibuffer
   "b d" 'kill-current-buffer
@@ -99,36 +99,36 @@
   "q q" 'save-buffers-kill-emacs
   "q Q" 'kill-emacs
   ;; Window
-  "w" '(:ignore t :wk "Windows")
-  "w ." 'hydra-window-manage/body 
-  "w w" 'evil-window-next
-  "w d" 'delete-window
-  "w =" 'balance-windows
-  "w t" 'ace-swap-window
-  "w l" 'evil-window-right
-  "w h" 'evil-window-left
-  "w j" 'evil-window-down
-  "w k" 'evil-window-up
-  "w L" 'evil-window-move-far-right
-  "w H" 'evil-window-move-far-left
-  "w J" 'evil-window-move-very-bottom
-  "w K" 'evil-window-move-very-top
-  "w r" 'evil-window-rotate-downwards
-  "w R" 'evil-window-rotate-upwards
-  "w s" 'evil-window-split
-  "w v" 'evil-window-vsplit
-  "g" '(:ignore t :wk "Eyebrowse")
-  "g n" 'eyebrowse-create-window-config
-  "g z" 'eyebrowse-close-window-config
-  "g t" 'eyebrowse-next-window-config
-  "g T" 'eyebrowse-prev-window-config
+  "w"     '(:ignore t :wk "Windows")
+  "w ."   'hydra-window-manage/body 
+  "w w"   'evil-window-next
+  "w d"   'delete-window
+  "w ="   'balance-windows
+  "w t"   'ace-swap-window
+  "w l"   'evil-window-right
+  "w h"   'evil-window-left
+  "w j"   'evil-window-down
+  "w k"   'evil-window-up
+  "w L"   'evil-window-move-far-right
+  "w H"   'evil-window-move-far-left
+  "w J"   'evil-window-move-very-bottom
+  "w K"   'evil-window-move-very-top
+  "w r"   'evil-window-rotate-downwards
+  "w R"   'evil-window-rotate-upwards
+  "w s"   'evil-window-split
+  "w v"   'evil-window-vsplit
+  "g"     '(:ignore t :wk "Eyebrowse")
+  "g n"   'eyebrowse-create-window-config
+  "g z"   'eyebrowse-close-window-config
+  "g t"   'eyebrowse-next-window-config
+  "g T"   'eyebrowse-prev-window-config
   "g TAB" 'eyebrowse-last-window-config
   ;; Inserts
-  "i" '(:ignore t :wk "Insert")
+  "i"   '(:ignore t :wk "Insert")
   "i n" 'yas-new-snippet
   "i i" 'yas-insert-snippet
   ;; Projectile
-  "p" '(:ignore t :wk "Projectile")
+  "p"   '(:ignore t :wk "Projectile")
   "p r" 'projectile-recentf
   "p d" 'projectile-find-dir
   "p !" 'projectile-run-shell-command-in-root
