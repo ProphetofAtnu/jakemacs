@@ -15,6 +15,9 @@
 (straight-use-package 'evil-surround)
 (straight-use-package 'evil-goggles)
 (straight-use-package 'evil-org)
+(straight-use-package 'evil-matchit)
+(straight-use-package 'origami)
+(straight-use-package 'evil-mc)
 (straight-use-package 'monitor)
 (straight-use-package 'which-key)
 (straight-use-package 'general)
@@ -46,6 +49,7 @@
 (straight-use-package 'imenu-plus)
 (straight-use-package 'imenu-list)
 (straight-use-package 'imenu-anywhere)
+(straight-use-package 'prodigy)
 
 (straight-use-package 'thingatpt)
 (straight-use-package 'thingatpt-plus)

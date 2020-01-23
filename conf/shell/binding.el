@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
+(general-define-key
+ "C-'" 'shell-pop)
+
 (leader-minor-def
   :states '(normal visual insert emacs override)
   :keymaps '(sh-mode-map)

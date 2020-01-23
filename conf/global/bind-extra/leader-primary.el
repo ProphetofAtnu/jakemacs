@@ -50,7 +50,7 @@
   "M-8" 'eyebrowse-switch-to-window-config-8
   "M-9" 'eyebrowse-switch-to-window-config-9
   "M-0" 'eyebrowse-switch-to-window-config-0
-  "\'"  'shell
+  "\'"  'ansi-term
   "TAB" 'previous-buffer
   "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer

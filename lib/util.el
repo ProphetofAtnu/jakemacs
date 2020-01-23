@@ -121,5 +121,23 @@ body are forms to be evaluated."
       clean-dirs nil 'confirm)
      base)))
 
+(defun js/dump-obarray (string predicate)
+  (interactive (let ((str (read-string "Prefix: "))
+                     (pred (let  ((ch (read-char-choice
+                                       "Predicate? [f]unction [v]ariable [i]nteractive"
+                                       '(?f ?v ?i))))
+                             (cond
+                              ((eq ch ?f) 'fuctionp)
+                              ((eq ch ?v) 'symbol-value)
+                              ((eq ch ?i) 'interactive-form)))))
+                 (values str pred)))
+  (let
+      ((comp
+        (all-completions string obarray (symbol-function predicate))))
+    (with-current-buffer (get-buffer-create "*DUMP*")
+      (erase-buffer)
+      (dolist (c comp)
+        (insert (format "%s" c) "\n"))))
+  (pop-to-buffer "*DUMP*"))
 
 (provide 'util)

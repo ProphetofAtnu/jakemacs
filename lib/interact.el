@@ -22,4 +22,21 @@
   (interactive) 
   (pop-to-buffer (get-buffer "*Messages*")))
 
+;; (with-eval-after-load 'popwin
+;;   (defmacro js/pop-to-dwim (func &optional &key func-args reuse buffer-predicate special-display)
+;;     "Define a popup function to pop to a buffer"
+;;     (let ((buffer-predicate 'featurep)
+;;           (predicate (lambda (buf) (and (buffer-live-p buf)
+;;                                         (buffer-predicate buf))))
+;;           (fun-string `(symbol-name func)))
+;;       `(defun ,(intern (concat "js/auto~pop-to-" ,fun-string)) ()
+;;          ,(concat "Auto generated ~~~ Pop to " ,fun-string)
+;;          (interactive)
+;;          ))))
+
+(with-eval-after-load 'term
+  (defun js/ansi-term-dwim ()
+    (if buffer-live)))
+
+
 (provide 'interact)

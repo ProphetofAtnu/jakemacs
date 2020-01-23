@@ -22,3 +22,4 @@
   (helm-lsp-workspace-symbol
    helm-lsp-global-workspace-symbol))
 
+(use-package dap-mode)

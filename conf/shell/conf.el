@@ -12,17 +12,18 @@
 (use-package company
   :defer t
   :config
-  (add-hook 'sh-mode '(lambda ()
-                        (add-to-list
-                         (make-local-variable 'company-backends) 'company-shell)))
+  (add-hook 'sh-mode-hook '(lambda ()
+                             (add-to-list
+                              (make-local-variable 'company-backends) 'company-shell)
+                             (company-mode)))
   (add-hook 'shell-mode-hook
             '(lambda ()
                ;; (add-to-list (make-local-variable 'company-backends) 'company-shell)
                (general-define-key :keymaps '(shell-mode-map)
                                    "TAB" 'company-complete)
                (setq-local company-frontends '(company-preview-frontend))
-               (company-mode)))
-  )
+               (company-mode))))
+
 
 (use-package bash-completion
   :commands (bash-completion-dynamic-complete
@@ -42,11 +43,30 @@
   :config
   (add-to-list 'purpose-x-popwin-major-modes
                'shell-mode)
+  (add-to-list 'purpose-x-popwon-major-modes
+               'term-mode)
   (purpose-x-popwin-update-conf)
   )
 
 (use-package shelldoc
   :commands (shelldoc-minor-mode
              shelldoc-toggle-doc-window)
-  :hook (shell-mode . shelldoc-minor-mode)
+  :hook ((shell-mode . shelldoc-minor-mode)
+         (shelldoc-minor-mode . shelldoc-toggle-doc-window))
   )
+
+(use-package shell-pop
+  :custom
+  (shell-pop-full-span t)
+  (shell-pop-shell-type
+   '("ansi-term" "*ansi-term*"
+     (lambda nil
+       (ansi-term shell-pop-term-shell))))
+  (shell-pop-universal-key "C-'")
+  :config
+  (setq shell-pop-term-shell "/bin/bash"
+        shell-pop-shell-type '("ansi-term" "*ansi-term*"
+                               (lambda nil
+                                 (ansi-term shell-pop-term-shell)))
+        shell-pop-full-span t
+        shell-pop-universal-key "C-'"))

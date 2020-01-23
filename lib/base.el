@@ -59,10 +59,19 @@
   (evil-define-key 'visual global-map "s" 'evil-surround-region)
   (evil-define-key 'visual global-map "S" 'evil-Surround-region))
 
+(use-package evil-matchit
+  :config
+  (global-evil-matchit-mode))
+
 (use-package evil-commentary
   :bind
   (:map evil-normal-state-map)
   ("gc" . evil-commentary))
+
+(use-package origami
+  :commands (global-origami-mode)
+  :init
+  (global-origami-mode))
 
 (use-package discover-my-major
   :commands (discover-my-major discover-my-mode))
@@ -76,6 +85,36 @@
   :init
   (load (concat-path user-emacs-directory "conf/global/bindings")))
 
+;; For some reason general causes all sorts of issues with this
+;; evil-mc-map. This fixes it.
+(use-package evil-mc
+  :init
+  (load "evil-mc-setup" nil t)
+  (general-defs '(normal visual)
+    :keymaps '(evil-normal-state-map evil-visual-state-map)
+    "C-n"   'evil-mc-make-and-goto-next-match
+    "C-p"   'evil-mc-make-and-goto-prev-match
+    "C-t"   'evil-mc-skip-and-goto-next-match
+    "g r n" 'evil-mc-skip-and-goto-next-match
+    "g r p" 'evil-mc-skip-and-goto-prev-match
+    "g r s" 'evil-mc-pause-cursors
+    "g r r" 'evil-mc-resume-cursors
+    "M-n"   'evil-mc-make-and-goto-next-cursor
+    "M-p"   'evil-mc-make-and-goto-prev-cursor
+    "g r h" 'evil-mc-make-cursor-here
+    "g r m" 'evil-mc-make-all-cursors
+    "g r q" 'evil-mc-undo-all-cursors
+    "g r u" 'evil-mc-undo-last-added-cursor
+    "g r j" 'evil-mc-make-cursor-move-next-line
+    "g r k" 'evil-mc-make-cursor-move-prev-line
+    "g r A" 'evil-mc-make-cursor-in-visual-selection-end
+    "g r I" 'evil-mc-make-cursor-in-visual-selection-beg
+    "g r N" 'evil-mc-skip-and-goto-next-cursor
+    "g r P" 'evil-mc-skip-and-goto-prev-cursor
+    "g r l" 'evil-mc-make-and-goto-last-cursor
+    "g r f" 'evil-mc-make-and-goto-first-cursor
+    ))
+
 (use-package window-purpose
   :config
   (purpose-mode 1)
@@ -87,10 +126,10 @@
 
 (use-package helpful
   :init
-  ;;(purpose-add-user-purposes :modes '((helpful-mode . info)))
-  ;; (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
-  ;;(purpose-compile-user-configuration)
-  ;;(purpose-x-popwin-update-conf)
+  (purpose-add-user-purposes :modes '((helpful-mode . info)))
+  (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
+  (purpose-compile-user-configuration)
+  (purpose-x-popwin-update-conf)
   (progn
     (general-defs
       [remap describe-function] 'helpful-callable
@@ -171,6 +210,7 @@
 
 (use-package company
   :commands (company-mode)
+  :delight
   :init
   (setq company-idle-delay 0.2)
   :hook
@@ -246,11 +286,11 @@
     "z x" 'eyebrowse-last-window-config
     "z w" 'eyebrowse-create-window-config))
 
-(use-package window-purpose
-  :config
-  (purpose-mode 1)
-  (purpose-x-popwin-setup)
-  (purpose-x-magit-multi-on))
+;; (use-package window-purpose
+;;   :config
+;;   (purpose-mode 1)
+;;   (purpose-x-popwin-setup)
+;;   (purpose-x-magit-multi-on))
 
 ;; (use-package popwin
 ;;   :config
