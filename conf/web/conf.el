@@ -34,4 +34,3 @@
 (use-package sws-mode)
 (use-package stylus-mode)
 (use-package counsel-css)
-(use-package helm-css-scss)

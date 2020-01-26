@@ -28,8 +28,19 @@ m -> Toggle Mode     | r -> reset"
   :prefix leader-tertiary
   :non-normal-prefix alt-tertiary)
 
+(general-define-key
+ :prefix-map 'inferior-shell-selection-map
+ "t" 'term
+ "a" 'ansi-term
+ "s" 'shell
+ "i" 'ielm
+ "y" 'sly
+ "g" 'gorepl-run
+ "n" 'nodejs-repl
+ "w" 'skewer-repl)
+
 (leader-tert-def
-  "t" 'term
+  "t" `(,inferior-shell-selection-map :wk "Inf. Shell")
   "e" 'eww
   "b" 'bookmark-bmenu-search
   "a" 'ace-window

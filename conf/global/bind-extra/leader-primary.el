@@ -55,8 +55,11 @@
   "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
   "b l" 'ibuffer
+  "b o" 'switch-to-buffer-other-window
+  "b t" 'switch-to-buffer-other-tab
   "b d" 'kill-current-buffer
   "b D" 'kill-other-buffers
+  "j" '(:ignore t :wk "Jump")
   "s" '(:ignore t :wk "Search")
   ;; "s s" 'helm-swoop
   ;; "s g" 'helm-rg

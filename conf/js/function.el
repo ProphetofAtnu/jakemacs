@@ -1,17 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun js/company-js-setup ()
-  "Initialize company-mode for Javascript"
-  (require 'tern)
-  (require 'company-tern)
-  (require 'flow-minor-mode)
-  (require 'company-flow)
-  (tern-mode)
-  (flow-minor-mode)
-  (make-local-variable 'company-backends)
-  (dolist (be '(company-tern company-flow))
-   (add-to-list 'company-backends be)))
-
 (defun spacemacs//react-inside-string-q ()
   "Returns non-nil if inside string, else nil.
 Result depends on syntax table's string quote character."

@@ -21,6 +21,7 @@
 (straight-use-package 'monitor)
 (straight-use-package 'which-key)
 (straight-use-package 'general)
+(straight-use-package 'evil-smartparens)
 
 ;; Utility
 (straight-use-package 'restart-emacs)
@@ -50,6 +51,7 @@
 (straight-use-package 'imenu-list)
 (straight-use-package 'imenu-anywhere)
 (straight-use-package 'prodigy)
+(straight-use-package 'treemacs)
 
 (straight-use-package 'thingatpt)
 (straight-use-package 'thingatpt-plus)

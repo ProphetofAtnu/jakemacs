@@ -140,4 +140,50 @@ body are forms to be evaluated."
         (insert (format "%s" c) "\n"))))
   (pop-to-buffer "*DUMP*"))
 
+(defun js/dump-keymap (kmp)
+  "Dump a keymap kmp to a string"
+  (when (keymapp kmp)
+    (let ((bnds (cdr kmp))
+          (final "")
+          prefixes)
+      (cl-labels
+          ((tmp (el)
+                (condition-case err
+                    (if (consp el)
+                        (let ((parent (car el))
+                              (children (cdr el)))
+                          (if (and (consp children)
+                                   (proper-list-p children)
+                                   (not  (eq 'menu-bar parent)))
+                              (progn
+                                (let ((oldp (copy-list prefixes)))
+                                  (push (single-key-description parent) prefixes)
+                                  (dolist (nel children)
+                                    (tmp nel))
+                                  (setf prefixes oldp)))
+                            (when (numberp parent)
+                              (progn
+                                (setf final (concat final
+                                                    (format "PREFIX: %s KEY: %s BINDING: %s\n"
+                                                            (if (listp prefixes)
+                                                                (nreverse (copy-list prefixes))
+                                                              prefixes)
+                                                            (single-key-description parent) children))))))))
+                  (error (print (format "Encountered error:
+                  %s\tValue: %s" err el)))))) (dolist (b bnds)
+                                                (tmp b)))
+      final)))
+
+(defun js/dump-keymap-to-buffer ()
+  "Pop to a temporary buffer with a list of all the previous
+buffer's bindings."
+  (interactive)
+  (let ((map (js/dump-keymap (current-local-map))))
+    (with-current-buffer (get-buffer-create "*OUTPUT*")
+      (erase-buffer)
+      (insert map)
+      (pop-to-buffer "*OUTPUT*"))))
+
+
+
 (provide 'util)

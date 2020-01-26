@@ -185,22 +185,33 @@
   (progn
     (diredp-toggle-find-file-reuse-dir 1)))
 
-
-;; (use-package smartparens
-;;   :delight
-;;   :init
-;;   (progn
-;;     (use-package smartparens-config)
-;;     (use-package smartparens-html)
-;;     (smartparens-global-mode 1)
-;;     (show-smartparens-global-mode 1))
-;;   :config
-;;   (progn
-;;     (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
-
-(use-package elec-pair
+(use-package smartparens
+  :delight
+  :init
+  (progn
+    (use-package smartparens-config)
+    (use-package smartparens-html)
+    (use-package smartparens-text)
+    (use-package  smartparens-python)
+    (use-package smartparens-c)
+    (use-package smartparens-haskell)
+    (use-package smartparens-javascript)
+    (use-package smartparens-latex)
+    (use-package smartparens-ruby)
+    (use-package smartparens-rust)
+    (use-package smartparens-scala)
+    (smartparens-global-mode 1)
+    (show-smartparens-global-mode 1))
   :config
-  (electric-pair-mode +1))
+  (progn
+    (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
+
+(use-package evil-smartparens
+  :hook (smartparens-mode . evil-smartparens-mode))
+
+;; (use-package elec-pair
+;;   :config
+;;   (electric-pair-mode +1))
 
 (use-package undo-tree
   :delight)

@@ -42,3 +42,18 @@
   "C-)" 'evil-next-close-paren
   "C-{" 'evil-previous-open-brace
   "C-}" 'evil-next-close-brace)
+
+;; Misc
+(use-package winner
+  :commands (winner-mode)
+  :init (winner-mode))
+(use-package treemacs
+  :commands (treemacs))
+
+
+
+(general-defs
+  "C-<" 'winner-undo
+  "C->" 'winner-redo
+  "C-;" 'treemacs
+  )

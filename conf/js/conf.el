@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defvar js/use-flow t)
-
 (use-package js2-mode
   :mode (("\\.m?js\\'"  . js2-mode)))
 
@@ -30,7 +28,11 @@
    (add-hook 'rjsx-mode-hook 'spacemacs/react-emmet-mode)
    (setq-mode-local rjsx-mode
                     js2-mode-show-parse-errors nil
-                    js2-mode-show-strict-warnings nil)))
+                    js2-mode-show-strict-warnings nil))
+  :config
+  (progn
+    (define-key rjsx-mode-map "<" nil)
+    (define-key rjsx-mode-map "S-return" 'emmet-expand-line)))
 
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
@@ -44,33 +46,33 @@
 ;;                (flycheck-mode-on-safe))))
 
 (use-package add-node-modules-path
-  :commands (add-node-modules-path))
+  :commands (add-node-modules-path)
+  :hook ((js2-mode rjsx-mode) . add-node-modules-path))
 
 (use-package nodejs-repl
   :commands (nodejs-repl))
 
 (use-package flow-minor-mode
-  :defer t
-  :delight
-  :commands (flow-minor-mode)
-  :hook ((js2-mode . flow-minor-enable-automatically)
-         (rjsx-mode . flow-minor-enable-automatically)))
+    :defer t
+    :delight
+    :commands (flow-minor-mode flow-minor-enable-automatically)
+    :hook ((js2-mode . flow-minor-enable-automatically)
+           (rjsx-mode . flow-minor-enable-automatically)))
 
 (use-package flow-js2-mode
   :defer t
   :delight
   :commands (flow-js2-mode)
-  :hook ((js2-mode . flow-js2-mode)))
+  :hook (flow-minor-mode . flow-js2-mode))
 
 (use-package company-flow
-  :defer t
-  :delight
-  :commands (company-flow)
-  :config
-  (push 'rjsx-mode company-flow-modes))
-
-(use-package flycheck
-  :commands (flycheck-mode-on-safe))
+    :defer t
+    :delight
+    :commands (company-flow)
+    :hook (flow-minor-mode . (lambda ()
+                               (add-to-list (make-local-variable company-backends) company-flow)))
+    :config
+    (push 'rjsx-mode company-flow-modes))
 
 (use-package flycheck-flow
   :defer t
@@ -86,7 +88,10 @@
     ;; After running js-flow, run js-eslint
     ;; doing this in the other order causes a lot of repeated errors!!!
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
-  )
+    )
+
+(use-package flycheck
+  :commands (flycheck-mode-on-safe))
 
 (use-package js2-refactor
   :hook ((rjsx-mode js2-mode) . js2-refactor-mode))
@@ -96,6 +101,11 @@
   :delight
   :config
   (setq tern-command (append tern-command '("--no-port-file"))))
+
+(use-package lsp-mode
+  :commands (lsp)
+  :hook ((rjsx-mode js2-mode) . (lambda ()
+                                  (unless (and (featurep 'flow-minor-mode) flow-minor-mode) (lsp)))))
 
 (use-package prettier-js
   :defer t
@@ -127,12 +137,12 @@
 (use-package eslintd-fix
   :commands (eslintd-fix eslintd-fix-mode))
 
-(dolist (hook '(rjsx-mode-hook js2-mode-hook))
-  (add-hook hook
-            '(lambda ()
-               (require 'js-doc)
-               (require 'js2-refactor)
-               (require 'nodejs-repl)
-               (js/company-js-setup)
-               (flycheck-mode-on-safe)
-               (add-node-modules-path))))
+;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
+;;   (add-hook hook
+;;             '(lambda ()
+;;                (require 'js-doc)
+;;                (require 'js2-refactor)
+;;                (require 'nodejs-repl)
+;;                (js/company-js-setup)
+;;                (flycheck-mode-on-safe)
+;;                (add-node-modules-path))))

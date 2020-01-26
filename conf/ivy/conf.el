@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-
-
-
-
 (use-package counsel
   :demand t
   :delight
@@ -101,6 +97,7 @@
 
 (use-package counsel-etags)
 
+(use-package ivy-xref)
 
 (use-package counsel-tramp)
 

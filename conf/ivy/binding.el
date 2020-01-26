@@ -19,6 +19,7 @@
   "d a" 'counsel-dash-activate-docset
   "d o" '(js/dash-open-docset-path :wk "Browse"))
 
+
 (general-defs
   [remap recentf-open-files] 'counsel-recentf
   [remap bookmark-bmenu-search] 'counsel-bookmark)
