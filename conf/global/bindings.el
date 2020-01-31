@@ -51,7 +51,6 @@
   :commands (treemacs))
 
 
-
 (general-defs
   "C-<" 'winner-undo
   "C->" 'winner-redo

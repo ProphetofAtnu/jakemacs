@@ -1,7 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package js2-mode
-  :mode (("\\.m?js\\'"  . js2-mode)))
+  :mode (("\\.m?js\\'"  . js2-mode))
+  :init
+  (setq js-indent-level 2))
 
 ;; TODO: add jsx support (React)
 (use-package rjsx-mode
@@ -26,13 +28,11 @@
      (emmet-mode 1)
      (setq-local emmet-expand-jsx-className? t))
    (add-hook 'rjsx-mode-hook 'spacemacs/react-emmet-mode)
+   ;; (add-hook 'rjsx-mode-hook '(lambda ()
+   ;;                              (smartparens-mode -1)))
    (setq-mode-local rjsx-mode
                     js2-mode-show-parse-errors nil
-                    js2-mode-show-strict-warnings nil))
-  :config
-  (progn
-    (define-key rjsx-mode-map "<" nil)
-    (define-key rjsx-mode-map "S-return" 'emmet-expand-line)))
+                    js2-mode-show-strict-warnings nil)))
 
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
@@ -136,6 +136,14 @@
 
 (use-package eslintd-fix
   :commands (eslintd-fix eslintd-fix-mode))
+
+(use-package js-doc
+  :commands (js-doc-insert-tag
+             js-doc-describe-tag
+             js-doc-insert-file-doc
+             js-doc-insert-function-doc
+             js-doc-insert-function-doc-snippet
+             js/dash-open-docset-path))
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
 ;;   (add-hook hook

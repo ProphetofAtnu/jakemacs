@@ -91,6 +91,17 @@
   )
 
 (leader-minor-def
+  :keymaps '(js2-mode-map rjsx-mode-map)
+  :major-mode t
+  "d" '(:ignore t :wk "JSDoc")
+  "d t" 'js-doc-insert-tag
+  "d d" 'js-doc-describe-tag
+  "d f" 'js-doc-insert-function-doc
+  "d F" 'js-doc-insert-file-doc
+  "d s" 'js-doc-insert-function-doc-snippet)
+
+
+(leader-minor-def
   :keymaps '(emmet-mode-keymap)
   :minor-mode t
   "i" '(:ignore t :wk "Emmet")

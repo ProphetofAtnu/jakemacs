@@ -8,7 +8,7 @@
   :non-normal-prefix alt-primary)
 
 (defhydra hydra-window-manage (:color amaranth)
-  "Edit window layout:"
+  "Edit window layout: (exit with ret/esc/q)"
   ("j" evil-window-down "Up" :column "Switch")
   ("k" evil-window-up "Down")
   ("h" evil-window-left "Left")
@@ -31,9 +31,14 @@
   ("M" maximize-window "Max")
   ("m" minimize-window "Min")
   ("=" balance-windows "Balance")
-  ("q" nil "Exit" :color blue :column "")
-  ("z" nil "Exit" :color blue :column "")
-  ("<escape>" nil "Exit" :color blue :column ""))
+  ("n" switch-to-next-buffer "Next Buffer" :column "Buffer")
+  ("p" switch-to-prev-buffer "Prev Buffer")
+  ("b" switch-to-buffer "Set buffer")
+  ("f" find-file "Open File")
+  ("x" execute-extended-command "Command")
+  ("q" nil nil :color blue :column "")
+  ("<return>" nil nil :color blue :column "")
+  ("<escape>" nil nil :color blue :column ""))
 
 (leader-primary-def '(normal visual insert emacs override)
   "SPC" 'execute-extended-command
@@ -52,6 +57,7 @@
   "M-0" 'eyebrowse-switch-to-window-config-0
   "\'"  'ansi-term
   "TAB" 'previous-buffer
+  "m" 'hydra-window-manage/body
   "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
   "b l" 'ibuffer
@@ -59,6 +65,7 @@
   "b t" 'switch-to-buffer-other-tab
   "b d" 'kill-current-buffer
   "b D" 'kill-other-buffers
+  "b r" 'revert-buffer
   "j" '(:ignore t :wk "Jump")
   "s" '(:ignore t :wk "Search")
   ;; "s s" 'helm-swoop
@@ -102,32 +109,35 @@
   "q q" 'save-buffers-kill-emacs
   "q Q" 'kill-emacs
   ;; Window
-  "w"     '(:ignore t :wk "Windows")
-  "w ."   'hydra-window-manage/body 
-  "w w"   'evil-window-next
-  "w d"   'delete-window
-  "w ="   'balance-windows
-  "w t"   'ace-swap-window
-  "w l"   'evil-window-right
-  "w h"   'evil-window-left
-  "w j"   'evil-window-down
-  "w k"   'evil-window-up
-  "w L"   'evil-window-move-far-right
-  "w H"   'evil-window-move-far-left
-  "w J"   'evil-window-move-very-bottom
-  "w K"   'evil-window-move-very-top
-  "w r"   'evil-window-rotate-downwards
-  "w R"   'evil-window-rotate-upwards
-  "w s"   'evil-window-split
-  "w v"   'evil-window-vsplit
-  "g"     '(:ignore t :wk "Eyebrowse")
-  "g n"   'eyebrowse-create-window-config
-  "g z"   'eyebrowse-close-window-config
-  "g t"   'eyebrowse-next-window-config
-  "g T"   'eyebrowse-prev-window-config
+  "w" '(:ignore t :wk "Windows")
+  "w ." 'hydra-window-manage/body 
+  "w w" 'evil-window-next
+  "w d" 'delete-window
+  "w =" 'balance-windows
+  "w b" 'balance-windows
+  "w t" 'ace-swap-window
+  "w l" 'evil-window-right
+  "w h" 'evil-window-left
+  "w j" 'evil-window-down
+  "w k" 'evil-window-up
+  "w L" 'evil-window-move-far-right
+  "w H" 'evil-window-move-far-left
+  "w J" 'evil-window-move-very-bottom
+  "w K" 'evil-window-move-very-top
+  "w r" 'evil-window-rotate-downwards
+  "w R" 'evil-window-rotate-upwards
+  "w s" 'evil-window-split
+  "w v" 'evil-window-vsplit
+  "w m" 'minimize-window
+  "w M" 'maximize-window
+  "g" '(:ignore t :wk "Eyebrowse")
+  "g n" 'eyebrowse-create-window-config
+  "g z" 'eyebrowse-close-window-config
+  "g t" 'eyebrowse-next-window-config
+  "g T" 'eyebrowse-prev-window-config
   "g TAB" 'eyebrowse-last-window-config
   ;; Inserts
-  "i"   '(:ignore t :wk "Insert")
+  "i" '(:ignore t :wk "Insert")
   "i n" 'yas-new-snippet
   "i i" 'yas-insert-snippet
   ;; Projectile

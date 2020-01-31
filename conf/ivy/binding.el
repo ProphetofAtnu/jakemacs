@@ -4,7 +4,8 @@
   "." 'counsel-buffer-or-recentf
   "," 'counsel-find-file
   "s s" 'counsel-grep-or-swiper
-  "s g" 'counsel-rg
+  "s g" 'js/counsel-rg-here
+  "s G" 'counsel-rg
   "h a" 'counsel-apropos
   "h k" 'counsel-descbinds
   "h m" 'counsel-minibuffer-history

@@ -4,3 +4,7 @@
   (interactive)
   (dired
    counsel-dash-docsets-path))
+
+(defun js/counsel-rg-here ()
+  (interactive)
+  (counsel-rg "" default-directory))

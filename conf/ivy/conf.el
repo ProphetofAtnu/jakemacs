@@ -26,6 +26,7 @@
                 '((swiper . ivy--regex-plus)
                   (counsel-describe-variable . ivy--regex-plus)
                   (counsel-describe-function . ivy--regex-plus)
+                  (counsel-rg . ivy--regex-plus)
                   (t      . ivy--regex-fuzzy)))
           (ivy-mode 1)
           (counsel-mode +1)))

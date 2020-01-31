@@ -190,16 +190,6 @@
   :init
   (progn
     (use-package smartparens-config)
-    (use-package smartparens-html)
-    (use-package smartparens-text)
-    (use-package  smartparens-python)
-    (use-package smartparens-c)
-    (use-package smartparens-haskell)
-    (use-package smartparens-javascript)
-    (use-package smartparens-latex)
-    (use-package smartparens-ruby)
-    (use-package smartparens-rust)
-    (use-package smartparens-scala)
     (smartparens-global-mode 1)
     (show-smartparens-global-mode 1))
   :config
@@ -235,6 +225,8 @@
            company-yasnippet)
           (company-abbrev company-dabbrev)))
   (general-defs 'company-active-map
+    "TAB" 'company-complete-common-or-cycle
+    "<tab>" 'company-complete-common-or-cycle
     "C-n" 'company-select-next
     "C-p" 'company-select-previous
     "<escape>" 'company-abort

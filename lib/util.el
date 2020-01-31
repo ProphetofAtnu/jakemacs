@@ -185,5 +185,4 @@ buffer's bindings."
       (pop-to-buffer "*OUTPUT*"))))
 
 
-
 (provide 'util)

@@ -9,7 +9,9 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config
-  (setq lsp-ui-flycheck-live-reporting nil))
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-flycheck-live-reporting nil
+        lsp-ui-doc-position 'bottom))
 
 (use-package company-lsp
   :config

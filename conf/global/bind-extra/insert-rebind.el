@@ -21,6 +21,6 @@
 ;;   "C-e" 'end-of-line)
 
 (with-eval-after-load 'company
-  (general-def 'insert
-    "TAB" 'company-indent-or-complete-common))
-
+  (general-def
+    "C-TAB" 'company-complete-common-or-cycle
+    "<C-tab>" 'company-complete-common-or-cycle))
