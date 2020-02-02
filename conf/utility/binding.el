@@ -22,9 +22,20 @@
                "' d" 'helm-gtags-find-tag
                "' D" 'helm-gtags-find-tag-other-window)))
 
+
 (leader-primary-def
   :keymaps 'override
   "f z z" 'fzf
   "f z d" 'fzf-directory
   "f z g" 'fzf-git-files
   "f z p" 'fzf-projectile)
+
+(leader-tert-def
+  :keymaps 'override
+  "p" 'list-processes)
+
+(general-define-key
+ :states '(normal visual motion)
+ :keymaps '(process-menu-mode-map)
+ :major-mode t
+ "x" 'process-menu-delete-process)

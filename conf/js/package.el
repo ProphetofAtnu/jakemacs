@@ -33,3 +33,11 @@
 (straight-use-package 'json-snatcher)
 
 (straight-use-package 'emmet-mode)
+
+
+;; New additions/replacements
+
+(straight-use-package 'tide)
+(straight-use-package 'indium)
+
+(straight-use-package 'typescript-mode)

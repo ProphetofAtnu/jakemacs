@@ -390,4 +390,9 @@
   (use-package imenu-list)
   (use-package imenu-anywhere))
 
+(use-package so-long
+  :commands (global-so-long-mode)
+  :init
+  (global-so-long-mode))
+
 (provide 'base)

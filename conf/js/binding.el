@@ -15,7 +15,6 @@
   "z C" 'js2-mode-toggle-hide-comments
   ;; Refractor
   "r" '(:ignore t :wk "Refactor")
-  "r 3 i" 'js2r-ternary-to-if
   "r a" '(:ignore t :wk "Add")
   "r a g" 'js2r-add-to-globals-annotation
   "r a o" 'js2r-arguments-to-object
@@ -41,6 +40,7 @@
   "r l t" 'js2r-log-this
   "r r" '(:ignore t :wk "Rename")
   "r r v" 'js2r-rename-var
+  "r r i" 'js2r-ternary-to-if
   "r s" '(:ignore t :wk "Slrp/Splt")
   "r s l" 'js2r-forward-slurp
   "r s s" 'js2r-split-string
@@ -53,42 +53,78 @@
   "r w l" 'js2r-wrap-in-for-loop
   "r w u" 'js2r-unwrap
   "k" 'js2r-kill
-  "x m j" 'js2r-move-line-down
-  "x m k" 'js2r-move-line-up
+  "r m" '(:ignore t :wk "Move Line")
+  "r m j" 'js2r-move-line-down
+  "r m k" 'js2r-move-line-up
   ;; Node
-  "n" '(:ignore t :wk "Node-Repl")
-  "n '" 'nodejs-repl
-  "n s" 'nodejs-repl
-  "n i" 'nodejs-repl-switch-to-repl
-  "n e" 'nodejs-repl-send-last-expression
-  "n E" '(#'(lambda ()
-              (interactive)
-              (nodejs-repl-send-last-expression)
-              (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
-  "n b" 'nodejs-repl-send-buffer
-  "n B" '(#'(lambda ()
-           (interactive)
-           (nodejs-repl-send-buffer)
-           (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
-  "n l" 'nodejs-repl-send-line
-  "n L" '(#'(lambda ()
-              (interactive)
-              (nodejs-repl-send-line)
-              (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
-  "n r" 'nodejs-repl-send-region
-  "n R" '(#'(lambda (start end)
-              (interactive "r")
-              (nodejs-repl-send-region start end)
-              (nodejs-repl-switch-to-repl)) :wk "Send Region+F")
-  ;; Web
-  "s" '(:ignore t :wk "Skewer")
-  "s '" 'run-skewer
-  "s e" 'skewer-eval-last-expression
-  "s E" 'skewer-eval-print-last-expression
-  "s b" 'skewer-load-buffer
-  "s f" 'skewer-eval-defun
-  "s s" 'skewer-repl
+  ;; "n" '(:ignore t :wk "Node-Repl")
+  ;; "n '" 'nodejs-repl
+  ;; "n s" 'nodejs-repl
+  ;; "n i" 'nodejs-repl-switch-to-repl
+  ;; "n e" 'nodejs-repl-send-last-expression
+  ;; "n E" '(#'(lambda ()
+  ;;             (interactive)
+  ;;             (nodejs-repl-send-last-expression)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
+  ;; "n b" 'nodejs-repl-send-buffer
+  ;; "n B" '(#'(lambda ()
+  ;;          (interactive)
+  ;;          (nodejs-repl-send-buffer)
+  ;;          (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
+  ;; "n l" 'nodejs-repl-send-line
+  ;; "n L" '(#'(lambda ()
+  ;;             (interactive)
+  ;;             (nodejs-repl-send-line)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
+  ;; "n r" 'nodejs-repl-send-region
+  ;; "n R" '(#'(lambda (start end)
+  ;;             (interactive "r")
+  ;;             (nodejs-repl-send-region start end)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Region+F")
   )
+
+
+(leader-minor-def
+  :keymaps '(js2-mode-map rjsx-mode-hook)
+  :major-mode t
+  "m" '(:ignore t :wk "Tide")
+  "m x" 'tide-fix
+  "m n" 'tide-nav
+  "m =" 'tide-format
+  "m t" 'tide-refactor
+  "m f" 'tide-references
+  "m d" 'tide-jump-to-definition
+  "m D" 'tide-jump-back
+  "m R" 'tide-rename-file
+  "m q" 'tide-restart-server
+  "m Q" 'tide-kill-server
+  "m v" 'tide-verify-setup
+  "m s" 'tide-list-servers
+  "m c" 'tide-compile-file
+  "m r" 'tide-rename-symbol
+  "m i" 'tide-jsdoc-template)
+
+
+;; Indium
+(leader-minor-def
+  :keymaps '(js2-mode-map rjsx-mode-map)
+  :major-mode t
+  "." 'indium-switch-to-debugger
+  "'" 'indium-switch-to-repl-buffer
+  ", ," 'indium-eval
+  ", l" 'indium-launch
+  ", L" 'indium-connect 
+  ", s" 'indium-scratch
+  ", b" 'indium-add-breakpoint
+  ", B" 'indium-remove-breakpoint
+  ", c" 'indium-deactivate-breakpoints
+  ", C" 'indium-activate-breakpoints
+  ", d" 'indium-debugger-evaluate
+  ", e" 'indium-eval-last-node
+  ", k" 'indium-remove-all-breakpoints-from-buffer
+  ", f" 'indium-eval-defun
+  ", b" 'indium-eval-buffer
+  ", v" 'indium-list-breakpoints)
 
 (leader-minor-def
   :keymaps '(js2-mode-map rjsx-mode-map)

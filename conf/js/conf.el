@@ -34,6 +34,26 @@
                     js2-mode-show-parse-errors nil
                     js2-mode-show-strict-warnings nil)))
 
+(use-package tide
+  :commands (tide-setup)
+  :init
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    ;; company is an optional dependency. You have to
+    ;; install it separately via package-install
+    ;; `M-x package-install [ret] company`
+    (company-mode +1))
+  (add-hook 'js2-mode-hook 'setup-tide-mode)
+  (add-hook 'rjsx-mode-hook 'setup-tide-mode)
+  (add-hook 'typescript-mode-hook 'setup-tide-mode))
+
+(use-package indium
+  :defer t)
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
 ;;   (add-hook hook
@@ -51,6 +71,73 @@
 
 (use-package nodejs-repl
   :commands (nodejs-repl))
+
+(use-package flycheck
+  :commands (flycheck-mode-on-safe))
+
+(use-package js2-refactor
+  :hook ((rjsx-mode js2-mode) . js2-refactor-mode))
+
+(use-package tern
+  :defer t
+  :delight
+  :config
+  (setq tern-command (append tern-command '("--no-port-file"))))
+
+
+(use-package prettier-js
+  :defer t
+  :commands (prettier-js prettier-js-mode))
+
+;;;;;;; QUARENTINE
+;; (use-package impatient-mode
+;;   :defer t
+;;   :commands (impatient-mode))
+
+;; (use-package skewer-mode
+;;   :defer t
+;;   :commands (run-skewer)
+;;   :delight
+;;   :init
+;;   (progn
+;;     (require 'skewer-setup)
+;;     (skewer-setup)))
+
+;; (use-package livid-mode
+;;   :defer t
+;;   :commands (livid-mode))
+
+;; (use-package lsp-mode
+;;   :commands (lsp)
+;;   :hook ((rjsx-mode js2-mode) . (lambda ()
+;;                                   (unless (and (featurep 'flow-minor-mode) flow-minor-mode) (lsp)))))
+
+(use-package json-mode
+  :config
+  (use-package json-navigator)
+  (use-package json-reformat)
+  (use-package json-snatcher))
+
+(use-package eslintd-fix
+  :commands (eslintd-fix eslintd-fix-mode))
+
+(use-package js-doc
+  :commands (js-doc-insert-tag
+             js-doc-describe-tag
+             js-doc-insert-file-doc
+             js-doc-insert-function-doc
+             js-doc-insert-function-doc-snippet
+             js/dash-open-docset-path))
+
+;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
+;;   (add-hook hook
+;;             '(lambda ()
+;;                (require 'js-doc)
+;;                (require 'js2-refactor)
+;;                (require 'nodejs-repl)
+;;                (js/company-js-setup)
+;;                (flycheck-mode-on-safe)
+;;                (add-node-modules-path))))
 
 (use-package flow-minor-mode
     :defer t
@@ -89,68 +176,3 @@
     ;; doing this in the other order causes a lot of repeated errors!!!
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
     )
-
-(use-package flycheck
-  :commands (flycheck-mode-on-safe))
-
-(use-package js2-refactor
-  :hook ((rjsx-mode js2-mode) . js2-refactor-mode))
-
-(use-package tern
-  :defer t
-  :delight
-  :config
-  (setq tern-command (append tern-command '("--no-port-file"))))
-
-(use-package lsp-mode
-  :commands (lsp)
-  :hook ((rjsx-mode js2-mode) . (lambda ()
-                                  (unless (and (featurep 'flow-minor-mode) flow-minor-mode) (lsp)))))
-
-(use-package prettier-js
-  :defer t
-  :commands (prettier-js prettier-js-mode))
-
-(use-package impatient-mode
-  :defer t
-  :commands (impatient-mode))
-
-(use-package skewer-mode
-  :defer t
-  :commands (run-skewer)
-  :delight
-  :init
-  (progn
-    (require 'skewer-setup)
-    (skewer-setup)))
-
-(use-package livid-mode
-  :defer t
-  :commands (livid-mode))
-
-(use-package json-mode
-  :config
-  (use-package json-navigator)
-  (use-package json-reformat)
-  (use-package json-snatcher))
-
-(use-package eslintd-fix
-  :commands (eslintd-fix eslintd-fix-mode))
-
-(use-package js-doc
-  :commands (js-doc-insert-tag
-             js-doc-describe-tag
-             js-doc-insert-file-doc
-             js-doc-insert-function-doc
-             js-doc-insert-function-doc-snippet
-             js/dash-open-docset-path))
-
-;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
-;;   (add-hook hook
-;;             '(lambda ()
-;;                (require 'js-doc)
-;;                (require 'js2-refactor)
-;;                (require 'nodejs-repl)
-;;                (js/company-js-setup)
-;;                (flycheck-mode-on-safe)
-;;                (add-node-modules-path))))

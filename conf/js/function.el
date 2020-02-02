@@ -17,3 +17,20 @@ Result depends on syntax table's comment character."
 If optional argument P is present, test this instead of point."
   (or (spacemacs//react-inside-string-q)
       (spacemacs//react-inside-comment-q)))
+
+(defun js/infer-js-backend ()
+  "Determine the flavor of javascript you want to use on a
+  per-file basis"
+  (save-excursion
+    (let ((decision nil))
+      (while (or (not decision)
+                 (eobp))
+        (goto-char (point-min))
+        (let ((line
+               (buffer-substring (point-at-bol) (point-at-eol))))
+          (when (string-match-p ".*\/\/[[:blank:]]+@flow" line) (setf decision 'flow)))
+        (move-end-of-line 2))
+      (if decision
+          decision
+        'typical))))
+
