@@ -197,6 +197,7 @@
     (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
 
 (use-package evil-smartparens
+  :delight
   :hook (smartparens-mode . evil-smartparens-mode))
 
 ;; (use-package elec-pair
@@ -270,7 +271,11 @@
   :defer t
   :delight
   :config
-  (yas-global-mode))
+  (yas-global-mode)
+  (delight 'yas-minor-mode "ⓨ")
+  )
+
+
 
 (use-package swiper
   :commands (swiper))

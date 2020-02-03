@@ -7,6 +7,7 @@
 (straight-use-package 'ivy-omni-org)
 (straight-use-package 'ivy-xref)
 (straight-use-package 'ivy-pages)
+(straight-use-package 'ivy-historian)
 (straight-use-package 'swiper)
 
 (straight-use-package 'counsel)

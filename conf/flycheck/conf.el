@@ -4,6 +4,7 @@
 
 (use-package flycheck
   :defer t
+  :delight " ✅ "
   :init
   (setq flycheck-check-syntax-automatically '(save idle-change new-line)
         flycheck-emacs-lisp-initialize-packages 'auto

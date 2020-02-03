@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: reactt
+# key: reactt
+# --
+import React from "react";
+
+$0

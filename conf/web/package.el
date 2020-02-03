@@ -16,6 +16,7 @@
 (straight-use-package 'stylus-mode)
 (straight-use-package 'sws-mode)
 (straight-use-package 'tagedit)
+(straight-use-package 'css-eldoc)
 
 (when (featurep 'ivy)
   (straight-use-package

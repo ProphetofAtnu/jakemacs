@@ -99,5 +99,6 @@
 ;;                         :repo "manateelazycat/aweshell"))
 
 ;; Weird libraries
+(straight-use-package 'request)
 
 (provide 'install)

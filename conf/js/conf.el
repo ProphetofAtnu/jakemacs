@@ -2,12 +2,14 @@
 
 (use-package js2-mode
   :mode (("\\.m?js\\'"  . js2-mode))
+  :delight
   :init
   (setq js-indent-level 2))
 
 ;; TODO: add jsx support (React)
 (use-package rjsx-mode
   :defer t
+  :delight "REACT"
   :init
   ;; Again, thank you spacemacs. 
   (progn
@@ -36,6 +38,7 @@
 
 (use-package tide
   :commands (tide-setup)
+  :delight " ≋ "
   :init
   (defun setup-tide-mode ()
     (interactive)
@@ -53,7 +56,9 @@
   (add-hook 'typescript-mode-hook 'setup-tide-mode))
 
 (use-package indium
-  :defer t)
+  :defer t
+  :config
+  (setq indium-chrome-executable "chromium-browser"))
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
 ;;   (add-hook hook
@@ -76,6 +81,7 @@
   :commands (flycheck-mode-on-safe))
 
 (use-package js2-refactor
+  :delight 
   :hook ((rjsx-mode js2-mode) . js2-refactor-mode))
 
 (use-package tern

@@ -34,9 +34,20 @@
 ;;          (interactive)
 ;;          ))))
 
-(with-eval-after-load 'term
-  (defun js/ansi-term-dwim ()
-    (if buffer-live)))
-
+(defun js/maybe-pretty-brackets ()
+  "Insert pretty brackets "
+  (interactive)
+  (if (save-excursion
+          (skip-chars-backward "\t ")
+          (when (memq (char-before) '(?\( ?\{ ?\[))
+            (skip-chars-forward "\t ")
+            (memq (char-after) '(?\) ?\} ?\]))))
+    (progn
+      (delete-horizontal-space)
+      (save-excursion 
+        (newline-and-indent))
+      (newline-and-indent)
+      )
+    (newline-and-indent)))
 
 (provide 'interact)

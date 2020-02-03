@@ -33,6 +33,10 @@
           ;; (ivy-rich-mode)))
   ;; (ivy-posframe-mode))
 
+(use-package ivy-historian
+  :init
+  (ivy-historian-mode))
+
 (use-package ivy-rich
   :preface
   (defun ivy-rich-switch-buffer-icon (candidate)

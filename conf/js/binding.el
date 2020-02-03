@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+(general-define-key :states '(insert emacs)
+                    :keymaps '(js2-mode-map rjsx-mode-map)
+                    [return] 'js/maybe-pretty-brackets
+                    "RET" 'js/maybe-pretty-brackets)
+
 ;; Both JS2 & React
 (leader-minor-def
   :keymaps '(js2-mode-map)
@@ -85,7 +90,7 @@
 
 
 (leader-minor-def
-  :keymaps '(js2-mode-map rjsx-mode-hook)
+  :keymaps '(js2-mode-map rjsx-mode-map)
   :major-mode t
   "m" '(:ignore t :wk "Tide")
   "m x" 'tide-fix

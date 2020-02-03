@@ -20,6 +20,11 @@
   :config
   (dash-docs-activate-docset "CSS"))
 
+(use-package css-eldoc
+  :config
+  (css-eldoc-enable)
+  (add-hook 'scss-mode-hook #'turn-on-css-eldoc))
+
 (use-package html-mode
   :defer t
   :config
@@ -33,6 +38,7 @@
     (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
 
 (use-package emmet-mode
+  :delight " </> "
   :hook ((css-mode . emmet-mode)
          (html-mode . emmet-mode)
          (web-mode . emmet-mode)
@@ -55,15 +61,19 @@
   :hook ((web-mode . lsp)
          (html-mode . lsp)))
 
-(use-package lsp-css
-  :hook (css-mode . lsp))
-  
+;; (use-package lsp-css
+;;   :hook (css-mode . lsp))
+
 (use-package css-eldoc
   :commands (css-eldoc-enable)
   :init (css-eldoc-enable))
 
 (use-package pug-mode)
+
 (use-package sass-mode)
+
 (use-package sws-mode)
+
 (use-package stylus-mode)
+
 (use-package counsel-css)

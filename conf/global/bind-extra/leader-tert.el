@@ -82,4 +82,20 @@ m -> Toggle Mode     | r -> reset"
   "z F" 'debugger-list-functions
   "z v" 'debug-on-variable-change
   "z c" 'company-diag
+  "z k" '((lambda ()
+            (interactive)
+            (let ((ev (read-event)))
+              (message "Key: %s -> Event: %s\nModifiers: %s\nBasic: %s"
+                       (single-key-description ev)
+                       ev
+                       (event-modifiers ev)
+                       (event-basic-type ev)))) :wk "Dump event")
   "z m" 'jump-messages)
+
+;; (general-define-key :keymaps 'local
+;;                     [M-return] '(lambda ()
+;;                                   (interactive)
+;;                                   (message "You hit ret")
+;;                                   (self-insert-command 1)))
+
+
