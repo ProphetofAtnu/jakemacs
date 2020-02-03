@@ -1,17 +1,24 @@
 ;;; init.el ---                                      -*- lexical-binding: t; -*-
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment 'utf-8)
+(set-selection-coding-system 'utf-8)
 ;;(load (expand-file-name "lib/util.el" user-emacs-directory)) 
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
 
 ;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)
 
+
 ;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
 
 (setq custom-file (concat-path user-cache-dir "custom.el"))
 ;; Fonts need to be set asap
-(set-face-attribute 'default t :font "DejaVu Sans Mono-12")
-(set-frame-font "DejaVu Sans Mono-12" nil t)
+;; (set-face-attribute 'default t :font "DejaVu Sans Mono-12")
+;; (set-frame-font "DejaVu Sans Mono-12" nil t)
+;; (set-face-attribute 'default t :font "Fira Code-12")
+;; (set-frame-font "Fira Code-12" nil t)
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)

@@ -96,10 +96,10 @@ body are forms to be evaluated."
        (featurep ',feature)
      ,@body))
 
-(defmacro js/buffer-list-filter (func)
-  (pcase func
-    (`(lambda ((and functionp) ,test) . ,body) (print `(lambda nil ,test ,body)))
-    (`(lambda ,((and listp) args) ,test . ,body) (print `(lambda args ,test ,body)))))
+;; (defmacro js/buffer-list-filter (func)
+;;   (pcase func
+;;     (`(lambda ((and functionp) ,test) . ,body) (print `(lambda nil ,test ,body)))
+;;     (`(lambda ,((and listp) args) ,test . ,body) (print `(lambda args ,test ,body)))))
 
 ;; (js/buffer-list-filter (lambda '(buf win) 'functionp (print "Hello")))
 ;; (defmacro js/with-buffers-filtered (filter body)
@@ -121,68 +121,68 @@ body are forms to be evaluated."
       clean-dirs nil 'confirm)
      base)))
 
-(defun js/dump-obarray (string predicate)
-  (interactive (let ((str (read-string "Prefix: "))
-                     (pred (let  ((ch (read-char-choice
-                                       "Predicate? [f]unction [v]ariable [i]nteractive"
-                                       '(?f ?v ?i))))
-                             (cond
-                              ((eq ch ?f) 'fuctionp)
-                              ((eq ch ?v) 'symbol-value)
-                              ((eq ch ?i) 'interactive-form)))))
-                 (values str pred)))
-  (let
-      ((comp
-        (all-completions string obarray (symbol-function predicate))))
-    (with-current-buffer (get-buffer-create "*DUMP*")
-      (erase-buffer)
-      (dolist (c comp)
-        (insert (format "%s" c) "\n"))))
-  (pop-to-buffer "*DUMP*"))
+;; (defun js/dump-obarray (string predicate)
+;;   (interactive (let ((str (read-string "Prefix: "))
+;;                      (pred (let  ((ch (read-char-choice
+;;                                        "Predicate? [f]unction [v]ariable [i]nteractive"
+;;                                        '(?f ?v ?i))))
+;;                              (cond
+;;                               ((eq ch ?f) 'fuctionp)
+;;                               ((eq ch ?v) 'symbol-value)
+;;                               ((eq ch ?i) 'interactive-form)))))
+;;                  (values str pred)))
+;;   (let
+;;       ((comp
+;;         (all-completions string obarray (symbol-function predicate))))
+;;     (with-current-buffer (get-buffer-create "*DUMP*")
+;;       (erase-buffer)
+;;       (dolist (c comp)
+;;         (insert (format "%s" c) "\n"))))
+;;   (pop-to-buffer "*DUMP*"))
 
-(defun js/dump-keymap (kmp)
-  "Dump a keymap kmp to a string"
-  (when (keymapp kmp)
-    (let ((bnds (cdr kmp))
-          (final "")
-          prefixes)
-      (cl-labels
-          ((tmp (el)
-                (condition-case err
-                    (if (consp el)
-                        (let ((parent (car el))
-                              (children (cdr el)))
-                          (if (and (consp children)
-                                   (proper-list-p children)
-                                   (not  (eq 'menu-bar parent)))
-                              (progn
-                                (let ((oldp (copy-list prefixes)))
-                                  (push (single-key-description parent) prefixes)
-                                  (dolist (nel children)
-                                    (tmp nel))
-                                  (setf prefixes oldp)))
-                            (when (numberp parent)
-                              (progn
-                                (setf final (concat final
-                                                    (format "PREFIX: %s KEY: %s BINDING: %s\n"
-                                                            (if (listp prefixes)
-                                                                (nreverse (copy-list prefixes))
-                                                              prefixes)
-                                                            (single-key-description parent) children))))))))
-                  (error (print (format "Encountered error:
-                  %s\tValue: %s" err el)))))) (dolist (b bnds)
-                                                (tmp b)))
-      final)))
+;; (defun js/dump-keymap (kmp)
+;;   "Dump a keymap kmp to a string"
+;;   (when (keymapp kmp)
+;;     (let ((bnds (cdr kmp))
+;;           (final "")
+;;           prefixes)
+;;       (cl-labels
+;;           ((tmp (el)
+;;                 (condition-case err
+;;                     (if (consp el)
+;;                         (let ((parent (car el))
+;;                               (children (cdr el)))
+;;                           (if (and (consp children)
+;;                                    (proper-list-p children)
+;;                                    (not  (eq 'menu-bar parent)))
+;;                               (progn
+;;                                 (let ((oldp (copy-list prefixes)))
+;;                                   (push (single-key-description parent) prefixes)
+;;                                   (dolist (nel children)
+;;                                     (tmp nel))
+;;                                   (setf prefixes oldp)))
+;;                             (when (numberp parent)
+;;                               (progn
+;;                                 (setf final (concat final
+;;                                                     (format "PREFIX: %s KEY: %s BINDING: %s\n"
+;;                                                             (if (listp prefixes)
+;;                                                                 (nreverse (copy-list prefixes))
+;;                                                               prefixes)
+;;                                                             (single-key-description parent) children))))))))
+;;                   (error (print (format "Encountered error:
+;;                   %s\tValue: %s" err el)))))) (dolist (b bnds)
+;;                                                 (tmp b)))
+;;       final)))
 
-(defun js/dump-keymap-to-buffer ()
-  "Pop to a temporary buffer with a list of all the previous
-buffer's bindings."
-  (interactive)
-  (let ((map (js/dump-keymap (current-local-map))))
-    (with-current-buffer (get-buffer-create "*OUTPUT*")
-      (erase-buffer)
-      (insert map)
-      (pop-to-buffer "*OUTPUT*"))))
+;; (defun js/dump-keymap-to-buffer ()
+;;   "Pop to a temporary buffer with a list of all the previous
+;; buffer's bindings."
+;;   (interactive)
+;;   (let ((map (js/dump-keymap (current-local-map))))
+;;     (with-current-buffer (get-buffer-create "*OUTPUT*")
+;;       (erase-buffer)
+;;       (insert map)
+;;       (pop-to-buffer "*OUTPUT*"))))
 
 
 (provide 'util)
