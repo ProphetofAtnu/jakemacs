@@ -56,8 +56,7 @@
   (add-hook 'typescript-mode-hook 'setup-tide-mode))
 
 (use-package indium
-  :defer t
-  :config
+  :init
   (setq indium-chrome-executable "chromium-browser"))
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
