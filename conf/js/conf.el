@@ -42,15 +42,18 @@
   :init
   (defun setup-tide-mode ()
     (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (eldoc-mode +1)
-    (tide-hl-identifier-mode +1)
-    ;; company is an optional dependency. You have to
-    ;; install it separately via package-install
-    ;; `M-x package-install [ret] company`
-    (company-mode +1))
+      (unless (and (flow-minor-configured-p)
+                 (flow-minor-tag-present-p))
+        (make-local-variable 'company-backends)
+        (tide-setup)
+        (flycheck-mode +1)
+        (setq flycheck-check-syntax-automatically '(save mode-enabled))
+        (eldoc-mode +1)
+        (tide-hl-identifier-mode +1)
+        ;; company is an optional dependency. You have to
+        ;; install it separately via package-install
+        ;; `M-x package-install [ret] company`
+        (company-mode +1)))
   (add-hook 'js2-mode-hook 'setup-tide-mode)
   (add-hook 'rjsx-mode-hook 'setup-tide-mode)
   (add-hook 'typescript-mode-hook 'setup-tide-mode))
@@ -77,7 +80,10 @@
   :commands (nodejs-repl))
 
 (use-package flycheck
-  :commands (flycheck-mode-on-safe))
+  :commands (flycheck-mode-on-safe)
+  :hook ((js2-mode rjsx-mode) . flycheck-mode-on-safe)
+  :config
+  (require 'flycheck-flow))
 
 (use-package js2-refactor
   :delight 
@@ -162,16 +168,13 @@
     :delight
     :commands (company-flow)
     :hook (flow-minor-mode . (lambda ()
-                               (add-to-list (make-local-variable company-backends) company-flow)))
+                               (add-to-list (make-local-variable 'company-backends) 'company-flow)))
     :config
     (push 'rjsx-mode company-flow-modes))
 
 (use-package flycheck-flow
-  :defer t
   :delight
-  :after (flycheck)
-  :delight
-  :config
+  :conf
   (progn
     ;; Don't run flow if there's no @flow pragma
     (custom-set-variables '(flycheck-javascript-flow-args (quote ("--respect-pragma"))))
@@ -179,5 +182,4 @@
     (flycheck-add-mode 'javascript-flow 'rjsx-mode)
     ;; After running js-flow, run js-eslint
     ;; doing this in the other order causes a lot of repeated errors!!!
-    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
-    )
+    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
