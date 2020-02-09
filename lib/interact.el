@@ -50,4 +50,31 @@
       )
     (newline-and-indent)))
 
+(cl-defmacro js/context-func (name args
+                                       &key
+                                       (bind nil)
+                                       (doc nil doc-p)
+                                       (inter-args nil inter-args-p)
+                                       conds)
+  (let ((preamble nil)
+        (con 
+         (let (list-of-pairs)
+           (dolist (track conds (nreverse list-of-pairs))
+             (destructuring-bind (a . b) track 
+               (let ((pred (if (functionp a)
+                               `(funcall (quote ,a))
+                             a)))
+                 (push `(,pred ,@b) list-of-pairs)))))))
+    (when inter-args-p
+      (push `(interactive ,inter-args) preamble))
+    (when doc-p
+      (push doc preamble))
+    `(defun ,name ,args
+       ,@preamble
+       ;; ,doc
+       ;; (interactive ,inter-args)
+       (let ,bind
+         (cond
+          ,@con)))))
+
 (provide 'interact)

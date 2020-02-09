@@ -51,7 +51,6 @@
 (straight-use-package 'imenu-list)
 (straight-use-package 'imenu-anywhere)
 (straight-use-package 'prodigy)
-(straight-use-package 'treemacs)
 
 (straight-use-package 'thingatpt)
 (straight-use-package 'thingatpt-plus)

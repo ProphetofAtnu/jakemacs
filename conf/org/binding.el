@@ -46,4 +46,6 @@
 (leader-tert-def
   "," 'org-agenda
   "n" 'deft
+  "o" 'js/org-search
   )
+

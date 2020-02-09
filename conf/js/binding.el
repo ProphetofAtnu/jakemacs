@@ -8,8 +8,8 @@
 
 ;; Both JS2 & React
 (leader-minor-def
-  :keymaps '(js2-mode-map)
-  :major-mode t
+  :keymaps 'js2-mode-map
+  :major-mode 'js2-mode
   "=" 'prettier-js
   "-" 'eslintd-fix
   "z" '(:ignore t :wk "Fold")
@@ -20,6 +20,41 @@
   "z F" 'js2-mode-toggle-hide-functions
   "z C" 'js2-mode-toggle-hide-comments
   ;; Refractor
+  "d" '(:ignore t :wk "JSDoc" :major-modes '(js2-mode))
+  "d t" 'js-doc-insert-tag
+  "d d" 'js-doc-describe-tag
+  "d f" 'js-doc-insert-function-doc
+  "d F" 'js-doc-insert-file-doc
+  "d s" 'js-doc-insert-function-doc-snippet)
+  ;; Node
+  ;; "n" '(:ignore t :wk "Node-Repl")
+  ;; "n '" 'nodejs-repl
+  ;; "n s" 'nodejs-repl
+  ;; "n i" 'nodejs-repl-switch-to-repl
+  ;; "n e" 'nodejs-repl-send-last-expression
+  ;; "n E" '(#'(lambda ()
+  ;;             (interactive)
+  ;;             (nodejs-repl-send-last-expression)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
+  ;; "n b" 'nodejs-repl-send-buffer
+  ;; "n B" '(#'(lambda ()
+  ;;          (interactive)
+  ;;          (nodejs-repl-send-buffer)
+  ;;          (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
+  ;; "n l" 'nodejs-repl-send-line
+  ;; "n L" '(#'(lambda ()
+  ;;             (interactive)
+  ;;             (nodejs-repl-send-line)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
+  ;; "n r" 'nodejs-repl-send-region
+  ;; "n R" '(#'(lambda (start end)
+  ;;             (interactive "r")
+  ;;             (nodejs-repl-send-region start end)
+  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Region+F")
+
+(leader-minor-def
+  :keymaps '(js2-mode-map rjsx-mode-map)
+  :major-modes t
   "r" '(:ignore t :wk "Refactor")
   "r a" '(:ignore t :wk "Add")
   "r a g" 'js2r-add-to-globals-annotation
@@ -62,37 +97,12 @@
   "r m" '(:ignore t :wk "Move Line")
   "r m j" 'js2r-move-line-down
   "r m k" 'js2r-move-line-up
-  ;; Node
-  ;; "n" '(:ignore t :wk "Node-Repl")
-  ;; "n '" 'nodejs-repl
-  ;; "n s" 'nodejs-repl
-  ;; "n i" 'nodejs-repl-switch-to-repl
-  ;; "n e" 'nodejs-repl-send-last-expression
-  ;; "n E" '(#'(lambda ()
-  ;;             (interactive)
-  ;;             (nodejs-repl-send-last-expression)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
-  ;; "n b" 'nodejs-repl-send-buffer
-  ;; "n B" '(#'(lambda ()
-  ;;          (interactive)
-  ;;          (nodejs-repl-send-buffer)
-  ;;          (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
-  ;; "n l" 'nodejs-repl-send-line
-  ;; "n L" '(#'(lambda ()
-  ;;             (interactive)
-  ;;             (nodejs-repl-send-line)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
-  ;; "n r" 'nodejs-repl-send-region
-  ;; "n R" '(#'(lambda (start end)
-  ;;             (interactive "r")
-  ;;             (nodejs-repl-send-region start end)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Region+F")
   )
 
-
 (leader-minor-def
+  ;; :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
   :keymaps '(js2-mode-map rjsx-mode-map)
-  :major-mode t
+  :major-modes t 
   "m" '(:ignore t :wk "Tide")
   "m x" 'tide-fix
   "m n" 'tide-nav
@@ -110,13 +120,34 @@
   "m r" 'tide-rename-symbol
   "m i" 'tide-jsdoc-template)
 
+;; Flatten the tide map for typescript mode
+;; (I wish javascript didn't have so many damn functions)
+(leader-minor-def
+  :keymaps 'typescript-mode-map
+  :major-mode t
+  "x" 'tide-fix
+  "n" 'tide-nav
+  "=" 'tide-format
+  "t" 'tide-refactor
+  "f" 'tide-references
+  "g" 'tide-jump-to-definition
+  "G" 'tide-jump-back
+  "R" 'tide-rename-file
+  "q" 'tide-restart-server
+  "Q" 'tide-kill-server
+  "v" 'tide-verify-setup
+  "s" 'tide-list-servers
+  "c" 'tide-compile-file
+  "r" 'tide-rename-symbol
+  "i" 'tide-jsdoc-template)
 
 ;; Indium
 (leader-minor-def
-  :keymaps '(js2-mode-map rjsx-mode-map)
-  :major-mode t
+  :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
+  :major-modes t
   "." 'indium-switch-to-debugger
   "'" 'indium-switch-to-repl-buffer
+  "," '(:ignore t :wk "Indium")
   ", ," 'indium-eval
   ", l" 'indium-launch
   ", L" 'indium-connect 
@@ -132,15 +163,15 @@
   ", b" 'indium-eval-buffer
   ", v" 'indium-list-breakpoints)
 
-(leader-minor-def
-  :keymaps '(js2-mode-map rjsx-mode-map)
-  :major-mode t
-  "d" '(:ignore t :wk "JSDoc")
-  "d t" 'js-doc-insert-tag
-  "d d" 'js-doc-describe-tag
-  "d f" 'js-doc-insert-function-doc
-  "d F" 'js-doc-insert-file-doc
-  "d s" 'js-doc-insert-function-doc-snippet)
+;; (leader-minor-def
+;;   :keymaps '(js2-mode-map rjsx-mode-map)
+;;   :major-mode t
+;;   "d" '(:ignore t :wk "JSDoc")
+;;   "d t" 'js-doc-insert-tag
+;;   "d d" 'js-doc-describe-tag
+;;   "d f" 'js-doc-insert-function-doc
+;;   "d F" 'js-doc-insert-file-doc
+;;   "d s" 'js-doc-insert-function-doc-snippet)
 
 
 (leader-minor-def
@@ -153,6 +184,7 @@
 
 (leader-minor-def
   :keymaps '(flow-minor-mode-map)
+  :minor-mode t
   "f" '(:ignore t :wk "Flow")
   "fb" 'xref-pop-marker-stack
   "fd" 'flow-minor-jump-to-definition

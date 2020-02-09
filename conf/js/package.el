@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
+(straight-use-package 'web-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package 'js2-refactor)
 (straight-use-package 'js2-closure)

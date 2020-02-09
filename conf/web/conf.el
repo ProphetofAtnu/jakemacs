@@ -49,17 +49,17 @@
     "<tab>" 'spacemacs/emmet-expand
     "TAB" 'spacemacs/emmet-expand))
 
-(use-package company-web
+(use-package company-web-html
+  :commands (company-web-html)
   :init
   (js/company-localize-backends
    web-mode
-   (company-lsp company-web)))
+   (company-web-html)))
 
 (use-package prettier-js)
 
 (use-package lsp-html
-  :hook ((web-mode . lsp)
-         (html-mode . lsp)))
+  :hook ((html-mode . lsp)))
 
 ;; (use-package lsp-css
 ;;   :hook (css-mode . lsp))

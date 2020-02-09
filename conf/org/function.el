@@ -182,3 +182,27 @@ the org dir."
       (_ (evil-ret))))
   )
 
+(defun js/org-search ()
+  "Run rg over the org directory"
+  (interactive)
+  (counsel-rg nil org-directory "-M 80" "Org Search: "))
+
+(defun js/org-dir-file ()
+  (interactive)
+  (if (featurep 'ivy)
+      (ivy-read "Org File:" (js/all-org-files)
+                :action  '(1
+                           ("o" find-file "find file")
+                           ("j" find-file-other-window "other window")
+                           ("f" find-file-other-frame "other frame")
+                           ("x" counsel-find-file-extern "open externally")
+                           ("R" find-file-read-only "read only")
+                           ("c" counsel-find-file-copy "copy file")
+                           ("m" counsel-find-file-move "move or rename")
+                           ("d" counsel-find-file-mkdir-action "mkdir")))
+    (let ((fn
+           (completing-read
+            "Org File:"
+            (js/all-org-files))))
+      (find-file fn))))
+

@@ -42,8 +42,10 @@
   :init
   (defun setup-tide-mode ()
     (interactive)
-      (unless (and (flow-minor-configured-p)
-                 (flow-minor-tag-present-p))
+    (unless (and
+             (featurep 'flow-minor-mode)
+             (flow-minor-configured-p)
+             (flow-minor-tag-present-p))
         (make-local-variable 'company-backends)
         (tide-setup)
         (flycheck-mode +1)
@@ -57,6 +59,18 @@
   (add-hook 'js2-mode-hook 'setup-tide-mode)
   (add-hook 'rjsx-mode-hook 'setup-tide-mode)
   (add-hook 'typescript-mode-hook 'setup-tide-mode))
+
+(use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                (setup-tide-mode))))
+  :config
+  ;; enable typescript-tslint checker
+  (require 'flycheck)
+  (flycheck-add-mode 'typescript-tslint 'web-mode))
 
 (use-package indium
   :init
@@ -74,14 +88,14 @@
 
 (use-package add-node-modules-path
   :commands (add-node-modules-path)
-  :hook ((js2-mode rjsx-mode) . add-node-modules-path))
+  :hook ((js2-mode rjsx-mode typescript-mode) . add-node-modules-path))
 
 (use-package nodejs-repl
   :commands (nodejs-repl))
 
 (use-package flycheck
   :commands (flycheck-mode-on-safe)
-  :hook ((js2-mode rjsx-mode) . flycheck-mode-on-safe)
+  :hook ((js2-mode rjsx-mode typescript-mode) . flycheck-mode-on-safe)
   :config
   (require 'flycheck-flow))
 
@@ -174,7 +188,7 @@
 
 (use-package flycheck-flow
   :delight
-  :conf
+  :config
   (progn
     ;; Don't run flow if there's no @flow pragma
     (custom-set-variables '(flycheck-javascript-flow-args (quote ("--respect-pragma"))))
@@ -183,3 +197,5 @@
     ;; After running js-flow, run js-eslint
     ;; doing this in the other order causes a lot of repeated errors!!!
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
+
+(use-package typescript-mode)
