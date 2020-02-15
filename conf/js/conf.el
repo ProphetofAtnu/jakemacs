@@ -48,6 +48,7 @@
              (flow-minor-tag-present-p))
         (make-local-variable 'company-backends)
         (tide-setup)
+        (add-to-list 'company-backends 'company-tide)
         (flycheck-mode +1)
         (setq flycheck-check-syntax-automatically '(save mode-enabled))
         (eldoc-mode +1)
