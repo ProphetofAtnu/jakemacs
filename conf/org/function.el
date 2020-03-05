@@ -24,14 +24,14 @@
 the current buffer"
   (interactive)
   (save-excursion
-      (goto-char (point-max))
-      (while (outline-previous-heading)
-        (org-id-get-create))))
+    (goto-char (point-max))
+    (while (outline-previous-heading)
+      (org-id-get-create))))
 
-  ;; (org-map-entries #'(lambda ()
-  ;;                      (let ((org-map-continue-from (point-min)))
-  ;;                        (org-id-get-create)))
-  ;;                  t nil))
+;; (org-map-entries #'(lambda ()
+;;                      (let ((org-map-continue-from (point-min)))
+;;                        (org-id-get-create)))
+;;                  t nil))
 
 (defun js/all-org-buffers ()
   "Return a list of all open org buffers"
@@ -60,7 +60,7 @@ the org dir."
             (save-buffer)
             (unless (memq buf old-bufs)
               (kill-current-buffer)))))))) 
- 
+
 ;; (debug-on-entry 'js/org-index-directory)
 
 (require 'async)
@@ -206,3 +206,9 @@ the org dir."
             (js/all-org-files))))
       (find-file fn))))
 
+(defun js/org-pop-org-dir ()
+  "Open the org directory"
+  (interactive)
+  (let ((bufn (save-window-excursion 
+                (dired org-directory))))
+    (pop-to-buffer bufn)))

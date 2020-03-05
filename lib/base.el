@@ -321,16 +321,17 @@
 (use-package evil-magit
   :hook (magit-mode . evil-magit-init))
 
-(use-package dashboard
-  :config
-  (setq dashboard-banner-logo-title "Ahoy!"
-        dashboard-startup-banner 'logo
-        dashboard-center-content t
-        dashboard-items '((recents  . 5)
-                          (bookmarks . 5)
-                          (projects . 5)
-                          (registers . 5)))
-  (dashboard-setup-startup-hook))
+;; (use-package dashboard
+;;   :config
+;;   ;; (setq dashboard-banner-logo-title "Ahoy!"
+;;   ;;       dashboard-startup-banner 'logo
+;;   ;;       dashboard-center-content t
+;;   ;;       dashboard-items '((recents  . 5)
+;;   ;;                         (bookmarks . 5)
+;;   ;;                         (projects . 5)
+;;   ;;                         (registers . 5))
+;;   ;;       )
+;;   (dashboard-setup-startup-hook))
 
 (use-package eshell-prompt-extras
   :after (eshell)

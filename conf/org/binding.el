@@ -47,5 +47,6 @@
   "," 'org-agenda
   "n" 'deft
   "o" 'js/org-search
+  "O" 'js/org-pop-org-dir
   )
 

@@ -59,6 +59,9 @@
   "e r" 'gorepl-eval-region
   "e l" 'gorepl-eval-line
   "e j" 'gorepl-eval-line-goto-next-line
+  "d" 'godef-describe
+  "j" 'godef-jump-other-window
+  "J" 'godef-jump
   "=" 'gofmt
   "," 'gofmt
   "p" 'go-playground

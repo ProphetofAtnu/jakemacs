@@ -5,6 +5,33 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+(setq initial-major-mode 'emacs-lisp-mode
+      ;; initial-buffer-choice "*scratch*"
+      initial-scratch-message ";; Welcome, traveler.
+;; I'm too lazy to fix lisp interaction mode
+;; so I've set it to emacs-lisp-mode until I
+;; stop being lazy.
+
+;; Also I'm too lazy to fix emacs-dashboard, so
+;; I'm just waiting until there is a fix.
+
+;; Here's a cat for waiting purposes:
+
+;;                          ,
+;;   ,-.       _,---._ __  / \\
+;;  /  )    .-'       `./ /   \\
+;; (  (   ,'            `/    /|
+;;  \\  `-\"             \\'\\   / |
+;;   `.              ,  \\ \\ /  |
+;;    /`.          ,'-`----Y   |
+;;   (            ;        |   '
+;;   |  ,-.    ,-'         |  /
+;;   |  | (   |            | /
+;;   )  |  \\  `.___________|/
+;;   '--'   '--\"
+"
+      inhibit-startup-screen t)
+
 (setq eshell-directory-name (ensure-dir user-cache-dir "eshell"))
 (setq comint-prompt-read-only t)
 

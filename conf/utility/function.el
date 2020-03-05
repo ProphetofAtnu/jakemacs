@@ -10,3 +10,5 @@
  ((markdown-link-p (markdown-follow-link-at-point))
   (markdown-footnote-marker-positions (markdown-footnote-find-text))
   (t (evil-ret))))
+
+
