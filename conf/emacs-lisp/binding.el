@@ -2,7 +2,7 @@
 
 (leader-minor-def
   :states '(normal visual insert emacs override)
-  :keymaps '(emacs-lisp-mode-map local)
+  :keymaps '(emacs-lisp-mode-map emacs-lisp local)
   :major-modes t
   "m" 'macrostep-mode
   "d" 'elisp-def

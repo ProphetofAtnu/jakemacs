@@ -5,6 +5,11 @@
 (use-package eldoc
   :delight)
 
+(use-package elisp-demos
+  :config
+  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
+  (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
+
 (use-package company-elisp
   :config
   (add-hook 'emacs-lisp-mode-hook 

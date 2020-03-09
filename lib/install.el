@@ -51,6 +51,7 @@
 (straight-use-package 'imenu-list)
 (straight-use-package 'imenu-anywhere)
 (straight-use-package 'prodigy)
+(straight-use-package 'rainbow-mode)
 
 (straight-use-package 'thingatpt)
 (straight-use-package 'thingatpt-plus)

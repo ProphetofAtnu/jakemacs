@@ -123,7 +123,7 @@
 ;; Flatten the tide map for typescript mode
 ;; (I wish javascript didn't have so many damn functions)
 (leader-minor-def
-  :keymaps 'typescript-mode-map
+  :keymaps '( typescript-mode-map web-tsx-mode-map)
   :major-mode t
   "x" 'tide-fix
   "n" 'tide-nav
@@ -139,11 +139,11 @@
   "s" 'tide-list-servers
   "c" 'tide-compile-file
   "r" 'tide-rename-symbol
-  "i" 'tide-jsdoc-template)
+  "t" 'tide-jsdoc-template)
 
 ;; Indium
 (leader-minor-def
-  :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
+  :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map web-tsx-mode-map)
   :major-modes t
   "." 'indium-switch-to-debugger
   "'" 'indium-switch-to-repl-buffer

@@ -63,15 +63,21 @@
 
 (use-package web-mode
   :init
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-  (add-hook 'web-mode-hook
+  (define-derived-mode web-tsx-mode web-mode "React-TSX"
+    "Derived mode from web-mode to make bindings easier"
+    :syntax-table nil)
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
+  (add-hook 'web-tsx-mode-hook
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
                 (setup-tide-mode))))
   :config
   ;; enable typescript-tslint checker
-  (require 'flycheck)
-  (flycheck-add-mode 'typescript-tslint 'web-mode))
+  (with-eval-after-load 'tide
+    (require 'flycheck)
+    (flycheck-add-mode 'tsx-tide 'web-tsx-mode)
+    (flycheck-add-mode 'typescript-tide 'web-tsx-mode)
+    (flycheck-add-mode 'javascript-eslint 'web-tsx-mode)))
 
 (use-package indium
   :init

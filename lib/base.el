@@ -396,6 +396,9 @@
   (use-package imenu-list)
   (use-package imenu-anywhere))
 
+(use-package rainbow-mode
+  :commands (rainbow-mode))
+
 (use-package so-long
   :commands (global-so-long-mode)
   :init

@@ -33,6 +33,7 @@
   (add-hook 'sly-mrepl-mode-hook (lambda ()  (js/sly-add-contribs))))
 
 (use-package sly-company
+  :defer t
   :hook (sly-mode . sly-company-mode)
   :config
   (add-hook 'sly-mode-hook (lambda () 

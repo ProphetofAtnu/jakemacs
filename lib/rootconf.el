@@ -5,7 +5,8 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
-(setq initial-major-mode 'emacs-lisp-mode
+(setq
+      ;; initial-major-mode 'emacs-lisp-mode
       ;; initial-buffer-choice "*scratch*"
       initial-scratch-message ";; Welcome, traveler.
 ;; I'm too lazy to fix lisp interaction mode
