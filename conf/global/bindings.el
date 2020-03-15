@@ -54,5 +54,4 @@
 (general-defs
   "C-<" 'winner-undo
   "C->" 'winner-redo
-  "C-;" 'treemacs
   )

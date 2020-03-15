@@ -20,6 +20,7 @@
   "s" 'org-sort
   "r" 'org-refile
   ";" 'js/org-refresh-id
+  ":" 'js/org-index-buffer
   "." 'org-agenda
   "t" 'org-sticky-header-mode
   ;; "o" 'helm-org-agenda-files-headings
@@ -46,6 +47,7 @@
 (leader-tert-def
   "," 'org-agenda
   "n" 'deft
+  "." 'js/org-dir-file
   "o" 'js/org-search
   "O" 'js/org-pop-org-dir
   )

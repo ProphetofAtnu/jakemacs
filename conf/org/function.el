@@ -94,11 +94,11 @@ the org dir."
       (js/org-index-async) 
     (progn (js/org-index-directory)
            (org-id-update-id-locations (js/all-org-files))
-           (message "Done Retrieving IDs from org files.")))
-  (remove-hook 'org-mode-hook #'js/org-refresh-id))
+           (message "Done Retrieving IDs from org files."))))
+  ;; (remove-hook 'org-mode-hook #'js/org-refresh-id))
 
 
-(add-hook 'org-mode-hook #'js/org-refresh-id)
+;; (add-hook 'org-mode-hook #'js/org-refresh-id)
 
 (defun js/org-mode-init ()
   (add-hook 'before-save-hook
@@ -106,7 +106,7 @@ the org dir."
                (js/org-index-buffer))
             nil t))
 
-(add-hook 'org-mode-hook 'js/org-mode-init)
+;; (add-hook 'org-mode-hook 'js/org-mode-init)
 
 (defhydra hydra-org-headline (:color teal)
   "Manage Headlines (Exit with q/c/ESC)"

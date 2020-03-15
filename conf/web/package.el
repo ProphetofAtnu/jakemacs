@@ -10,6 +10,9 @@
 (straight-use-package 'prettier-js)
 (straight-use-package 'company-web)
 
+;; Syntax Highlighting for PHP
+(straight-use-package 'php-mode)
+
 ;; Tentatively installed. Will config as needed.
 (straight-use-package 'pug-mode)
 (straight-use-package 'sass-mode)
