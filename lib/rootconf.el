@@ -5,6 +5,9 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
+
 (setq
       ;; initial-major-mode 'emacs-lisp-mode
       ;; initial-buffer-choice "*scratch*"
