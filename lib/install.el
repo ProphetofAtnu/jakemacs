@@ -28,6 +28,7 @@
 (straight-use-package 'smartparens)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'company)
+(straight-use-package 'company-box)
 (straight-use-package 'dired-plus)
 (straight-use-package 'diredfl)
 (straight-use-package 'hydra)

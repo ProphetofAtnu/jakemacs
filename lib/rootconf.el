@@ -1,5 +1,17 @@
 ;; -*- lexical-binding: t; -*-
-(setq active-configs '(ivy utility emacs-lisp sexp lsp go common-lisp org js web shell flycheck))
+(setq active-configs '(ivy
+                       utility
+                       emacs-lisp
+                       sexp
+                       lsp
+                       go
+                       common-lisp
+                       org
+                       js
+                       web
+                       shell
+                       gnuplot
+                       flycheck))
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)

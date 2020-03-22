@@ -6,3 +6,4 @@
 (straight-use-package 'bash-completion)
 (straight-use-package 'fish-completion)
 (straight-use-package 'shell-pop)
+(straight-use-package 'company-native-complete)

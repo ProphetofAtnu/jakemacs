@@ -214,7 +214,8 @@
   :commands (company-mode)
   :delight
   :init
-  (setq company-idle-delay 0.2)
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 1)
   :hook
   (prog-mode . company-mode)
   (comint-mode . company-mode)
@@ -238,6 +239,22 @@
                (company-complete-selection))
              (unless (looking-back "[[:blank:]]")
                (self-insert-command 1)))))
+
+(use-package comint
+  :config
+  (general-defs
+    :states '(insert emacs)
+    :keymaps 'comint-mode-map
+    [C-M-i] 'completion-at-point))
+
+;; (use-package company-box
+;;   :hook (company-mode . company-box-mode)
+;;   :config
+;;    (setq company-box-enable-icon t
+;;          company-box-icons-alist 'company-box-icons-icons-in-terminal
+;;          company-box-icons-functions
+;;          '(company-box-icons--yasnippet company-box-icons--lsp company-box-icons--elisp company-box-icons--acphp)
+;;          company-box-show-single-candidate t))
 
 ;; (use-package semantic
 ;;   :commands (semantic-mode)
@@ -311,7 +328,8 @@
 (use-package projectile
   :delight
   :config
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir))
+  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir)
+        projectile-cache-file (expand-file-name "projectile.cache" user-cache-dir))
   (projectile-mode)
   )
 
@@ -374,6 +392,11 @@
 ;; (use-package esh-autosuggest
 ;;   :hook (eshell-mode . esh-autosuggest-mode))
 
+
+(with-eval-after-load 'historian
+  (setq historian-save-file
+        (ensure-file
+         (concat-path user-cache-dir ".historian"))))
 
 (use-package eshell-z
   :after (eshell))

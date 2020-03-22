@@ -61,8 +61,8 @@
 (use-package lsp-html
   :hook ((html-mode . lsp)))
 
-;; (use-package lsp-css
-;;   :hook (css-mode . lsp))
+(use-package lsp-css
+  :hook (css-mode . lsp))
 
 (use-package css-eldoc
   :commands (css-eldoc-enable)

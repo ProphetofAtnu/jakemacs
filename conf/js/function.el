@@ -33,4 +33,3 @@ If optional argument P is present, test this instead of point."
       (if decision
           decision
         'typical))))
-

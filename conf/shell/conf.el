@@ -38,6 +38,16 @@
 ;;   (setq fish-completion-fallback-on-bash-p t)
 ;;   (global-fish-completion-mode))
 
+(use-package company-native-complete
+  :commands (company-native-complete)
+  :init
+  (add-hook 'comint-mode-hook
+            '(lambda ()
+               (add-to-list (make-local-variable 'company-backends) 'company-native-complete)))
+  (add-hook 'shell-mode-hook
+            '(lambda ()
+               (add-to-list (make-local-variable 'company-backends) 'company-native-complete))))
+
 (use-package purpose
   :defer t
   :config
@@ -51,8 +61,8 @@
 (use-package shelldoc
   :commands (shelldoc-minor-mode
              shelldoc-toggle-doc-window)
-  :hook ((shell-mode . shelldoc-minor-mode)
-         (shelldoc-minor-mode . shelldoc-toggle-doc-window))
+  ;; :hook ((shell-mode . shelldoc-minor-mode)
+  ;;        (shelldoc-minor-mode . shelldoc-toggle-doc-window))
   )
 
 (use-package shell-pop

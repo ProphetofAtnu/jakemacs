@@ -81,7 +81,8 @@
 
 (use-package indium
   :init
-  (setq indium-chrome-executable "chromium-browser"))
+  (setq indium-chrome-executable "chromium-browser"
+        indium-chrome-use-temporary-profile nil))
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
 ;;   (add-hook hook
