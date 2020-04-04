@@ -5,6 +5,7 @@
                        sexp
                        lsp
                        go
+                       rust
                        common-lisp
                        org
                        js
