@@ -9,16 +9,18 @@
 ;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)
 
-
 ;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
 
+(defvar user-src-dir (expand-file-name "~/.install")
+  "The directory to use to auto-install and compile binaries from
+  source (see rust/elixir)")
+
+(let ((e (getenv "USR_SRC_DIR")))
+  (when e 
+    (setq user-src-dir e)))
+
 (setq custom-file (concat-path user-cache-dir "custom.el"))
-;; Fonts need to be set asap
-;; (set-face-attribute 'default t :font "DejaVu Sans Mono-12")
-;; (set-frame-font "DejaVu Sans Mono-12" nil t)
-;; (set-face-attribute 'default t :font "Fira Code-12")
-;; (set-frame-font "Fira Code-12" nil t)
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)

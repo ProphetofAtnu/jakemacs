@@ -45,24 +45,27 @@
   ;; "." 'helm-mini
   ;; "," 'helm-for-files
   ;; "/" 'helm-swoop
-  "M-1" 'eyebrowse-switch-to-window-config-1
-  "M-2" 'eyebrowse-switch-to-window-config-2
-  "M-3" 'eyebrowse-switch-to-window-config-3
-  "M-4" 'eyebrowse-switch-to-window-config-4
-  "M-5" 'eyebrowse-switch-to-window-config-5
-  "M-6" 'eyebrowse-switch-to-window-config-6
-  "M-7" 'eyebrowse-switch-to-window-config-7
-  "M-8" 'eyebrowse-switch-to-window-config-8
-  "M-9" 'eyebrowse-switch-to-window-config-9
-  "M-0" 'eyebrowse-switch-to-window-config-0
+  "1" 'eyebrowse-switch-to-window-config-1
+  "2" 'eyebrowse-switch-to-window-config-2
+  "3" 'eyebrowse-switch-to-window-config-3
+  "4" 'eyebrowse-switch-to-window-config-4
+  "5" 'eyebrowse-switch-to-window-config-5
+  "6" 'eyebrowse-switch-to-window-config-6
+  "7" 'eyebrowse-switch-to-window-config-7
+  "8" 'eyebrowse-switch-to-window-config-8
+  "9" 'eyebrowse-switch-to-window-config-9
+  "0" 'eyebrowse-switch-to-window-config-0
   "\'"  'ansi-term
   "TAB" 'previous-buffer
   "m" 'hydra-window-manage/body
   "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
+  "b B" 'switch-buffer-without-purpose
   "b l" 'ibuffer
   "b o" 'switch-to-buffer-other-window
   "b t" 'switch-to-buffer-other-tab
+  "b p" 'projectile-switch-to-buffer
+  "b P" 'projectile-switch-to-buffer-other-window
   "b d" 'kill-current-buffer
   "b D" 'kill-other-buffers
   "b r" 'revert-buffer
@@ -73,6 +76,7 @@
   "s o" 'occur
   "s r" 'query-replace
   "s c" 'evil-ex-nohighlight
+  "s i" 'iedit-mode
   "d" '(:ignore t :wk "Dedicate")
   "d d" 'purpose-toggle-window-purpose-dedicated
   "d D" 'purpose-toggle-window-buffer-dedicated
@@ -154,6 +158,8 @@
   "p p" 'projectile-switch-project
   "p d" 'projectile-browse-dirty-projects
   "p l" 'projectile-find-file-in-known-projects
+  "p b" 'projectile-switch-to-buffer
+  "p B" 'projectile-switch-to-buffer-other-window
   ;; Search
   "p g" '(:ignore t :wk "Search Project")
   ;; "p g a" 'helm-projectile-ag
@@ -163,5 +169,7 @@
   )
 
 
-(push '(("\\`SPC M-.\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
-(push '(("\\`SPC M-0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC M-[0-9]". "Tab [0-9]")) which-key-replacement-alist)
+;; (push '(("\\`SPC M-.\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
+(push '(("\\`SPC [[:digit:]]\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
+;; (push '(("\\`SPC M-0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC M-[0-9]". "Tab [0-9]")) which-key-replacement-alist)
+(push '(("\\`SPC 0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC [0-9]". "Tab [0-9]")) which-key-replacement-alist)

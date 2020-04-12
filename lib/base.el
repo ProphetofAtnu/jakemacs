@@ -299,7 +299,8 @@
 
 (use-package eyebrowse
   :init
-  (setq eyebrowse-new-workspace t)
+  (setq eyebrowse-new-workspace t
+        eyebrowse-wrap-around t)
   :config
   (eyebrowse-init)
   (eyebrowse-mode t)

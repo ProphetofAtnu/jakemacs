@@ -3,6 +3,8 @@
 (require 'use-package)
 
 (use-package go-mode
+  :init
+  (setq gofmt-command "goimports")
   :config
   (add-hook 'before-save-hook 'gofmt-before-save nil t)
   (setq-mode-local go-mode evil-lookup-func 'godoc-at-point))
@@ -58,3 +60,11 @@
 
 (use-package flycheck
   :hook (go-mode . flycheck-mode))
+
+(use-package go-imports
+  :commands (go-imports-reload-packages-list go-imports-insert-import))
+
+(use-package go-playground
+  :config
+  (add-hook 'go-playground-mode-hook '(lambda ()
+                                        (add-to-list (make-local-variable 'company-backends) 'company-go))))

@@ -33,11 +33,14 @@
   "h g" 'godoc
   "h G" 'godoc-at-point
   "i" '(:ignore t :wk "Insert/Add")
+  "i i" 'go-imports-insert-import
+  "i I" 'go-imports-reload-packages-list
   "i a" 'go-import-add
   "i t" 'go-tag-add
   "i o" 'go-tag-open-github
   "i r" 'go-tag-refresh
   "i d" 'go-tag-remove
+  "i n" 'go-impl
   "r" '(:ignore t :wk "Refractor")
   "r g" 'godoctor-godoc
   "r r" 'godoctor-rename

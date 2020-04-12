@@ -1,4 +1,7 @@
 ;; -*- lexical-binding: t; -*-
+
+;; After the base packages have been loaded, load any additional
+;; configs
 (setq active-configs '(ivy
                        utility
                        emacs-lisp
@@ -9,6 +12,9 @@
                        common-lisp
                        org
                        js
+                       python
+                       ;; cc
+                       ;; elixir
                        web
                        shell
                        gnuplot
