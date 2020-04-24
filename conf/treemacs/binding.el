@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
-(general-define-key
- :keymaps 'treemacs-mode-map
- )
+
+
+(leader-minor-def
+  :keymaps '(treemacs-mode-map)
+	
+  )

@@ -3,7 +3,7 @@
 (require 'which-key)
 
 (general-create-definer leader-primary-def
-  :states '(normal visual insert emacs override)
+  :states '(normal visual motion insert emacs override)
   :prefix leader-primary
   :non-normal-prefix alt-primary)
 
@@ -40,7 +40,8 @@
   ("<return>" nil nil :color blue :column "")
   ("<escape>" nil nil :color blue :column ""))
 
-(leader-primary-def '(normal visual insert emacs override)
+(leader-primary-def '(normal visual motion insert emacs override)
+  "" nil
   "SPC" 'execute-extended-command
   ;; "." 'helm-mini
   ;; "," 'helm-for-files

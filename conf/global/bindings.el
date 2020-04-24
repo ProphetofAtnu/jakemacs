@@ -17,9 +17,12 @@
 (load-relative "./bind-extra/leader-tert.el")
 
 (general-create-definer leader-minor-def
-  :states '(normal visual insert emacs override)
+  :states '(normal visual motion insert emacs override)
   :prefix leader-minor
   :non-normal-prefix alt-minor)
+
+(leader-minor-def
+  "" nil)
 
 (general-defs 'indent-rigidly-map
   "h" 'indent-rigidly-left
@@ -47,6 +50,7 @@
 (use-package winner
   :commands (winner-mode)
   :init (winner-mode))
+
 (use-package treemacs
   :commands (treemacs))
 

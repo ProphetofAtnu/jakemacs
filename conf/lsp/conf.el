@@ -25,3 +25,8 @@
    helm-lsp-global-workspace-symbol))
 
 (use-package dap-mode)
+
+(use-package treemacs
+  :defer t)
+
+(use-package lsp-treemacs) 

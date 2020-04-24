@@ -24,7 +24,7 @@ m -> Toggle Mode     | r -> reset"
   ("m" text-scale-mode))
 
 (general-create-definer leader-tert-def
-  :states '(normal visual insert emacs override)
+  :states '(normal visual motion insert emacs override)
   :prefix leader-tertiary
   :non-normal-prefix alt-tertiary)
 
@@ -40,8 +40,10 @@ m -> Toggle Mode     | r -> reset"
  "w" 'skewer-repl)
 
 (leader-tert-def
+  "" nil
   "t" `(,inferior-shell-selection-map :wk "Inf. Shell")
   "e" 'eww
+  "r" 'treemacs
   "b" 'bookmark-bmenu-search
   "a" 'ace-window
   "g" 'magit
