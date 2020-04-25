@@ -13,3 +13,4 @@
 (straight-use-package 'org-download)
 (straight-use-package 'org-starter)
 (straight-use-package 'org-starter-swiper)
+(straight-use-package 'poporg)

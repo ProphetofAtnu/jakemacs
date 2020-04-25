@@ -39,6 +39,10 @@
 (use-package tide
   :commands (tide-setup)
   :delight " ≋ "
+  :config
+  (setq tide-completion-detailed t
+        tide-completion-ignore-case t)
+  
   :init
   (defun setup-tide-mode ()
     (interactive)
