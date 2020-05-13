@@ -11,7 +11,7 @@
 (straight-use-package '(emacs-flow-jsx :type git :files ("emacs-flow-jsx-mode.el") :host github :repo "rudolfolah/emacs-flow-jsx"))
 
 (straight-use-package 'tern)
-;; (straight-use-package 'company-tern)
+;; (straight-use-package '(company-tern :type git :files ("stable-melpa/company-tern-20161004.1847.el") :host github :repo "syl20bnr/spacemacs-elpa-mirror"))
 (straight-use-package 'js-doc)
 
 (straight-use-package 'add-node-modules-path)

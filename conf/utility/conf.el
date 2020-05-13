@@ -37,3 +37,7 @@
 (use-package simple
   :config
   (add-to-list 'evil-motion-state-modes 'process-menu-mode))
+
+(use-package tramp
+  :config
+  (setq tramp-default-method "ssh"))

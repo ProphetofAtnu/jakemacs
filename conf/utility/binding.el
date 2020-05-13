@@ -3,9 +3,9 @@
 (defun js/ggtags-enable-and-update ()
   "Enable and setup ggtags.")
 
-(leader-minor-def
-  "'" '(:ignore t :wk "gtags")
-  "' t" 'ggtags-mode)
+;; (leader-minor-def
+;;   "'" '(:ignore t :wk "gtags")
+;;   "' t" 'ggtags-mode)
 
 (add-hook 'ggtags-mode-hook
           '(lambda () 

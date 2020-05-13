@@ -9,7 +9,7 @@
 ;; Both JS2 & React
 (leader-minor-def
   :keymaps 'js2-mode-map
-  :major-mode 'js2-mode
+  :major-modes t
   "=" 'prettier-js
   "-" 'eslintd-fix
   "z" '(:ignore t :wk "Fold")
@@ -20,9 +20,10 @@
   "z F" 'js2-mode-toggle-hide-functions
   "z C" 'js2-mode-toggle-hide-comments
   ;; Refractor
-  "d" '(:ignore t :wk "JSDoc" :major-modes '(js2-mode))
+  "d" '(:ignore t :wk "JSDoc")
   "d t" 'js-doc-insert-tag
-  "d d" 'js-doc-describe-tag
+  "d ?" 'js-doc-describe-tag
+  "d d" 'js/jsdoc-annotate-above
   "d f" 'js-doc-insert-function-doc
   "d F" 'js-doc-insert-file-doc
   "d s" 'js-doc-insert-function-doc-snippet)
@@ -150,6 +151,7 @@
   "," '(:ignore t :wk "Indium")
   ", ," 'indium-eval
   ", l" 'indium-launch
+  ", q" 'indium-quit
   ", L" 'indium-connect 
   ", s" 'indium-scratch
   ", b" 'indium-add-breakpoint

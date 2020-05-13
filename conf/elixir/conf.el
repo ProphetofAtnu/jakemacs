@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defvar js/elixir-ls-subpath "elixir-ls/release/language_server.sh")
+(defvar js/elixir-ls-subpath "elixir-ls/release")
 
 (defvar js/elixir-ls-release-path
   (expand-file-name js/elixir-ls-subpath user-src-dir))

@@ -14,7 +14,7 @@
                        js
                        python
                        ;; cc
-                       ;; elixir
+                       elixir
                        web
                        shell
                        gnuplot

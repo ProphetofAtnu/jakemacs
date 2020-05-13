@@ -4,3 +4,9 @@
 :ID:       f9e3e6e8-a3e8-4510-9454-c3f40f0fa978
 :END:
 
+* Elixir
+
+** <2020-04-27 Mon> Language server fix
+Pointed the LSP language server to the compiled release folder in the
+user-src-dir (Defaults to "$HOME/.install")
+

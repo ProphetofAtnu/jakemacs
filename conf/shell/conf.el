@@ -18,11 +18,13 @@
                              (company-mode)))
   (add-hook 'shell-mode-hook
             '(lambda ()
-               ;; (add-to-list (make-local-variable 'company-backends) 'company-shell)
+               (add-to-list (make-local-variable 'company-backends) 'company-capf)
+               (add-to-list (make-local-variable 'company-backends) 'company-shell)
                (general-define-key :keymaps '(shell-mode-map)
                                    "TAB" 'company-complete)
-               (setq-local company-frontends '(company-preview-frontend))
-               (company-mode))))
+               ;; (setq-local company-frontends '(company-preview-frontend))
+               (company-mode)))
+  )
 
 
 (use-package bash-completion
@@ -33,20 +35,20 @@
 (use-package company-shell
   :commands (company-shell))
 
-;; (when (and (executable-find "fish")
-;;            (require 'fish-completion nil t))
-;;   (setq fish-completion-fallback-on-bash-p t)
-;;   (global-fish-completion-mode))
+(when (and (executable-find "fish")
+           (require 'fish-completion nil t))
+  (setq fish-completion-fallback-on-bash-p t)
+  (global-fish-completion-mode))
 
-(use-package company-native-complete
-  :commands (company-native-complete)
-  :init
-  (add-hook 'comint-mode-hook
-            '(lambda ()
-               (add-to-list (make-local-variable 'company-backends) 'company-native-complete)))
-  (add-hook 'shell-mode-hook
-            '(lambda ()
-               (add-to-list (make-local-variable 'company-backends) 'company-native-complete))))
+;; (use-package company-native-complete
+;;   :commands (company-native-complete)
+;;   :init
+;;   (add-hook 'comint-mode-hook
+;;             '(lambda ()
+;;                (add-to-list (make-local-variable 'company-backends) 'company-native-complete)))
+;;   (add-hook 'shell-mode-hook
+;;             '(lambda ()
+;;                (add-to-list (make-local-variable 'company-backends) 'company-native-complete))))
 
 (use-package purpose
   :defer t

@@ -68,3 +68,8 @@
   :config
   (add-hook 'go-playground-mode-hook '(lambda ()
                                         (add-to-list (make-local-variable 'company-backends) 'company-go))))
+
+(use-package org
+  :defer t
+  :config
+  (require 'ob-go))

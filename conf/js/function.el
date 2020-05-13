@@ -33,3 +33,40 @@ If optional argument P is present, test this instead of point."
       (if decision
           decision
         'typical))))
+
+(defun js/jsdoc-annotate-above ()
+  "Add an annotation to the line above"
+  (interactive)
+  (if (and (featurep 'evil) (functionp 'evil-open-above))
+      (evil-open-above 1)
+    (progn  (goto-char (point-at-bol))
+            (newline-and-indent)
+            (line-move -1)
+            (indent-according-to-mode)))
+  (insert "/** ")
+  (save-excursion
+    (insert " */"))
+  )
+
+;; (defun js/jsdoc-one-liner-p () 
+;;     (condition-case-unless-debug nil 
+;;         (let ((bol (point-at-bol))
+;;               (eol (point-at-eol))
+;;               (open (search-backward "/**"))
+;;               (close (search-backward "*/")))
+;;           (if (and (>= open bol) (<= close eol))
+;;               (list open close)
+;;             nil))
+;;       (error nil)))
+
+;; (defun js/jsdoc-return ()
+;;   (let ((start (search-backward "/**"))
+;;         (end (search-forward "*/"))))
+
+;; (defun js/js-dynamic-ret
+;;     (interactive)
+;;   (cond
+;;    ((js-doc-in-document-p)
+;;     (when (js/jsdoc-one-liner-p)
+	
+;;       ))))

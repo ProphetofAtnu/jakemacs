@@ -6,6 +6,23 @@
   :init
   (setq js-indent-level 2))
 
+;; (use-package tern
+;;   :init
+;;   (add-hook 'js2-mode-hook #'tern-mode)
+;;   (add-hook 'rjsx-mode-hook #'tern-mode)
+;;   :config
+;;   (load (expand-file-name "misc/company-tern" user-emacs-directory))
+;;   (add-hook 'tern-mode-hook (lambda ()
+;;                               (add-to-list (make-local-variable 'company-backends)
+;;                                            'company-tern))))
+
+;; (use-package company-tern
+;;   :hook (tern-mode . (lambda ()
+;;                        (add-to-list
+;;                         (make-local-variable
+;;                          'company-backends)
+;;                         'company-tern))))
+
 ;; TODO: add jsx support (React)
 (use-package rjsx-mode
   :defer t
@@ -211,3 +228,4 @@
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 
 (use-package typescript-mode)
+
