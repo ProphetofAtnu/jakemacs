@@ -53,7 +53,7 @@
 (use-package gorepl-mode
   :config
   (setenv "GOROOT" "/usr/local/go")
-  (setenv "GOPATH" "/home/jacsc/go"))
+  (setenv "GOPATH" (expand-file-name "~/go")))
 
 (use-package go-imenu
   :hook (go-mode . go-imenu-setup))

@@ -57,6 +57,7 @@
   "9" 'eyebrowse-switch-to-window-config-9
   "0" 'eyebrowse-switch-to-window-config-0
   "\'"  'ansi-term
+  ";" 'treemacs-select-window
   "TAB" 'previous-buffer
   "m" 'hydra-window-manage/body
   "b"   '(:ignore t :wk "Buffers")
