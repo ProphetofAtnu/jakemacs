@@ -11,6 +11,7 @@
                        rust
                        common-lisp
                        org
+                       treemacs
                        js
                        python
                        ;; cc
