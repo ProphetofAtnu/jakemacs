@@ -41,6 +41,7 @@
   :init
   (defvar org-refile-targets nil)
   (setq 
+   org-id-track-globally t
    org-id-link-to-org-use-id 'use-existing
    org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir))
   (add-to-list 'org-refile-targets '(org-id-files . (:maxlevel . 4)))

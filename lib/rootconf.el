@@ -18,6 +18,7 @@
                        elixir
                        web
                        shell
+                       lua
                        gnuplot
                        flycheck))
 

@@ -7,6 +7,10 @@
  :keymaps 'org-mode-map
  "<return>" 'js/org-context-ret)
 
+(general-unbind '(insert) evil-org-mode-map
+  "C-d"
+  "C-t")
+
 
 (leader-minor-def
   :states '(normal visual insert emacs override)

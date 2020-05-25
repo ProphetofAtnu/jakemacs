@@ -64,10 +64,6 @@
 ;; (use-package lsp-css
 ;;   :hook (css-mode . lsp))
 
-(use-package css-eldoc
-  :commands (css-eldoc-enable)
-  :init (css-eldoc-enable))
-
 (use-package pug-mode)
 
 (use-package sass-mode)

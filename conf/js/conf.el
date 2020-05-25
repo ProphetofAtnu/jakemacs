@@ -102,8 +102,14 @@
 
 (use-package indium
   :init
-  (setq indium-chrome-executable "chromium-browser"
-        indium-chrome-use-temporary-profile nil))
+  (add-hook 'indium-interaction-mode-hook '(lambda ()
+                                             (tide-mode 0)
+                                             (tide-hl-identifier-mode 0)))
+  (setq
+   indium-chrome-executable "google-chrome"
+   indium-chrome-use-temporary-profile nil
+   indium-chrome-data-dir (expand-file-name "indium-profile" user-cache-dir) )
+  )
 
 ;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
 ;;   (add-hook hook

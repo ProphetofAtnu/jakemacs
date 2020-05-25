@@ -15,6 +15,7 @@
 
 (use-package company-lsp
   :config
+  ;; (setq company-lsp-enable-recompletion t)
   (add-hook 'lsp-mode-hook (lambda () 
                              (add-to-list (make-local-variable 'company-backends) 'company-lsp))))
 
