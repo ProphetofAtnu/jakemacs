@@ -168,6 +168,12 @@
   "p g r" 'projectile-ripgrep
   ;; "p g k" 'helm-projectile-ack
   "p g g" 'projectile-grep
+  ;; Frames
+  "o" '(:ignore t :wk "Frames")
+  "o o" 'other-frame
+  "o n" 'make-frame
+  "o m" 'make-frame-on-monitor
+  "o d" 'dired-other-frame
   )
 
 
