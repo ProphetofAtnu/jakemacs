@@ -45,7 +45,6 @@ m -> Toggle Mode     | r -> reset"
   "e" 'eww
   "r" 'treemacs
   "b" 'bookmark-bmenu-search
-  "a" 'ace-window
   "g" 'magit
   "RET" 'ace-link
   ;; "m" 'helm-mode-manager
@@ -58,10 +57,10 @@ m -> Toggle Mode     | r -> reset"
   "x x" 'indent-region
   "x f" 'hydra-scale-text/body
   "x +" 'hydra-scale-text/text-scale-increase
+  "x =" 'hydra-scale-text/text-scale-increase
   "x -" 'hydra-scale-text/text-scale-decrease
   "x X" 'indent-rigidly
-  "x q" 'fill-paragraph
-  "x Q" 'auto-fill-mode
+  "x q" 'auto-fill-mode
   "x m" 'automargin-mode
   "x u" 'downcase-region
   "x U" 'upcase-region

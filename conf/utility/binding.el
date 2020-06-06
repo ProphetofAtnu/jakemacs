@@ -22,7 +22,6 @@
                "' d" 'helm-gtags-find-tag
                "' D" 'helm-gtags-find-tag-other-window)))
 
-
 (leader-primary-def
   :keymaps 'override
   "f z z" 'fzf
@@ -32,7 +31,15 @@
 
 (leader-tert-def
   :keymaps 'override
-  "p" 'list-processes)
+  "p" 'list-processes
+  "a" '(:ignore t :wk "Annotate")
+  "a a" 'annotate-annotate
+  "a A" 'annotate-mode
+  "a s" 'annotate-save-annotations
+  "a c" 'annotate-clear-annotations
+  "a S" 'annotate-show-annotation-summary
+  "a e" 'annotate-export-annotations
+  )
 
 (general-define-key
  :states '(normal visual motion)

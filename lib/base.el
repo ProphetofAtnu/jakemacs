@@ -3,9 +3,7 @@
 ;; For internal libs
 (require 'better-defaults)
 (require 'delight)
-(require 'use-package)
 (require 'auto-minor-mode)
-(require 'load-relative)
 (require 'mode-local)
 (require 'async)
 

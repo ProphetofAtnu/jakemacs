@@ -14,7 +14,7 @@
                        treemacs
                        js
                        python
-                       ;; cc
+                       cc
                        elixir
                        web
                        shell

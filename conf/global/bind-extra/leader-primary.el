@@ -117,6 +117,8 @@
   ;; Window
   "w" '(:ignore t :wk "Windows")
   "w ." 'hydra-window-manage/body 
+  "w a" 'ace-window
+  "w x" 'ace-delete-window
   "w w" 'evil-window-next
   "w d" 'delete-window
   "w =" 'balance-windows

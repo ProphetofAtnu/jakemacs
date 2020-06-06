@@ -36,6 +36,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(require 'early/early-package)
+(require 'early/early-config)
+
 ;; Install everything at the beginning
 (require 'install)
 

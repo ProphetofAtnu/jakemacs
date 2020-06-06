@@ -55,19 +55,37 @@ Uses the directory \"user-emacs-directory/conf/\""
 
 (defvar js/conf-dir (expand-file-name "conf" user-emacs-directory))
 
+(defun js/new-conf (name)
+  (interactive "sNew configuration name: ")
+  (let ((cconfs (directory-files js/conf-dir t "[^\.]"))
+        (nconf (expand-file-name name js/conf-dir)))
+    (unless (member nconf cconfs)
+      (let ((nconf-files
+             (mapcar '(lambda (f)
+                        (expand-file-name
+                         (concat (symbol-name f) ".el")
+                         nconf))
+                     load-cust-order)))
+        (make-directory nconf t)
+        (dolist (fi nconf-files)
+          (with-current-buffer (find-file-noselect fi t t)
+            (save-buffer)
+            (kill-buffer))))
+    )))
+
 ;; TODO: Fix new loader function so it actually does something.
-(cl-defun js/new-loader-fix (name)
-  "Create a new loader in the config directory"
-  (let ((nstring (cond ((stringp name) name)
-                       ((symbolp name) (symbol-name name))
-                       (t (cl-return-from js/conf-dir))))
-        (confs
-         (directory-files js/conf-dir
-                          nil
-                          directory-files-no-dot-files-regexp)))
-    (if (memq name confs)
-        (print "Config Exists")
-      (print "Config does not exist"))))
+;; (cl-defun js/new-loader-fix (name)
+;;   "Create a new loader in the config directory"
+;;   (let ((nstring (cond ((stringp name) name)
+;;                        ((symbolp name) (symbol-name name))
+;;                        (t (cl-return-from js/conf-dir))))
+;;         (confs
+;;          (directory-files js/conf-dir
+;;                           nil
+;;                           directory-files-no-dot-files-regexp)))
+;;     (if (memq name confs)
+;;         (print "Config Exists")
+;;       (print "Config does not exist"))))
 
 (defmacro with-eval-after-multi (files &rest body)
   "with-eval-after-load for multiple features. 
@@ -126,5 +144,6 @@ body are forms to be evaluated."
         (format "%s: " base))
       clean-dirs nil 'confirm)
      base)))
+
 
 (provide 'util)

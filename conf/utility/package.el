@@ -3,6 +3,8 @@
 (straight-use-package 'interleave)
 (straight-use-package 'csv-mode)
 
+(straight-use-package 'annotate)
+
 ;; (straight-use-package '(hyperbole)
 (straight-use-package 'multishell)
 ;; (straight-use-package 'web-server)
@@ -13,6 +15,8 @@
 ;; GGTags
 (straight-use-package 'ggtags)
 (straight-use-package 'helm-gtags)
+
+;; Misc formatting
 (straight-use-package 'automargin)
 (straight-use-package 'evil-better-visual-line)
 

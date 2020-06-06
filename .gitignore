@@ -16,3 +16,5 @@ url
 projectile.cache
 *.deb
 elpy
+/tramp
+/annotations

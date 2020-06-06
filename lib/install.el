@@ -1,6 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-(straight-use-package 'auto-install)
-(straight-use-package 'use-package)
 (straight-use-package 'auto-minor-mode)
 (straight-use-package 'better-defaults)
 (straight-use-package 'async)
@@ -20,7 +18,6 @@
 (straight-use-package 'evil-mc)
 (straight-use-package 'monitor)
 (straight-use-package 'which-key)
-(straight-use-package 'general)
 (straight-use-package 'evil-smartparens)
 
 ;; Utility
@@ -40,7 +37,6 @@
 (straight-use-package 'discover-my-major)
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'yasnippet)
-(straight-use-package 'load-relative)
 (straight-use-package 'eval-sexp-fu)
 (straight-use-package 'posframe)
 (straight-use-package 'which-key-posframe)
