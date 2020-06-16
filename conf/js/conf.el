@@ -77,10 +77,10 @@
         ;; company is an optional dependency. You have to
         ;; install it separately via package-install
         ;; `M-x package-install [ret] company`
-        (company-mode +1)))
-  (add-hook 'js2-mode-hook 'setup-tide-mode)
-  (add-hook 'rjsx-mode-hook 'setup-tide-mode)
-  (add-hook 'typescript-mode-hook 'setup-tide-mode))
+        (company-mode +1))))
+  ;; (add-hook 'js2-mode-hook 'setup-tide-mode)
+  ;; (add-hook 'rjsx-mode-hook 'setup-tide-mode)
+  ;; (add-hook 'typescript-mode-hook 'setup-tide-mode))
 
 (use-package web-mode
   :init
@@ -91,7 +91,8 @@
   (add-hook 'web-tsx-mode-hook
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (setup-tide-mode)
+                ;; (setup-tide-mode)
+                (lsp)
                 (add-to-list 'company-backends 'company-web-html))))
   :config
   ;; enable typescript-tslint checker
@@ -166,10 +167,15 @@
 ;;   :defer t
 ;;   :commands (livid-mode))
 
-;; (use-package lsp-mode
-;;   :commands (lsp)
-;;   :hook ((rjsx-mode js2-mode) . (lambda ()
-;;                                   (unless (and (featurep 'flow-minor-mode) flow-minor-mode) (lsp)))))
+(use-package lsp-mode
+  :commands (lsp)
+  :init
+  (add-hook 'js2-mode-hook 'lsp)
+  (add-hook 'rjsx-mode-hook 'lsp)
+  (add-hook 'typescript-mode-hook 'lsp)
+  :config
+  (setq lsp-vetur-use-workspace-dependencies t
+   lsp-vetur-format-default-formatter-ts "prettier"))
 
 (use-package json-mode
   :config

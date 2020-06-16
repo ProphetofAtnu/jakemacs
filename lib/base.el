@@ -242,9 +242,9 @@
   :delight
   :hook (company-mode . company-posframe-mode))
 
-(use-package company-box
-  :delight 
-  :hook (company-mode . company-box-mode))
+;; (use-package company-box
+;;   :delight 
+;;   :hook (company-mode . company-box-mode))
 
 
 (use-package comint

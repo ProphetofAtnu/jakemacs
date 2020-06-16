@@ -27,7 +27,8 @@
   :after go-mode)
 
 (use-package go-eldoc
-  :hook (go-mode . go-eldoc-setup))
+  :hook (go-mode . go-eldoc-setup)
+  :config (eldoc-mode-set-explicitly))
 
 (use-package go-tag
   :commands (go-tag-add go-tag-remove go-tag-refresh))

@@ -100,47 +100,67 @@
   "r m k" 'js2r-move-line-up
   )
 
-(leader-minor-def
-  ;; :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
-  :keymaps '(js2-mode-map rjsx-mode-map)
-  :major-modes t 
-  "m" '(:ignore t :wk "Tide")
-  "m x" 'tide-fix
-  "m n" 'tide-nav
-  "m =" 'tide-format
-  "m t" 'tide-refactor
-  "m f" 'tide-references
-  "m d" 'tide-jump-to-definition
-  "m D" 'tide-jump-back
-  "m R" 'tide-rename-file
-  "m q" 'tide-restart-server
-  "m Q" 'tide-kill-server
-  "m v" 'tide-verify-setup
-  "m s" 'tide-list-servers
-  "m c" 'tide-compile-file
-  "m r" 'tide-rename-symbol
-  "m i" 'tide-jsdoc-template)
+;; (leader-minor-def
+;;   ;; :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
+;;   :keymaps '(js2-mode-map rjsx-mode-map)
+;;   :major-modes t 
+;;   "m" '(:ignore t :wk "Tide")
+;;   "m x" 'tide-fix
+;;   "m n" 'tide-nav
+;;   "m =" 'tide-format
+;;   "m t" 'tide-refactor
+;;   "m f" 'tide-references
+;;   "m d" 'tide-jump-to-definition
+;;   "m D" 'tide-jump-back
+;;   "m R" 'tide-rename-file
+;;   "m q" 'tide-restart-server
+;;   "m Q" 'tide-kill-server
+;;   "m v" 'tide-verify-setup
+;;   "m s" 'tide-list-servers
+;;   "m c" 'tide-compile-file
+;;   "m r" 'tide-rename-symbol
+;;   "m i" 'tide-jsdoc-template)
 
 ;; Flatten the tide map for typescript mode
 ;; (I wish javascript didn't have so many damn functions)
+;; (leader-minor-def
+;;   :keymaps '( typescript-mode-map web-tsx-mode-map)
+;;   :major-mode t
+;;   "x" 'tide-fix
+;;   "n" 'tide-nav
+;;   "=" 'tide-format
+;;   "t" 'tide-refactor
+;;   "f" 'tide-references
+;;   "g" 'tide-jump-to-definition
+;;   "G" 'tide-jump-back
+;;   "R" 'tide-rename-file
+;;   "q" 'tide-restart-server
+;;   "Q" 'tide-kill-server
+;;   "v" 'tide-verify-setup
+;;   "s" 'tide-list-servers
+;;   "c" 'tide-compile-file
+;;   "r" 'tide-rename-symbol
+;;   "t" 'tide-jsdoc-template)
+
 (leader-minor-def
   :keymaps '( typescript-mode-map web-tsx-mode-map)
   :major-mode t
-  "x" 'tide-fix
-  "n" 'tide-nav
-  "=" 'tide-format
-  "t" 'tide-refactor
-  "f" 'tide-references
-  "g" 'tide-jump-to-definition
-  "G" 'tide-jump-back
-  "R" 'tide-rename-file
-  "q" 'tide-restart-server
-  "Q" 'tide-kill-server
-  "v" 'tide-verify-setup
-  "s" 'tide-list-servers
-  "c" 'tide-compile-file
-  "r" 'tide-rename-symbol
-  "t" 'tide-jsdoc-template)
+  "x" 'lsp-eslint-apply-all-fixes
+  "=" 'prettier-js
+  "f" 'lsp-find-references
+  "g" 'lsp-find-definition
+  "G" 'lsp-find-declaration
+  "t" 'lsp-goto-type-definition
+  "i" 'lsp-goto-implementation
+  "k" 'lsp-describe-thing-at-point
+  ;; "G" 'tide-jump-back
+  "q" 'lsp-workspace-restart
+  "Q" 'lsp-disconnect
+  "v" 'lsp-describe-session
+  "V" 'lsp-diagnose
+  ;; "s" 'tide-list-servers
+  "r" 'lsp-rename)
+
 
 ;; Indium
 (leader-minor-def
