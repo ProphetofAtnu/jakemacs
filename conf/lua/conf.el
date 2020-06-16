@@ -7,11 +7,11 @@
 (use-package company-lua
   :init
   (defun my-lua-mode-company-init ()
-    (setq-local company-backends '((company-lua
-                                    company-capf
-                                    company-etags
-                                    company-dabbrev-code
-                                    company-yasnippet))))
+    (add-to-list 'company-backends '(company-lua
+                                     company-capf
+                                     company-etags
+                                     company-dabbrev-code
+                                     company-yasnippet)))
   (add-hook 'lua-mode-hook #'my-lua-mode-company-init))
 
 

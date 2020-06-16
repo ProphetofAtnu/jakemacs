@@ -11,7 +11,13 @@
     :hook
     (elixir-mode . lsp)
     :init
-    (add-to-list 'exec-path js/elixir-ls-release-path))
+    (add-to-list 'exec-path js/elixir-ls-release-path)
+    :config
+    (setq-mode-local elixir-mode evil-lookup-func
+                     #'lsp-describe-thing-at-point))
 
 (use-package elixir-mode
   :defer t)
+
+(use-package mix
+  :hook (elixir-mode . mix-minor-mode))

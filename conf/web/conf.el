@@ -52,9 +52,10 @@
 (use-package company-web-html
   :commands (company-web-html)
   :init
-  (js/company-localize-backends
-   web-mode
-   (company-web-html)))
+  (add-to-list 'company-backends 'company-web-html))
+  ;; (js/company-localize-backends
+  ;;  web-mode
+  ;;  (company-web-html)))
 
 (use-package prettier-js)
 

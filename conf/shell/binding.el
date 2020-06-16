@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+(use-package eshell-toggle
+  :commands (eshell-toggle))
+
 (general-define-key
- "C-'" 'shell-pop)
+ "C-'" 'eshell-toggle)
 
 (leader-minor-def
   :states '(normal visual insert emacs override)

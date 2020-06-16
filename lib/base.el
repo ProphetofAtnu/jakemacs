@@ -149,13 +149,13 @@
   (which-key-setup-side-window-bottom)
   )
 
-;; (use-package which-key-posframe
-;;   :init
-;;   (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center
-;;         which-key-posframe-border-width 1)
-;;   :config 
-;;   (set-face-attribute 'which-key-posframe-border nil :background "LightSlateBlue")
-;;   (which-key-posframe-mode))
+(use-package which-key-posframe
+  :init
+  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center
+        which-key-posframe-border-width 1)
+  :config 
+  (set-face-attribute 'which-key-posframe-border nil :background "LightSlateBlue")
+  (which-key-posframe-mode))
 
 (use-package restart-emacs
   :commands (restart-emacs))
@@ -218,12 +218,12 @@
   (prog-mode . company-mode)
   (comint-mode . company-mode)
   :config
-  (setq company-backends
-        '((company-files          ; files & directory
-           company-keywords       ; keywords
-           company-capf
-           company-yasnippet)
-          (company-abbrev company-dabbrev)))
+  ;; (setq company-backends
+  ;;       '((company-files          ; files & directory
+  ;;          company-keywords       ; keywords
+  ;;          company-capf
+  ;;          company-yasnippet)
+  ;;         (company-abbrev company-dabbrev)))
   (general-defs 'company-active-map
     "TAB" 'company-complete-common-or-cycle
     "<tab>" 'company-complete-common-or-cycle
@@ -237,6 +237,15 @@
                (company-complete-selection))
              (unless (looking-back "[[:blank:]]")
                (self-insert-command 1)))))
+
+(use-package company-posframe
+  :delight
+  :hook (company-mode . company-posframe-mode))
+
+(use-package company-box
+  :delight 
+  :hook (company-mode . company-box-mode))
+
 
 (use-package comint
   :config
@@ -310,25 +319,13 @@
     "z x" 'eyebrowse-last-window-config
     "z w" 'eyebrowse-create-window-config))
 
-;; (use-package window-purpose
-;;   :config
-;;   (purpose-mode 1)
-;;   (purpose-x-popwin-setup)
-;;   (purpose-x-magit-multi-on))
-
-;; (use-package popwin
-;;   :config
-;;   (popwin-mode 1)
-;;   (push '(helpful-mode :noselect t :position left) popwin:special-display-config)
-;;   (push '("*Shell Command Output*" :regexp t :noselect t :position right) popwin:special-display-config)
-;;   (leader-tert-def
-;;     "q" '(:keymap popwin:keymap :which-key "Popwin")))
-
 (use-package projectile
   :delight
   :config
-  (setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-dir)
-        projectile-cache-file (expand-file-name "projectile.cache" user-cache-dir))
+  (setq projectile-known-projects-file
+        (expand-file-name "projectile-bookmarks.eld" user-cache-dir)
+        projectile-cache-file
+        (expand-file-name "projectile.cache" user-cache-dir))
   (projectile-mode)
   )
 
@@ -350,55 +347,11 @@
         )
   (dashboard-setup-startup-hook))
 
-(use-package eshell-prompt-extras
-  :after (eshell)
-  :commands (epe-theme-lambda)
-  :init
-  (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-lambda))
-
-
-
-(use-package eshell
-  :defer t
-  :config
-   (setq pcomplete-cycle-completions nil)
-   (require 'pcomplete-extension)
-   ;; (add-hook 'eshell-mode-hook
-   ;;           '(lambda ()
-   ;;              (setq-local company-frontends
-   ;;                          '(company-preview-frontend))))
-    ;; Thanks to spacemacs for this one
-   (add-hook 'eshell-after-prompt-hook
-             '(lambda
-                ()
-                (let ((inhibit-field-text-motion t))
-                  (add-text-properties
-                   (point-at-bol)
-                   (point)
-                   '(rear-nonsticky t
-                                    inhibit-line-move-field-capture t
-                                    field output read-only t
-                                    front-sticky (field inhibit-line-move-field-capture))))))
-   (add-hook 'eshell-mode-hook
-             '(lambda ()
-                (add-to-list (make-local-variable 'company-backends) 'company-pcomplete)
-                (define-key eshell-mode-map [remap eshell-pcomplete] 'company-complete-common-or-cycle)
-                (setq-local company-frontends '(company-preview-frontend))
-                (company-mode)))
-   )
-
-;; (use-package esh-autosuggest
-;;   :hook (eshell-mode . esh-autosuggest-mode))
-
 
 (with-eval-after-load 'historian
   (setq historian-save-file
         (ensure-file
          (concat-path user-cache-dir ".historian"))))
-
-(use-package eshell-z
-  :after (eshell))
 
 (use-package transient
   :defer t

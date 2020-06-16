@@ -4,6 +4,7 @@
   :defer t
   :config
   (setq lsp-prefer-flymake :none
+        lsp-file-watch-threshold 10000
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui
@@ -17,7 +18,10 @@
   :config
   ;; (setq company-lsp-enable-recompletion t)
   (add-hook 'lsp-mode-hook (lambda () 
-                             (add-to-list (make-local-variable 'company-backends) 'company-lsp))))
+                             (add-to-list
+                              ;; (make-local-variable 'company-backends)
+                              'company-backends
+                              'company-lsp))))
 
 (use-package helm-lsp
   :after (lsp-mode)

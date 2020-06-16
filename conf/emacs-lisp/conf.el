@@ -15,7 +15,9 @@
   (add-hook 'emacs-lisp-mode-hook 
             (lambda () 
               (add-to-list
-               (make-local-variable 'company-backends) 'company-elisp))))
+               ;; (make-local-variable 'company-backends)
+               'company-backends
+               'company-elisp))))
 
 (use-package ielm
   :commands (ielm)

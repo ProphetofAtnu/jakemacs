@@ -81,11 +81,11 @@
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode))
 
-(use-package evil-org
-  :hook (org-mode . evil-org-mode)
-  :after org
-  :config
-  (evil-org-set-key-theme '(navigation insert return textobjects additional calendar shift todo heading calendar)))
+;; (use-package evil-org
+;;   :hook (org-mode . evil-org-mode)
+;;   :after org
+;;   :config
+;;   (evil-org-set-key-theme '(navigation insert return textobjects additional calendar shift todo heading calendar)))
 
 (use-package evil-org-agenda
   :commands (evil-org-agenda-set-keys)

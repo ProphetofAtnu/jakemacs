@@ -25,6 +25,7 @@
 (straight-use-package 'smartparens)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'company)
+(straight-use-package 'company-posframe)
 (straight-use-package 'company-box)
 (straight-use-package 'dired-plus)
 (straight-use-package 'diredfl)
@@ -68,13 +69,6 @@
 (straight-use-package 'doom-modeline)
 (straight-use-package 'projectile)
 (straight-use-package 'eyebrowse)
-
-;; Shell
-(straight-use-package 'eshell-z)
-(straight-use-package 'eshell-prompt-extras)
-(straight-use-package 'eshell-fixed-prompt)
-;; (straight-use-package 'esh-autosuggest)
-(straight-use-package 'pcomplete-extension)
 
 (straight-use-package 'ivy)
 (straight-use-package 'ivy-rich)

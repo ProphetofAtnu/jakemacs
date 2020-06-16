@@ -67,7 +67,10 @@
 (use-package go-playground
   :config
   (add-hook 'go-playground-mode-hook '(lambda ()
-                                        (add-to-list (make-local-variable 'company-backends) 'company-go))))
+                                        (add-to-list
+                                         ;; (make-local-variable 'company-backends)
+                                         'company-backends
+                                         'company-go))))
 
 (use-package org
   :defer t

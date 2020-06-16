@@ -11,4 +11,3 @@
   (markdown-footnote-marker-positions (markdown-footnote-find-text))
   (t (evil-ret))))
 
-

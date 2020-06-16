@@ -24,3 +24,6 @@
   (general-def
     "C-TAB" 'company-complete-common-or-cycle
     "<C-tab>" 'company-complete-common-or-cycle))
+
+(general-def
+  "M-SPC" 'previous-window-any-frame)

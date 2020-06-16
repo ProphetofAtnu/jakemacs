@@ -67,7 +67,7 @@
              (featurep 'flow-minor-mode)
              (flow-minor-configured-p)
              (flow-minor-tag-present-p))
-        (make-local-variable 'company-backends)
+        ;; (make-local-variable 'company-backends)
         (tide-setup)
         (add-to-list 'company-backends 'company-tide)
         (flycheck-mode +1)
@@ -91,7 +91,8 @@
   (add-hook 'web-tsx-mode-hook
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (setup-tide-mode))))
+                (setup-tide-mode)
+                (add-to-list 'company-backends 'company-web-html))))
   :config
   ;; enable typescript-tslint checker
   (with-eval-after-load 'tide
@@ -130,9 +131,7 @@
 
 (use-package flycheck
   :commands (flycheck-mode-on-safe)
-  :hook ((js2-mode rjsx-mode typescript-mode) . flycheck-mode-on-safe)
-  :config
-  (require 'flycheck-flow))
+  :hook ((js2-mode rjsx-mode typescript-mode) . flycheck-mode-on-safe))
 
 (use-package js2-refactor
   :delight 
@@ -188,50 +187,6 @@
              js-doc-insert-function-doc
              js-doc-insert-function-doc-snippet
              js/dash-open-docset-path))
-
-;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
-;;   (add-hook hook
-;;             '(lambda ()
-;;                (require 'js-doc)
-;;                (require 'js2-refactor)
-;;                (require 'nodejs-repl)
-;;                (js/company-js-setup)
-;;                (flycheck-mode-on-safe)
-;;                (add-node-modules-path))))
-
-(use-package flow-minor-mode
-    :defer t
-    :delight
-    :commands (flow-minor-mode flow-minor-enable-automatically)
-    :hook ((js2-mode . flow-minor-enable-automatically)
-           (rjsx-mode . flow-minor-enable-automatically)))
-
-(use-package flow-js2-mode
-  :defer t
-  :delight
-  :commands (flow-js2-mode)
-  :hook (flow-minor-mode . flow-js2-mode))
-
-(use-package company-flow
-    :defer t
-    :delight
-    :commands (company-flow)
-    :hook (flow-minor-mode . (lambda ()
-                               (add-to-list (make-local-variable 'company-backends) 'company-flow)))
-    :config
-    (push 'rjsx-mode company-flow-modes))
-
-(use-package flycheck-flow
-  :delight
-  :config
-  (progn
-    ;; Don't run flow if there's no @flow pragma
-    (custom-set-variables '(flycheck-javascript-flow-args (quote ("--respect-pragma"))))
-    ;; Run flow in rjsx-mode files
-    (flycheck-add-mode 'javascript-flow 'rjsx-mode)
-    ;; After running js-flow, run js-eslint
-    ;; doing this in the other order causes a lot of repeated errors!!!
-    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 
 (use-package typescript-mode)
 
