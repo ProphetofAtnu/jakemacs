@@ -16,4 +16,4 @@ go get -u -v github.com/mdempsky/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/zmb3/gogetdoc
 go get -u -v github.com/motemen/gore
-
+go get -u -v github.com/go-delve/delve/cmd/dlv

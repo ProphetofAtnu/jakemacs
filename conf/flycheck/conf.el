@@ -7,6 +7,7 @@
   :delight " ✅ "
   :init
   (setq flycheck-check-syntax-automatically '(save idle-change new-line)
+        flycheck-idle-change-delay 5
         flycheck-emacs-lisp-initialize-packages 'auto
         flycheck-emacs-lisp-load-path 'inherit)
   (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc)

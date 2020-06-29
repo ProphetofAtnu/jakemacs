@@ -5,6 +5,7 @@
 (setq active-configs '(ivy
                        utility
                        emacs-lisp
+                       dart
                        sexp
                        lsp
                        go

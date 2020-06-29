@@ -93,6 +93,7 @@
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
                 ;; (setup-tide-mode)
+                (lsp)
                 (add-to-list 'company-backends 'company-web-html))))
   :config
   ;; enable typescript-tslint checker

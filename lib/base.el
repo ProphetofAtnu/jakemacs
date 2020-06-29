@@ -238,9 +238,9 @@
              (unless (looking-back "[[:blank:]]")
                (self-insert-command 1)))))
 
-(use-package company-posframe
-  :delight
-  :hook (company-mode . company-posframe-mode))
+;; (use-package company-posframe
+;;   :delight
+;;   :hook (company-mode . company-posframe-mode))
 
 ;; (use-package company-box
 ;;   :delight 
