@@ -26,8 +26,9 @@
   :commands (go-impl)
   :after go-mode)
 
-(use-package go-eldoc
-  :hook (go-mode . go-eldoc-setup))
+;; (use-package go-eldoc
+;;   :hook (go-mode . go-eldoc-setup)
+;;   :config (eldoc-mode-set-explicitly))
 
 (use-package go-tag
   :commands (go-tag-add go-tag-remove go-tag-refresh))
@@ -48,7 +49,9 @@
   (dolist (checker '(go-errcheck
                      go-staticcheck
                      go-test))
-    (add-to-list 'flycheck-disabled-checkers checker)))
+    (add-to-list 'flycheck-disabled-checkers checker))
+  (add-hook 'go-mode-hook '(lambda ()
+                             (setq-local flycheck-checker 'golangci-lint))))
 
 (use-package gorepl-mode
   :config

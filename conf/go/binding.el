@@ -19,11 +19,15 @@
   "g i" 'go-goto-imports
   "g m" 'go-goto-method-receiver
   "g r" 'go-goto-return-values
-  "q" '(:ignore t :wk "QA (Test)")
+  "q" '(:ignore t :wk "Gen Test")
   "q a" 'go-gen-test-all
   "q d" 'go-gen-test-dwim
   "q e" 'go-gen-test-exported
   "q f" 'go-gen-test-functions
+  "t" '(:ignore t :wk "Test")
+  "t t" 'go-test-current-test
+  "t p" 'go-test-current-project
+  "t f" 'go-test-current-file
   "h" '(:ignore t :wk "(Go) Help")
   "h c" 'go-guru-callees
   "h d" 'go-guru-describe

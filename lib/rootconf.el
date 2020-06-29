@@ -26,6 +26,8 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+(setq create-lockfiles nil)
+
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
 
