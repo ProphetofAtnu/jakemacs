@@ -118,8 +118,9 @@
                                     front-sticky (field inhibit-line-move-field-capture))))))
    (add-hook 'eshell-mode-hook
              '(lambda ()
-                (delq 'pcomplete-completions-at-point completion-at-point-functions)
-                (add-to-list 'company-backends 'company-shell)
+                ;; (delq 'pcomplete-completions-at-point completion-at-point-functions)
+                (setq-local company-backends '(company-capf
+                                               company-files))
                 (define-key
                   eshell-mode-map [remap eshell-pcomplete]
                   'company-complete-common-or-cycle)
