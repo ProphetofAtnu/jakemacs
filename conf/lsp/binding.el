@@ -1,8 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+
 (add-hook
  'lsp-mode-hook
  (lambda () 
+   (setq-local evil-lookup-func #'lsp-describe-thing-at-point)
    (leader-minor-def
      :keymaps 'local
      "l" '(:ignore t :wk "LSP")

@@ -1,13 +1,15 @@
 ;;; -*- lexical-binding: t; -*-
 
 (leader-minor-def
-  :keymaps 'dart-mode-map
+  :keymaps '(dart-mode-map)
   "," 'lsp-dart-show-outline
   "." 'lsp-dart-show-flutter-outline
+  "=" 'dart-server-format
+  "g" 'dart-server-goto
   ;; Lsp generic
+  "G" 'lsp-find-definition
   "f" 'lsp-find-references
-  "g" 'lsp-find-definition
-  "G" 'lsp-find-declaration
+  "F" 'dart-server-find-refs
   "t" 'lsp-goto-type-definition
   "i" 'lsp-goto-implementation
   "k" 'lsp-describe-thing-at-point

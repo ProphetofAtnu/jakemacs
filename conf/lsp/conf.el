@@ -5,8 +5,8 @@
   :config
   (setq lsp-prefer-flymake :none
         lsp-file-watch-threshold 10000
-        lsp-idle-delay 0.500
-        lsp-enable-snippet t
+        ;; lsp-idle-delay 1
+        ;; lsp-enable-snippet t
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui
