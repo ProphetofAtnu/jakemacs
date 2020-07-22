@@ -4,12 +4,9 @@
   :keymaps '(dart-mode-map)
   "," 'lsp-dart-show-outline
   "." 'lsp-dart-show-flutter-outline
-  "=" 'dart-server-format
-  "g" 'dart-server-goto
-  ;; Lsp generic
-  "G" 'lsp-find-definition
+  "=" 'lsp-format-buffer
+  "g" 'lsp-find-definition
   "f" 'lsp-find-references
-  "F" 'dart-server-find-refs
   "t" 'lsp-goto-type-definition
   "i" 'lsp-goto-implementation
   "k" 'lsp-describe-thing-at-point

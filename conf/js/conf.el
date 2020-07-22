@@ -6,23 +6,6 @@
   :init
   (setq js-indent-level 2))
 
-;; (use-package tern
-;;   :init
-;;   (add-hook 'js2-mode-hook #'tern-mode)
-;;   (add-hook 'rjsx-mode-hook #'tern-mode)
-;;   :config
-;;   (load (expand-file-name "misc/company-tern" user-emacs-directory))
-;;   (add-hook 'tern-mode-hook (lambda ()
-;;                               (add-to-list (make-local-variable 'company-backends)
-;;                                            'company-tern))))
-
-;; (use-package company-tern
-;;   :hook (tern-mode . (lambda ()
-;;                        (add-to-list
-;;                         (make-local-variable
-;;                          'company-backends)
-;;                         'company-tern))))
-
 ;; TODO: add jsx support (React)
 (use-package rjsx-mode
   :defer t
@@ -52,6 +35,8 @@
    (setq-mode-local rjsx-mode
                     js2-mode-show-parse-errors nil
                     js2-mode-show-strict-warnings nil)))
+
+(use-package npm)
 
 (use-package tide
   :commands (tide-setup)
@@ -114,16 +99,6 @@
    indium-chrome-data-dir (expand-file-name "indium-profile" user-cache-dir) )
   )
 
-;; (dolist (hook '(rjsx-mode-hook js2-mode-hook))
-;;   (add-hook hook
-;;             '(lambda ()
-;;                (require 'js-doc)
-;;                (require 'flycheck)
-;;                (require 'js2-refactor)
-;;                (add-node-modules-path)
-;;                (js/company-js-setup)
-;;                (flycheck-mode-on-safe))))
-
 (use-package add-node-modules-path
   :commands (add-node-modules-path)
   :hook ((js2-mode rjsx-mode typescript-mode) . add-node-modules-path))
@@ -139,34 +114,9 @@
   :delight 
   :hook ((rjsx-mode js2-mode) . js2-refactor-mode))
 
-(use-package tern
-  :defer t
-  :delight
-  :config
-  (setq tern-command (append tern-command '("--no-port-file"))))
-
-
 (use-package prettier-js
   :defer t
   :commands (prettier-js prettier-js-mode))
-
-;;;;;;; QUARENTINE
-;; (use-package impatient-mode
-;;   :defer t
-;;   :commands (impatient-mode))
-
-;; (use-package skewer-mode
-;;   :defer t
-;;   :commands (run-skewer)
-;;   :delight
-;;   :init
-;;   (progn
-;;     (require 'skewer-setup)
-;;     (skewer-setup)))
-
-;; (use-package livid-mode
-;;   :defer t
-;;   :commands (livid-mode))
 
 (use-package lsp-mode
   :commands (lsp)
@@ -197,3 +147,39 @@
 
 (use-package typescript-mode)
 
+
+;;;;;;; QUARENTINE
+;; (use-package tern
+;;   :init
+;;   (add-hook 'js2-mode-hook #'tern-mode)
+;;   (add-hook 'rjsx-mode-hook #'tern-mode)
+;;   :config
+;;   (load (expand-file-name "misc/company-tern" user-emacs-directory))
+;;   (setq tern-command (append tern-command '("--no-port-file")))
+;;   (add-hook 'tern-mode-hook (lambda ()
+;;                               (add-to-list (make-local-variable 'company-backends)
+;;                                            'company-tern))))
+
+;; (use-package company-tern
+;;   :hook (tern-mode . (lambda ()
+;;                        (add-to-list
+;;                         (make-local-variable
+;;                          'company-backends)
+;;                         'company-tern))))
+
+;; (use-package impatient-mode
+;;   :defer t
+;;   :commands (impatient-mode))
+
+;; (use-package skewer-mode
+;;   :defer t
+;;   :commands (run-skewer)
+;;   :delight
+;;   :init
+;;   (progn
+;;     (require 'skewer-setup)
+;;     (skewer-setup)))
+
+;; (use-package livid-mode
+;;   :defer t
+;;   :commands (livid-mode))

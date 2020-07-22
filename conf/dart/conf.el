@@ -2,11 +2,11 @@
 
 (use-package dart-mode)
 
-(use-package dart-server
-  :hook (dart-mode . dart-server)
-  :config
-  (setq dart-server-format-on-save t
-        dart-server-enable-analysis-server t))
+;; (use-package dart-server
+;;   :hook (dart-mode . dart-server)
+;;   :config
+;;   (setq dart-server-format-on-save t
+;;         dart-server-enable-analysis-server t))
 
 (use-package lsp-mode
   :config
