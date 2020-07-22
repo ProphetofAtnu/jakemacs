@@ -23,8 +23,8 @@
          "~/git/install/flutter/bin/cache/dart-sdk")))
 
 (use-package lsp-dart-dap
-  :init
-  (add-hook 'dart-mode-hook 'js/dap-setup-dart-templates)
+  ;; :init
+  ;; (add-hook 'dart-mode-hook 'js/dap-setup-dart-templates)
   )
 
 (use-package flutter)

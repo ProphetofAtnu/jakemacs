@@ -70,21 +70,21 @@
 ;;   ;;        (shelldoc-minor-mode . shelldoc-toggle-doc-window))
 ;;   )
 
-;; (use-package shell-pop
-;;   :custom
-;;   (shell-pop-full-span t)
-;;   (shell-pop-shell-type
-;;    '("ansi-term" "*ansi-term*"
-;;      (lambda nil
-;;        (ansi-term shell-pop-term-shell))))
-;;   (shell-pop-universal-key "C-'")
-;;   :config
-;;   (setq shell-pop-term-shell "/bin/bash"
-;;         shell-pop-shell-type '("ansi-term" "*ansi-term*"
-;;                                (lambda nil
-;;                                  (ansi-term shell-pop-term-shell)))
-;;         shell-pop-full-span t
-;;         shell-pop-universal-key "C-'"))
+(use-package shell-pop
+  :custom
+  (shell-pop-full-span t)
+  (shell-pop-shell-type
+   '("ansi-term" "*ansi-term*"
+     (lambda nil
+       (ansi-term shell-pop-term-shell))))
+  (shell-pop-universal-key "C-'")
+  :config
+  (setq shell-pop-term-shell "/bin/bash"
+        shell-pop-shell-type '("ansi-term" "*ansi-term*"
+                               (lambda nil
+                                 (ansi-term shell-pop-term-shell)))
+        shell-pop-full-span t
+        shell-pop-universal-key "C-'"))
 
 (use-package eshell-prompt-extras
   :after (eshell)

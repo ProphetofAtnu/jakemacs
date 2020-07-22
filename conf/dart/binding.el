@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 (leader-minor-def
-  :keymaps '(dart-mode-map)
+  :keymaps 'dart-mode-map
+  :major-modes t
   "," 'lsp-dart-show-outline
   "." 'lsp-dart-show-flutter-outline
   "=" 'dart-server-format

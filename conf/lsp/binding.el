@@ -12,6 +12,7 @@
      "l -" 'lsp-format-region
      "l q" 'lsp-disconnect
      "l c" 'lsp-rename
+     "l a" 'lsp-execute-code-action
      ;; Goto
      "l g" '(:ignore t :wk "Goto")
      "l g g" 'lsp-describe-thing-at-point

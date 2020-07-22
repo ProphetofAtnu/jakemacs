@@ -36,4 +36,6 @@
 (use-package treemacs
   :defer t)
 
-(use-package lsp-treemacs) 
+(use-package lsp-treemacs
+  :init
+  (lsp-treemacs-sync-mode)) 

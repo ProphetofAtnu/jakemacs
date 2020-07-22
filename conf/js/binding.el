@@ -146,6 +146,7 @@
   :keymaps '( typescript-mode-map web-tsx-mode-map)
   :major-mode t
   "x" 'lsp-eslint-apply-all-fixes
+  "a" 'lsp-execute-code-action
   "=" 'prettier-js
   "f" 'lsp-find-references
   "g" 'lsp-find-definition

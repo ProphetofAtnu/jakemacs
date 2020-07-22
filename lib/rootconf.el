@@ -10,6 +10,7 @@
                        lsp
                        go
                        rust
+                       sql
                        common-lisp
                        org
                        treemacs
