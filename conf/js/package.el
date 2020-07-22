@@ -11,6 +11,7 @@
 (straight-use-package 'add-node-modules-path)
 (straight-use-package 'nodejs-repl)
 (straight-use-package 'prettier-js)
+(straight-use-package 'npm)
 
 ;; NOTE: Impatient mode requires the feature 'simple-httpd. The repo
 ;; that this feature comes from shares a name with another one. I've

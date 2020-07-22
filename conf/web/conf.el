@@ -60,10 +60,10 @@
 (use-package prettier-js)
 
 (use-package lsp-html
-  :hook ((html-mode . lsp)))
+  :hook ((web-mode . lsp)))
 
-;; (use-package lsp-css
-;;   :hook (css-mode . lsp))
+(use-package lsp-css
+  :hook (css-mode . lsp))
 
 (use-package pug-mode)
 

@@ -4,9 +4,60 @@
 :ID:       f9e3e6e8-a3e8-4510-9454-c3f40f0fa978
 :END:
 
+* General
+
+** Company-Try-Hard
+
 * Elixir
 
 ** <2020-04-27 Mon> Language server fix
 Pointed the LSP language server to the compiled release folder in the
 user-src-dir (Defaults to "$HOME/.install")
+
+
+
+* Javascript
+
+** TODO NPM integration
+See [[https://github.com/shaneikennedy/npm.el/tree/187ddd2732deb49df1e87fbaace153afb8a3e7e1][This Repo]]
+
+Currently listed in package dependencies and interned in configuration
+file. 
+
+- [ ] Add keybindings
+- [ ] Create scoped keybinding for Projectile JS/TS projects
+
+** TODO Clean up conf.el
+- Remove quarentined code.
+- Delete references to Tide-mode
+
+* Utility 
+
+** TODO Nov (ebook reader)
+#+BEGIN_SRC emacs-lisp
+
+  (straight-use-package 'nov)
+
+  (use-package 'nov
+    ...)
+
+#+END_SRC
+** TODO Yaml
+Add yaml-mode for conf editing.
+[[https://github.com/yoshiki/yaml-mode/tree/34648f2502f52f4744d62758fa381fa35db1da49][Repo!]]
+
+** TODO x509-mode
+[[https://melpa.org/#/x509-mode][Melpa!]]
+
+* Org
+
+** HOLD org-index
+Might be good. Saw it and thought I should give it a shot.
+[[https://melpa.org/#/org-index][Melpa!]]
+[[https://github.com/marcIhm/org-index/tree/f868df4aa4f49484cf818627251b7c7282d8d20e][Repo!]]
+
+* Python
+
+** TODO Jupityr Notebook
+[[https://github.com/dzop/emacs-jupyter/tree/785edbbff65abb0c929dc2fbd8b8305c77fd529][Repo!]]
 
