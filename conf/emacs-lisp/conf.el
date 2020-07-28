@@ -3,7 +3,16 @@
   :commands (setq-mode-local))
 
 (use-package eldoc
-  :delight)
+  :delight
+  :config
+  (add-hook
+   'ielm-mode-hook
+   '(lambda ()
+     (setq-local
+      eldoc-documentation-functions
+      '(elisp-eldoc-funcall
+        elisp-eldoc-var-docstring
+        t)))))
 
 (use-package elisp-demos
   :config
