@@ -50,6 +50,7 @@ m -> Toggle Mode     | r -> reset"
   ;; "m" 'helm-mode-manager
   ;; "\\" 'helm-mini
   "\\" 'imenu
+  "|" 'imenu-anywhere
   "l" 'avy-goto-line)
 
 (leader-tert-def
