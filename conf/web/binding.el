@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
-(general-define-key
- :keymaps 'css-mode-map
- [return] 'js/maybe-pretty-brackets)
+;; (general-define-key
+;;  :keymaps 'css-mode-map
+ ;; [return] 'js/maybe-pretty-brackets)
 
 (leader-minor-def
   :keymaps 'css-mode-map

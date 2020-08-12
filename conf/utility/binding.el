@@ -125,3 +125,9 @@
  [return] 'js/md-ctx-enter
  )
 
+
+(general-define-key
+ :states '(normal motion)
+ :keymaps '(simplenote2-list-mode-map)
+ [return] 'simplenote2-list-open-note
+ "RET" 'simplenote2-list-open-note)

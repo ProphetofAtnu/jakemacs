@@ -42,11 +42,15 @@
 
 (defun js/dart--project-p ()
   "Detects if the buffer file is a part of a dart project"
-  (let ((root (projectile-project-root default-directory)))
-    (if  
-        (directory-files root
-         nil "pubspec.yaml")
-        t nil)))
+  (let ((root (projectile-project-root
+               default-directory)))
+    (if (and root
+             (directory-files
+              root
+              nil
+              "pubspec.yaml"))
+        t
+      nil)))
 
 (defun js/dart--template-referenced-p ()
   "Detects a sibling file to the current HTML file with a .dart

@@ -183,20 +183,24 @@
   (progn
     (diredp-toggle-find-file-reuse-dir 1)))
 
-(use-package smartparens
-  :delight
-  :init
-  (progn
-    (use-package smartparens-config)
-    (smartparens-global-mode 1)
-    (show-smartparens-global-mode 1))
-  :config
-  (progn
-    (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
+;; (use-package smartparens
+;;   :delight
+;;   :init
+;;   (progn
+;;     (use-package smartparens-config)
+;;     (smartparens-global-mode 1)
+;;     (show-smartparens-global-mode 1))
+;;   :config
+;;   (progn
+;;     (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
 
-(use-package evil-smartparens
-  :delight
-  :hook (smartparens-mode . evil-smartparens-mode))
+(use-package elec-pair
+  :init
+  (electric-pair-mode))
+
+;; (use-package evil-smartparens
+;;   :delight
+;;   :hook (smartparens-mode . evil-smartparens-mode))
 
 ;; (use-package elec-pair
 ;;   :config

@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
-(defvar inferior-lisp-program "sbcl")
+(defvar inferior-lisp-program "ros run")
 
 
 
@@ -25,6 +25,7 @@
                      sly-asdf))
       (sly-enable-contrib contr)))
 
+
   (use-package sly
     :defer t
     :hook (lisp-mode . sly-mode)
@@ -36,6 +37,8 @@
     ;;   (sp-local-pair "'" "'" :actions nil)
     ;;   (sp-local-pair "`" "`" :actions nil))
     (add-hook 'sly-mrepl-mode-hook (lambda ()
+                                     ;; (smartparens-mode -1)
+                                     ;; (electric-pair-local-mode)
                                      (js/sly-add-contribs))))
   
   (use-package org
@@ -69,3 +72,4 @@
 (if common-lisp-use-sly
     (lisp-sly-init)
   (lisp-slime-init))
+

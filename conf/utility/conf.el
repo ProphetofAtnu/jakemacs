@@ -5,6 +5,14 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package
+  simplenote2
+  :config (add-hook
+           'simplenote2-note-mode-hook
+           #'markdown-mode)
+  (setq simplenote2-markdown-notes-mode
+        'markdown-mode))
+
 (use-package interleave
   :when (featurep 'org)
   :commands (interleave-mode))

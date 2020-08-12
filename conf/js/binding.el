@@ -2,9 +2,9 @@
 
 (general-define-key :states '(insert emacs)
                     :keymaps '(js2-mode-map rjsx-mode-map)
-                    [return] 'js/maybe-pretty-brackets
-                    "RET" 'js/maybe-pretty-brackets
-                    "@" 'js-doc-insert-tag)
+                    [return] 'js2-line-break
+                    "RET" 'js2-line-break)
+                    ;; "@" 'js-doc-insert-tag)
 
 ;; Both JS2 & React
 (leader-minor-def

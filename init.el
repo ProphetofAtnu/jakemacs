@@ -9,8 +9,10 @@
 ;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)
 
-;; Set the cache directory before I even start...
 (setq user-cache-dir (ensure-dir user-emacs-directory ".cache"))
+(setq custom-file (concat-path user-cache-dir "custom.el"))
+
+;; Set the cache directory before I even start...
 
 (defvar user-src-dir (expand-file-name "~/.install")
   "The directory to use to auto-install and compile binaries from
@@ -20,7 +22,6 @@
   (when e 
     (setq user-src-dir e)))
 
-(setq custom-file (concat-path user-cache-dir "custom.el"))
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)
@@ -68,6 +69,7 @@
 (require 'aesthetic)
 
 ;; I doubt I'll ever use custom, but what the heck?
+(setq custom-file (concat-path user-cache-dir "custom.el"))
 (load custom-file)
 
 (put 'downcase-region 'disabled nil)
