@@ -68,12 +68,13 @@
   :commands (go-imports-reload-packages-list go-imports-insert-import))
 
 (use-package go-playground
-  :config
-  (add-hook 'go-playground-mode-hook '(lambda ()
-                                        (add-to-list
-                                         ;; (make-local-variable 'company-backends)
-                                         'company-backends
-                                         'company-go))))
+  ;; :config
+  ;; (add-hook 'go-playground-mode-hook '(lambda ()
+  ;;                                       (add-to-list
+  ;;                                        ;; (make-local-variable 'company-backends)
+  ;;                                        'company-backends
+  ;;                                        'company-go)))
+  )
 
 (use-package org
   :defer t

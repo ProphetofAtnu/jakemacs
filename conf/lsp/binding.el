@@ -11,8 +11,11 @@
      "l =" 'lsp-format-buffer
      "l -" 'lsp-format-region
      "l q" 'lsp-disconnect
-     "l c" 'lsp-rename
+     "l r" 'lsp-rename
      "l a" 'lsp-execute-code-action
+     "l i" 'lsp-ui-imenu
+     "l e" 'lsp-treemacs-errors-list
+     ;; "l s" 'lsp-treemacs-
      ;; Goto
      "l g" '(:ignore t :wk "Goto")
      "l g g" 'lsp-describe-thing-at-point
