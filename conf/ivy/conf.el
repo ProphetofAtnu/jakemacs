@@ -27,7 +27,9 @@
                   (counsel-describe-variable . ivy--regex-plus)
                   (counsel-describe-function . ivy--regex-plus)
                   (counsel-rg . ivy--regex-plus)
-                  (t      . ivy--regex-fuzzy)))
+                  (t      . ivy--regex-plus)))
+
+          (setq ivy-initial-inputs-alist nil)
           (ivy-mode 1)
           (counsel-mode +1)))
           ;; (ivy-rich-mode)))

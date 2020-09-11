@@ -46,23 +46,11 @@
   ;; "." 'helm-mini
   ;; "," 'helm-for-files
   ;; "/" 'helm-swoop
-  "1" 'eyebrowse-switch-to-window-config-1
-  "2" 'eyebrowse-switch-to-window-config-2
-  "3" 'eyebrowse-switch-to-window-config-3
-  "4" 'eyebrowse-switch-to-window-config-4
-  "5" 'eyebrowse-switch-to-window-config-5
-  "6" 'eyebrowse-switch-to-window-config-6
-  "7" 'eyebrowse-switch-to-window-config-7
-  "8" 'eyebrowse-switch-to-window-config-8
-  "9" 'eyebrowse-switch-to-window-config-9
-  "0" 'eyebrowse-switch-to-window-config-0
   "\'"  'ansi-term
-  ";" 'treemacs-select-window
   "TAB" 'previous-buffer
   "m" 'hydra-window-manage/body
   "b"   '(:ignore t :wk "Buffers")
   "b b" 'switch-to-buffer
-  "b B" 'switch-buffer-without-purpose
   "b l" 'ibuffer
   "b o" 'switch-to-buffer-other-window
   "b t" 'switch-to-buffer-other-tab
@@ -106,7 +94,7 @@
   "f d" 'dired
   "f D" 'dired-other-window
   "f r" 'recentf-open-files
-  "f l" 'helm-locate
+  ;; "f l" 'helm-locate
   "f s" 'save-buffer
   "f S" 'evil-write-all
   ;; Quit/Restart
@@ -138,32 +126,30 @@
   "w v" 'evil-window-vsplit
   "w m" 'minimize-window
   "w M" 'maximize-window
-  "g" '(:ignore t :wk "Eyebrowse")
-  "g n" 'eyebrowse-create-window-config
-  "g z" 'eyebrowse-close-window-config
-  "g t" 'eyebrowse-next-window-config
-  "g T" 'eyebrowse-prev-window-config
-  "g TAB" 'eyebrowse-last-window-config
   ;; Inserts
   "i" '(:ignore t :wk "Insert")
   "i n" 'yas-new-snippet
   "i i" 'yas-insert-snippet
   ;; Projectile
   "p"   '(:ignore t :wk "Projectile")
+  "p p" 'projectile-commander
+  "p c" 'org-projectile-capture-for-current-project
+  "p C" 'org-projectile-goto-location-for-project
   "p r" 'projectile-recentf
   "p d" 'projectile-find-dir
-  "p !" 'projectile-run-shell-command-in-root
-  "p f" 'projectile-find-file-dwim
-  "p F" 'projectile-find-file
+  "p F" 'projectile-find-file-dwim
+  "p f" 'projectile-find-file
   "p o" 'projectile-find-file-dwim-other-window
   "p a" 'projectile-add-known-project
   "p A" 'projecitle-remove-known-project
   "p i" 'projectile-ibuffer
-  "p p" 'projectile-switch-project
-  "p d" 'projectile-browse-dirty-projects
+  "p s" 'projectile-switch-project
+  "p ~" 'projectile-browse-dirty-projects
   "p l" 'projectile-find-file-in-known-projects
   "p b" 'projectile-switch-to-buffer
   "p B" 'projectile-switch-to-buffer-other-window
+  "p !" 'projectile-run-shell-command-in-root
+  "p &" 'projectile-run-async-shell-command-in-root
   ;; Search
   "p g" '(:ignore t :wk "Search Project")
   ;; "p g a" 'helm-projectile-ag
@@ -179,7 +165,3 @@
   )
 
 
-;; (push '(("\\`SPC M-.\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
-(push '(("\\`SPC [[:digit:]]\\'" . "eyebrowse-switch-to-window-config-[1-9]") . t) which-key-replacement-alist)
-;; (push '(("\\`SPC M-0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC M-[0-9]". "Tab [0-9]")) which-key-replacement-alist)
-(push '(("\\`SPC 0\\'" . "eyebrowse-switch-to-window-config-0") . ("SPC [0-9]". "Tab [0-9]")) which-key-replacement-alist)

@@ -44,11 +44,7 @@
          (html-mode . emmet-mode)
          (web-mode . emmet-mode)
          (nxml-mode . emmet-mode)
-         (rjsx-mode . emmet-mode))
-  :config
-  (general-defs 'emmet-mode-keymap
-    "<tab>" 'spacemacs/emmet-expand
-    "TAB" 'spacemacs/emmet-expand))
+         (rjsx-mode . emmet-mode)))
 
 (use-package company-web-html
   :commands (company-web-html)
@@ -74,4 +70,10 @@
 
 (use-package stylus-mode)
 
-(use-package counsel-css)
+(when (featurep 'ivy) 
+  (use-package counsel-css
+    :straight t))
+
+(when (featurep 'helm)
+  (use-package helm-css-scss
+    :straight t))

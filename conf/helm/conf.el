@@ -5,13 +5,15 @@
   :init
   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
   (setq helm-M-x-fuzzy-match t)
-  (setq helm-display-function 'helm-display-buffer-in-own-frame)
-  (setq helm-autoresize-mode t)
-  (setq helm-display-buffer-reuse-frame t)
-  (setq helm-window-prefer-horizontal-split t)
+  (setq helm-display-function 'js/helm-display-child-frame)
+  ;; (setq helm-window-prefer-horizontal-split t)
   (setq helm-mode-handle-completion-in-region nil)
+  (setq helm-display-buffer-width 80)
+  (setq helm-display-buffer-reuse-frame t)
+
   (helm-mode 1)
   (helm-adaptive-mode 1)
+  (helm-autoresize-mode 1)
   :delight
   :config
   (general-define-key
@@ -21,6 +23,14 @@
    [remap recentf-open-files] #'helm-recentf
    [remap switch-to-buffer] #'helm-buffers-list))
 
+
+;; (use-package helm-posframe
+;;   :init
+;;   (setq helm-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
+;;   (setq helm-posframe-border-width 10)
+;;   (setq helm-posframe-size-function
+;;         )
+;;   (helm-posframe-enable))
 
 (use-package flx)
 
@@ -53,7 +63,6 @@
   :config
   (helm-projectile-on))
 
-
 (defun *-popwin-help-mode-off ()
   "Turn `popwin-mode' off for *Help* buffers."
   (when (boundp 'popwin:special-display-config)
@@ -68,3 +77,4 @@
 
 (add-hook 'helm-minibuffer-set-up-hook #'*-popwin-help-mode-off)
 (add-hook 'helm-cleanup-hook #'*-popwin-help-mode-on)
+

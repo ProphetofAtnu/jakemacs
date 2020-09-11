@@ -131,3 +131,16 @@
  :keymaps '(simplenote2-list-mode-map)
  [return] 'simplenote2-list-open-note
  "RET" 'simplenote2-list-open-note)
+
+(general-define-key
+ :states '(normal motion)
+ :keymaps '(pdf-view-mode-map)
+ "S" nil
+ "D" nil
+ "u" nil
+ "d" nil
+ "S" 'pdf-view-auto-slice-minor-mode
+ "D" 'pdf-view-dark-minor-mode
+ "u" 'pdf-view-scroll-down-or-previous-page
+ "d" 'pdf-view-scroll-up-or-next-page
+  )

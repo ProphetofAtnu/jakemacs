@@ -7,6 +7,7 @@
 (straight-use-package 'fish-completion)
 (straight-use-package 'shell-pop)
 (straight-use-package 'company-native-complete)
+(straight-use-package 'native-complete)
 
 ;; eshell
 (straight-use-package 'eshell-z)

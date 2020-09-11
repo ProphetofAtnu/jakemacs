@@ -11,6 +11,7 @@
   :init (exec-path-from-shell-initialize))
 
 (use-package save-sexp)
+
 ;; Used in a ton of packages
 (use-package posframe)
 
@@ -86,6 +87,7 @@
 ;; For some reason general causes all sorts of issues with this
 ;; evil-mc-map. This fixes it.
 (use-package evil-mc
+  :delight "🄼"
   :init
   (load "evil-mc-setup" nil t)
   (general-defs '(normal visual)
@@ -118,7 +120,7 @@
   (purpose-mode 1)
   (purpose-x-popwin-setup)
   (purpose-x-magit-multi-on)
-  ;; (purpose-x-popwin-update-conf)
+  (purpose-x-popwin-update-conf)
   ;;(purpose-x-popupify-purpose 'info 'purpose-display-at-right)
   )
 
@@ -173,6 +175,10 @@
       :keymaps 'dired-mode-map
       "-" 'dired-up-directory)))
 
+(use-package all-the-icons-dired
+  :hook
+  (dired-mode . all-the-icons-dired-mode))
+
 (use-package diredfl
   :hook (dired-mode . diredfl-global-mode))
 
@@ -183,28 +189,9 @@
   (progn
     (diredp-toggle-find-file-reuse-dir 1)))
 
-;; (use-package smartparens
-;;   :delight
-;;   :init
-;;   (progn
-;;     (use-package smartparens-config)
-;;     (smartparens-global-mode 1)
-;;     (show-smartparens-global-mode 1))
-;;   :config
-;;   (progn
-;;     (sp-local-pair 'emacs-lisp-mode "`" nil :when '(sp-in-string-p))))
-
 (use-package elec-pair
   :init
   (electric-pair-mode))
-
-;; (use-package evil-smartparens
-;;   :delight
-;;   :hook (smartparens-mode . evil-smartparens-mode))
-
-;; (use-package elec-pair
-;;   :config
-;;   (electric-pair-mode +1))
 
 (use-package undo-tree
   :delight)
@@ -228,19 +215,20 @@
   ;;          company-capf
   ;;          company-yasnippet)
   ;;         (company-abbrev company-dabbrev)))
-  (general-defs 'company-active-map
-    "TAB" 'company-complete-common-or-cycle
-    "<tab>" 'company-complete-common-or-cycle
-    "C-n" 'company-select-next
-    "C-p" 'company-select-previous
-    "<escape>" 'company-abort
-    "<return>" 'company-complete-selection
-    "SPC" '(lambda ()
-             (interactive)
-             (when (company-explicit-action-p)
-               (company-complete-selection))
-             (unless (looking-back "[[:blank:]]")
-               (self-insert-command 1)))))
+  ;; (general-defs 'company-active-map
+  ;;   "TAB" 'company-complete-common-or-cycle
+  ;;   "<tab>" 'company-complete-common-or-cycle
+  ;;   "C-n" 'company-select-next
+  ;;   "C-p" 'company-select-previous
+  ;;   "<escape>" 'company-abort
+  ;;   "<return>" 'company-complete-selection
+  ;;   "SPC" '(lambda ()
+  ;;            (interactive)
+  ;;            (when (company-explicit-action-p)
+  ;;              (company-complete-selection))
+  ;;            (unless (looking-back "[[:blank:]]")
+  ;;              (self-insert-command 1))))
+  )
 
 ;; (use-package company-posframe
 ;;   :delight
@@ -297,31 +285,14 @@
 
 (use-package yasnippet
   :defer t
-  :delight
+  :delight "🅈"
   :config
-  (yas-global-mode)
-  (delight 'yas-minor-mode "ⓨ")
-  )
+  (yas-global-mode))
 
 
 
 (use-package swiper
   :commands (swiper))
-
-(use-package eyebrowse
-  :init
-  (setq eyebrowse-new-workspace t
-        eyebrowse-wrap-around t)
-  :config
-  (eyebrowse-init)
-  (eyebrowse-mode t)
-  (require 'general)
-  (general-defs '(normal visual motion)
-    "g t" 'eyebrowse-next-window-config
-    "g T" 'eyebrowse-prev-window-config
-    "g z" 'eyebrowse-close-window-config
-    "z x" 'eyebrowse-last-window-config
-    "z w" 'eyebrowse-create-window-config))
 
 (use-package projectile
   :delight
@@ -382,5 +353,7 @@
   :commands (global-so-long-mode)
   :init
   (global-so-long-mode))
+
+(use-package smart-tabs-mode)
 
 (provide 'base)

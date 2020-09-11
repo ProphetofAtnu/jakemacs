@@ -20,10 +20,10 @@
 ;;   "C-a" 'beginning-of-line-text
 ;;   "C-e" 'end-of-line)
 
-(with-eval-after-load 'company
-  (general-def
-    "C-TAB" 'company-complete-common-or-cycle
-    "<C-tab>" 'company-complete-common-or-cycle))
+;; (with-eval-after-load 'company
+;;   (general-def
+;;     "C-TAB" 'company-complete-common-or-cycle
+;;     "<C-tab>" 'company-complete-common-or-cycle))
 
 (general-def
   "M-SPC" 'previous-window-any-frame)

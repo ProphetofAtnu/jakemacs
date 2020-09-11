@@ -20,8 +20,6 @@
 (use-package csv-mode
   :mode (("\\.csv\\'" . csv-mode)))
 
-(use-package muse
-  :mode (("\\.muse\\'" . muse-mode)))
 
 (use-package ggtags
   :commands (ggtags-mode))
@@ -49,3 +47,13 @@
 (use-package tramp
   :config
   (setq tramp-default-method "ssh"))
+
+(use-package pdf-tools
+  :init 
+  (add-to-list 'auto-mode-alist
+               '("\\.pdf\\'" . pdf-view-mode))
+  ;; (add-to-list 'evil-motion-state-modes 'pdf-view-mode)
+
+  ;; For some reason, motion state doesn't want to work with PDF-view
+  ;; mode.
+  (add-hook 'pdf-view-mode-hook #'pdf-isearch-minor-mode))

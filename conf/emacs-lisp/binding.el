@@ -14,4 +14,5 @@
   "i" '(:ignore t :wk "Ielm")
   "i i" 'ielm-other-window
   "i I" 'ielm
-  "i r" 'comint-send-region)
+  "i r" 'comint-send-region
+  "p" 'check-parens)

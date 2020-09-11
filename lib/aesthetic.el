@@ -56,10 +56,11 @@
   :config
   (progn
     (moe-dark)
-    (set-face-foreground 'ivy-minibuffer-match-face-1 "grey18" nil)
-    (set-face-foreground 'ivy-minibuffer-match-face-2 "grey18" nil)
-    (set-face-foreground 'ivy-minibuffer-match-face-3 "grey18" nil)
-    (set-face-foreground 'ivy-minibuffer-match-face-4 "grey18" nil)
+    (with-eval-after-load 'ivy 
+      (set-face-foreground 'ivy-minibuffer-match-face-1 "grey18" nil)
+      (set-face-foreground 'ivy-minibuffer-match-face-2 "grey18" nil)
+      (set-face-foreground 'ivy-minibuffer-match-face-3 "grey18" nil)
+      (set-face-foreground 'ivy-minibuffer-match-face-4 "grey18" nil))
     ))
 
 (use-package doom-modeline

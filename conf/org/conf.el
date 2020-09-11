@@ -46,7 +46,8 @@
    org-id-locations-file (expand-file-name ".org-id-locations" user-cache-dir))
   (add-to-list 'org-refile-targets '(org-id-files . (:maxlevel . 4)))
   (org-link-set-parameters "id"
-                           :complete 'org-id-get-with-outline-path-completion))
+                           :complete 'org-id-get-with-outline-path-completion)
+  (add-hook 'org-mode-hook #'flyspell-mode-on))
 
 (use-package org-starter
   :delight

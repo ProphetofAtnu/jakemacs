@@ -10,3 +10,5 @@
 (straight-use-package 'helm-mode-manager)
 (straight-use-package 'helm-flx)
 (straight-use-package 'helm-projectile)
+
+(straight-use-package 'helm-posframe)

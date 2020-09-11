@@ -28,5 +28,10 @@
   )
 
 (leader-tert-def
-  "m" 'helm-mode-manager
-  "\\" 'helm-mini)
+  "\\" 'helm-imenu)
+
+(general-define-key
+ :keymaps '(helm-map)
+ "C-j" 'helm-select-action
+ "TAB" 'helm-execute-persistent-action
+ )

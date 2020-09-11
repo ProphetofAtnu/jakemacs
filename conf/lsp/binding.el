@@ -7,7 +7,8 @@
    (setq-local evil-lookup-func #'lsp-describe-thing-at-point)
    (leader-minor-def
      :keymaps 'local
-     "l" '(:ignore t :wk "LSP")
+     "R" 'lsp-restart-workspace 
+     "l" '(:ignore t :wk "LSP"lsp-restart-workspace)
      "l =" 'lsp-format-buffer
      "l -" 'lsp-format-region
      "l q" 'lsp-disconnect
@@ -35,7 +36,12 @@
      "l w r" 'lsp-workspace-restart
      "l w l" 'lsp-workspace-show-log
      "l w q" 'lsp-workspace-shutdown
-     "l w R" 'lsp-workspace-blacklist-remove)))
+     "l w R" 'lsp-workspace-blacklist-remove)
+   (when (featurep 'helm)
+     (leader-minor-def
+       :keymaps 'local
+       "s" 'helm-lsp-workspace-symbol
+       "S" 'helm-lsp-global-workspace-symbol))))
 
 (add-hook
  'lsp-ui-mode-hook

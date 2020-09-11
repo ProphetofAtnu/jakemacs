@@ -1,4 +1,4 @@
-* TODO Add dependencies for js
+* DONE Add dependencies for js
 :PROPERTIES:
 :ID:       1b987930-4f12-4961-8698-d4c3ed87ea6d
 :END:
@@ -7,9 +7,9 @@
 - eslint
 - prettier
 
-* TODO Add dependencies for utility
+* DONE Add dependencies for utility
 :PROPERTIES:
 :ID:       e5138b1a-362e-4d3e-b410-5909559a3b19
 :END:
 - fzf
-
+* TODO Find a buffer management strategy

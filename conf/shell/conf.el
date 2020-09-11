@@ -23,7 +23,7 @@
                (add-to-list
                 ;; (make-local-variable 'company-backends)
 		'company-backends
-                '(company-capf company-shell company-files company-keywords))
+                '(company-native-complete company-files company-keywords))
                (general-define-key :keymaps '(shell-mode-map)
                                    "TAB" 'company-complete)
                ;; (setq-local company-frontends '(company-preview-frontend))
@@ -44,15 +44,21 @@
   (setq fish-completion-fallback-on-bash-p t)
   (global-fish-completion-mode))
 
-;; (use-package company-native-complete
-;;   :commands (company-native-complete)
-;;   :init
-;;   (add-hook 'comint-mode-hook
-;;             '(lambda ()
-;;                (add-to-list (make-local-variable 'company-backends) 'company-native-complete)))
-;;   (add-hook 'shell-mode-hook
-;;             '(lambda ()
-;;                (add-to-list (make-local-variable 'company-backends) 'company-native-complete))))
+
+(use-package native-complete
+  :commands (native-complete-setup-bash)
+  :init
+  (native-complete-setup-bash))
+
+(use-package company-native-complete
+  :commands (company-native-complete)
+  :init
+  (add-hook 'comint-mode-hook
+            '(lambda ()
+               (add-to-list (make-local-variable 'company-backends) 'company-native-complete)))
+  (add-hook 'shell-mode-hook
+            '(lambda ()
+               (add-to-list (make-local-variable 'company-backends) 'company-native-complete))))
 
 (use-package purpose
   :defer t
@@ -71,20 +77,10 @@
 ;;   )
 
 (use-package shell-pop
-  :custom
-  (shell-pop-full-span t)
-  (shell-pop-shell-type
-   '("ansi-term" "*ansi-term*"
-     (lambda nil
-       (ansi-term shell-pop-term-shell))))
-  (shell-pop-universal-key "C-'")
   :config
-  (setq shell-pop-term-shell "/bin/bash"
-        shell-pop-shell-type '("ansi-term" "*ansi-term*"
-                               (lambda nil
-                                 (ansi-term shell-pop-term-shell)))
-        shell-pop-full-span t
-        shell-pop-universal-key "C-'"))
+  (setq shell-pop-full-span t
+        shell-pop-universal-key "C-'")
+  (general-defs "C-'" 'shell-pop))
 
 (use-package eshell-prompt-extras
   :after (eshell)

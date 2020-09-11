@@ -5,6 +5,7 @@
 (set-selection-coding-system 'utf-8)
 ;;(load (expand-file-name "lib/util.el" user-emacs-directory)) 
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "misc" user-emacs-directory))
 
 ;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)

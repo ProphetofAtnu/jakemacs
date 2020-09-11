@@ -17,8 +17,8 @@
   :keymaps '(org-mode-map)
   :major-modes t
   "," 'org-goto
-  ;; "/" 'helm-org-rifle
-  ;; "f" 'helm-org-rifle-org-directory
+  "/" 'helm-org-rifle
+  "f" 'helm-org-rifle-org-directory
   "z" 'org-add-note
   "a" 'org-attach
   "s" 'org-sort
@@ -27,7 +27,7 @@
   ":" 'js/org-index-buffer
   "." 'org-agenda
   "t" 'org-sticky-header-mode
-  ;; "o" 'helm-org-agenda-files-headings
+  "o" 'helm-org-agenda-files-headings
   "l" '(:ignore t :wk "Link")
   "l y" 'org-store-link
   "l p" 'org-insert-last-stored-link
@@ -52,7 +52,8 @@
   "," 'org-agenda
   "n" 'deft
   "." 'js/org-dir-file
-  "o" 'js/org-search
+  ;; "o" 'js/org-search
+  "o" 'helm-org-rifle-org-directory
   "O" 'js/org-pop-org-dir
   )
 

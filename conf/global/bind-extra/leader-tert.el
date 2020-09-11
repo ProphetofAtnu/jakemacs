@@ -29,7 +29,8 @@ m -> Toggle Mode     | r -> reset"
   :non-normal-prefix alt-tertiary)
 
 (general-define-key
- :prefix-map 'inferior-shell-selection-map
+ :prefix-command 'js/inferior-shell-prefix-command
+ :prefix-map 'js/inferior-shell-prefix-map
  "t" 'term
  "a" 'ansi-term
  "s" 'shell
@@ -39,9 +40,61 @@ m -> Toggle Mode     | r -> reset"
  "n" 'nodejs-repl
  "w" 'skewer-repl)
 
+(general-define-key
+ :prefix-command 'js/debug-prefix-command
+ :prefix-map 'js/debug-prefix-map
+  "s" 'straight-use-package
+  "p" 'straight-get-recipe
+  "d" 'toggle-debug-on-error
+  "f" 'debug-on-entry
+  "F" 'debugger-list-functions
+  "v" 'debug-on-variable-change
+  "c" 'company-diag
+  "k" '((lambda ()
+            (interactive)
+            (let ((ev (read-event)))
+              (message "Key: %s -> Event: %s\nModifiers: %s\nBasic: %s"
+                       (single-key-description ev)
+                       ev
+                       (event-modifiers ev)
+                       (event-basic-type ev)))) :wk "Dump event")
+  "m" 'jump-messages)
+
+(leader-tert-def
+  :prefix-command 'js/text-prefix-command
+  :prefix-map 'js/text-prefix-map
+  "x" 'indent-region
+  "f" 'hydra-scale-text/body
+  "+" 'hydra-scale-text/text-scale-increase
+  "=" 'hydra-scale-text/text-scale-increase
+  "-" 'hydra-scale-text/text-scale-decrease
+  "X" 'indent-rigidly
+  "q" 'auto-fill-mode
+  "m" 'automargin-mode
+  "u" 'downcase-region
+  "U" 'upcase-region
+  "t" 'transpose-words
+  "T" 'transpose-lines
+  "c" 'evil-align-center
+  "a" 'align-regexp
+  "A" 'align-entire
+  "s" 'sort-lines
+  "S" 'sort-lines-reverse
+  "k" 'keep-lines
+  "K" 'delete-matching-lines)
+
+
 (leader-tert-def
   "" nil
-  "t" `(,inferior-shell-selection-map :wk "Inf. Shell")
+  "t" '(:prefix-command js/inferior-shell-prefix-command
+                        :prefix-map js/inferior-shell-prefix-map 
+                        :wk "Inf. Shell")
+  "z" '(:prefix-command js/debug-prefix-command
+                        :prefix-map js/debug-prefix-map
+                        :wk "Debug")
+  "x" '(:prefix-command js/text-prefix-command
+                        :prefix-map js/text-prefix-map
+                        :wk "Text")
   "e" 'eww
   "r" 'treemacs
   "b" 'bookmark-bmenu-search
@@ -52,52 +105,4 @@ m -> Toggle Mode     | r -> reset"
   "\\" 'imenu
   "|" 'imenu-anywhere
   "l" 'avy-goto-line)
-
-(leader-tert-def
-  "x" '(:ignore t :wk "Text")
-  "x x" 'indent-region
-  "x f" 'hydra-scale-text/body
-  "x +" 'hydra-scale-text/text-scale-increase
-  "x =" 'hydra-scale-text/text-scale-increase
-  "x -" 'hydra-scale-text/text-scale-decrease
-  "x X" 'indent-rigidly
-  "x q" 'auto-fill-mode
-  "x m" 'automargin-mode
-  "x u" 'downcase-region
-  "x U" 'upcase-region
-  "x t" 'transpose-words
-  "x T" 'transpose-lines
-  "x c" 'evil-align-center
-  "x a" 'align-regexp
-  "x A" 'align-entire
-  "x s" 'sort-lines
-  "x S" 'sort-lines-reverse
-  "x k" 'keep-lines
-  "x K" 'delete-matching-lines)
-
-(leader-tert-def
-  "z" '(:ignore t :wk "Debug :3")
-  "z s" 'straight-use-package
-  "z p" 'straight-get-recipe
-  "z d" 'toggle-debug-on-error
-  "z f" 'debug-on-entry
-  "z F" 'debugger-list-functions
-  "z v" 'debug-on-variable-change
-  "z c" 'company-diag
-  "z k" '((lambda ()
-            (interactive)
-            (let ((ev (read-event)))
-              (message "Key: %s -> Event: %s\nModifiers: %s\nBasic: %s"
-                       (single-key-description ev)
-                       ev
-                       (event-modifiers ev)
-                       (event-basic-type ev)))) :wk "Dump event")
-  "z m" 'jump-messages)
-
-;; (general-define-key :keymaps 'local
-;;                     [M-return] '(lambda ()
-;;                                   (interactive)
-;;                                   (message "You hit ret")
-;;                                   (self-insert-command 1)))
-
 

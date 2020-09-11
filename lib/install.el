@@ -31,6 +31,7 @@
 (straight-use-package 'diredfl)
 (straight-use-package 'hydra)
 (straight-use-package 'smart-tab)
+(straight-use-package 'smart-tabs-mode)
 (straight-use-package 'avy)
 (straight-use-package 'ace-window)
 (straight-use-package 'ace-link)
@@ -67,6 +68,7 @@
 (straight-use-package 'delight)
 (straight-use-package 'dashboard)
 (straight-use-package 'doom-modeline)
+(straight-use-package 'all-the-icons-dired)
 (straight-use-package 'projectile)
 (straight-use-package 'eyebrowse)
 

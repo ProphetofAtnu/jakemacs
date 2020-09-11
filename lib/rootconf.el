@@ -2,8 +2,12 @@
 
 ;; After the base packages have been loaded, load any additional
 ;; configs
-(setq active-configs '(ivy
+(setq active-configs '(
+                       ;; selectrum
+                       helm
+                       ;; ivy
                        utility
+                       wim
                        emacs-lisp
                        dart
                        sexp
@@ -22,6 +26,7 @@
                        shell
                        lua
                        gnuplot
+                       writing
                        flycheck))
 
 (menu-bar-mode -1)

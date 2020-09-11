@@ -11,9 +11,15 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config
-  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-use-webkit t)
   (setq ;; lsp-ui-flycheck-live-reporting nil
-        lsp-ui-doc-position 'bottom))
+   lsp-ui-doc-position 'bottom
+   lsp-ui-doc-max-width 80
+   lsp-ui-doc-max-height 20
+   lsp-ui-doc-include-signature t
+   lsp-ui-peek-always-show t))
 
 (use-package company
   :config

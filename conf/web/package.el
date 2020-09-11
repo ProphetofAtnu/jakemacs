@@ -21,10 +21,4 @@
 (straight-use-package 'tagedit)
 (straight-use-package 'css-eldoc)
 
-(when (featurep 'ivy)
-  (straight-use-package
-   'counsel-css))
 
-(when (featurep 'helm)
-  (straight-use-package
-   'helm-css-scss))
