@@ -61,7 +61,7 @@ Uses the directory \"user-emacs-directory/conf/\""
         (nconf (expand-file-name name js/conf-dir)))
     (unless (member nconf cconfs)
       (let ((nconf-files
-             (mapcar '(lambda (f)
+             (mapcar #'(lambda (f)
                         (expand-file-name
                          (concat (symbol-name f) ".el")
                          nconf))

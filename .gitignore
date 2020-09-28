@@ -20,3 +20,4 @@ elpy
 /annotations
 /var/
 mssql
+local.el

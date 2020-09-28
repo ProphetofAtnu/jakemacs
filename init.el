@@ -1,4 +1,7 @@
 ;;; init.el ---                                      -*- lexical-binding: t; -*-
+(defvar js/after-init-hook nil
+  "Hook that runs after init.el has completely loaded")
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
@@ -23,6 +26,10 @@
   (when e 
     (setq user-src-dir e)))
 
+(defvar js/overrides-file-name
+  (expand-file-name
+      "local.el"
+      user-emacs-directory))
 
 ;; Bootstrap Straight
 (defvar bootstrap-version)
@@ -73,7 +80,17 @@
 (setq custom-file (concat-path user-cache-dir "custom.el"))
 (load custom-file)
 
+
+(condition-case err
+    (load js/overrides-file-name)
+  (file-missing
+   (progn
+     (ensure-file js/overrides-file-name)
+     (message (format "Created %s" js/overrides-file-name)))))
+
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
+
+(run-hooks 'js/after-init-hook)
 
 ;; <(nothing)>

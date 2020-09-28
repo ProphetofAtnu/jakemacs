@@ -17,17 +17,24 @@
   :keymaps '(org-mode-map)
   :major-modes t
   "," 'org-goto
-  "/" 'helm-org-rifle
-  "f" 'helm-org-rifle-org-directory
+  ;; "/" 'helm-org-rifle
+  ;; "f" 'helm-org-rifle-org-directory
   "z" 'org-add-note
   "a" 'org-attach
   "s" 'org-sort
   "r" 'org-refile
+  "t" 'org-todo 
+  "y" 'org-store-link
+  "p" 'org-insert-last-stored-link 
   ";" 'js/org-refresh-id
   ":" 'js/org-index-buffer
   "." 'org-agenda
-  "t" 'org-sticky-header-mode
-  "o" 'helm-org-agenda-files-headings
+  ">" 'org-deadline
+  "<" 'org-set-property
+  "#" 'org-set-tags-command 
+  "=" 'org-lint 
+  "RET" 'hydra-org-headline/body 
+  ;; "o" 'helm-org-agenda-files-headings
   "l" '(:ignore t :wk "Link")
   "l y" 'org-store-link
   "l p" 'org-insert-last-stored-link
@@ -52,8 +59,8 @@
   "," 'org-agenda
   "n" 'deft
   "." 'js/org-dir-file
-  ;; "o" 'js/org-search
-  "o" 'helm-org-rifle-org-directory
+  "o" 'js/org-search
+  ;; "o" 'helm-org-rifle-org-directory
   "O" 'js/org-pop-org-dir
   )
 

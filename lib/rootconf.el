@@ -4,8 +4,8 @@
 ;; configs
 (setq active-configs '(
                        ;; selectrum
-                       helm
-                       ;; ivy
+                       ;; helm
+                       ivy
                        utility
                        wim
                        emacs-lisp
@@ -80,5 +80,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 (setq auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/.saves-")
+
+(when (eq system-type 'darwin)
+  (add-hook 'js/after-init-hook '(lambda ()  (require 'mac-config))))
 
 (provide 'rootconf)

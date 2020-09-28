@@ -67,6 +67,11 @@
   (:map evil-normal-state-map)
   ("gc" . evil-commentary))
 
+(use-package evil-better-visual-line
+  :defer 5
+  :config
+  (add-hook 'visual-line-mode-hook #'evil-better-visual-line-on))
+
 (use-package origami
   :commands (global-origami-mode)
   :init

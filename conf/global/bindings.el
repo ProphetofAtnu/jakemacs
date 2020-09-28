@@ -31,7 +31,7 @@
 (general-defs '(normal visual motion)
   "s" nil
   "S" nil
-  "s" 'avy-goto-char-timer
+  "s" 'avy-goto-char-2 
   "S" 'swiper
   ;; Dired stuff
   "-" 'dired-jump)

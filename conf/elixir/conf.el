@@ -9,7 +9,7 @@
 ;;     :commands lsp
 ;;     :diminish lsp-mode
 ;;     :hook
-;;     (elixir-mode . lsp)
+;;     (elixir-mode . lsp-deferred)
 ;;     :init
 ;;     (add-to-list 'exec-path js/elixir-ls-release-path)
 ;;     :config
@@ -21,6 +21,13 @@
   (add-to-list 'purpose-x-popwin-buffer-names "*alchemist-info-mode*")
   (add-to-list 'purpose-x-popwin-buffer-names "*alchemist mix*")
   (purpose-x-popwin-update-conf))
+
+(require 'after/company-after)
+
+(js/company-localize-backends
+ elixir-mode
+ (company-capf alchemist-company
+               (company-dabbrev-code company-gtags company-etags company-keywords)))
 
 (use-package elixir-mode
   :defer t)
