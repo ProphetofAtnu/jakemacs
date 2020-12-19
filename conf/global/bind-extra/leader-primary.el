@@ -162,6 +162,8 @@
   "o n" 'make-frame
   "o m" 'make-frame-on-monitor
   "o d" 'dired-other-frame
+
+  "Q" 'kill-buffer-and-window
   )
 
 

@@ -57,3 +57,7 @@
   ;; For some reason, motion state doesn't want to work with PDF-view
   ;; mode.
   (add-hook 'pdf-view-mode-hook #'pdf-isearch-minor-mode))
+
+(use-package yaml-mode)
+
+(use-package yaml-imenu)

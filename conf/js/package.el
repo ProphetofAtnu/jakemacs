@@ -36,6 +36,6 @@
 ;; New additions/replacements
 
 (straight-use-package 'tide)
-(straight-use-package 'indium)
+;; (straight-use-package 'indium)
 
 (straight-use-package 'typescript-mode)

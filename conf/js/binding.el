@@ -26,32 +26,31 @@
   "d d" 'js/jsdoc-annotate-above
   "d f" 'js-doc-insert-function-doc
   "d F" 'js-doc-insert-file-doc
-  "d s" 'js-doc-insert-function-doc-snippet)
-  ;; Node
-  ;; "n" '(:ignore t :wk "Node-Repl")
-  ;; "n '" 'nodejs-repl
-  ;; "n s" 'nodejs-repl
-  ;; "n i" 'nodejs-repl-switch-to-repl
-  ;; "n e" 'nodejs-repl-send-last-expression
-  ;; "n E" '(#'(lambda ()
-  ;;             (interactive)
-  ;;             (nodejs-repl-send-last-expression)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
-  ;; "n b" 'nodejs-repl-send-buffer
-  ;; "n B" '(#'(lambda ()
-  ;;          (interactive)
-  ;;          (nodejs-repl-send-buffer)
-  ;;          (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
-  ;; "n l" 'nodejs-repl-send-line
-  ;; "n L" '(#'(lambda ()
-  ;;             (interactive)
-  ;;             (nodejs-repl-send-line)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
-  ;; "n r" 'nodejs-repl-send-region
-  ;; "n R" '(#'(lambda (start end)
-  ;;             (interactive "r")
-  ;;             (nodejs-repl-send-region start end)
-  ;;             (nodejs-repl-switch-to-repl)) :wk "Send Region+F")
+  "d s" 'js-doc-insert-function-doc-snippet
+  "n" '(:ignore t :wk "Node-Repl")
+  "n '" 'nodejs-repl
+  "n s" 'nodejs-repl
+  "n i" 'nodejs-repl-switch-to-repl
+  "n e" 'nodejs-repl-send-last-expression
+  "n E" '(#'(lambda ()
+              (interactive)
+              (nodejs-repl-send-last-expression)
+              (nodejs-repl-switch-to-repl)) :wk "Send LE+F")
+  "n b" 'nodejs-repl-send-buffer
+  "n B" '(#'(lambda ()
+              (interactive)
+              (nodejs-repl-send-buffer)
+              (nodejs-repl-switch-to-repl)) :wk "Send Buff+F")
+  "n l" 'nodejs-repl-send-line
+  "n L" '(#'(lambda ()
+              (interactive)
+              (nodejs-repl-send-line)
+              (nodejs-repl-switch-to-repl)) :wk "Send Line+F")
+  "n r" 'nodejs-repl-send-region
+  "n R" '(#'(lambda (start end)
+              (interactive "r")
+              (nodejs-repl-send-region start end)
+              (nodejs-repl-switch-to-repl)) :wk "Send Region+F"))
 
 (leader-minor-def
   :keymaps '(js2-mode-map rjsx-mode-map)
@@ -100,6 +99,44 @@
   "r m k" 'js2r-move-line-up
   )
 
+(leader-minor-def
+  :keymaps '( typescript-mode-map web-tsx-mode-map)
+  :major-mode t
+  "x" 'lsp-eslint-apply-all-fixes
+  "a" 'lsp-execute-code-action
+  "=" 'prettier-js
+  "f" 'lsp-find-references
+  "g" 'lsp-find-definition
+  "G" 'lsp-find-declaration
+  "t" 'lsp-goto-type-definition
+  "i" 'lsp-goto-implementation
+  "k" 'lsp-describe-thing-at-point
+  ;; "G" 'tide-jump-back
+  "q" 'lsp-workspace-restart
+  "Q" 'lsp-disconnect
+  "v" 'lsp-describe-session
+  "V" 'lsp-diagnose
+  ;; "s" 'tide-list-servers
+  "r" 'lsp-rename)
+(leader-minor-def
+  :keymaps '(emmet-mode-keymap)
+  :minor-mode t
+  "i" '(:ignore t :wk "Emmet")
+  "i i" 'emmet-expand-line
+  "i p" 'emmet-preview
+  "i w" 'emmet-wrap-with-markup)
+
+(leader-minor-def
+  :keymaps '(flow-minor-mode-map)
+  :minor-mode t
+  "f" '(:ignore t :wk "Flow")
+  "fb" 'xref-pop-marker-stack
+  "fd" 'flow-minor-jump-to-definition
+  "fc" 'flow-minor-status
+  "ff" 'flow-minor-suggest
+  "fo" 'flow-minor-coverage
+  "ft" 'flow-minor-type-at-pos)
+
 ;; (leader-minor-def
 ;;   ;; :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map)
 ;;   :keymaps '(js2-mode-map rjsx-mode-map)
@@ -142,49 +179,30 @@
 ;;   "r" 'tide-rename-symbol
 ;;   "t" 'tide-jsdoc-template)
 
-(leader-minor-def
-  :keymaps '( typescript-mode-map web-tsx-mode-map)
-  :major-mode t
-  "x" 'lsp-eslint-apply-all-fixes
-  "a" 'lsp-execute-code-action
-  "=" 'prettier-js
-  "f" 'lsp-find-references
-  "g" 'lsp-find-definition
-  "G" 'lsp-find-declaration
-  "t" 'lsp-goto-type-definition
-  "i" 'lsp-goto-implementation
-  "k" 'lsp-describe-thing-at-point
-  ;; "G" 'tide-jump-back
-  "q" 'lsp-workspace-restart
-  "Q" 'lsp-disconnect
-  "v" 'lsp-describe-session
-  "V" 'lsp-diagnose
-  ;; "s" 'tide-list-servers
-  "r" 'lsp-rename)
 
 
-;; Indium
-(leader-minor-def
-  :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map web-tsx-mode-map)
-  :major-modes t
-  "." 'indium-switch-to-debugger
-  "'" 'indium-switch-to-repl-buffer
-  "," '(:ignore t :wk "Indium")
-  ", ," 'indium-eval
-  ", l" 'indium-launch
-  ", q" 'indium-quit
-  ", L" 'indium-connect 
-  ", s" 'indium-scratch
-  ", b" 'indium-add-breakpoint
-  ", B" 'indium-remove-breakpoint
-  ", c" 'indium-deactivate-breakpoints
-  ", C" 'indium-activate-breakpoints
-  ", d" 'indium-debugger-evaluate
-  ", e" 'indium-eval-last-node
-  ", k" 'indium-remove-all-breakpoints-from-buffer
-  ", f" 'indium-eval-defun
-  ", b" 'indium-eval-buffer
-  ", v" 'indium-list-breakpoints)
+;; ;; Indium
+;; (leader-minor-def
+;;   :keymaps '(typescript-mode-map js2-mode-map rjsx-mode-map web-tsx-mode-map)
+;;   :major-modes t
+;;   "." 'indium-switch-to-debugger
+;;   "'" 'indium-switch-to-repl-buffer
+;;   "," '(:ignore t :wk "Indium")
+;;   ", ," 'indium-eval
+;;   ", l" 'indium-launch
+;;   ", q" 'indium-quit
+;;   ", L" 'indium-connect 
+;;   ", s" 'indium-scratch
+;;   ", b" 'indium-add-breakpoint
+;;   ", B" 'indium-remove-breakpoint
+;;   ", c" 'indium-deactivate-breakpoints
+;;   ", C" 'indium-activate-breakpoints
+;;   ", d" 'indium-debugger-evaluate
+;;   ", e" 'indium-eval-last-node
+;;   ", k" 'indium-remove-all-breakpoints-from-buffer
+;;   ", f" 'indium-eval-defun
+;;   ", b" 'indium-eval-buffer
+;;   ", v" 'indium-list-breakpoints)
 
 ;; (leader-minor-def
 ;;   :keymaps '(js2-mode-map rjsx-mode-map)
@@ -196,22 +214,3 @@
 ;;   "d F" 'js-doc-insert-file-doc
 ;;   "d s" 'js-doc-insert-function-doc-snippet)
 
-
-(leader-minor-def
-  :keymaps '(emmet-mode-keymap)
-  :minor-mode t
-  "i" '(:ignore t :wk "Emmet")
-  "i i" 'emmet-expand-line
-  "i p" 'emmet-preview
-  "i w" 'emmet-wrap-with-markup)
-
-(leader-minor-def
-  :keymaps '(flow-minor-mode-map)
-  :minor-mode t
-  "f" '(:ignore t :wk "Flow")
-  "fb" 'xref-pop-marker-stack
-  "fd" 'flow-minor-jump-to-definition
-  "fc" 'flow-minor-status
-  "ff" 'flow-minor-suggest
-  "fo" 'flow-minor-coverage
-  "ft" 'flow-minor-type-at-pos)

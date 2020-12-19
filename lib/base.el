@@ -33,6 +33,7 @@
   (setq evil-split-window-below t)
   (setq evil-vsplit-window-right t)
   :config
+  (setq evil-undo-system 'undo-tree)
   (evil-mode 1))
 
 (use-package evil-collection
@@ -199,7 +200,9 @@
   (electric-pair-mode))
 
 (use-package undo-tree
-  :delight)
+  :delight
+  :config
+  (global-undo-tree-mode))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))

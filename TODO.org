@@ -13,3 +13,13 @@
 :END:
 - fzf
 * TODO Find a buffer management strategy
+* TODO Integrate Projectile, Perspective, and Treemacs
+
+** Goal
+Function that combines ~projectile-switch-project~, ~persp-switch~, and ~treemacs-switch-workspace~.
+
+
+** Implementation
+
+*** Create a new perspective for the project
+

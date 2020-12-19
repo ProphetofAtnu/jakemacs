@@ -19,14 +19,24 @@
 
 (use-package elpy
   :init
-  (elpy-enable))
+  (elpy-enable)
+  :config
+  (load "elpy")
+  (load "elpy-rpc")
+  (load "elpy-shell")
+  (load "elpy-profile")
+  (load "elpy-refactor")
+  (load "elpy-django")
+  (add-to-list
+   'python-shell-completion-native-disabled-interpreters
+   "python3"))
 
 (use-package python
-  :config
-  (setq
-   ;; python-shell-interpreter "ipython"
-   ;; python-shell-interpreter-args "--simple-prompt -i"
-   python-indent-offset 4)
+  :after 'elpy
+  :init
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
   )
 
 (use-package counsel-pydoc
@@ -43,3 +53,4 @@
 (use-package flycheck
   :init
   (add-hook 'python-mode-hook 'flycheck-mode-on-safe))
+

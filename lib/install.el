@@ -30,7 +30,6 @@
 (straight-use-package 'dired-plus)
 (straight-use-package 'diredfl)
 (straight-use-package 'hydra)
-(straight-use-package 'smart-tab)
 (straight-use-package 'smart-tabs-mode)
 (straight-use-package 'avy)
 (straight-use-package 'ace-window)
@@ -51,6 +50,7 @@
 (straight-use-package 'imenu-anywhere)
 (straight-use-package 'prodigy)
 (straight-use-package 'rainbow-mode)
+(straight-use-package 'undo-tree)
 
 (straight-use-package 'thingatpt)
 (straight-use-package 'thingatpt-plus)

@@ -18,7 +18,7 @@
                    `(add-to-list (quote company-backends) (quote ,b)))
                  be))
          (func `(lambda ()
-                  (make-local-variable (quote company-backends))
+                  (setq-local company-backends nil)
                   ,@forms)))
     `(add-hook (quote ,hook) ,func)
     ))

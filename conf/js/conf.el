@@ -38,67 +38,6 @@
 
 (use-package npm)
 
-(use-package tide
-  :commands (tide-setup)
-  :delight " ≋ "
-  :config
-  (setq tide-completion-detailed t
-        tide-completion-ignore-case t)
-  
-  :init
-  (defun setup-tide-mode ()
-    (interactive)
-    (unless (and
-             (featurep 'flow-minor-mode)
-             (flow-minor-configured-p)
-             (flow-minor-tag-present-p))
-        ;; (make-local-variable 'company-backends)
-        (tide-setup)
-        (add-to-list 'company-backends 'company-tide)
-        (flycheck-mode +1)
-        (setq flycheck-check-syntax-automatically '(save mode-enabled))
-        (eldoc-mode +1)
-        (tide-hl-identifier-mode +1)
-        ;; company is an optional dependency. You have to
-        ;; install it separately via package-install
-        ;; `M-x package-install [ret] company`
-        (company-mode +1))))
-  ;; (add-hook 'js2-mode-hook 'setup-tide-mode)
-  ;; (add-hook 'rjsx-mode-hook 'setup-tide-mode)
-  ;; (add-hook 'typescript-mode-hook 'setup-tide-mode))
-
-(use-package web-mode
-  :init
-  (define-derived-mode web-tsx-mode web-mode "React-TSX"
-    "Derived mode from web-mode to make bindings easier"
-    :syntax-table nil)
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
-  (add-hook 'web-tsx-mode-hook 'lsp)
-  (add-hook 'web-tsx-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                ;; (setup-tide-mode)
-                (add-to-list 'company-backends '(company-capf company-web-html))
-                (lsp))))
-  :config
-  ;; enable typescript-tslint checker
-  (with-eval-after-load 'tide
-    (require 'flycheck)
-    (flycheck-add-mode 'tsx-tide 'web-tsx-mode)
-    (flycheck-add-mode 'typescript-tide 'web-tsx-mode)
-    (flycheck-add-mode 'javascript-eslint 'web-tsx-mode)))
-
-(use-package indium
-  :init
-  (add-hook 'indium-interaction-mode-hook '(lambda ()
-                                             (tide-mode 0)
-                                             (tide-hl-identifier-mode 0)))
-  (setq
-   indium-chrome-executable "google-chrome"
-   indium-chrome-use-temporary-profile nil
-   indium-chrome-data-dir (expand-file-name "indium-profile" user-cache-dir) )
-  )
-
 (use-package add-node-modules-path
   :commands (add-node-modules-path)
   :hook ((js2-mode rjsx-mode typescript-mode) . add-node-modules-path))
@@ -183,3 +122,64 @@
 ;; (use-package livid-mode
 ;;   :defer t
 ;;   :commands (livid-mode))
+
+;; (use-package tide
+;;   :commands (tide-setup)
+;;   :delight " ≋ "
+;;   :config
+;;   (setq tide-completion-detailed t
+;;         tide-completion-ignore-case t)
+  
+;;   :init
+;;   (defun setup-tide-mode ()
+;;     (interactive)
+;;     (unless (and
+;;              (featurep 'flow-minor-mode)
+;;              (flow-minor-configured-p)
+;;              (flow-minor-tag-present-p))
+;;         ;; (make-local-variable 'company-backends)
+;;         (tide-setup)
+;;         (add-to-list 'company-backends 'company-tide)
+;;         (flycheck-mode +1)
+;;         (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;         (eldoc-mode +1)
+;;         (tide-hl-identifier-mode +1)
+;;         ;; company is an optional dependency. You have to
+;;         ;; install it separately via package-install
+;;         ;; `M-x package-install [ret] company`
+;;         (company-mode +1))))
+;;   ;; (add-hook 'js2-mode-hook 'setup-tide-mode)
+;;   ;; (add-hook 'rjsx-mode-hook 'setup-tide-mode)
+;;   ;; (add-hook 'typescript-mode-hook 'setup-tide-mode))
+
+;; (use-package web-mode
+;;   :init
+;;   (define-derived-mode web-tsx-mode web-mode "React-TSX"
+;;     "Derived mode from web-mode to make bindings easier"
+;;     :syntax-table nil)
+;;   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
+;;   (add-hook 'web-tsx-mode-hook 'lsp)
+;;   (add-hook 'web-tsx-mode-hook
+;;             (lambda ()
+;;               (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;;                 ;; (setup-tide-mode)
+;;                 (add-to-list 'company-backends '(company-capf company-web-html))
+;;                 (lsp))))
+;;   :config
+;;   ;; enable typescript-tslint checker
+;;   (with-eval-after-load 'tide
+;;     (require 'flycheck)
+;;     (flycheck-add-mode 'tsx-tide 'web-tsx-mode)
+;;     (flycheck-add-mode 'typescript-tide 'web-tsx-mode)
+;;     (flycheck-add-mode 'javascript-eslint 'web-tsx-mode)))
+
+;; (use-package indium
+;;   :init
+;;   (add-hook 'indium-interaction-mode-hook '(lambda ()
+;;                                              (tide-mode 0)
+;;                                              (tide-hl-identifier-mode 0)))
+;;   (setq
+;;    indium-chrome-executable "google-chrome"
+;;    indium-chrome-use-temporary-profile nil
+;;    indium-chrome-data-dir (expand-file-name "indium-profile" user-cache-dir) )
+;;   )

@@ -51,3 +51,5 @@
   "x ~" 'persp-state-restore
     )
 
+(leader-tert-def '(normal visual motion insert override)
+  "k" 'kill-buffer-and-window)

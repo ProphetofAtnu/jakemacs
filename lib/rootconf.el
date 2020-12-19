@@ -5,6 +5,7 @@
 (setq active-configs '(
                        ;; selectrum
                        ;; helm
+                       org
                        ivy
                        utility
                        wim
@@ -16,7 +17,6 @@
                        rust
                        sql
                        common-lisp
-                       org
                        treemacs
                        js
                        python
