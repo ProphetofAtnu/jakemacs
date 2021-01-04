@@ -6,12 +6,13 @@
   (setq lsp-file-watch-threshold 10000
         ;; lsp-idle-delay 1
         lsp-enable-snippet t
+        lsp-keep-workspace-alive nil
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config
-  (setq lsp-ui-sideline-enable nil
+  (setq ;; lsp-ui-sideline-enable nil
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-use-webkit t)
   (setq ;; lsp-ui-flycheck-live-reporting nil

@@ -65,7 +65,10 @@
   (add-hook 'typescript-mode-hook 'lsp)
   :config
   (setq lsp-vetur-use-workspace-dependencies t
-   lsp-vetur-format-default-formatter-ts "prettier"))
+        lsp-vetur-format-default-formatter-ts "prettier"
+        lsp-typescript-references-code-lens-enabled t
+        ;; lsp-typescript-disable-automatic-type-acquisition t
+        lsp-typescript-implementations-code-lens-enabled t))
 
 (use-package json-mode
   :config

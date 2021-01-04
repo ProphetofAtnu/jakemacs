@@ -6,11 +6,18 @@
   "s s" 'counsel-grep-or-swiper
   "s g" 'js/counsel-rg-here
   "s G" 'counsel-rg
-  "h a" 'counsel-apropos
-  "h k" 'counsel-descbinds
   "h m" 'counsel-minibuffer-history
   "f z f" 'counsel-fzf)
 
+(general-defs
+  'js/buffer-prefix
+  "b" 'ivy-switch-buffer
+  "c" 'counsel-switch-buffer
+  )
+
+(general-defs
+  'js/insert-prefix
+  "y" 'counsel-yank-pop)
 
 (leader-tert-def
   "d" '(:ignore t :wk "Dash Docs")
@@ -21,9 +28,11 @@
   "d o" '(js/dash-open-docset-path :wk "Browse"))
 
 
+
 (general-defs
   [remap recentf-open-files] 'counsel-recentf
   [remap bookmark-bmenu-search] 'counsel-bookmark)
 
 (with-eval-after-load 'projectile 
   (counsel-projectile-mode))
+

@@ -121,30 +121,18 @@
     "g r f" 'evil-mc-make-and-goto-first-cursor
     ))
 
-(use-package window-purpose
-  :config
-  (purpose-mode 1)
-  (purpose-x-popwin-setup)
-  (purpose-x-magit-multi-on)
-  (purpose-x-popwin-update-conf)
-  ;;(purpose-x-popupify-purpose 'info 'purpose-display-at-right)
-  )
-
 (use-package helpful
   :init
-  (purpose-add-user-purposes :modes '((helpful-mode . info)))
-  (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
-  (purpose-compile-user-configuration)
-  (purpose-x-popwin-update-conf)
   (progn
     (general-defs
+      :keymaps 'override
       [remap describe-function] 'helpful-callable
       [remap describe-variable] 'helpful-variable
       [remap apropos] 'helpful-symbol
       [remap describe-symbol-at-point] 'helpful-at-point
       [remap describe-key] 'helpful-key))
   :config
-  (with-eval-after-load 'window-purpose
+  (with-eval-after-load 'window-purpose-x
     (add-to-list 'purpose-x-popwin-major-modes 'helpful-mode)
     (purpose-x-popwin-update-conf)))
 
@@ -155,6 +143,8 @@
   :init
   (which-key-mode 1)
   (which-key-setup-side-window-bottom)
+  :config
+  (setq which-key-sort-order 'which-key-prefix-then-key-order-reverse)
   )
 
 (use-package which-key-posframe
@@ -182,6 +172,7 @@
       "-" 'dired-up-directory)))
 
 (use-package all-the-icons-dired
+  :delight
   :hook
   (dired-mode . all-the-icons-dired-mode))
 
@@ -207,7 +198,8 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package company
+(use-package
+  company
   :commands (company-mode)
   :delight
   :init
@@ -217,6 +209,12 @@
   (prog-mode . company-mode)
   (comint-mode . company-mode)
   :config
+  (delq 'company-capf
+                company-backends)
+  (push
+   'company-capf
+   company-backends))
+
   ;; (setq company-backends
   ;;       '((company-files          ; files & directory
   ;;          company-keywords       ; keywords
@@ -236,7 +234,6 @@
   ;;              (company-complete-selection))
   ;;            (unless (looking-back "[[:blank:]]")
   ;;              (self-insert-command 1))))
-  )
 
 ;; (use-package company-posframe
 ;;   :delight
@@ -345,12 +342,11 @@
    transient-history-file (expand-file-name "transient/history.el" user-cache-dir)))
 
 ;; Imenu
-(use-package imenu
-  :demand t)
+(use-package imenu)
 
 (with-eval-after-load 'imenu
   (use-package find-where)
-  (use-package imenu+)
+  ;; (use-package imenu+)
   (use-package imenu-list)
   (use-package imenu-anywhere))
 

@@ -22,12 +22,15 @@
                "' d" 'helm-gtags-find-tag
                "' D" 'helm-gtags-find-tag-other-window)))
 
-(leader-primary-def
-  :keymaps 'override
-  "f z z" 'fzf
-  "f z d" 'fzf-directory
-  "f z g" 'fzf-git-files
-  "f z p" 'fzf-projectile)
+(leader-primary-def '(normal visual motion insert emacs override)
+  ";" 'dired-sidebar-jump-to-sidebar )
+
+(general-defs
+  'js/files-prefix
+  "z z" 'fzf
+  "z d" 'fzf-directory
+  "z g" 'fzf-git-files
+  "z p" 'fzf-projectile)
 
 (leader-tert-def
   :keymaps 'override

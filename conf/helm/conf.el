@@ -5,15 +5,16 @@
   :init
   (setq helm-adaptive-history-file (expand-file-name "helm-adaptive" user-cache-dir))
   (setq helm-M-x-fuzzy-match t)
-  (setq helm-display-function 'js/helm-display-child-frame)
-  ;; (setq helm-window-prefer-horizontal-split t)
+  ;; (setq helm-display-function 'display-buffer-in-side-window)
+  (setq helm-window-prefer-horizontal-split t)
   (setq helm-mode-handle-completion-in-region nil)
-  (setq helm-display-buffer-width 80)
-  (setq helm-display-buffer-reuse-frame t)
+  ;; (setq helm-display-buffer-width 80)
+  (setq helm-display-buffer-reuse-frame nil)
 
   (helm-mode 1)
   (helm-adaptive-mode 1)
-  (helm-autoresize-mode 1)
+
+  (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
   :delight
   :config
   (general-define-key

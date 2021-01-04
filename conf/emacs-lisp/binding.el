@@ -7,7 +7,7 @@
   "m" 'macrostep-mode
   "d" 'elisp-def
   "e" '(:ignore t :wk "Eval")
-  "e e" 'eval-last-sexp
+  "e e" 'eval-defun
   "e E" 'eval-sexp
   "e b" 'eval-buffer
   "e r" 'eval-region

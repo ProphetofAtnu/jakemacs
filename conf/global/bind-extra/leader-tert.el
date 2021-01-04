@@ -40,6 +40,17 @@ m -> Toggle Mode     | r -> reset"
  "n" 'nodejs-repl
  "w" 'skewer-repl)
 
+(defun js/dump-keymap-to-buffer ()
+  (interactive)
+  (let ((cmap (which-key--get-current-bindings)))
+    (with-current-buffer-window
+        (get-buffer-create
+         "*key-dump*")
+        'switch-to-buffer-other-window
+        nil
+      (erase-buffer)
+      (insert (pp-to-string cmap)))))
+
 (general-define-key
  :prefix-command 'js/debug-prefix-command
  :prefix-map 'js/debug-prefix-map
@@ -58,6 +69,7 @@ m -> Toggle Mode     | r -> reset"
                        ev
                        (event-modifiers ev)
                        (event-basic-type ev)))) :wk "Dump event")
+  "w" 'js/dump-keymap-to-buffer
   "m" 'jump-messages)
 
 (leader-tert-def

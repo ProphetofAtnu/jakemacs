@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
+(require 'straight)
+
 (straight-use-package 'auto-minor-mode)
 (straight-use-package 'better-defaults)
 (straight-use-package 'async)
@@ -27,7 +29,7 @@
 (straight-use-package 'company)
 (straight-use-package 'company-posframe)
 (straight-use-package 'company-box)
-(straight-use-package 'dired-plus)
+(straight-use-package 'dired+)
 (straight-use-package 'diredfl)
 (straight-use-package 'hydra)
 (straight-use-package 'smart-tabs-mode)
@@ -45,7 +47,7 @@
 (straight-use-package 'evil-magit)
 (straight-use-package 'window-purpose)
 (straight-use-package 'popwin)
-(straight-use-package 'imenu-plus)
+;; (straight-use-package 'imenu-plus)
 (straight-use-package 'imenu-list)
 (straight-use-package 'imenu-anywhere)
 (straight-use-package 'prodigy)

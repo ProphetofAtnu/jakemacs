@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
-(leader-minor-def 'elixir-mode-map
-  
+(leader-minor-def
+  :keymaps 'elixir-mode-map
+  :major-modes t
   "" 'alchemist-mode-keymap 
   "f" '(:ignore t :wk "Info")
   "v" '(:ignore t :wk "Eval")
@@ -15,19 +16,5 @@
   "m t" '(:ignore t :wk "Test")
   "X" '(:ignore t :wk "Hex")
   "=" 'elixir-format
-
-
-
-  ;; "," 'mix-execute-task
-
-  ;; "'" 'js/pop-to-iex
-  ;; "?" 'elixir-mode-open-docs-stable
-
-  ;; "c" 'mix-compile
-  ;; "r" 'mix-last-command
-  ;; "t" '(:ignore t :wk "Test...")
-  ;; "t t" 'mix-test
-  ;; "t b" 'mix-test-current-buffer
-  ;; "t c" 'mix-test-current-test
   )
 

@@ -1,6 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
 
+(leader-tert-def
+  "v" 'lsp)
+
 (add-hook
  'lsp-mode-hook
  (lambda () 
@@ -8,7 +11,8 @@
    (leader-minor-def
      :keymaps 'local
      "R" 'lsp-restart-workspace 
-     "l" '(:ignore t :wk "LSP"lsp-restart-workspace)
+     "`" 'treemacs
+     "l" '(:ignore t :wk "LSP")
      "l =" 'lsp-format-buffer
      "l -" 'lsp-format-region
      "l q" 'lsp-disconnect

@@ -26,10 +26,16 @@
   "e" '(:ignore t :wk "Eval")
   "e f" 'elpy-shell-send-file
   "e r" 'elpy-shell-send-region
-  "e b" 'elpy-shell-send-buffer
-  "e c" 'elpy-shell-send-defclass
-  "e d" 'elpy-shell-send-defun
-  "e e" 'elpy-shell-send-statement
+  "e b" 'elpy-shell-send-buffer-and-go
+  "e c" 'elpy-shell-send-defclass-and-step
+  "e d" 'elpy-shell-send-defun-and-step
+  "e g" 'elpy-shell-send-group-and-step-and-go
+  "e e" 'elpy-shell-send-region-or-buffer-and-step
+  "r" '(:ignore t :wk "Refactor")
+  "r r" 'elpy-refactor-rename
+  "r f" 'elpy-refactor-extract-function
+  "r v" 'elpy-refactor-extract-variable
+  "r i" 'elpy-refactor-inline
   "i" '(:ignore t :wk "Skel")
   "i i" 'python-skeleton-if
   "i d" 'python-skeleton-def

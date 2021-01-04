@@ -27,4 +27,7 @@
  "H-y" 'avy-copy-line
  "H-Y" 'avy-move-line)
 
+(with-eval-after-load "lsp-mode"
+  (setq lsp-typescript-npm "/usr/local/bin/npm"))
+
 (provide 'mac-config)

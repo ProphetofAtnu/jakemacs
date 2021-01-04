@@ -12,6 +12,7 @@
 ;; (straight-use-package 'web-server)
 
 (straight-use-package 'dired-imenu)
+(straight-use-package 'dired-sidebar)
 
 ;; GGTags
 (straight-use-package 'ggtags)

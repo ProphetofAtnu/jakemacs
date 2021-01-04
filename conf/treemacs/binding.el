@@ -1,8 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
-(leader-primary-def '(normal visual motion insert emacs override)
-  ";" 'treemacs-select-window
-  ":" 'treemacs-display-current-project-exclusively)
+;; (leader-primary-def '(normal visual motion insert emacs override)
+;;   ";" 'treemacs-select-window)
 
 (leader-minor-def
   :keymaps '(treemacs-mode-map)
@@ -13,3 +12,8 @@
   "d" 'treemacs-remove-workspace
   "e" 'treemacs-edit-workspaces
   )
+
+(general-def 'js/files-prefix
+  "l" 'js/treemacs-relocate-here
+  "a" 'treemacs-add-project-to-workspace
+  "p" 'treemacs-display-current-project-exclusively)

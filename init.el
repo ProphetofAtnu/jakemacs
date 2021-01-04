@@ -10,6 +10,18 @@
 (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "misc" user-emacs-directory))
 
+;; Add my custom packages to the load path
+(mapc
+ (lambda (dir)
+   (add-to-list 'load-path dir))
+ (directory-files
+  (expand-file-name
+   "jpkgs"
+   user-emacs-directory)
+  t
+  directory-files-no-dot-files-regexp))
+
+
 ;; See https://www.emacswiki.org/emacs/BackupDirectory
 (require 'util)
 
@@ -79,7 +91,6 @@
 ;; I doubt I'll ever use custom, but what the heck?
 (setq custom-file (concat-path user-cache-dir "custom.el"))
 (load custom-file)
-
 
 (condition-case err
     (load js/overrides-file-name)

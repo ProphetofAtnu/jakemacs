@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t; -*-
-
 (use-package counsel
   :demand t
   :delight
@@ -20,7 +19,7 @@
   :delight
   :config
   (progn  (require 'flx)
-          (require 'ivy-hydra)
+          ;; (require 'ivy-hydra)
           (setq projectile-completion-system 'ivy)
           (setq ivy-re-builders-alist
                 '((swiper . ivy--regex-plus)
@@ -35,10 +34,6 @@
           ;; (ivy-rich-mode)))
   ;; (ivy-posframe-mode))
 
-;; (use-package ivy-historian
-;;  :init
-;;  (ivy-historian-mode))
-
 (use-package ivy-rich
   :preface
   (defun ivy-rich-switch-buffer-icon (candidate)
@@ -49,14 +44,12 @@
   (setq ivy-rich-display-transformers-list ; max column width sum = (ivy-poframe-width - 1)
         '(
           ivy-switch-buffer
-            (:columns
-             (
-              ;; (ivy-rich-switch-buffer-icon (:width 2))
-              (ivy-rich-candidate (:width 35))
-              (ivy-rich-switch-buffer-project (:width 15 :face success))
-              (ivy-rich-switch-buffer-major-mode (:width 15 :face warning))
-              ))
-          ;; :predicate #'(lambda (cand) (get-buffer cand))) ;;removed? Couldn't figure out why it wasn't working
+          (:columns
+           (;; (ivy-rich-switch-buffer-icon (:width 2))
+            (ivy-rich-candidate (:width 35))
+            (ivy-rich-switch-buffer-project (:width 15 :face success))
+            (ivy-rich-switch-buffer-major-mode (:width 15 :face warning))
+            ))
           counsel-M-x
           (:columns
            ((counsel-M-x-transformer (:width 35))
@@ -78,7 +71,8 @@
           )
   :config
   (ivy-rich-mode +1)
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  )
 
 (use-package ivy-posframe
   :after ivy
@@ -108,7 +102,3 @@
 
 (use-package counsel-tramp)
 
-;; (require 'ivy)
-;; (require 'counsel)
-;; (require 'ivy-rich)
-;; (require 'ivy-posframe)

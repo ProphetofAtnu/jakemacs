@@ -14,6 +14,13 @@
         elisp-eldoc-var-docstring
         t)))))
 
+(use-package elisp-mode
+  :config
+  (setq-mode-local
+   emacs-lisp-mode
+   evil-lookup-func
+   #'describe-symbol-at-point))
+
 (use-package elisp-demos
   :config
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
@@ -31,7 +38,13 @@
 (use-package ielm
   :commands (ielm)
   :config
-  (setq ielm-dynamic-return nil))
+  (setq ielm-dynamic-return nil)
+  (add-hook
+   'ielm-mode-hook
+   (lambda ()
+     (setq-local
+      evil-lookup-func
+      #'describe-symbol-at-point))))
 
 (use-package eros
   :hook (emacs-lisp-mode . eros-mode))

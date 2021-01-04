@@ -61,3 +61,5 @@
 (use-package yaml-mode)
 
 (use-package yaml-imenu)
+
+(use-package dired-sidebar)
