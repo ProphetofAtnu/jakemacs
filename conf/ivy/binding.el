@@ -20,6 +20,7 @@
   "y" 'counsel-yank-pop)
 
 (leader-tert-def
+  "\\" 'counsel-semantic-or-imenu
   "d" '(:ignore t :wk "Dash Docs")
   "d i" 'counsel-dash-install-docset
   "d d" 'counsel-dash

@@ -7,18 +7,21 @@
  :keymaps 'org-mode-map
  "<return>" 'js/org-context-ret)
 
-(general-unbind '(insert) evil-org-mode-map
-  "C-d"
-  "C-t")
+;; (general-unbind '(insert) evil-org-mode-map
+;;   "C-d"
+;;   "C-t")
 
+(general-defs
+  '(insert emacs)
+  'org-mode-map
+  "RET" 'org-return
+  "<return>" 'org-return)
 
 (leader-minor-def
   :states '(normal visual insert emacs override)
   :keymaps '(org-mode-map)
   :major-modes t
   "," 'org-goto
-  ;; "/" 'helm-org-rifle
-  ;; "f" 'helm-org-rifle-org-directory
   "z" 'org-add-note
   "a" 'org-attach
   "s" 'org-sort
@@ -26,6 +29,7 @@
   "t" 'org-todo 
   "y" 'org-store-link
   "p" 'org-insert-last-stored-link 
+  "e" 'org-emphasize
   ";" 'js/org-refresh-id
   ":" 'js/org-index-buffer
   "." 'org-agenda

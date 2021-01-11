@@ -2,7 +2,7 @@
 
 (leader-minor-def
   :keymaps '(sql-mode-map)
-  :major-mode t
+  :major-modes t
   "," 'lsp-mssql-connect
   "q" 'lsp-mssql-disconnect
   "e" 'lsp-mssql-execute-region

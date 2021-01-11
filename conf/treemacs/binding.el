@@ -13,6 +13,9 @@
   "e" 'treemacs-edit-workspaces
   )
 
+(leader-primary-def '(normal visual motion insert emacs override)
+  "`" 'treemacs-select-window)
+
 (general-def 'js/files-prefix
   "l" 'js/treemacs-relocate-here
   "a" 'treemacs-add-project-to-workspace

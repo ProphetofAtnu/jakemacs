@@ -6,4 +6,9 @@
 (straight-use-package 'workgroups)
 (straight-use-package 'persp-mode)
 (straight-use-package 'persp-mode-projectile-bridge)
+
+;; Ibuffer
+
+(straight-use-package 'all-the-icons-ibuffer)
+(straight-use-package 'ibuffer-sidebar)
 ;; (straight-use-package 'persp-projectile)

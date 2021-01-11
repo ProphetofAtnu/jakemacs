@@ -20,9 +20,9 @@
 (leader-primary-def '(normal visual motion insert emacs override)
   "" nil
   "SPC" 'execute-extended-command
-  "\'"  'ansi-term
+  "\'"  'ibuffer-sidebar-toggle-sidebar
   "TAB" 'switch-to-prev-buffer
-  "m" 'hydra-window-manage/body
+  "m" 'hydra-better-window-manage/body
   "z" 'kill-buffer-and-window
   ;; Quit/Restart
   "q" '(:ignore t :wk "Quit/Restart")

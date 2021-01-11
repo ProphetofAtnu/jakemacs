@@ -47,7 +47,7 @@
 (general-define-key
  :states '(normal visual motion)
  :keymaps '(process-menu-mode-map)
- :major-mode t
+ :major-modes t
  "x" 'process-menu-delete-process)
 
 (defun js/toggle-markdown-view ()

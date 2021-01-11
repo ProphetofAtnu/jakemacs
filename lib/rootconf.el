@@ -28,6 +28,7 @@
                        gnuplot
                        writing
                        flycheck
+                       addon
                        semantic))
 
 (menu-bar-mode -1)

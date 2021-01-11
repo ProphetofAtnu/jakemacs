@@ -1,4 +1,14 @@
 ;; -*- lexical-binding: t; -*-
+
+(use-package all-the-icons-ibuffer
+  :config
+  (all-the-icons-ibuffer-mode))
+
+(use-package ibuffer-sidebar
+  :commands (ibuffer-sidebar-toggle-sidebar)
+  :config
+  (setq ibuffer-sidebar-width 25))
+
 (use-package window-purpose
   :config
   (purpose-mode 1))
@@ -13,6 +23,7 @@
 (use-package workgroups)
 
 (use-package persp-mode
+  :delight 
   :init
   (setq persp-auto-resume-time -1
         persp-kill-foreign-buffer-behaviour 'kill

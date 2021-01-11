@@ -6,7 +6,7 @@
 
 (leader-minor-def
   :keymaps 'css-mode-map
-  :major-mode t
+  :major-modes t
   "c" 'css-comb
   "k" 'css-lookup-symbol
   "h" 'css-helper-explain

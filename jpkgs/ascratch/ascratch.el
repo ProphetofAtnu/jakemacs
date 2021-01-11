@@ -64,6 +64,12 @@
    (ascratch--create-buffer
     :base-buffer buf)))
 
+(defun ascratch-org ()
+  (interactive)
+  (pop-to-buffer
+   (ascratch--create-buffer
+    :target-major-mode 'org-mode)))
+
 (defun ascratch-kill-buffers ()
   (interactive)
   (mapc 'kill-buffer (ascratch-util--get-ascratch-buffers)))

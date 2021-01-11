@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
+(straight-use-package 'xterm-color)
 (straight-use-package 'shell)
 (straight-use-package 'company-shell)
 ;; (straight-use-package 'shelldoc)
@@ -16,3 +17,6 @@
 ;; (straight-use-package 'esh-autosuggest)
 (straight-use-package 'pcomplete-extension)
 (straight-use-package 'eshell-toggle)
+
+(straight-use-package 'vterm)
+(straight-use-package 'multi-vterm)

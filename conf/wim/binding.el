@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+(general-defs
+  :states '(motion normal emacs)
+  :keymaps '(ibuffer-mode-map)
+  "?" 'which-key-show-major-mode)
+
 (general-define-key
   :prefix-map 'js/persp-prefix
   :prefix-command 'js/persp-command
@@ -13,6 +18,10 @@
   "r" 'persp-rename
   "d" 'persp-remove-buffer)
 
+
+;; (general-defs
+;;   "g t" 'persp-next
+;;   "g T" 'persp-prev)
 
 (with-eval-after-load "ivy"
   (general-defs
@@ -43,6 +52,13 @@
   "d" 'purpose-toggle-window-purpose-dedicated
   "D" 'purpose-toggle-window-buffer-dedicated
   )
+
+(general-defs
+  '(visual motion normal)
+  'purpose-mode-map
+  "z s" 'purpose-x-popwin-stick
+  "z S" 'purpose-x-popwin-unstick
+  "z C-s" 'purpose-x-popwin-close-windows)
 
 (leader-tert-def '(normal visual motion insert override)
   "k" 'kill-buffer-and-window)

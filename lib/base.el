@@ -86,6 +86,10 @@
   (setq hydra-hint-display-type 'posframe)
   (plist-put hydra-posframe-show-params :poshandler 'posframe-poshandler-frame-bottom-center))
 
+(use-package major-mode-hydra)
+
+(use-package pretty-hydra)
+
 (use-package general
   :init
   (load (concat-path user-emacs-directory "conf/global/bindings")))
@@ -161,6 +165,9 @@
 (use-package eval-sexp-fu
   :config
   (turn-on-eval-sexp-fu-flash-mode))
+
+(use-package autorevert
+  :delight)
 
 (use-package dired
   :hook (dired-mode . auto-revert-mode)
@@ -239,9 +246,9 @@
 ;;   :delight
 ;;   :hook (company-mode . company-posframe-mode))
 
-;; (use-package company-box
-;;   :delight 
-;;   :hook (company-mode . company-box-mode))
+(use-package company-box
+  :delight 
+  :hook (company-mode . company-box-mode))
 
 
 (use-package comint
@@ -260,41 +267,11 @@
 ;;          '(company-box-icons--yasnippet company-box-icons--lsp company-box-icons--elisp company-box-icons--acphp)
 ;;          company-box-show-single-candidate t))
 
-;; (use-package semantic
-;;   :commands (semantic-mode)
-;;   :init
-;;   (setq semantic-default-submodes
-;;     '(;; Default
-;;       global-semantic-idle-scheduler-mode
-;;       global-semanticdb-minor-mode
-;;       ;; Aux
-;;       global-semantic-idle-summary-mode
-;;       ;; global-semantic-idle-completions-mode
-;;       global-semantic-decoration-mode
-;;       global-semantic-highlight-func-mode
-;;       global-semantic-stickyfunc-mode
-;;       global-semantic-mru-bookmark-mode))
-;;   (semantic-mode)
-;;   :config
-;;   (add-to-list 'semantic-new-buffer-setup-functions '(emacs-lisp-mode . semantic-default-elisp-setup))
-;;   (semantic-idle-scheduler-add 'semanticdb-save-all-db-idle)
-;;   ;; (setq semantic-default-submodes enabled-semantic-submodes)
-;;   (setq-default semanticdb-find-default-throttle '(local project))
-;;   (setq-mode-local emacs-lisp-mode 
-;;    semanticdb-find-default-throttle '(local project))
-;;   (use-package cedet-global
-;;     :commands (cedet-gnu-global-version-check))
-;;   (when (cedet-gnu-global-version-check t)
-;;     (semanticdb-enable-gnu-global-databases 'c-mode)
-;;     (semanticdb-enable-gnu-global-databases 'c++-mode)))
-
 (use-package yasnippet
   :defer t
   :delight "🅈"
   :config
   (yas-global-mode))
-
-
 
 (use-package swiper
   :commands (swiper))
@@ -312,8 +289,8 @@
 (use-package magit
   :commands (magit))
 
-(use-package evil-magit
-  :hook (magit-mode . evil-magit-init))
+;; (use-package evil-magit
+;;   :hook (magit-mode . evil-magit-init))
 
 (use-package dashboard
   :config

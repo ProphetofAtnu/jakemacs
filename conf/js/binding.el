@@ -101,7 +101,7 @@
 
 (leader-minor-def
   :keymaps '( typescript-mode-map web-tsx-mode-map)
-  :major-mode t
+  :major-modes t
   "x" 'lsp-eslint-apply-all-fixes
   "a" 'lsp-execute-code-action
   "=" 'prettier-js

@@ -10,6 +10,7 @@
  "d" 'discover-my-major
  "D" 'discover-my-mode
  "w" 'which-key-show-keymap
+ "," 'which-key-show-major-mode
  )
 
 

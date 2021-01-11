@@ -9,7 +9,7 @@
 (leader-minor-def
   :states '(normal visual insert emacs override)
   :keymaps '(sh-mode-map)
-  :major-mode t
+  :major-modes t
   ":" 'sh-set-shell
   "." 'sh-cd-here
   "x" 'sh-set-indent

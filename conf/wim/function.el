@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+;; (require 'hydra)
+
+;; (defhydra hydra-ibuffer (:color amaranth)
+;;   )
+
 ;; (defun js/persp-project-hook ()
 ;;   (let ((bfs (projectile-project-buffers))
 ;;         (pn (projectile-project-name)))

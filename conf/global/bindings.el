@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 ;; General bindings
 (require 'general)
+(require 'which-key)
 (load (concat-path user-emacs-directory "lib/interact"))
 
 ;; Insert mode redefs

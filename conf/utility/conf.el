@@ -62,4 +62,6 @@
 
 (use-package yaml-imenu)
 
-(use-package dired-sidebar)
+(use-package dired-sidebar
+  :config
+  (setq dired-sidebar-width 25))

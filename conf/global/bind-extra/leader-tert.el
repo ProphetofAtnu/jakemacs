@@ -95,6 +95,8 @@ m -> Toggle Mode     | r -> reset"
   "k" 'keep-lines
   "K" 'delete-matching-lines)
 
+(require 'ascratch)
+
 
 (leader-tert-def
   "" nil
@@ -112,6 +114,8 @@ m -> Toggle Mode     | r -> reset"
   "b" 'bookmark-bmenu-search
   "g" 'magit
   "RET" 'ace-link
+  "s" 'ascratch-here
+  "S" 'ascratch-org 
   ;; "m" 'helm-mode-manager
   ;; "\\" 'helm-mini
   "\\" 'imenu
