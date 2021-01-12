@@ -30,6 +30,7 @@
   "y" 'org-store-link
   "p" 'org-insert-last-stored-link 
   "e" 'org-emphasize
+  "x" 'org-edit-special
   ";" 'js/org-refresh-id
   ":" 'js/org-index-buffer
   "." 'org-agenda

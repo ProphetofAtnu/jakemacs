@@ -7,6 +7,8 @@
 (require 'mode-local)
 (require 'async)
 
+(require 'use-package-hydra)
+
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 
@@ -82,9 +84,10 @@
   :commands (discover-my-major discover-my-mode))
 
 (use-package hydra
-  :config
-  (setq hydra-hint-display-type 'posframe)
-  (plist-put hydra-posframe-show-params :poshandler 'posframe-poshandler-frame-bottom-center))
+  ;; :config
+  ;; (setq hydra-hint-display-type 'posframe)
+  ;; (plist-put hydra-posframe-show-params :poshandler 'posframe-poshandler-frame-bottom-center)
+  )
 
 (use-package major-mode-hydra)
 

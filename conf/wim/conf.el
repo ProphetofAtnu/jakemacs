@@ -69,6 +69,20 @@
                     (persp-switch        . nil)
                     (persp-window-switch . nil)
                     (persp-frame-switch  . nil))))))
+
+(use-package nswbuff
+  :init 
+  (defhydra hydra-nswbuff (:color red :hint nil)
+                        ("n" nswbuff-switch-to-next-buffer)
+                        ("p" nswbuff-switch-to-previous-buffer))
+  :config
+  (setq nswbuff-recent-buffers-first nil)
+  (general-defs
+    :keymaps 'js/buffer-prefix
+   "n" 'hydra-nswbuff/nswbuff-switch-to-next-buffer
+   "p" 'hydra-nswbuff/nswbuff-switch-to-previous-buffer)
+  )
+
 ;; (use-package perspective
 ;;   :init
 ;;   (persp-mode)

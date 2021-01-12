@@ -11,6 +11,9 @@
 (require 'prefix/search)
 (require 'prefix/projectile)
 (require 'prefix/frames)
+(require 'prefix/utility)
+(require 'prefix/jump)
+(require 'prefix/register)
 
 (general-create-definer leader-primary-def
   :states '(normal visual motion insert emacs override)
@@ -35,6 +38,9 @@
   "j" '(:prefix-command js/jump-command
         :prefix-map js/jump-prefix
         :wk "Jump")
+  "r" '(:prefix-command js/register-command
+        :prefix-map js/register-prefix
+        :wk "Register")
   "l" '(:prefix-command js/layout-command
         :prefix-map js/layout-prefix
         :wk "Layout")
@@ -56,9 +62,12 @@
   "i" '(:prefix-command js/insert-command
         :prefix-map js/insert-prefix
         :wk "Insert")
-  "p"   '(:prefix-command js/projectile-command
-                          :prefix-map js/projectile-prefix
-                          :wk "Projectile")
+  "u" '(:prefix-command js/utility-command
+        :prefix-map js/utility-prefix
+        :wk "Utility")
+  "p" '(:prefix-command js/projectile-command
+        :prefix-map js/projectile-prefix
+        :wk "Projectile")
   "o" '(:prefix-command js/frames-command
         :prefix-map js/frames-prefix
         :wk "Frames")

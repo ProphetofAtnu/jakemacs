@@ -35,3 +35,6 @@
 
 (straight-use-package 'yaml-mode)
 (straight-use-package 'yaml-imenu)
+
+(straight-use-package 'nginx-mode)
+(straight-use-package 'company-nginx)

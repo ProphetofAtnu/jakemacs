@@ -5,6 +5,7 @@
  :prefix-map 'js/jump-prefix
  "j" 'avy-goto-symbol-1
  "l" 'avy-goto-line
+ "r" 'jump-to-register
  )
 
 

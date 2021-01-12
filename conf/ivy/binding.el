@@ -15,6 +15,11 @@
   "c" 'counsel-switch-buffer
   )
 
+(with-eval-after-load "window-purpose"
+  (general-defs
+    'js/buffer-prefix
+    "c" (without-purpose-command 'counsel-switch-buffer)))
+
 (general-defs
   'js/insert-prefix
   "y" 'counsel-yank-pop)

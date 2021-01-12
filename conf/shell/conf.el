@@ -39,9 +39,24 @@
 (use-package vterm
   :config
   (general-defs 'js/inferior-shell-prefix-map
-    "v" 'vterm))
+    "v" 'vterm
+    "C-v" 'vterm-other-window)
+  (defun js/vterm-reset-cursor-evil-hook ()
+    (interactive)
+    (add-hook 'evil-insert-state-entry-hook 'vterm-reset-cursor-point nil t))
+  (add-hook 'vterm-mode-hook 'js/vterm-reset-cursor-evil-hook))
 
-(use-package multi-vterm)
+(use-package multi-vterm
+  :general (:keymaps 'js/utility-prefix
+            "'" 'multi-vterm-dedicated-toggle
+            "v" 'multi-vterm)
+  :config
+  ;; (general-defs 'js/utility-prefix
+  ;;   "'" 'multi-vterm-dedicated-toggle
+  ;;   "v" 'multi-vterm)
+  (add-to-list 'purpose-x-popwin-buffer-name-regexps "\\*vterminal.*dedicated\\*")
+  (purpose-x-popwin-update-conf))
+
 
 (use-package eshell-prompt-extras
   :after (eshell)
@@ -53,35 +68,35 @@
 (use-package eshell
   :defer t
   :config
-   (setq pcomplete-cycle-completions nil)
-   ;; (require 'pcomplete-extension)
-   ;; (add-hook 'eshell-mode-hook
-   ;;           '(lambda ()
-   ;;              (setq-local company-frontends
-   ;;                          '(company-preview-frontend))))
-   ;; Thanks to spacemacs for this one
-   (add-hook 'eshell-after-prompt-hook
-             '(lambda
-                ()
-                (let ((inhibit-field-text-motion t))
-                  (add-text-properties
-                   (point-at-bol)
-                   (point)
-                   '(rear-nonsticky t
-                                    inhibit-line-move-field-capture t
-                                    field output read-only t
-                                    front-sticky (field inhibit-line-move-field-capture))))))
-   (add-hook 'eshell-mode-hook
-             '(lambda ()
-                ;; (delq 'pcomplete-completions-at-point completion-at-point-functions)
-                ;; (setq-local company-backends '(company-capf
-                ;;                                company-files))
-                (add-to-list 'company-backends 'company-capf)
-                (add-to-list 'company-backends 'company-files)
-                (define-key
-                  eshell-mode-map [remap eshell-pcomplete]
-                  'company-complete-common-or-cycle)
-                (company-mode))))
+  (setq pcomplete-cycle-completions nil)
+  ;; (require 'pcomplete-extension)
+  ;; (add-hook 'eshell-mode-hook
+  ;;           '(lambda ()
+  ;;              (setq-local company-frontends
+  ;;                          '(company-preview-frontend))))
+  ;; Thanks to spacemacs for this one
+  (add-hook 'eshell-after-prompt-hook
+            '(lambda
+               ()
+               (let ((inhibit-field-text-motion t))
+                 (add-text-properties
+                  (point-at-bol)
+                  (point)
+                  '(rear-nonsticky t
+                                   inhibit-line-move-field-capture t
+                                   field output read-only t
+                                   front-sticky (field inhibit-line-move-field-capture))))))
+  (add-hook 'eshell-mode-hook
+            '(lambda ()
+               ;; (delq 'pcomplete-completions-at-point completion-at-point-functions)
+               ;; (setq-local company-backends '(company-capf
+               ;;                                company-files))
+               (add-to-list 'company-backends 'company-capf)
+               (add-to-list 'company-backends 'company-files)
+               (define-key
+                 eshell-mode-map [remap eshell-pcomplete]
+                 'company-complete-common-or-cycle)
+               (company-mode))))
 
 (use-package eshell-z
   :after (eshell))

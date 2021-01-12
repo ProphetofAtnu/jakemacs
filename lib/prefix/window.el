@@ -82,8 +82,8 @@
   "x" 'ace-delete-window
   "w" 'evil-window-next
   "d" 'delete-window
+  "D" 'delete-other-windows
   "=" 'balance-windows
-  "b" 'balance-windows
   "t" 'ace-swap-window
   "l" 'evil-window-right
   "h" 'evil-window-left

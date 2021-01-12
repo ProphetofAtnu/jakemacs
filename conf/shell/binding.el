@@ -51,3 +51,10 @@
   "i w" 'sh-while
   "i W" 'sh-while-getopts
   )
+
+(leader-minor-def
+  :keymaps 'vterm-mode-map
+  :major-modes t
+  "c" 'multi-vterm
+  "n" 'multi-vterm-next
+  "p" 'multi-vterm-prev)

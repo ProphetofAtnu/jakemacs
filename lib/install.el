@@ -6,6 +6,7 @@
 (straight-use-package 'async)
 (straight-use-package 'save-sexp)
 (straight-use-package '(simple-httpd :type git :flavor melpa :host github :repo "skeeto/emacs-web-server"))
+(straight-use-package 'use-package-hydra)
 
 ;; Evil Setup / Keybinding
 (straight-use-package 'evil)

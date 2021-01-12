@@ -90,6 +90,21 @@
 (use-package typescript-mode)
 
 
+(use-package web-mode
+  :init
+  (define-derived-mode web-tsx-mode web-mode "React-TSX"
+    "Derived mode from web-mode to make bindings easier"
+    :syntax-table nil)
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
+  (add-hook 'web-tsx-mode-hook 'lsp)
+  (add-hook 'web-tsx-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                ;; (setup-tide-mode)
+                (add-to-list 'company-backends '(company-capf company-web-html))
+                (lsp))))
+  )
+
 ;;;;;;; QUARENTINE
 ;; (use-package tern
 ;;   :init
@@ -125,14 +140,14 @@
 ;; (use-package livid-mode
 ;;   :defer t
 ;;   :commands (livid-mode))
-
+  
 ;; (use-package tide
 ;;   :commands (tide-setup)
 ;;   :delight " ≋ "
 ;;   :config
 ;;   (setq tide-completion-detailed t
 ;;         tide-completion-ignore-case t)
-  
+
 ;;   :init
 ;;   (defun setup-tide-mode ()
 ;;     (interactive)
@@ -154,27 +169,6 @@
 ;;   ;; (add-hook 'js2-mode-hook 'setup-tide-mode)
 ;;   ;; (add-hook 'rjsx-mode-hook 'setup-tide-mode)
 ;;   ;; (add-hook 'typescript-mode-hook 'setup-tide-mode))
-
-;; (use-package web-mode
-;;   :init
-;;   (define-derived-mode web-tsx-mode web-mode "React-TSX"
-;;     "Derived mode from web-mode to make bindings easier"
-;;     :syntax-table nil)
-;;   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
-;;   (add-hook 'web-tsx-mode-hook 'lsp)
-;;   (add-hook 'web-tsx-mode-hook
-;;             (lambda ()
-;;               (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;;                 ;; (setup-tide-mode)
-;;                 (add-to-list 'company-backends '(company-capf company-web-html))
-;;                 (lsp))))
-;;   :config
-;;   ;; enable typescript-tslint checker
-;;   (with-eval-after-load 'tide
-;;     (require 'flycheck)
-;;     (flycheck-add-mode 'tsx-tide 'web-tsx-mode)
-;;     (flycheck-add-mode 'typescript-tide 'web-tsx-mode)
-;;     (flycheck-add-mode 'javascript-eslint 'web-tsx-mode)))
 
 ;; (use-package indium
 ;;   :init

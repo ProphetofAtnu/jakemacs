@@ -7,6 +7,8 @@
 (straight-use-package 'persp-mode)
 (straight-use-package 'persp-mode-projectile-bridge)
 
+(straight-use-package 'nswbuff)
+
 ;; Ibuffer
 
 (straight-use-package 'all-the-icons-ibuffer)

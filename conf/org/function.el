@@ -212,4 +212,3 @@ the org dir."
   (let ((bufn (save-window-excursion 
                 (dired org-directory))))
     (pop-to-buffer bufn)))
-

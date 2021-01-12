@@ -37,6 +37,10 @@
   :config
   (use-package ob))
 
+(use-package org-src
+  :config
+  (setq org-src-window-setup 'other-frame))
+
 (use-package org-id
   :init
   (defvar org-refile-targets nil)

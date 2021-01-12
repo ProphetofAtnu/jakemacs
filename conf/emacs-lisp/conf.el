@@ -75,3 +75,4 @@
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
              (setq-local semanticdb-find-default-throttle '(local project))))
+

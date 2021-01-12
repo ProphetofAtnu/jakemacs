@@ -10,6 +10,7 @@
  "f" 'switch-to-buffer-other-frame
  "d" 'kill-current-buffer
  "D" 'kill-other-buffers
+ "m" 'kill-matching-buffers
  "r" 'revert-buffer
  "R" 'rename-buffer
  "e" 'ediff-buffers
