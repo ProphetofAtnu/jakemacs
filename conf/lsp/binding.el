@@ -4,59 +4,63 @@
 (leader-tert-def
   "v" 'lsp)
 
-(add-hook
- 'lsp-mode-hook
- (lambda () 
-   (setq-local evil-lookup-func #'lsp-describe-thing-at-point)
-   (leader-minor-def
-     :keymaps 'local
-     "R" 'lsp-restart-workspace 
-     "`" 'treemacs
-     "l" '(:ignore t :wk "LSP")
-     "l =" 'lsp-format-buffer
-     "l -" 'lsp-format-region
-     "l q" 'lsp-disconnect
-     "l r" 'lsp-rename
-     "l a" 'lsp-execute-code-action
-     "l i" 'lsp-ui-imenu
-     "l e" 'lsp-treemacs-errors-list
-     ;; "l s" 'lsp-treemacs-
-     ;; Goto
-     "l g" '(:ignore t :wk "Goto")
-     "l g g" 'lsp-describe-thing-at-point
-     "l g d" 'lsp-goto-type-definition
-     "l g D" 'lsp-find-declaration
-     "l g f" 'lsp-find-definition
-     "l g F" 'lsp-find-type-definition
-     "l g i" 'lsp-find-implementation
-     "l g I" 'lsp-goto-implementation
-     "l g l" 'lsp-find-references
-     ;; Workspace
-     "l w" '(:ignore t :wk "Workspace")
-     "l w w" 'lsp-describe-session
-     "l w a" 'lsp-workspace-folders-add
-     "l w o" 'lsp-workspace-folders-open
-     "l w d" 'lsp-workspace-folders-remove
-     "l w r" 'lsp-workspace-restart
-     "l w l" 'lsp-workspace-show-log
-     "l w q" 'lsp-workspace-shutdown
-     "l w R" 'lsp-workspace-blacklist-remove)
-   (when (featurep 'helm)
-     (leader-minor-def
-       :keymaps 'local
-       "s" 'helm-lsp-workspace-symbol
-       "S" 'helm-lsp-global-workspace-symbol))))
+(general-define-key
+ :prefix-command 'js/lsp-command
+ :prefix-map 'js/lsp-prefix
+ "=" 'lsp-format-buffer
+ "-" 'lsp-format-region
+ "q" 'lsp-disconnect
+ "r" 'lsp-rename
+ "a" 'lsp-execute-code-action
+ "i" 'lsp-ui-imenu
+ "e" 'lsp-treemacs-errors-list
+ "s" 'lsp-ui-sideline-toggle-symbols-info
+ ;; Goto
+ "g" '(:ignore t :wk "Goto")
+ "g g" 'lsp-describe-thing-at-point
+ "g d" 'lsp-goto-type-definition
+ "g D" 'lsp-find-declaration
+ "g f" 'lsp-find-definition
+ "g F" 'lsp-find-type-definition
+ "g i" 'lsp-find-implementation
+ "g I" 'lsp-goto-implementation
+ "g l" 'lsp-find-references
+ ;; Workspace
+ "w" '(:ignore t :wk "Workspace")
+ "w w" 'lsp-describe-session
+ "w a" 'lsp-workspace-folders-add
+ "w o" 'lsp-workspace-folders-open
+ "w d" 'lsp-workspace-folders-remove
+ "w r" 'lsp-workspace-restart
+ "w l" 'lsp-workspace-show-log
+ "w q" 'lsp-workspace-shutdown
+ "w R" 'lsp-workspace-blacklist-remove
+ "l p" '(:ignore t :wk "Peek")
+ "l p f" 'lsp-ui-peek-find-definitions
+ "l p i" 'lsp-ui-peek-find-implementation
+ "l p l" 'lsp-ui-peek-find-references
+ "l p s" 'lsp-ui-peek-find-workspace-symbol
+ "l p n" 'lsp-ui-peek-jump-backward
+ "l p p" 'lsp-ui-peek-jump-forward
+ )
+
+(which-key-add-keymap-based-replacements js/lsp-prefix
+  "g" "Goto"
+  "w" "Workspace"
+  "p" "Peek")
+
+
+(leader-minor-def
+  :definer 'minor-mode
+  :keymaps 'lsp-mode
+  "l" '(:prefix-command js/lsp-command
+        :prefix-map js/lsp-prefix
+        :wk "LSP")
+  )
 
 (add-hook
- 'lsp-ui-mode-hook
+ 'lsp-mode-hook
  (lambda ()
-   (leader-minor-def
-     :keymaps 'local
-     "l " '(:ignore t :wk "Workspace")
-     "l p" '(:ignore t :wk "Peek")
-     "l p f" 'lsp-ui-peek-find-definitions
-     "l p i" 'lsp-ui-peek-find-implementation
-     "l p l" 'lsp-ui-peek-find-references
-     "l p s" 'lsp-ui-peek-find-workspace-symbol
-     "l p n" 'lsp-ui-peek-jump-backward
-     "l p p" 'lsp-ui-peek-jump-forward)))
+   (setq-local
+    evil-lookup-func
+    #'lsp-describe-thing-at-point)))

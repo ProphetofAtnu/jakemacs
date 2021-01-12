@@ -6,8 +6,11 @@
   :init
   (setq gofmt-command "goimports")
   :config
-  (add-hook 'before-save-hook 'gofmt-before-save nil t)
-  (setq-mode-local go-mode evil-lookup-func 'godoc-at-point))
+  (general-unbind
+    :keymaps 'go-mode-map
+    :states '(normal)
+    "K")
+  (add-hook 'before-save-hook 'gofmt-before-save nil t))
 
 ;; (use-package company-go)
 

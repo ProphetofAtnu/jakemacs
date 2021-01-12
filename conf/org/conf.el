@@ -37,6 +37,11 @@
   :config
   (use-package ob))
 
+(use-package window-purpose
+  :defer t
+  :config
+  (purpose-add-user-purposes :modes '((org-mode . notes))))
+
 (use-package org-src
   :config
   (setq org-src-window-setup 'other-frame))
