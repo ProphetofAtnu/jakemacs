@@ -27,3 +27,14 @@
 
 (general-def
   "M-SPC" 'previous-window-any-frame)
+
+(general-defs
+  '(normal motion)
+  "m" 'point-to-register
+  "M-m" 'window-configuration-to-register
+  "'" 'jump-to-register)
+
+(with-eval-after-load "counsel"
+  (general-defs
+    '(normal motion)
+    "`" 'counsel-register))

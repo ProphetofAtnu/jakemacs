@@ -5,6 +5,7 @@
   :keymaps '(ibuffer-mode-map dired-mode-map)
   "?" 'which-key-show-major-mode)
 
+;; Ibuffer hydra
 (major-mode-hydra-define ibuffer-mode nil
   ("Run"
    (("E" ibuffer-do-eval)

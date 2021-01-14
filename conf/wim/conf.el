@@ -30,6 +30,8 @@
         persp-add-buffer-on-after-change-major-mode t)
 
   (persp-mode 1)
+  (require 'treemacs-persp)
+  (treemacs-set-scope-type 'Perspectives)
   ;; (with-eval-after-load 'doom-modeline
   ;;   (setq doom-modeline-persp-icon nil
   ;;         doom-modeline-persp-name nil))

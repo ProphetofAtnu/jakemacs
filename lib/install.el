@@ -37,7 +37,6 @@
 (straight-use-package 'major-mode-hydra)
 (straight-use-package 'pretty-hydra)
 
-(straight-use-package 'smart-tabs-mode)
 (straight-use-package 'avy)
 (straight-use-package 'ace-window)
 (straight-use-package 'ace-link)

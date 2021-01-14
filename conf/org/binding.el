@@ -60,6 +60,13 @@
   "m h" 'org-toggle-heading
   )
 
+(leader-minor-def
+  :definer 'minor-mode
+  :keymaps 'poporg-mode
+  "p" 'poporg-update-and-save
+  "P" 'poporg-edit-exit
+  )
+
 (leader-tert-def
   "," 'org-agenda
   "n" 'deft
@@ -67,5 +74,6 @@
   "o" 'js/org-search
   ;; "o" 'helm-org-rifle-org-directory
   "O" 'js/org-pop-org-dir
-  )
 
+  "c" 'poporg-dwim
+  )

@@ -59,7 +59,8 @@
 (use-package gorepl-mode
   :config
   ;; (setenv "GOROOT" "/usr/local/go")
-  (setenv "GOPATH" (expand-file-name "~/go")))
+  (setenv "GOPATH" (expand-file-name "~/go"))
+  (add-hook 'go-mode-hook #'gorepl-mode))
 
 (use-package go-imenu
   :hook (go-mode . go-imenu-setup))

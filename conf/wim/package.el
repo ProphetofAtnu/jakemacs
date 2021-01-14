@@ -6,6 +6,7 @@
 (straight-use-package 'workgroups)
 (straight-use-package 'persp-mode)
 (straight-use-package 'persp-mode-projectile-bridge)
+(straight-use-package 'treemacs-persp)
 
 (straight-use-package 'nswbuff)
 

@@ -35,13 +35,13 @@
  "w l" 'lsp-workspace-show-log
  "w q" 'lsp-workspace-shutdown
  "w R" 'lsp-workspace-blacklist-remove
- "l p" '(:ignore t :wk "Peek")
- "l p f" 'lsp-ui-peek-find-definitions
- "l p i" 'lsp-ui-peek-find-implementation
- "l p l" 'lsp-ui-peek-find-references
- "l p s" 'lsp-ui-peek-find-workspace-symbol
- "l p n" 'lsp-ui-peek-jump-backward
- "l p p" 'lsp-ui-peek-jump-forward
+ "p" '(:ignore t :wk "Peek")
+ "p f" 'lsp-ui-peek-find-definitions
+ "p i" 'lsp-ui-peek-find-implementation
+ "p l" 'lsp-ui-peek-find-references
+ "p s" 'lsp-ui-peek-find-workspace-symbol
+ "p n" 'lsp-ui-peek-jump-backward
+ "p p" 'lsp-ui-peek-jump-forward
  )
 
 (which-key-add-keymap-based-replacements js/lsp-prefix

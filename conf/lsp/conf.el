@@ -6,7 +6,7 @@
   (setq lsp-file-watch-threshold 10000
         ;; lsp-idle-delay 1
         lsp-enable-snippet t
-        lsp-keep-workspace-alive nil
+        lsp-keep-workspace-alive t
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui
@@ -16,7 +16,7 @@
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-use-webkit t)
   (setq ;; lsp-ui-flycheck-live-reporting nil
-   lsp-ui-doc-position 'bottom
+   lsp-ui-doc-position 'top
    lsp-ui-doc-max-width 80
    lsp-ui-doc-max-height 20
    lsp-ui-doc-include-signature t

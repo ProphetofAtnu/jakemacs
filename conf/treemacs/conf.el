@@ -9,6 +9,6 @@
 
 (use-package treemacs-projectile)
 
-(use-package treemacs-persp)
+;; (use-package treemacs-persp)
 
 (use-package projectile)

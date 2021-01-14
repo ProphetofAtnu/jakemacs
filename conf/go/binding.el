@@ -29,10 +29,20 @@
   "t p" 'go-test-current-project
   "t f" 'go-test-current-file
   "h" '(:ignore t :wk "(Go) Help")
+  "h ." 'go-guru-set-scope
+  "h /" 'go-guru-hl-identifier
   "h c" 'go-guru-callees
+  "h C" 'go-guru-callers
   "h d" 'go-guru-describe
-  "h p" 'go-guru-pointsto
+  "h e" 'go-guru-expand-region
+  "h f" 'go-guru-freevars
+  "h i" 'go-guru-implements
+  "h k" 'go-guru-definition-other-window
+  "h K" 'go-guru-definition
+  "h p" 'go-guru-peers
+  "h P" 'go-guru-pointsto
   "h r" 'go-guru-referrers
+  "h s" 'go-guru-callstack
   "h w" 'go-guru-whicherrs
   "h g" 'godoc
   "h G" 'godoc-at-point

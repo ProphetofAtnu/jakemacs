@@ -219,6 +219,10 @@
   (prog-mode . company-mode)
   (comint-mode . company-mode)
   :config
+  (general-define-key
+   :keymaps 'company-active-map
+   :predicate '(company--active-p)
+   "<return>" 'company-complete-selection)
   (delq 'company-capf
                 company-backends)
   (push
@@ -261,18 +265,13 @@
     :keymaps 'comint-mode-map
     [C-M-i] 'completion-at-point))
 
-;; (use-package company-box
-;;   :hook (company-mode . company-box-mode)
-;;   :config
-;;    (setq company-box-enable-icon t
-;;          company-box-icons-alist 'company-box-icons-icons-in-terminal
-;;          company-box-icons-functions
-;;          '(company-box-icons--yasnippet company-box-icons--lsp company-box-icons--elisp company-box-icons--acphp)
-;;          company-box-show-single-candidate t))
-
 (use-package yasnippet
   :defer t
   :delight "🅈"
+  :general (:keymaps 'yas-keymap
+            "C-f" 'yas-next-field
+            "C-b" 'yas-prev-field
+            "C-k" 'yas-clear-field)
   :config
   (yas-global-mode))
 
@@ -337,7 +336,5 @@
   :commands (global-so-long-mode)
   :init
   (global-so-long-mode))
-
-(use-package smart-tabs-mode)
 
 (provide 'base)

@@ -5,7 +5,7 @@
 (load (concat-path user-emacs-directory "lib/interact"))
 
 ;; Insert mode redefs
-(load-relative "./bind-extra/insert-rebind.el")
+(load-relative "./bind-extra/rebind.el")
 
 (setq leader-primary "SPC")
 (setq alt-primary "C-SPC")
