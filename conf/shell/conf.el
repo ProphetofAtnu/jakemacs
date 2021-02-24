@@ -3,8 +3,7 @@
 (use-package shell
   :defer t)
 
-(use-package sh-script
-  :defer t)
+(use-package sh-script)
 
 (use-package shell-pop
   :config
@@ -17,24 +16,26 @@
 ;;   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 ;;   (add-to-list 'comint-output-filter-functions 'ansi-color-process-output))
 
-(use-package xterm-color
-  :init
-  (setq comint-output-filter-functions
-        (remove 'ansi-color-process-output comint-output-filter-functions))
+;; (use-package xterm-color
+;;   :init
+;;   (setq comint-output-filter-functions
+;;         (remove 'ansi-color-process-output comint-output-filter-functions))
 
-  (add-hook 'shell-mode-hook
-            (lambda ()
-              ;; Disable font-locking in this buffer to improve performance
-              (font-lock-mode -1)
-              ;; Prevent font-locking from being re-enabled in this buffer
-              (make-local-variable 'font-lock-function)
-              (setq font-lock-function (lambda (_) nil))
-              (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
-  )
+;;   (add-hook 'shell-mode-hook
+;;             (lambda ()
+;;               ;; Disable font-locking in this buffer to improve performance
+;;               (font-lock-mode -1)
+;;               ;; Prevent font-locking from being re-enabled in this buffer
+;;               (make-local-variable 'font-lock-function)
+;;               (setq font-lock-function (lambda (_) nil))
+;;               (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
+;;   )
+
+
 
 (use-package comint
   :config
-  (setq comint-terminfo-terminal "xterm-256color"))
+  (setq comint-terminfo-terminal "xterm"))
 
 (use-package vterm
   :config
@@ -96,6 +97,7 @@
                (define-key
                  eshell-mode-map [remap eshell-pcomplete]
                  'company-complete-common-or-cycle)
+               (setq-local company-minimum-prefix-length 3)
                (company-mode))))
 
 (use-package eshell-z

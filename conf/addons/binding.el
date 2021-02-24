@@ -72,3 +72,7 @@
     ("M-{" ibuffer-backwards-next-marked)
     ("M-}" ibuffer-forward-next-marked))
    ))
+
+(leader-tert-def
+  "r" 'counsel-tramp
+  "R" 'tramp-cleanup-all-buffers)

@@ -12,9 +12,9 @@
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (js/web-custom-setup)
   :config
-  (smartparens-mode -1))
+  (js/web-custom-setup))
+
 
 (use-package css-mode
   :defer t
@@ -46,10 +46,10 @@
          (nxml-mode . emmet-mode)
          (rjsx-mode . emmet-mode)))
 
-(use-package company-web-html
-  :commands (company-web-html)
-  :init
-  (add-to-list 'company-backends 'company-web-html))
+;; (use-package company-web-html
+;;   :commands (company-web-html)
+;;   :init
+;;   (add-to-list 'company-backends 'company-web-html))
   ;; (js/company-localize-backends
   ;;  web-mode
   ;;  (company-web-html)))

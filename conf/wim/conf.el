@@ -1,5 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
+(use-package window-purpose
+  :commands (purpose-add-user-purposes)
+  :config
+  (setq purpose-display-fallback nil
+        purpose-default-action-order 'switch-to-buffer)
+  (purpose-mode 1))
+
 (use-package all-the-icons-ibuffer
   :config
   (all-the-icons-ibuffer-mode))
@@ -7,16 +14,13 @@
 (use-package ibuffer-sidebar
   :commands (ibuffer-sidebar-toggle-sidebar)
   :config
+  (purpose-add-user-purposes :modes '((ibuffer-sidebar-mode . side)))
   (setq ibuffer-sidebar-width 25))
-
-(use-package window-purpose
-  :config
-  (purpose-mode 1))
 
 (use-package window-purpose-x
   :config
   (purpose-x-popwin-setup)
-  (purpose-x-magit-multi-on)
+  (purpose-x-magit-single-on)
   (purpose-x-popwin-update-conf)
 )
 

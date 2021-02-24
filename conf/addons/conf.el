@@ -10,3 +10,7 @@
     (add-to-list 'purpose-x-popwin-major-modes 'calendar-mode)
     (purpose-x-popwin-update-conf))
   )
+
+(use-package tramp)
+
+(use-package counsel-tramp)

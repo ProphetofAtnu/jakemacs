@@ -1,10 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 
+(use-package treemacs
+  :defer t)
+
 (use-package lsp-mode
-  :defer t
+  :commands (lsp lsp-deferred)
   :config
+  (require 'lsp-treemacs)
   (setq lsp-file-watch-threshold 10000
-        ;; lsp-idle-delay 1
+        lsp-idle-delay 0.5 
         lsp-enable-snippet t
         lsp-keep-workspace-alive t
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
@@ -15,7 +19,8 @@
   (setq ;; lsp-ui-sideline-enable nil
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-use-webkit t)
-  (setq ;; lsp-ui-flycheck-live-reporting nil
+  (setq
+   lsp-ui-flycheck-live-reporting nil
    lsp-ui-doc-position 'top
    lsp-ui-doc-max-width 80
    lsp-ui-doc-max-height 20
@@ -32,16 +37,11 @@
                               'company-capf))))
 
 (use-package helm-lsp
-  :after (lsp-mode)
+  :after (lsp-mode helm)
   :commands
   (helm-lsp-workspace-symbol
    helm-lsp-global-workspace-symbol))
 
 (use-package dap-mode)
 
-(use-package treemacs
-  :defer t)
 
-(use-package lsp-treemacs
-  :init
-  (lsp-treemacs-sync-mode)) 

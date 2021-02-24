@@ -58,12 +58,13 @@
   :commands (prettier-js prettier-js-mode))
 
 (use-package lsp-mode
-  :commands (lsp)
-  :init
-  (add-hook 'js2-mode-hook 'lsp)
-  (add-hook 'rjsx-mode-hook 'lsp)
-  (add-hook 'typescript-mode-hook 'lsp)
+  :hook
+  ((js2-mode-hook . lsp)
+   (rjsx-mode-hook . lsp)
+   (typescript-mode-hook . lsp))
   :config
+  (add-to-list 'lsp-file-watch-ignored-directories 
+               "[/\\\\]\\node_modules\\'")
   (setq lsp-vetur-use-workspace-dependencies t
         lsp-vetur-format-default-formatter-ts "prettier"
         lsp-typescript-references-code-lens-enabled t
@@ -97,12 +98,12 @@
     :syntax-table nil)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-tsx-mode))
   (add-hook 'web-tsx-mode-hook 'lsp)
-  (add-hook 'web-tsx-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                ;; (setup-tide-mode)
-                (add-to-list 'company-backends '(company-capf company-web-html))
-                (lsp))))
+  ;; (add-hook 'web-tsx-mode-hook
+  ;;           (lambda ()
+  ;;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
+  ;;               (make-variable-buffer-local 'company-backends)
+  ;;               (delq 'company-web-html company-backends)
+  ;;               (lsp))))
   )
 
 ;;;;;;; QUARENTINE

@@ -7,6 +7,7 @@
                        ;; helm
                        org
                        ivy
+                       addons
                        utility
                        wim
                        emacs-lisp
@@ -28,7 +29,6 @@
                        gnuplot
                        writing
                        flycheck
-                       addon
                        semantic))
 
 (menu-bar-mode -1)

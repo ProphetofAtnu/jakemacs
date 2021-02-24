@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 ;; Thank you spacemacs. (See the web layer)
+
 (defun spacemacs/emmet-expand ()
   (interactive)
   (unless (if (bound-and-true-p yas-minor-mode)
@@ -41,10 +42,10 @@ returned by the tests in js/web-mode-overrides"
   templates."
   (let ((over (js/web--get-mode-symbol)))
     (if (and (not (eq over 'web-mode))
-         (not js/web--html-mode-overridden))
+             (not js/web--html-mode-overridden))
         (progn 
           (setq-local js/web--html-mode-overridden t)
-      
+          
           (when (and (functionp over)
                      (not (eq 'web-mode over)))
             (progn
@@ -54,7 +55,7 @@ returned by the tests in js/web-mode-overrides"
 (defun js/web-custom-setup ()
   "Sets up the customizations to web mode defined by
   web/function.el"
-  (interactive)
-  (advice-add 'web-mode :around #'js/web--html-override-advice))
+  (with-eval-after-load "web-mode"
+    (advice-add 'web-mode :around #'js/web--html-override-advice)))
 
 (provide 'web/function)

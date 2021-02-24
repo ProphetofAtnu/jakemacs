@@ -100,5 +100,4 @@
 
 (use-package ivy-xref)
 
-(use-package counsel-tramp)
 

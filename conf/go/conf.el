@@ -2,10 +2,15 @@
 
 (require 'use-package)
 
+(use-package dap-go
+  :commands (dap-go-setup))
+
 (use-package go-mode
+  :mode "\\.go\\'"
   :init
   (setq gofmt-command "goimports")
   :config
+  (dap-go-setup)
   (general-unbind
     :keymaps 'go-mode-map
     :states '(normal)

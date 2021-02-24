@@ -110,7 +110,6 @@ m -> Toggle Mode     | r -> reset"
                         :prefix-map js/text-prefix-map
                         :wk "Text")
   "e" 'eww
-  "r" 'treemacs
   "b" 'bookmark-bmenu-search
   "g" 'magit
   "RET" 'ace-link

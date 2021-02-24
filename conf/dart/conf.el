@@ -9,13 +9,15 @@
 ;;         dart-server-enable-analysis-server t))
 
 (use-package lsp-mode
+  :hook (dart-mode . lsp-deferred)
   :config
   (setq lsp-dart-suggest-from-unimported-libraries nil)
   (add-hook 'dart-mode-hook '(lambda ()
                                (lsp-ui-mode -1))))
 
 (use-package lsp-dart
-  :hook (dart-mode . lsp)
+  ;; :hook (dart-mode . lsp)
+  :after 'lsp-mode
   :init
   (setq
    lsp-dart-sdk-dir
@@ -32,6 +34,7 @@
     :syntax-table nil))
 
 (use-package lsp-dart-dap
+  :after 'lsp-mode
   ;; :init
   ;; (add-hook 'dart-mode-hook 'js/dap-setup-dart-templates)
   )

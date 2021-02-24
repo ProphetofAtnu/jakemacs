@@ -44,10 +44,6 @@
   :config
   (add-to-list 'evil-motion-state-modes 'process-menu-mode))
 
-(use-package tramp
-  :config
-  (setq tramp-default-method "ssh"))
-
 (use-package pdf-tools
   :init 
   (add-to-list 'auto-mode-alist
@@ -64,4 +60,5 @@
 
 (use-package dired-sidebar
   :config
+  (purpose-add-user-purposes :modes '((dired-sidebar-mode . side)))
   (setq dired-sidebar-width 25))

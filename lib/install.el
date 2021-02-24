@@ -88,7 +88,6 @@
 (straight-use-package 'counsel-projectile)
 (straight-use-package 'counsel-dash)
 (straight-use-package 'counsel-etags)
-(straight-use-package 'counsel-tramp)
 
 (straight-use-package 'flx)
 (straight-use-package 'ivy-posframe)
