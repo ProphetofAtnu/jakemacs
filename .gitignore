@@ -22,3 +22,4 @@ elpy
 mssql
 local.el
 /etc/
+/.log/

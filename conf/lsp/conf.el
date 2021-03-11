@@ -11,6 +11,7 @@
         lsp-idle-delay 0.5 
         lsp-enable-snippet t
         lsp-keep-workspace-alive t
+        lsp-enable-file-watchers nil
         lsp-session-file (expand-file-name ".lsp-session-v1" user-cache-dir)))
 
 (use-package lsp-ui

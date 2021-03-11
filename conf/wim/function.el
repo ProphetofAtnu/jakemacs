@@ -22,3 +22,14 @@
 
 ;; (defun js/debug-projectile-switch-hook ()
 ;;   (message (pp project-to-switch)))
+
+(defun js/purpose--disable-in-func (original &rest r)
+  (require 'window-purpose)
+  (without-purpose 
+    (apply original r)))
+
+(defun js/disable-purpose-for (&rest funcs)
+  (dolist (sym funcs)
+    (advice-add sym :around 'js/purpose--disable-in-func)))
+
+

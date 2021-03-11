@@ -60,5 +60,5 @@
 
 (use-package dired-sidebar
   :config
-  (purpose-add-user-purposes :modes '((dired-sidebar-mode . side)))
+  ;; (purpose-add-user-purposes :modes '((dired-sidebar-mode . side)))
   (setq dired-sidebar-width 25))

@@ -59,9 +59,9 @@
 
 (use-package lsp-mode
   :hook
-  ((js2-mode-hook . lsp)
-   (rjsx-mode-hook . lsp)
-   (typescript-mode-hook . lsp))
+  ((js2-mode . lsp-deferred)
+   (rjsx-mode . lsp-deferred)
+   (typescript-mode . lsp-deferred))
   :config
   (add-to-list 'lsp-file-watch-ignored-directories 
                "[/\\\\]\\node_modules\\'")

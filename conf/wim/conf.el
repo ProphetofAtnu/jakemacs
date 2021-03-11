@@ -5,6 +5,7 @@
   :config
   (setq purpose-display-fallback nil
         purpose-default-action-order 'switch-to-buffer)
+  (js/disable-purpose-for 'diredp-find-file-reuse-dir-buffer)
   (purpose-mode 1))
 
 (use-package all-the-icons-ibuffer
@@ -14,13 +15,14 @@
 (use-package ibuffer-sidebar
   :commands (ibuffer-sidebar-toggle-sidebar)
   :config
-  (purpose-add-user-purposes :modes '((ibuffer-sidebar-mode . side)))
+  ;; (purpose-add-user-purposes :modes '((ibuffer-sidebar-mode . side)))
   (setq ibuffer-sidebar-width 25))
 
 (use-package window-purpose-x
   :config
   (purpose-x-popwin-setup)
   (purpose-x-magit-single-on)
+  (purpose-x-kill-setup)
   (purpose-x-popwin-update-conf)
 )
 
@@ -49,8 +51,8 @@
   (add-hook
    'emacs-startup-hook
    'persp-mode-projectile-bridge-kill-perspectives)
-  (add-hook 'projectile-before-switch-project-hook
-            (lambda () (persp-activate nil)))
+  ;; (add-hook 'projectile-before-switch-project-hook
+  ;;           (lambda () (persp-activate nil)))
   )
 
 (use-package ivy-purpose
