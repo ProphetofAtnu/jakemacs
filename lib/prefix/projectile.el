@@ -23,11 +23,11 @@
   "B" 'projectile-switch-to-buffer-other-window
   "!" 'projectile-run-shell-command-in-root
   "&" 'projectile-run-async-shell-command-in-root
-  ; "p g a" 'helm-projectile-ag
   "g r" 'projectile-ripgrep
-  ; "p g k" 'helm-projectile-ack
   "g g" 'projectile-grep
-  ;; Frames
+  "," 'projectile-run-project 
+  "." 'projectile-compile-project
+  "/" 'projectile-configure-project
 )
 
 (which-key-add-keymap-based-replacements

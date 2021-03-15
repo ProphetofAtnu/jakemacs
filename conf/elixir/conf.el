@@ -21,13 +21,14 @@
   (add-to-list 'purpose-x-popwin-buffer-names "*alchemist-info-mode*")
   (add-to-list 'purpose-x-popwin-buffer-names "*alchemist mix*")
   (add-to-list 'purpose-x-popwin-buffer-names "*Alchemist-IEx*")
+  (add-to-list 'purpose-x-popwin-buffer-names "*alchemist test report*")
   (purpose-x-popwin-update-conf))
 
 (require 'after/company-after)
 
 (js/company-localize-backends
  elixir-mode
- (company-capf (company-dabbrev-code company-gtags company-etags company-keywords)))
+ (company-capf alchemist-company (company-dabbrev-code company-gtags company-etags company-keywords)))
 
 (use-package elixir-mode
   :defer t)

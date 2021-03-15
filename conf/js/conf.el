@@ -71,12 +71,6 @@
         ;; lsp-typescript-disable-automatic-type-acquisition t
         lsp-typescript-implementations-code-lens-enabled t))
 
-(use-package json-mode
-  :config
-  (use-package json-navigator)
-  (use-package json-reformat)
-  (use-package json-snatcher))
-
 (use-package eslintd-fix
   :commands (eslintd-fix eslintd-fix-mode))
 

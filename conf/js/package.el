@@ -26,7 +26,7 @@
 
 ;; JSON
 (straight-use-package 'json-mode)
-(straight-use-package 'json-navigator)
+;; (straight-use-package 'json-navigator)
 (straight-use-package 'json-reformat)
 (straight-use-package 'json-snatcher)
 

@@ -18,8 +18,7 @@
   :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq ;; lsp-ui-sideline-enable nil
-        lsp-ui-doc-use-childframe t
-        lsp-ui-doc-use-webkit t)
+        lsp-ui-doc-use-childframe t)
   (setq
    lsp-ui-flycheck-live-reporting nil
    lsp-ui-doc-position 'top
