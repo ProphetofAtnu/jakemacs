@@ -165,10 +165,6 @@
 (use-package restart-emacs
   :commands (restart-emacs))
 
-(use-package eval-sexp-fu
-  :config
-  (turn-on-eval-sexp-fu-flash-mode))
-
 (use-package autorevert
   :delight)
 

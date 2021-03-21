@@ -23,13 +23,6 @@
 ;;   "g t" 'persp-next
 ;;   "g T" 'persp-prev)
 
-(with-eval-after-load "ivy"
-  (general-defs
-    'js/buffer-prefix
-    "b" 'ivy-purpose-switch-buffer-without-purpose
-    "B" 'ivy-purpose-switch-buffer-with-purpose
-    "v" 'ivy-purpose-switch-buffer-with-some-purpose))
-
 (general-defs
   'js/buffer-prefix
   "x" '(:prefix-command js/persp-command

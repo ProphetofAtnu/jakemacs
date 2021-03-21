@@ -33,6 +33,13 @@
   "d a" 'counsel-dash-activate-docset
   "d o" '(js/dash-open-docset-path :wk "Browse"))
 
+(with-eval-after-load "purpose"
+  (general-defs
+    'js/buffer-prefix
+    "b" 'ivy-purpose-switch-buffer-without-purpose
+    "B" 'ivy-purpose-switch-buffer-with-purpose
+    "v" 'ivy-purpose-switch-buffer-with-some-purpose))
+
 
 
 (general-defs

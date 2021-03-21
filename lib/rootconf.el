@@ -3,10 +3,10 @@
 ;; After the base packages have been loaded, load any additional
 ;; configs
 (setq active-configs '(
-                       ;; selectrum
+                       selectrum
                        ;; helm
                        org
-                       ivy
+                       ;; ivy
                        addons
                        utility
                        wim

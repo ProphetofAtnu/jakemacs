@@ -17,6 +17,6 @@
   "`" 'treemacs-select-window)
 
 (general-def 'js/files-prefix
-  "l" 'js/treemacs-relocate-here
-  "a" 'treemacs-add-project-to-workspace
+  "." 'js/treemacs-relocate-here
+  "+" 'treemacs-add-project-to-workspace
   "p" 'treemacs-display-current-project-exclusively)

@@ -8,6 +8,7 @@
  "r" 'jump-to-register
  "+" 'increment-register
  "p" 'prepend-to-register
+ "a" 'append-to-register
  "M" 'bookmark-set-no-overwrite
  "U" 'undo-tree-restore-state-from-register
  "b" 'bookmark-jump
@@ -33,8 +34,8 @@
  "C-n" 'rectangle-number-lines
  "C-d" 'delete-rectangle)
 
-(with-eval-after-load "ivy"
-  (general-defs 'js/register-prefix
-    "." 'counsel-register))
+;; (with-eval-after-load "ivy"
+;;   (general-defs 'js/register-prefix
+;;     "." 'counsel-register))
 
 (provide 'prefix/register)

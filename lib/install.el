@@ -44,7 +44,6 @@
 (straight-use-package 'discover-my-major)
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'yasnippet)
-(straight-use-package 'eval-sexp-fu)
 (straight-use-package 'posframe)
 (straight-use-package 'which-key-posframe)
 (straight-use-package 'magit)

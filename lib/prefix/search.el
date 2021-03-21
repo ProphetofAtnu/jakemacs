@@ -5,7 +5,7 @@
   "o" 'occur
   "r" 'query-replace
   "c" 'evil-ex-nohighlight
-  "i" 'iedit-mode
+  "e" 'iedit-mode
  )
 
 

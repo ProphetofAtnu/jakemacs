@@ -21,12 +21,17 @@
   :init
   (elpy-enable)
   :config
-  (load "elpy")
-  (load "elpy-rpc")
-  (load "elpy-shell")
-  (load "elpy-profile")
-  (load "elpy-refactor")
-  (load "elpy-django")
+  ;; (load "elpy")
+  ;; (load "elpy-rpc")
+  ;; (load "elpy-shell")
+  ;; (load "elpy-profile")
+  ;; (load "elpy-refactor")
+  ;; (load "elpy-django")
+  (require 'elpy-shell)
+  (require 'elpy-rpc)
+  (require 'elpy-profile)
+  (require 'elpy-refactor)
+  (require 'elpy-django)
   (add-to-list
    'python-shell-completion-native-disabled-interpreters
    "python3"))

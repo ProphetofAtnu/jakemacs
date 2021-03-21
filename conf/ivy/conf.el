@@ -30,7 +30,10 @@
 
           (setq ivy-initial-inputs-alist nil)
           (ivy-mode 1)
-          (counsel-mode +1)))
+          (counsel-mode +1))
+  (general-define-key :keymaps '(ivy-mode-map)
+    "C-SPC" 'ivy-mark)
+  )
           ;; (ivy-rich-mode)))
   ;; (ivy-posframe-mode))
 
@@ -53,8 +56,12 @@
           counsel-M-x
           (:columns
            ((counsel-M-x-transformer (:width 35))
-            (ivy-rich-counsel-function-docstring (:width 34 :face font-lock-doc-face))))
+            (ivy-rich-counsel-function-docstring (:width 60 :face font-lock-doc-face))))
           counsel-describe-function
+          (:columns
+           ((counsel-describe-function-transformer (:width 35))
+            (ivy-rich-counsel-function-docstring (:width 34 :face font-lock-doc-face))))
+          helpful-callable
           (:columns
            ((counsel-describe-function-transformer (:width 35))
             (ivy-rich-counsel-function-docstring (:width 34 :face font-lock-doc-face))))
@@ -77,11 +84,29 @@
 (use-package ivy-posframe
   :after ivy
   :delight
-  :config
+  :init
+  (defvar js/ivy-posframe-max-width 120)
+  (defvar js/ivy-posframe-max-height 40)
+  (setq ivy-posframe-min-width 80
+        ivy-posframe-min-height 20)
+
+  (defun js/ivy-posframe-size-func ()
+    "Custom display function for posframe size"
+    (let ((cwidth (floor (* (frame-width) .80))))
+      (list
+       :height js/ivy-posframe-max-height 
+       :width (if (> js/ivy-posframe-max-width cwidth)
+                  cwidth
+                js/ivy-posframe-max-width)
+       :min-height ivy-posframe-min-height
+       :min-width ivy-posframe-min-width)))
+
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center))
         ivy-posframe-height-alist '((t . 20))
         ivy-posframe-parameters '((internal-border-width . 5)))
-  (setq ivy-posframe-width 70)
+  ;; (setq ivy-posframe-width nil)
+  (setq ivy-posframe-size-function #'js/ivy-posframe-size-func)
+  :config
   (ivy-posframe-mode +1))
 
 ;; (use-package ivy-explorer)

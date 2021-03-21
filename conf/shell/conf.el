@@ -11,31 +11,27 @@
         shell-pop-universal-key "C-'")
   (general-defs "C-'" 'shell-pop))
 
-;; (use-package ansi-color
-;;   :init
-;;   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;;   (add-to-list 'comint-output-filter-functions 'ansi-color-process-output))
+(use-package xterm-color
+  :demand t
+  :config
+  (setq comint-output-filter-functions
+        (remove 'ansi-color-process-output comint-output-filter-functions))
 
-;; (use-package xterm-color
-;;   :init
-;;   (setq comint-output-filter-functions
-;;         (remove 'ansi-color-process-output comint-output-filter-functions))
+  (add-hook 'comint-mode-hook
+            (lambda ()
+              ;; Disable font-locking in this buffer to improve performance
+              (font-lock-mode -1)
+              ;; Prevent font-locking from being re-enabled in this buffer
+              (make-local-variable 'font-lock-function)
+              (setq font-lock-function (lambda (_) nil))
+              (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t))))
 
-;;   (add-hook 'shell-mode-hook
-;;             (lambda ()
-;;               ;; Disable font-locking in this buffer to improve performance
-;;               (font-lock-mode -1)
-;;               ;; Prevent font-locking from being re-enabled in this buffer
-;;               (make-local-variable 'font-lock-function)
-;;               (setq font-lock-function (lambda (_) nil))
-;;               (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
-;;   )
-
-
+;; Also set TERM accordingly (xterm-256color) in the shell itself.
 
 (use-package comint
   :config
-  (setq comint-terminfo-terminal "xterm"))
+  (setq comint-terminfo-terminal "xterm"
+        comint-highlight-input nil))
 
 (use-package vterm
   :config
@@ -103,6 +99,10 @@
 (use-package eshell-z
   :after (eshell))
 
-
-;; (use-package esh-autosuggest
-;;   :hook (eshell-mode . esh-autosuggest-mode))
+(use-package native-complete
+  :commands (native-complete-at-point
+             native-complete-setup-bash)
+  :init
+  (native-complete-setup-bash)
+  (add-to-list 'native-complete-style-regex-alist '("[a-zA-Z]+:.*\$" . bash))
+  )
