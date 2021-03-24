@@ -37,6 +37,8 @@
   "p" 'persp-prev
   "l" 'persp-switch
   ;; "L" 'persp-switch-quick
+  "x" 'persp-add-buffers-by-regexp
+  "t" 'persp-temporarily-display-buffer
   "a" 'persp-add-buffer 
   "r" 'persp-remove-buffer
   "x" 'persp-kill 

@@ -58,6 +58,13 @@
 
 (use-package yaml-imenu)
 
+(use-package scratch-pop
+  :init
+  (setq scratch-pop-enable-auto-yank t))
+;; (use-package scratch-palette
+;;   :config
+;;   (setq scratch-palette-directory (ensure-dir user-cache-dir "scratch")))
+
 (use-package dired-sidebar
   :config
   ;; (purpose-add-user-purposes :modes '((dired-sidebar-mode . side)))

@@ -32,6 +32,7 @@
   "z g" 'fzf-git-files
   "z p" 'fzf-projectile)
 
+
 (leader-tert-def
   :keymaps 'override
   "p" 'list-processes
@@ -147,3 +148,7 @@
  "u" 'pdf-view-scroll-down-or-previous-page
  "d" 'pdf-view-scroll-up-or-next-page
   )
+
+(leader-tert-def
+  "s" 'scratch-pop
+ )

@@ -113,8 +113,8 @@ m -> Toggle Mode     | r -> reset"
   "b" 'bookmark-bmenu-search
   "g" 'magit
   "RET" 'ace-link
-  "s" 'ascratch-here
-  "S" 'ascratch-org 
+  ;; "s" 'ascratch-here
+  ;; "S" 'ascratch-org 
   ;; "m" 'helm-mode-manager
   ;; "\\" 'helm-mini
   "\\" 'imenu

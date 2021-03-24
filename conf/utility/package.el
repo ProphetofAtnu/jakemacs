@@ -38,3 +38,5 @@
 
 (straight-use-package 'nginx-mode)
 (straight-use-package 'company-nginx)
+
+(straight-use-package 'scratch-pop)

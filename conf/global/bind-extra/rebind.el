@@ -28,6 +28,10 @@
 (general-def
   "M-SPC" 'previous-window-any-frame)
 
+(general-def
+  '(normal visual motion)
+  "." 'repeat)
+
 ;; (with-eval-after-load "counsel"
 ;;   (general-defs
 ;;     '(normal motion)
