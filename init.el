@@ -1,7 +1,7 @@
 ;;; init.el ---                                      -*- lexical-binding: t; -*-
 
-;; (setq straight-disable-native-compile t)
-(setq comp-speed 2)
+(setq straight-disable-native-compile t)
+;; (setq comp-speed 2)
 
 (defvar js/after-init-hook nil
   "Hook that runs after init.el has completely loaded")

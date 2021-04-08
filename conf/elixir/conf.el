@@ -18,11 +18,12 @@
 
 (use-package alchemist
   :config
-  (add-to-list 'purpose-x-popwin-buffer-names "*alchemist-info-mode*")
-  (add-to-list 'purpose-x-popwin-buffer-names "*alchemist mix*")
-  (add-to-list 'purpose-x-popwin-buffer-names "*Alchemist-IEx*")
-  (add-to-list 'purpose-x-popwin-buffer-names "*alchemist test report*")
-  (purpose-x-popwin-update-conf))
+  (with-eval-after-load "window-purpose"
+    (add-to-list 'purpose-x-popwin-buffer-names "*alchemist-info-mode*")
+    (add-to-list 'purpose-x-popwin-buffer-names "*alchemist mix*")
+    (add-to-list 'purpose-x-popwin-buffer-names "*Alchemist-IEx*")
+    (add-to-list 'purpose-x-popwin-buffer-names "*alchemist test report*")
+    (purpose-x-popwin-update-conf)))
 
 (require 'after/company-after)
 

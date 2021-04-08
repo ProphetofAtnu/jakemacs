@@ -43,14 +43,14 @@
   "r" 'persp-remove-buffer
   "x" 'persp-kill 
   ;; Purpose
-  "b" 'purpose-switch-buffer
-  "d" 'purpose-toggle-window-purpose-dedicated
-  "D" 'purpose-toggle-window-buffer-dedicated
   )
 
 (general-defs
   '(visual motion normal)
   'purpose-mode-map
+  "l b" 'purpose-switch-buffer
+  "l d" 'purpose-toggle-window-purpose-dedicated
+  "l D" 'purpose-toggle-window-buffer-dedicated
   "z s" 'purpose-x-popwin-stick
   "z S" 'purpose-x-popwin-unstick
   "z C-s" 'purpose-x-popwin-close-windows)

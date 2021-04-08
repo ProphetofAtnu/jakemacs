@@ -40,7 +40,7 @@
   :after 'elpy
   :init
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt"
+        python-shell-interpreter-args "--simple-prompt -i"
         python-shell-prompt-detect-failure-warning nil)
   )
 

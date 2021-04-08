@@ -5,6 +5,9 @@
   "," 'consult-buffer)
 
 (general-defs
+  "C-M-SPC" 'selectrum-repeat)
+
+(general-defs
   'js/search-prefix 
   "s" 'consult-line
   "f" 'consult-focus-lines

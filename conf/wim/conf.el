@@ -6,7 +6,7 @@
   (setq purpose-display-fallback nil
         purpose-default-action-order 'switch-to-buffer)
   (js/disable-purpose-for 'diredp-find-file-reuse-dir-buffer)
-  (purpose-mode 1)
+  ;; (purpose-mode 1)
   (purpose-fix-install))
 
 (use-package all-the-icons-ibuffer

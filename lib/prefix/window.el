@@ -29,7 +29,7 @@
   ("=" balance-windows "Balance")
   ("n" switch-to-next-buffer "Next Buffer" :column "Buffer")
   ("p" switch-to-prev-buffer "Prev Buffer")
-  ("b" switch-buffer-without-purpose "Set buffer")
+  ("b" switch-to-buffer)
   ("f" find-file "Open File")
   ("x" execute-extended-command "Command")
   ("q" nil nil :color blue :column "")
