@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 (general-define-key
- :states '(normal motion)
- :keymaps 'python-mode-map
+  :states '(normal motion)
+  :keymaps 'elpy-mode-map
  "K" 'elpy-doc)
 
 (leader-minor-def

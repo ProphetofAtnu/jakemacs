@@ -177,10 +177,10 @@
       :keymaps 'dired-mode-map
       "-" 'dired-up-directory)))
 
-(use-package all-the-icons-dired
-  :delight
-  :hook
-  (dired-mode . all-the-icons-dired-mode))
+;(use-package all-the-icons-dired
+  ;:delight
+  ;:hook
+  ;(dired-mode . all-the-icons-dired-mode))
 
 (use-package diredfl
   :hook (dired-mode . diredfl-global-mode))

@@ -37,10 +37,9 @@
    "python3"))
 
 (use-package python
-  :after 'elpy
   :init
-  (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt -i"
+  (setq python-shell-interpreter "python"
+        python-shell-interpreter-args "-i"
         python-shell-prompt-detect-failure-warning nil)
   )
 
@@ -58,4 +57,7 @@
 (use-package flycheck
   :init
   (add-hook 'python-mode-hook 'flycheck-mode-on-safe))
+
+;; (use-package anaconda-mode
+;;   :hook (python-mode . anaconda-mode))
 

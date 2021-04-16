@@ -4,6 +4,8 @@
 ;; (straight-use-package 'company-anaconda)
 (straight-use-package 'python)
 (straight-use-package 'elpy)
+
+(straight-use-package 'anaconda-mode)
 (straight-use-package 'ob-ipython)
 
 (straight-use-package 'counsel-pydoc)

@@ -24,3 +24,5 @@ local.el
 /etc/
 /.log/
 eln-cache
+/custom.el
+/js/

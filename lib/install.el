@@ -73,7 +73,7 @@
 (straight-use-package 'delight)
 (straight-use-package 'dashboard)
 (straight-use-package 'doom-modeline)
-(straight-use-package 'all-the-icons-dired)
+;; (straight-use-package 'all-the-icons-dired)
 (straight-use-package 'projectile)
 (straight-use-package 'eyebrowse)
 
