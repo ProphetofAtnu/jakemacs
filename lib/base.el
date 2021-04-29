@@ -35,7 +35,6 @@
   (setq evil-split-window-below t)
   (setq evil-vsplit-window-right t)
   :config
-  (setq evil-undo-system 'undo-tree)
   (evil-mode 1))
 
 (use-package evil-collection

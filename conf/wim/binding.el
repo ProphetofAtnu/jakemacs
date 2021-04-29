@@ -19,10 +19,6 @@
   "d" 'persp-remove-buffer)
 
 
-;; (general-defs
-;;   "g t" 'persp-next
-;;   "g T" 'persp-prev)
-
 (general-defs
   'js/buffer-prefix
   "x" '(:prefix-command js/persp-command
@@ -56,4 +52,12 @@
   "z C-s" 'purpose-x-popwin-close-windows)
 
 (leader-tert-def '(normal visual motion insert override)
+  "]" 'popwin:messages
   "k" 'kill-buffer-and-window)
+
+(general-defs
+  '(visual motion normal)
+  "z s" 'popwin:popup-buffer
+  "z C-s" 'popwin:popup-last-buffer
+  "z S" 'popwin:stick-popup-window
+  "z p" 'popwin:select-popup-window)

@@ -8,9 +8,8 @@
 (straight-use-package 'persp-mode-projectile-bridge)
 (straight-use-package 'treemacs-persp)
 
-(straight-use-package 'nswbuff)
 
-;; Ibuffer
+(straight-use-package 'popup-switcher)
 
 (straight-use-package 'all-the-icons-ibuffer)
 (straight-use-package 'ibuffer-sidebar)

@@ -38,12 +38,7 @@
 
   (persp-mode 1)
   (require 'treemacs-persp)
-  (treemacs-set-scope-type 'Perspectives)
-  ;; (with-eval-after-load 'doom-modeline
-  ;;   (setq doom-modeline-persp-icon nil
-  ;;         doom-modeline-persp-name nil))
-   ;; (require 'persp-projectile-auto-persp)
-   )
+  (treemacs-set-scope-type 'Perspectives))
 
 (use-package persp-mode-projectile-bridge
   :init
@@ -52,13 +47,11 @@
   (add-hook
    'emacs-startup-hook
    'persp-mode-projectile-bridge-kill-perspectives)
-  ;; (add-hook 'projectile-before-switch-project-hook
-  ;;           (lambda () (persp-activate nil)))
   )
 
-(use-package ivy-purpose
-  :config
-  (ivy-purpose-setup))
+;; (use-package ivy-purpose
+;;   :config
+;;   (ivy-purpose-setup))
 
 (with-eval-after-load "persp-mode"
   (with-eval-after-load "ivy"
@@ -79,29 +72,7 @@
                     (persp-window-switch . nil)
                     (persp-frame-switch  . nil))))))
 
-(use-package nswbuff
-  :init 
-  (defhydra hydra-nswbuff (:color red :hint nil)
-                        ("n" nswbuff-switch-to-next-buffer)
-                        ("p" nswbuff-switch-to-previous-buffer))
-  :config
-  (setq nswbuff-recent-buffers-first nil)
-  (general-defs
-    :keymaps 'js/buffer-prefix
-   "n" 'hydra-nswbuff/nswbuff-switch-to-next-buffer
-   "p" 'hydra-nswbuff/nswbuff-switch-to-previous-buffer)
-  )
-
-;; (use-package perspective
-;;   :init
-;;   (persp-mode)
-;;   (purpose-x-persp-setup)
-;;   (add-hook
-;;    'projectile-after-switch-project-hook
-;;    'js/persp-project-hook)
-;;   :config
-;;   (setq switch-to-prev-buffer-skip #'js/switch-to-buffer-skip-filter))
-
-
-;; (use-package persp-projectile)
-
+(use-package popwin
+  :commands (popwin-mode)
+  :init
+  (popwin-mode))
