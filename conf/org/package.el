@@ -14,3 +14,4 @@
 (straight-use-package 'org-starter)
 (straight-use-package 'org-starter-swiper)
 (straight-use-package 'poporg)
+(straight-use-package 'jupyter)

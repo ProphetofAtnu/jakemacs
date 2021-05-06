@@ -6,17 +6,12 @@
  "K" 'elpy-doc)
 
 (leader-minor-def
-  :keymaps 'python-mode-map
-  :major-modes t
+  :keymaps 'elpy-mode-map
   "," 'elpy-shell-switch-to-shell
   "'" 'elpy-shell-kill-all
-  "c" 'python-check
   "=" 'elpy-format-code
-  "h" 'counsel-pydoc
-  "p" 'python-shell-package-enable
   "q" 'elpy-rpc-restart
   ;; "r" 'python-run
-  "k" 'python-describe-at-point
   "g" '(:ignore t :wk "Goto/Find")
   "g g" 'elpy-goto-assignment-other-window
   "g G" 'elpy-goto-assignment
@@ -36,6 +31,13 @@
   "r f" 'elpy-refactor-extract-function
   "r v" 'elpy-refactor-extract-variable
   "r i" 'elpy-refactor-inline
+  )
+
+(leader-minor-def
+  :keymaps 'python-mode-map
+  "k" 'python-describe-at-point
+  "c" 'python-check
+  "p" 'python-shell-package-enable
   "i" '(:ignore t :wk "Skel")
   "i i" 'python-skeleton-if
   "i d" 'python-skeleton-def

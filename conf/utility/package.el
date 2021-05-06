@@ -10,6 +10,7 @@
 ;; (straight-use-package '(hyperbole)
 (straight-use-package 'multishell)
 ;; (straight-use-package 'web-server)
+(straight-use-package 'string-inflection)
 
 (straight-use-package 'dired-imenu)
 (straight-use-package 'dired-sidebar)

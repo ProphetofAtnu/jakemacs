@@ -146,8 +146,7 @@
  "S" 'pdf-view-auto-slice-minor-mode
  "D" 'pdf-view-dark-minor-mode
  "u" 'pdf-view-scroll-down-or-previous-page
- "d" 'pdf-view-scroll-up-or-next-page
-  )
+ "d" 'pdf-view-scroll-up-or-next-page)
 
 (leader-tert-def
   "s" 'scratch-pop

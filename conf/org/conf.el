@@ -18,6 +18,8 @@
         org-outline-path-complete-in-steps nil
         org-src-fontify-natively t
         org-src-tab-acts-natively t
+        org-src-preserve-indentation nil
+        org-edit-src-content-indentation 0
         org-imenu-depth 8)
   ;; Keywords
   (use-package org-attach)
@@ -36,6 +38,9 @@
                                  ("DONE" . (:foreground "green" :weight bold :underline t))))
   :config
   (use-package ob))
+
+(use-package company
+  :hook (org-mode . company-mode))
 
 (use-package window-purpose
   :defer t
@@ -70,8 +75,8 @@
   :init
   (setq org-agenda-skip-unavailable-files t))
 
-(use-package org-indent
-  :hook (org-mode . org-indent-mode))
+;; (use-package org-indent
+;;   :hook (org-mode . org-indent-mode))
 
 (use-package org-src
   :after (org))
@@ -149,3 +154,16 @@
 
 
 (use-package poporg)
+
+;; (use-package ob-ipython
+;;   :config
+;;   (setq python-indent-guess-indent-offset nil)
+;;   (add-hook 'ob-ipython-mode-hook
+;;             #'(lambda ()
+;;                 (setq-local
+;;                  company-backends
+;;                  (cons 'company-ob-ipython
+;;                        company-backends)
+;;                 ))))
+
+

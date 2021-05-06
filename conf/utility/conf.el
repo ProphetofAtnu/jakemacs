@@ -69,3 +69,15 @@
   :config
   ;; (purpose-add-user-purposes :modes '((dired-sidebar-mode . side)))
   (setq dired-sidebar-width 25))
+
+(use-package string-inflection
+  :commands (string-inflection-all-cycle
+             string-inflection-camelcase
+             string-inflection-kebab-case)
+  :init
+  (progn 
+    (defhydra string-inflection-cycle-hydra (:color red)
+      "cycle"
+      ("i" string-inflection-all-cycle))
+    (general-defs :states '(normal visual)
+      "z i" 'string-inflection-cycle-hydra/string-inflection-all-cycle)))

@@ -17,30 +17,40 @@
 ;; (use-package python
 ;;   :config)
 
-(use-package elpy
-  :init
-  (elpy-enable)
-  :config
-  ;; (load "elpy")
-  ;; (load "elpy-rpc")
-  ;; (load "elpy-shell")
-  ;; (load "elpy-profile")
-  ;; (load "elpy-refactor")
-  ;; (load "elpy-django")
-  (require 'elpy-shell)
-  (require 'elpy-rpc)
-  (require 'elpy-profile)
-  (require 'elpy-refactor)
-  (require 'elpy-django)
-  (add-to-list
-   'python-shell-completion-native-disabled-interpreters
-   "python3"))
+;; (defvar js/use-elpy t)
 
+;; (use-package elpy
+;;   :init
+;;   (elpy-enable)
+;;   :config
+;;   ;; (load "elpy")
+;;   ;; (load "elpy-rpc")
+;;   ;; (load "elpy-shell")
+;;   ;; (load "elpy-profile")
+;;   ;; (load "elpy-refactor")
+;;   ;; (load "elpy-django")
+;;   (require 'elpy-shell)
+;;   (require 'elpy-rpc)
+;;   (require 'elpy-profile)
+;;   (require 'elpy-refactor)
+;;   (require 'elpy-django)
+;;   (add-to-list
+;;    'python-shell-completion-native-disabled-interpreters
+;;    "python3"))
+
+(use-package lsp-pyright
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))  ; or lsp-deferred
 (use-package python
   :init
   (setq python-shell-interpreter "python"
         python-shell-interpreter-args "-i"
         python-shell-prompt-detect-failure-warning nil)
+  :config
+  (add-to-list
+   'python-shell-completion-native-disabled-interpreters
+   "jupyter")
   )
 
 (use-package counsel-pydoc
@@ -61,3 +71,10 @@
 ;; (use-package anaconda-mode
 ;;   :hook (python-mode . anaconda-mode))
 
+
+
+(use-package jupyter
+  :config
+  (add-hook 'jupyter-repl-mode-hook
+            #'(lambda ()
+                (setq-local evil-lookup-func 'jupyter-inspect-at-point))))
